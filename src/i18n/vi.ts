@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "Kết nối Internet",
+        p: [
+          "Narra chỉ kết nối Internet để đồng bộ bản lưu với iCloud, xử lý giao dịch mua trên App Store và mở các liên kết bạn chạm vào, như Discord. Không có gì từ trò chơi của bạn, kể cả văn bản, được gửi đi bất cứ đâu.",
+        ],
+      },
+      {
         h: "Báo cáo lỗi và email hỗ trợ",
         p: [
           "Khi có sự cố, Narra có thể chuẩn bị một báo cáo lỗi, còn Báo cáo sự cố sẽ chuẩn bị một email hỗ trợ. Cả hai đều không được gửi tự động: chúng chỉ được chia sẻ nếu chính bạn gửi đi, qua email hoặc bảng chia sẻ.",

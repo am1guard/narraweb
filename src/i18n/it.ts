@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "Connessioni a internet",
+        p: [
+          "Narra si connette a internet solo per sincronizzare i salvataggi con iCloud, gestire gli acquisti sull'App Store e aprire i link che tocchi, come Discord. Nulla dei tuoi giochi, nemmeno il loro testo, viene inviato da nessuna parte.",
+        ],
+      },
+      {
         h: "Segnalazioni di errore ed email al supporto",
         p: [
           "Quando qualcosa va storto, Narra può preparare una segnalazione di errore, e Segnala un problema prepara un'email per il supporto. Nessuna delle due viene inviata automaticamente: vengono condivise solo se sei tu a inviarle, via email o con il menu Condividi.",

@@ -24,7 +24,7 @@ LANGS = ["en", "tr", "es", "fr", "de", "it", "pt", "cs", "fa", "ru",
 
 # SSS bölümleri ve sırası uygulamanın HelpContent.swift dosyasından okunur. Uygulama
 # ekranına göre yazılmış ("aşağıdaki düğme") maddeler alınmaz.
-FAQ_EXCLUDE = {"report"}
+FAQ_EXCLUDE = {"report", "translation"}  # translation: oyun içi çeviri bu sürümde yok (TranslationFeature)
 
 
 def faq_layout() -> dict[str, list[str]]:

@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "Conexiones interretiales",
+        p: [
+          "Narra ipsa interrete tantum adhibet ut servata tua cum iCloud concordet, emptiones in App Store tractet, et nexus quos ipse tangis aperiat, ut Discord. Nihil ex ludis tuis, ne textus quidem, usquam mittitur.",
+        ],
+      },
+      {
         h: "Relationes errorum et epistulae subsidii",
         p: [
           "Cum aliquid perperam fit, Narra relationem erroris parare potest, et Difficultatem nuntia epistulam subsidii parat. Neutra sponte mittitur: tantum communicantur si tu ipse eas mittis, per epistulam electronicam vel per tabulam communicandi.",

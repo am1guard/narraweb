@@ -211,6 +211,12 @@ const en = {
         ],
       },
       {
+        h: "Internet connections",
+        p: [
+          "Narra itself connects to the internet only to sync your saves with iCloud, to handle App Store purchases and to open links you tap, such as Discord. Nothing from your games, including their text, is sent anywhere.",
+        ],
+      },
+      {
         h: "Error reports and support emails",
         p: [
           "When something goes wrong, Narra can prepare an error report, and Report a Problem prepares a support email. Neither is sent automatically: they are shared only if you send them yourself, by email or with the share sheet.",

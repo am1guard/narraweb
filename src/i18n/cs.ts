@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "Připojení k internetu",
+        p: [
+          "Narra se k internetu připojuje jen kvůli synchronizaci uložených her s iCloudem, nákupům v App Storu a otevírání odkazů, na které klepneš, například Discordu. Nic z tvých her, ani jejich text, se nikam neodesílá.",
+        ],
+      },
+      {
         h: "Hlášení chyb a e-maily podpoře",
         p: [
           "Když se něco pokazí, Narra umí připravit hlášení o chybě a Nahlásit problém připraví e-mail podpoře. Nic z toho se neodesílá automaticky: sdílí se jen tehdy, když to odešleš ty, e-mailem nebo přes nabídku sdílení.",

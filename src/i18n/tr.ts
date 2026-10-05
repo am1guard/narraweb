@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "İnternet bağlantıları",
+        p: [
+          "Narra internete yalnız kayıtlarını iCloud ile eşitlemek, App Store satın alımlarını işlemek ve Discord gibi dokunduğun bağlantıları açmak için bağlanır. Oyunlarından hiçbir şey, metinleri de dahil, hiçbir yere gönderilmez.",
+        ],
+      },
+      {
         h: "Hata raporları ve destek e-postaları",
         p: [
           "Bir şeyler ters gittiğinde Narra bir hata raporu hazırlayabilir; Sorun Bildir de bir destek e-postası hazırlar. İkisi de kendiliğinden gönderilmez: yalnız sen e-postayla ya da paylaşım ekranıyla gönderirsen paylaşılır.",

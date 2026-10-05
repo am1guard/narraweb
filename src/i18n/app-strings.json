@@ -28,7 +28,7 @@
      {
       "id": "formats",
       "q": "Which formats are supported?",
-      "a": "You can add game folders and ZIP, RAR (RAR4 and RAR5) and 7z archives, including password-protected ones and archives split into parts (.part1.rar, .r00, .z01, .zip.001, .7z.001): select all parts together or keep them in the same folder. Ren'Py games packed for Android (APK) work too; Narra takes the game out of the package. If the game is inside another archive, Narra opens that one as well. Password-protected ZIP files aren't supported."
+      "a": "You can add game folders and ZIP, RAR (RAR4 and RAR5) and 7z archives, including password-protected ones and archives split into parts (.part1.rar, .r00, .z01, .zip.001, .7z.001): select all parts together or keep them in the same folder. Ren'Py games packed for Android (APK) work too; Narra takes the game out of the package. If the game is inside another archive, Narra opens that one as well. Password-protected ZIP files work too, with both classic (ZipCrypto) and AES-256 encryption."
      },
      {
       "id": "filesDrop",
@@ -326,7 +326,7 @@
      {
       "id": "formats",
       "q": "Hangi biçimler destekleniyor?",
-      "a": "Oyun klasörleri ile ZIP, RAR (RAR4 ve RAR5) ve 7z arşivleri eklenebilir; parolalı arşivler ve parçalara bölünmüş arşivler (.part1.rar, .r00, .z01, .zip.001, .7z.001) dahil: tüm parçaları birlikte seç ya da aynı klasörde tut. Android için paketlenmiş Ren'Py oyunları (APK) da çalışır; Narra oyunu paketten çıkarır. Oyun başka bir arşivin içindeyse Narra onu da açar. Parolalı ZIP dosyaları desteklenmiyor."
+      "a": "Oyun klasörleri ile ZIP, RAR (RAR4 ve RAR5) ve 7z arşivleri eklenebilir; parolalı arşivler ve parçalara bölünmüş arşivler (.part1.rar, .r00, .z01, .zip.001, .7z.001) dahil: tüm parçaları birlikte seç ya da aynı klasörde tut. Android için paketlenmiş Ren'Py oyunları (APK) da çalışır; Narra oyunu paketten çıkarır. Oyun başka bir arşivin içindeyse Narra onu da açar. Parolalı ZIP dosyaları da açılır; hem klasik (ZipCrypto) hem AES-256 şifreleme desteklenir."
      },
      {
       "id": "filesDrop",
@@ -624,7 +624,7 @@
      {
       "id": "formats",
       "q": "¿Qué formatos se admiten?",
-      "a": "Puedes añadir carpetas de juegos y archivos ZIP, RAR (RAR4 y RAR5) y 7z, incluidos los protegidos con contraseña y los divididos en partes (.part1.rar, .r00, .z01, .zip.001, .7z.001): selecciona todas las partes a la vez o guárdalas en la misma carpeta. También funcionan los juegos de Ren'Py empaquetados para Android (APK); Narra saca el juego del paquete. Si el juego está dentro de otro archivo, Narra también lo abre. No se admiten los ZIP con contraseña."
+      "a": "Puedes añadir carpetas de juegos y archivos ZIP, RAR (RAR4 y RAR5) y 7z, incluidos los protegidos con contraseña y los divididos en partes (.part1.rar, .r00, .z01, .zip.001, .7z.001): selecciona todas las partes a la vez o guárdalas en la misma carpeta. También funcionan los juegos de Ren'Py empaquetados para Android (APK); Narra saca el juego del paquete. Si el juego está dentro de otro archivo, Narra también lo abre. También se admiten los ZIP con contraseña, con cifrado clásico (ZipCrypto) o AES-256."
      },
      {
       "id": "filesDrop",
@@ -922,7 +922,7 @@
      {
       "id": "formats",
       "q": "Quels formats sont pris en charge ?",
-      "a": "Vous pouvez ajouter des dossiers de jeux et des archives ZIP, RAR (RAR4 et RAR5) et 7z, y compris protégées par mot de passe ou découpées en parties (.part1.rar, .r00, .z01, .zip.001, .7z.001) : sélectionnez toutes les parties ensemble ou gardez-les dans le même dossier. Les jeux Ren'Py empaquetés pour Android (APK) fonctionnent aussi ; Narra extrait le jeu du paquet. Si le jeu se trouve dans une autre archive, Narra l'ouvre également. Les ZIP protégés par mot de passe ne sont pas pris en charge."
+      "a": "Vous pouvez ajouter des dossiers de jeux et des archives ZIP, RAR (RAR4 et RAR5) et 7z, y compris protégées par mot de passe ou découpées en parties (.part1.rar, .r00, .z01, .zip.001, .7z.001) : sélectionnez toutes les parties ensemble ou gardez-les dans le même dossier. Les jeux Ren'Py empaquetés pour Android (APK) fonctionnent aussi ; Narra extrait le jeu du paquet. Si le jeu se trouve dans une autre archive, Narra l'ouvre également. Les ZIP protégés par mot de passe sont aussi pris en charge, avec chiffrement classique (ZipCrypto) ou AES-256."
      },
      {
       "id": "filesDrop",
@@ -1220,7 +1220,7 @@
      {
       "id": "formats",
       "q": "Welche Formate werden unterstützt?",
-      "a": "Du kannst Spielordner sowie ZIP-, RAR- (RAR4 und RAR5) und 7z-Archive hinzufügen, auch passwortgeschützte und in Teile aufgeteilte (.part1.rar, .r00, .z01, .zip.001, .7z.001): Wähle alle Teile zusammen aus oder lege sie in denselben Ordner. Auch für Android gepackte Ren'Py-Spiele (APK) funktionieren; Narra holt das Spiel aus dem Paket. Liegt das Spiel in einem weiteren Archiv, öffnet Narra auch dieses. Passwortgeschützte ZIP-Dateien werden nicht unterstützt."
+      "a": "Du kannst Spielordner sowie ZIP-, RAR- (RAR4 und RAR5) und 7z-Archive hinzufügen, auch passwortgeschützte und in Teile aufgeteilte (.part1.rar, .r00, .z01, .zip.001, .7z.001): Wähle alle Teile zusammen aus oder lege sie in denselben Ordner. Auch für Android gepackte Ren'Py-Spiele (APK) funktionieren; Narra holt das Spiel aus dem Paket. Liegt das Spiel in einem weiteren Archiv, öffnet Narra auch dieses. Auch passwortgeschützte ZIP-Dateien werden unterstützt, mit klassischer (ZipCrypto) oder AES-256-Verschlüsselung."
      },
      {
       "id": "filesDrop",
@@ -1518,7 +1518,7 @@
      {
       "id": "formats",
       "q": "Quali formati sono supportati?",
-      "a": "Puoi aggiungere cartelle di giochi e archivi ZIP, RAR (RAR4 e RAR5) e 7z, anche protetti da password o divisi in parti (.part1.rar, .r00, .z01, .zip.001, .7z.001): seleziona tutte le parti insieme o tienile nella stessa cartella. Funzionano anche i giochi Ren'Py impacchettati per Android (APK); Narra estrae il gioco dal pacchetto. Se il gioco è dentro un altro archivio, Narra apre anche quello. I file ZIP protetti da password non sono supportati."
+      "a": "Puoi aggiungere cartelle di giochi e archivi ZIP, RAR (RAR4 e RAR5) e 7z, anche protetti da password o divisi in parti (.part1.rar, .r00, .z01, .zip.001, .7z.001): seleziona tutte le parti insieme o tienile nella stessa cartella. Funzionano anche i giochi Ren'Py impacchettati per Android (APK); Narra estrae il gioco dal pacchetto. Se il gioco è dentro un altro archivio, Narra apre anche quello. Sono supportati anche i file ZIP protetti da password, con cifratura classica (ZipCrypto) o AES-256."
      },
      {
       "id": "filesDrop",
@@ -1816,7 +1816,7 @@
      {
       "id": "formats",
       "q": "Quais formatos são compatíveis?",
-      "a": "Você pode adicionar pastas de jogos e arquivos ZIP, RAR (RAR4 e RAR5) e 7z, inclusive protegidos por senha e divididos em partes (.part1.rar, .r00, .z01, .zip.001, .7z.001): selecione todas as partes juntas ou mantenha-as na mesma pasta. Jogos Ren'Py empacotados para Android (APK) também funcionam; o Narra tira o jogo do pacote. Se o jogo estiver dentro de outro arquivo, o Narra também o abre. Arquivos ZIP protegidos por senha não são compatíveis."
+      "a": "Você pode adicionar pastas de jogos e arquivos ZIP, RAR (RAR4 e RAR5) e 7z, inclusive protegidos por senha e divididos em partes (.part1.rar, .r00, .z01, .zip.001, .7z.001): selecione todas as partes juntas ou mantenha-as na mesma pasta. Jogos Ren'Py empacotados para Android (APK) também funcionam; o Narra tira o jogo do pacote. Se o jogo estiver dentro de outro arquivo, o Narra também o abre. Arquivos ZIP protegidos por senha também são compatíveis, com criptografia clássica (ZipCrypto) ou AES-256."
      },
      {
       "id": "filesDrop",
@@ -2114,7 +2114,7 @@
      {
       "id": "formats",
       "q": "Jaké formáty jsou podporované?",
-      "a": "Můžeš přidávat složky her a archivy ZIP, RAR (RAR4 i RAR5) a 7z, i chráněné heslem nebo rozdělené na části (.part1.rar, .r00, .z01, .zip.001, .7z.001): vyber všechny části najednou nebo je měj ve stejné složce. Fungují i hry Ren'Py zabalené pro Android (APK); Narra hru z balíčku vybalí. Je-li hra uvnitř dalšího archivu, Narra otevře i ten. Soubory ZIP chráněné heslem nejsou podporované."
+      "a": "Můžeš přidávat složky her a archivy ZIP, RAR (RAR4 i RAR5) a 7z, i chráněné heslem nebo rozdělené na části (.part1.rar, .r00, .z01, .zip.001, .7z.001): vyber všechny části najednou nebo je měj ve stejné složce. Fungují i hry Ren'Py zabalené pro Android (APK); Narra hru z balíčku vybalí. Je-li hra uvnitř dalšího archivu, Narra otevře i ten. Podporované jsou i soubory ZIP chráněné heslem, s klasickým (ZipCrypto) i AES-256 šifrováním."
      },
      {
       "id": "filesDrop",
@@ -2412,7 +2412,7 @@
      {
       "id": "formats",
       "q": "چه قالب‌هایی پشتیبانی می‌شوند؟",
-      "a": "می‌توانید پوشه‌های بازی و آرشیوهای ZIP، RAR (RAR4 و RAR5) و 7z را اضافه کنید، حتی رمزدار یا چندبخشی (.part1.rar، .r00، .z01، .zip.001، .7z.001): همهٔ بخش‌ها را با هم انتخاب کنید یا در یک پوشه نگه دارید. بازی‌های Ren'Py بسته‌بندی‌شده برای اندروید (APK) هم کار می‌کنند؛ Narra بازی را از بسته بیرون می‌آورد. اگر بازی داخل آرشیو دیگری باشد، Narra آن را هم باز می‌کند. فایل‌های ZIP رمزدار پشتیبانی نمی‌شوند."
+      "a": "می‌توانید پوشه‌های بازی و آرشیوهای ZIP، RAR (RAR4 و RAR5) و 7z را اضافه کنید، حتی رمزدار یا چندبخشی (.part1.rar، .r00، .z01، .zip.001، .7z.001): همهٔ بخش‌ها را با هم انتخاب کنید یا در یک پوشه نگه دارید. بازی‌های Ren'Py بسته‌بندی‌شده برای اندروید (APK) هم کار می‌کنند؛ Narra بازی را از بسته بیرون می‌آورد. اگر بازی داخل آرشیو دیگری باشد، Narra آن را هم باز می‌کند. فایل‌های ZIP رمزدار هم پشتیبانی می‌شوند، با رمزگذاری کلاسیک (ZipCrypto) یا AES-256."
      },
      {
       "id": "filesDrop",
@@ -2710,7 +2710,7 @@
      {
       "id": "formats",
       "q": "Какие форматы поддерживаются?",
-      "a": "Можно добавлять папки игр и архивы ZIP, RAR (RAR4 и RAR5) и 7z, в том числе с паролем и разбитые на части (.part1.rar, .r00, .z01, .zip.001, .7z.001): выберите все части вместе или держите их в одной папке. Подходят и игры на Ren'Py, собранные для Android (APK): Narra достаёт игру из пакета. Если игра лежит внутри другого архива, Narra откроет и его. ZIP-файлы с паролем не поддерживаются."
+      "a": "Можно добавлять папки игр и архивы ZIP, RAR (RAR4 и RAR5) и 7z, в том числе с паролем и разбитые на части (.part1.rar, .r00, .z01, .zip.001, .7z.001): выберите все части вместе или держите их в одной папке. Подходят и игры на Ren'Py, собранные для Android (APK): Narra достаёт игру из пакета. Если игра лежит внутри другого архива, Narra откроет и его. ZIP-файлы с паролем тоже поддерживаются — с классическим шифрованием (ZipCrypto) или AES-256."
      },
      {
       "id": "filesDrop",
@@ -2818,7 +2818,7 @@
      {
       "id": "controls",
       "q": "Что делают Narra и мини-панель во время игры?",
-      "a": "Narra ждёт у края экрана, а дуга вокруг неё заполняется по мере того, как вы читаете историю. Нажмите на неё, чтобы получить подсказки к текущему моменту, или выберите «Ещё», чтобы открыть экран паузы со всеми инструментами и настройками; если «Нарра говорит» выключено, нажатие сразу открывает экран паузы. Перетащите её, чтобы переместить к другому краю. На мини-панели собраны самые нужные кнопки, например «Назад» (удерживайте, чтобы продолжать перемотку), «Пропуск», «Скрыть окно текста» и «Клавиатура»; панель можно перетащить куда угодно. Её кнопки, размер, непрозрачность и направление выбираются в разделе «Настройки» > «Экран и управление»."
+      "a": "Narra ждёт у края экрана, а дуга вокруг неё заполняется по мере того, как вы читаете историю. Нажмите на неё, чтобы получить подсказки к текущему моменту, или выберите «Ещё», чтобы открыть экран паузы со всеми инструментами и настройками; если «Narra говорит» выключено, нажатие сразу открывает экран паузы. Перетащите её, чтобы переместить к другому краю. На мини-панели собраны самые нужные кнопки, например «Назад» (удерживайте, чтобы продолжать перемотку), «Пропуск», «Скрыть окно текста» и «Клавиатура»; панель можно перетащить куда угодно. Её кнопки, размер, непрозрачность и направление выбираются в разделе «Настройки» > «Экран и управление»."
      },
      {
       "id": "textSize",
@@ -3008,7 +3008,7 @@
      {
       "id": "formats",
       "q": "対応しているフォーマットは？",
-      "a": "ゲームフォルダと、ZIP・RAR（RAR4／RAR5）・7zアーカイブを追加できます。パスワード付きや分割されたアーカイブ（.part1.rar、.r00、.z01、.zip.001、.7z.001）にも対応しています。すべてのパートをまとめて選ぶか、同じフォルダに置いてください。Android向けに作られたRen'Pyゲーム（APK）も使えます。Narraがパッケージからゲームを取り出します。ゲームが別のアーカイブの中にある場合も、Narraがそれを開きます。パスワード付きのZIPファイルには対応していません。"
+      "a": "ゲームフォルダと、ZIP・RAR（RAR4／RAR5）・7zアーカイブを追加できます。パスワード付きや分割されたアーカイブ（.part1.rar、.r00、.z01、.zip.001、.7z.001）にも対応しています。すべてのパートをまとめて選ぶか、同じフォルダに置いてください。Android向けに作られたRen'Pyゲーム（APK）も使えます。Narraがパッケージからゲームを取り出します。ゲームが別のアーカイブの中にある場合も、Narraがそれを開きます。パスワード付きのZIPファイルにも対応しています（従来のZipCrypto暗号化とAES-256の両方）。"
      },
      {
       "id": "filesDrop",
@@ -3306,7 +3306,7 @@
      {
       "id": "formats",
       "q": "어떤 형식을 지원하나요?",
-      "a": "게임 폴더와 ZIP, RAR(RAR4·RAR5), 7z 압축 파일을 추가할 수 있습니다. 암호가 있거나 여러 부분으로 나뉜 압축 파일(.part1.rar, .r00, .z01, .zip.001, .7z.001)도 됩니다. 모든 부분을 함께 선택하거나 같은 폴더에 두세요. Android용으로 패키징된 Ren'Py 게임(APK)도 되며, Narra가 패키지에서 게임을 꺼냅니다. 게임이 다른 압축 파일 안에 들어 있어도 Narra가 함께 엽니다. 암호가 있는 ZIP 파일은 지원되지 않습니다."
+      "a": "게임 폴더와 ZIP, RAR(RAR4·RAR5), 7z 압축 파일을 추가할 수 있습니다. 암호가 있거나 여러 부분으로 나뉜 압축 파일(.part1.rar, .r00, .z01, .zip.001, .7z.001)도 됩니다. 모든 부분을 함께 선택하거나 같은 폴더에 두세요. Android용으로 패키징된 Ren'Py 게임(APK)도 되며, Narra가 패키지에서 게임을 꺼냅니다. 게임이 다른 압축 파일 안에 들어 있어도 Narra가 함께 엽니다. 암호가 있는 ZIP 파일도 지원되며, 기존 방식(ZipCrypto)과 AES-256 암호화 모두 가능합니다."
      },
      {
       "id": "filesDrop",
@@ -3604,7 +3604,7 @@
      {
       "id": "formats",
       "q": "支持哪些格式？",
-      "a": "你可以添加游戏文件夹以及 ZIP、RAR（RAR4 和 RAR5）和 7z 压缩包，包括带密码的和分卷压缩包（.part1.rar、.r00、.z01、.zip.001、.7z.001）：请一起选择所有分卷，或把它们放在同一文件夹中。为安卓打包的 Ren'Py 游戏（APK）也可以，Narra 会从安装包中取出游戏。如果游戏在另一个压缩包里，Narra 也会打开它。不支持带密码的 ZIP 文件。"
+      "a": "你可以添加游戏文件夹以及 ZIP、RAR（RAR4 和 RAR5）和 7z 压缩包，包括带密码的和分卷压缩包（.part1.rar、.r00、.z01、.zip.001、.7z.001）：请一起选择所有分卷，或把它们放在同一文件夹中。为安卓打包的 Ren'Py 游戏（APK）也可以，Narra 会从安装包中取出游戏。如果游戏在另一个压缩包里，Narra 也会打开它。也支持带密码的 ZIP 文件，传统加密（ZipCrypto）和 AES-256 加密均可。"
      },
      {
       "id": "filesDrop",
@@ -3902,7 +3902,7 @@
      {
       "id": "formats",
       "q": "支援哪些格式？",
-      "a": "你可以加入遊戲資料夾以及 ZIP、RAR（RAR4 與 RAR5）和 7z 壓縮檔，包括有密碼的與分卷壓縮檔（.part1.rar、.r00、.z01、.zip.001、.7z.001）：請一起選取所有分卷，或把它們放在同一資料夾中。為 Android 打包的 Ren'Py 遊戲（APK）也可以，Narra 會從安裝包中取出遊戲。如果遊戲在另一個壓縮檔裡，Narra 也會打開它。不支援有密碼的 ZIP 檔案。"
+      "a": "你可以加入遊戲資料夾以及 ZIP、RAR（RAR4 與 RAR5）和 7z 壓縮檔，包括有密碼的與分卷壓縮檔（.part1.rar、.r00、.z01、.zip.001、.7z.001）：請一起選取所有分卷，或把它們放在同一資料夾中。為 Android 打包的 Ren'Py 遊戲（APK）也可以，Narra 會從安裝包中取出遊戲。如果遊戲在另一個壓縮檔裡，Narra 也會打開它。也支援有密碼的 ZIP 檔案，傳統加密（ZipCrypto）與 AES-256 加密皆可。"
      },
      {
       "id": "filesDrop",
@@ -4200,7 +4200,7 @@
      {
       "id": "formats",
       "q": "ما الصيغ المدعومة؟",
-      "a": "يمكنك إضافة مجلدات الألعاب وأرشيفات ZIP وRAR (RAR4 وRAR5) و7z، بما فيها المحمية بكلمة مرور والمقسّمة إلى أجزاء (.part1.rar و.r00 و.z01 و.zip.001 و.7z.001): اختر كل الأجزاء معًا أو احتفظ بها في المجلد نفسه. تعمل أيضًا ألعاب Ren'Py المعبأة لأندرويد (APK)، إذ يستخرج Narra اللعبة من الحزمة. وإذا كانت اللعبة داخل أرشيف آخر، يفتحه Narra أيضًا. ملفات ZIP المحمية بكلمة مرور غير مدعومة."
+      "a": "يمكنك إضافة مجلدات الألعاب وأرشيفات ZIP وRAR (RAR4 وRAR5) و7z، بما فيها المحمية بكلمة مرور والمقسّمة إلى أجزاء (.part1.rar و.r00 و.z01 و.zip.001 و.7z.001): اختر كل الأجزاء معًا أو احتفظ بها في المجلد نفسه. تعمل أيضًا ألعاب Ren'Py المعبأة لأندرويد (APK)، إذ يستخرج Narra اللعبة من الحزمة. وإذا كانت اللعبة داخل أرشيف آخر، يفتحه Narra أيضًا. ملفات ZIP المحمية بكلمة مرور مدعومة أيضًا، بالتشفير التقليدي (ZipCrypto) أو AES-256."
      },
      {
       "id": "filesDrop",
@@ -4498,7 +4498,7 @@
      {
       "id": "formats",
       "q": "Hỗ trợ những định dạng nào?",
-      "a": "Bạn có thể thêm thư mục trò chơi và tệp nén ZIP, RAR (RAR4 và RAR5), 7z, kể cả tệp có mật khẩu và tệp chia nhiều phần (.part1.rar, .r00, .z01, .zip.001, .7z.001): hãy chọn tất cả các phần cùng lúc hoặc để chung một thư mục. Trò chơi Ren'Py đóng gói cho Android (APK) cũng dùng được; Narra lấy trò chơi ra khỏi gói. Nếu trò chơi nằm trong một tệp nén khác, Narra cũng mở luôn. Không hỗ trợ tệp ZIP có mật khẩu."
+      "a": "Bạn có thể thêm thư mục trò chơi và tệp nén ZIP, RAR (RAR4 và RAR5), 7z, kể cả tệp có mật khẩu và tệp chia nhiều phần (.part1.rar, .r00, .z01, .zip.001, .7z.001): hãy chọn tất cả các phần cùng lúc hoặc để chung một thư mục. Trò chơi Ren'Py đóng gói cho Android (APK) cũng dùng được; Narra lấy trò chơi ra khỏi gói. Nếu trò chơi nằm trong một tệp nén khác, Narra cũng mở luôn. Tệp ZIP có mật khẩu cũng được hỗ trợ, với cả mã hóa cổ điển (ZipCrypto) lẫn AES-256."
      },
      {
       "id": "filesDrop",
@@ -4796,7 +4796,7 @@
      {
       "id": "formats",
       "q": "Quae formae sustinentur?",
-      "a": "Plicas lusuum et archiva ZIP, RAR (RAR4 et RAR5) et 7z addere potes, etiam tessera munita et in partes divisa (.part1.rar, .r00, .z01, .zip.001, .7z.001): omnes partes simul elige vel in eadem capsa serva. Lusus Ren'Py ad Android compositi (APK) quoque funguntur; Narra lusum e fasciculo extrahit. Si lusus intra aliud archivum est, Narra id quoque aperit. Fasciculi ZIP tessera muniti non sustinentur."
+      "a": "Plicas lusuum et archiva ZIP, RAR (RAR4 et RAR5) et 7z addere potes, etiam tessera munita et in partes divisa (.part1.rar, .r00, .z01, .zip.001, .7z.001): omnes partes simul elige vel in eadem capsa serva. Lusus Ren'Py ad Android compositi (APK) quoque funguntur; Narra lusum e fasciculo extrahit. Si lusus intra aliud archivum est, Narra id quoque aperit. Fasciculi ZIP tessera muniti quoque sustinentur, sive cryptographia classica (ZipCrypto) sive AES-256."
      },
      {
       "id": "filesDrop",

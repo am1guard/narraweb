@@ -207,6 +207,12 @@ export default {
         ],
       },
       {
+        h: "Internetverbindungen",
+        p: [
+          "Narra verbindet sich nur mit dem Internet, um deine Spielstände mit iCloud zu synchronisieren, App-Store-Käufe abzuwickeln und Links zu öffnen, die du antippst, etwa Discord. Nichts aus deinen Spielen, auch nicht ihr Text, wird irgendwohin gesendet.",
+        ],
+      },
+      {
         h: "Fehlerberichte und Support-E-Mails",
         p: [
           "Wenn etwas schiefgeht, kann Narra einen Fehlerbericht vorbereiten, und „Problem melden“ bereitet eine Support-E-Mail vor. Keines von beiden wird automatisch gesendet: Sie werden nur geteilt, wenn du sie selbst verschickst, per E-Mail oder über das Teilen-Menü.",
