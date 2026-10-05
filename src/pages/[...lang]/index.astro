@@ -7,6 +7,10 @@ import EngineTimeline from "../../components/EngineTimeline.astro";
 import HelperScene from "../../components/HelperScene.astro";
 import WorldExtras from "../../components/WorldExtras.astro";
 import Epilogue from "../../components/Epilogue.astro";
+import SaveCards from "../../components/SaveCards.astro";
+import ModStack from "../../components/ModStack.astro";
+import WidgetMock from "../../components/WidgetMock.astro";
+import MoreIndex from "../../components/MoreIndex.astro";
 import { config, screensReady } from "../../config";
 import { t } from "../../i18n";
 import { LANGS, chapterNumeral, langPaths, type Lang } from "../../i18n/languages";
@@ -15,7 +19,6 @@ import type { ScreenName } from "../../lib/screens";
 import add from "../../assets/mascot/onboarding_add.webp";
 import keyPose from "../../assets/mascot/settings.webp";
 import gamepad from "../../assets/brand/narra-gamepad.webp";
-import cloud from "../../assets/brand/narra-cloud.webp";
 import gallery from "../../assets/mascot/gallery_welcome.webp";
 import book from "../../assets/mascot/welcome.webp";
 
@@ -26,14 +29,14 @@ const dict = t(lang);
 const c = dict.chapters;
 
 const chapters = [
-  { id: "arrive", data: c.arrive, mascot: add, screen: "library" },
-  { id: "engine", data: c.engine, mascot: keyPose, screen: "engine-picker" },
-  { id: "helper", data: c.helper, mascot: undefined, screen: "in-game-narra" },
-  { id: "controls", data: c.controls, mascot: gamepad, screen: "pause" },
-  { id: "saves", data: c.saves, mascot: cloud, screen: "saves" },
-  { id: "extras", data: c.extras, mascot: gallery, screen: "mods" },
-  { id: "world", data: c.world, mascot: book, screen: "settings" },
-] as const satisfies readonly { id: string; screen: ScreenName; [k: string]: unknown }[];
+  { id: "arrive", data: c.arrive, mascot: add, screens: ["library"] },
+  { id: "engine", data: c.engine, mascot: keyPose, screens: ["engine-picker", "hub"] },
+  { id: "helper", data: c.helper, mascot: undefined, screens: ["in-game-narra"] },
+  { id: "controls", data: c.controls, mascot: gamepad, screens: ["portrait-play", "pause"] },
+  { id: "saves", data: c.saves, mascot: undefined, screens: ["saves"] },
+  { id: "extras", data: c.extras, mascot: gallery, screens: ["mods", "gallery"] },
+  { id: "world", data: c.world, mascot: book, screens: ["settings"] },
+] satisfies { id: string; screens: ScreenName[]; [k: string]: unknown }[];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -59,7 +62,7 @@ const jsonLd = {
       {
         chapters.map((ch, i) => (
           <li>
-            <a href={`#chapter-${i + 1}`}>
+            <a class="press" href={`#chapter-${i + 1}`}>
               <span class="num">{chapterNumeral(lang, i + 1)}</span>
               <span class="name">{ch.data.title}</span>
             </a>
@@ -67,7 +70,15 @@ const jsonLd = {
         ))
       }
       <li>
-        <a href="#epilogue">
+        <a class="press" href="#more">
+          <span class="num" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M8 1Q9.5 6.5 15 8Q9.5 9.5 8 15Q6.5 9.5 1 8Q6.5 6.5 8 1Z" fill="currentColor" /></svg>
+          </span>
+          <span class="name">{dict.more.title}</span>
+        </a>
+      </li>
+      <li>
+        <a class="press" href="#epilogue">
           <span class="num" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M8 1Q9.5 6.5 15 8Q9.5 9.5 8 15Q6.5 9.5 1 8Q6.5 6.5 8 1Z" fill="currentColor" /></svg>
           </span>
@@ -88,7 +99,7 @@ const jsonLd = {
         lead={ch.data.lead}
         items={"items" in ch.data ? ch.data.items : []}
         mascot={ch.mascot}
-        screen={ch.screen}
+        screens={ch.id === "helper" ? undefined : ch.screens}
         screenAlt={ch.data.title}
         showScreens={screensReady}
         wide={ch.id === "helper"}
@@ -96,10 +107,17 @@ const jsonLd = {
         {ch.id === "arrive" && <FilesPath slot="aside" label={c.arrive.pathLabel} path={c.arrive.path} />}
         {ch.id === "engine" && <div class="container"><EngineTimeline dict={dict} /></div>}
         {ch.id === "helper" && <HelperScene lang={lang} dict={dict} />}
+        {ch.id === "controls" && <WidgetMock slot="aside" lang={lang} dict={dict} />}
+        {ch.id === "saves" && screensReady && <SaveCards slot="aside" lang={lang} dict={dict} />}
+        {ch.id === "saves" && !screensReady && <SaveCards slot="art" lang={lang} dict={dict} />}
+        {ch.id === "extras" && screensReady && <ModStack slot="aside" dict={dict} />}
+        {ch.id === "extras" && !screensReady && <ModStack slot="art" dict={dict} />}
         {ch.id === "world" && <div slot="aside"><WorldExtras lang={lang} dict={dict} /></div>}
       </Chapter>
     ))
   }
+
+  <MoreIndex dict={dict} />
 
   <Epilogue lang={lang} dict={dict} />
 </Base>

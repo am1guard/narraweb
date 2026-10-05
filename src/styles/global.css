@@ -1,5 +1,6 @@
 @import "./fonts.css";
 @import "./tokens.css";
+@import "./motion.css";
 
 *,
 *::before,
@@ -176,19 +177,6 @@ button {
    a page doesn't download Cyrillic, Vietnamese or Arabic subsets just for the menu. */
 .system-font {
   font-family: var(--font-ui);
-}
-
-/* Reveal once on scroll (enhanced by a tiny observer; never hides content without JS). */
-@media (prefers-reduced-motion: no-preference) {
-  .js [data-reveal] {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
-  }
-  .js [data-reveal].is-revealed {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

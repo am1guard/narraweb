@@ -22,17 +22,30 @@ OUT = SITE / "src" / "i18n" / "app-strings.json"
 LANGS = ["en", "tr", "es", "fr", "de", "it", "pt", "cs", "fa", "ru",
          "ja", "ko", "zh-Hans", "zh-Hant", "ar", "vi", "la"]
 
-# Uygulamadaki SSS bölümleri ve sitede gösterilen sorular (HelpContent.swift sırası).
-# Uygulama ekranına göre yazılmış ("aşağıdaki düğme") ya da sitenin kendi
-# sorularıyla çakışan maddeler bilerek alınmaz: whereSaves, privacy, report.
-FAQ = {
-    "adding": ["addGame", "getOnDevice", "whatIsRenPy", "formats", "duplicate"],
-    "library": ["covers", "collections", "findGames", "favoritesStatus"],
-    "saves": ["backup", "storage", "deleteApp"],
-    "playing": ["engine", "compatibility"],
-    "app": ["language", "appearance"],
-    "troubleshooting": ["notRenPy", "unreadable", "space"],
-}
+# SSS bölümleri ve sırası uygulamanın HelpContent.swift dosyasından okunur. Uygulama
+# ekranına göre yazılmış ("aşağıdaki düğme") maddeler alınmaz.
+FAQ_EXCLUDE = {"report"}
+
+
+def faq_layout() -> dict[str, list[str]]:
+    source = (APP / "Narra" / "Help" / "HelpContent.swift").read_text(encoding="utf-8")
+    block = source[source.index("static let sections"):]
+    layout: dict[str, list[str]] = {}
+    current = None
+    for line in block.splitlines():
+        section = re.search(r'HelpFAQSection\(id: "(\w+)"', line)
+        item = re.search(r'HelpFAQItem\(id: "(\w+)"', line)
+        if section:
+            current = section.group(1)
+            layout[current] = []
+        elif item and current and item.group(1) not in FAQ_EXCLUDE:
+            layout[current].append(item.group(1))
+        elif line.strip() == "]" and layout:
+            break
+    return layout
+
+
+FAQ = faq_layout()
 
 EXTRA_KEYS = [
     "help.about.tagline",
@@ -44,6 +57,11 @@ EXTRA_KEYS = [
     "engine.speech.more",
     "engine.hud.quickSave",
     "engine.hud.rollback",
+    "sample.title",
+    "update.title",
+    "saves.group.page %lld",
+    "saves.slot.number %lld",
+    "saves.group.quick",
     "settings.category.cloud",
     "help.contact.report",
     "help.title",
@@ -56,13 +74,18 @@ def unescape(value: str) -> str:
     return (value.replace('\\"', '"').replace("\\n", "\n").replace("\\\\", "\\"))
 
 
+# Ana ekran widget'ının metinleri ayrı bir hedefte durur.
+WIDGET_KEYS = ["widget.recent.title", "widget.continue"]
+
+
 def load(lang: str) -> dict[str, str]:
-    path = APP / "Narra" / f"{lang}.lproj" / "Localizable.strings"
     table: dict[str, str] = {}
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        match = LINE.match(raw.strip())
-        if match:
-            table[unescape(match.group(1))] = unescape(match.group(2))
+    for target in ("Narra", "NarraWidget"):
+        path = APP / target / f"{lang}.lproj" / "Localizable.strings"
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            match = LINE.match(raw.strip())
+            if match:
+                table[unescape(match.group(1))] = unescape(match.group(2))
     return table
 
 
@@ -86,7 +109,7 @@ def main() -> None:
             })
         result[lang] = {
             "faq": sections,
-            "strings": {key: get(key) for key in EXTRA_KEYS},
+            "strings": {key: get(key) for key in EXTRA_KEYS + WIDGET_KEYS},
         }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{OUT.relative_to(SITE)}: {len(LANGS)} dil")

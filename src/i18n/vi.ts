@@ -49,22 +49,21 @@ export default {
     ],
     next: "Câu tiếp theo",
     begin: "Bắt đầu câu chuyện",
-    compat: "Dành cho trò chơi làm bằng Ren'Py 7.4 đến 8.6. Narra không kèm sẵn trò chơi nào; bạn tự mang trò chơi của mình tới.",
+    compat: "Dành cho trò chơi làm bằng Ren'Py 7.4 đến 8.6. Ngoài một câu chuyện mẫu ngắn, Narra không kèm sẵn trò chơi nào; bạn tự mang trò chơi của mình tới.",
     sceneAlt: "Narra lơ lửng trên một thị trấn đang ngủ trong đêm, đọc một cuốn sách phát sáng",
   },
   chapters: {
     arrive: {
       title: "Mang câu chuyện của bạn tới",
-      say: "Mình không bán trò chơi và cũng chẳng có sẵn trò chơi nào. Bạn mang những trò bạn đã có tới, mình sẽ giúp chúng thấy như ở nhà.",
-      lead: "Thêm trò chơi Ren'Py từ ứng dụng Tệp dưới dạng thư mục hoặc tệp nén ZIP. Chọn nhiều trò cùng lúc, Narra sẽ lần lượt thêm từng trò.",
+      say: "Mình không bán trò chơi. Bạn mang những trò bạn đã có tới, mình sẽ giúp chúng thấy như ở nhà. Chưa có gì để chơi à? Mình có mang theo một câu chuyện ngắn của riêng mình đây.",
+      lead: "Thêm trò chơi Ren'Py từ ứng dụng Tệp dưới dạng thư mục hoặc tệp nén ZIP, RAR hay 7z, kể cả tệp nén được chia thành nhiều phần. Tệp RAR và 7z có mật khẩu cũng dùng được, và cả trò chơi Ren'Py đóng gói cho Android (APK) nữa.",
       pathLabel: "Hoặc thả trò chơi vào đây, Narra sẽ tự tìm thấy:",
       path: ["Tệp", "Trên iPhone", "Narra", "Games"],
       items: [
+        { t: "Câu chuyện đầu tiên để thử", d: "Narra đi kèm một câu chuyện mẫu ngắn, để bạn thử mọi thứ trước khi thêm trò chơi của riêng mình." },
+        { t: "Bộ sưu tập, tìm kiếm và trạng thái", d: "Nhóm trò chơi theo cách của bạn và kéo chúng vào chỗ. Tìm bất kỳ trò nào theo tên, theo mục yêu thích hoặc theo trò bạn đang chơi." },
+        { t: "Cập nhật mà vẫn giữ bản lưu", d: "Thêm phiên bản mới hơn của một trò chơi, hoặc chọn Cập nhật trò chơi trong phần cài đặt của nó. Bản lưu của bạn vẫn ở nguyên chỗ cũ." },
         { t: "Ảnh bìa tự tìm", d: "Narra lấy ảnh bìa từ chính hình ảnh của trò chơi. Bạn luôn có thể tự chọn ảnh khác." },
-        { t: "Bộ sưu tập", d: "Nhóm trò chơi theo series, theo tâm trạng hay theo bất kỳ cách nào bạn thích. Chạm và giữ một trò chơi để kéo nó vào chỗ." },
-        { t: "Tìm kiếm, bộ lọc, trạng thái", d: "Tìm trò chơi theo tên, chỉ hiện mục yêu thích, và đánh dấu trò đang chơi, đã chơi xong hay để dành chơi sau." },
-        { t: "Cập nhật mà vẫn giữ bản lưu", d: "Thêm phiên bản mới hơn của một trò chơi bạn đã có, Narra sẽ đề nghị cập nhật. Bản lưu của bạn vẫn ở nguyên chỗ cũ." },
-        { t: "Kéo để làm mới", d: "Bạn đã chép trò chơi vào thư mục Games trong lúc Narra đang mở? Kéo thư viện xuống, Narra sẽ tìm lại." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Thanh thu gọn theo ý bạn", d: "Tua lại, bỏ qua, ẩn hộp văn bản hay mở bàn phím từ một thanh nhỏ. Di chuyển, đổi kích thước, chỉnh độ mờ và chọn tối đa năm nút." },
         { t: "Màn hình tạm dừng", d: "Bạn đã đọc đến đâu, đã chơi bao lâu, cài đặt nhanh và mọi công cụ ở cùng một chỗ." },
         { t: "Lưu nhanh và tải nhanh", d: "Chạm một lần, Narra sẽ báo khi xong." },
-        { t: "Ảnh chụp màn hình", d: "Giữ lại cảnh bạn thích. Ảnh chụp màn hình được lưu vào thư mục Screenshots trong ứng dụng Tệp." },
+        { t: "Ảnh chụp màn hình", d: "Giữ lại cảnh bạn thích. Mỗi trò chơi có thư viện ảnh chụp màn hình riêng trong phần cài đặt, và các ảnh cũng có trong ứng dụng Tệp." },
       ],
     },
     controls: {
       title: "Chơi theo cách của bạn",
       say: "Trên ghế sofa, trên tàu, bên bàn làm việc. Mang tay cầm theo cũng được. Mình không phiền đâu.",
-      lead: "Narra thích ứng với cách bạn cầm thiết bị và với thứ bạn dùng để chơi.",
+      lead: "Narra thích ứng với cách bạn cầm thiết bị, thứ bạn dùng để chơi và cách bạn muốn bắt đầu.",
+      widgetLabel: "Tiện ích Chơi gần đây trên Màn hình chính",
       items: [
-        { t: "Tay cầm chơi game", d: "Kết nối tay cầm và gán nút theo ý bạn." },
-        { t: "Phím tắt bàn phím", d: "Với bàn phím, các phím Ren'Py quen thuộc vẫn dùng được, kèm phím tắt cho các công cụ riêng của Narra." },
+        { t: "Tay cầm và bàn phím", d: "Kết nối tay cầm chơi game và chọn chức năng cho từng nút, hoặc dùng bàn phím với các phím Ren'Py quen thuộc và phím tắt cho các công cụ của Narra." },
         { t: "Màn hình dọc trên iPhone", d: "Cầm iPhone dọc và đọc tiếp, hoặc để trò chơi xoay theo bạn." },
         { t: "Bàn phím riêng", d: "Khi trò chơi yêu cầu bạn nhập tên, Narra mang tới một bàn phím hợp với trò chơi." },
-        { t: "Cuộn bằng hai ngón", d: "Cuộn lịch sử hội thoại bằng hai ngón tay, hoặc đặt một bánh xe cuộn nhỏ trên màn hình." },
+        { t: "Ngay từ Màn hình chính", d: "Chạm và giữ biểu tượng Narra để chơi tiếp, bắt đầu một trò chơi bằng Siri hoặc Phím tắt, hay thêm tiện ích Chơi gần đây." },
       ],
     },
     saves: {
       title: "Bản lưu bạn có thể tin tưởng",
       say: "Trước khi thay đổi hay xóa thứ gì, mình luôn tạo một bản sao lưu an toàn. Thói quen cũ rồi.",
       lead: "Mỗi trò chơi có trình quản lý bản lưu riêng. Xem từng bản lưu kèm ảnh chụp màn hình, sao lưu, xuất, khôi phục hoặc bắt đầu lại từ đầu.",
+      cardsLabel: "Các ô lưu trong trình quản lý bản lưu, đồng bộ với iCloud",
       items: [
-        { t: "Đồng bộ iCloud", d: "Bản lưu đi lại giữa iPhone và iPad qua iCloud của chính bạn, được tải lên ngay khi bạn chơi xong." },
-        { t: "Sao lưu", d: "Sao lưu một trò chơi hoặc tất cả cùng lúc. Các tệp nén ZIP xuất hiện trong ứng dụng Tệp, trong mục Narra." },
+        { t: "Đồng bộ iCloud, cả khi đang chơi", d: "Bản lưu đi lại giữa iPhone và iPad qua iCloud của chính bạn. Narra tải các thay đổi lên trong lúc bạn chơi và thêm một lần nữa khi bạn chuyển sang ứng dụng khác." },
+        { t: "Sao lưu", d: "Sao lưu một trò chơi hoặc tất cả cùng lúc, và mỗi lần một trò chơi được mở, Narra lại giữ một bản sao mới. Các tệp nén ZIP nằm trong ứng dụng Tệp." },
         { t: "Nhập và xuất", d: "Mang bản lưu từ máy tính hoặc thiết bị khác sang. Nếu ô đã có bản lưu, bạn quyết định: giữ cả hai, thay thế hoặc bỏ qua." },
         { t: "Bản sao lưu an toàn", d: "Khôi phục, xóa hay đặt lại đều tạo bản sao lưu an toàn trước, nên một lần chạm nhầm không phải là hết." },
-        { t: "Xem nội dung bản lưu", d: "Tò mò bên trong bản lưu có gì? Mở ra và xem dữ liệu, văn bản và ảnh chụp màn hình của nó." },
       ],
     },
     extras: {
       title: "Bản mod, thư viện ảnh và vài bí mật",
       say: "Mấy thứ này dành cho người tò mò. Mình sẽ không kể với ai đâu.",
       lead: "Cho những ngày bạn muốn đi xa thêm một chút.",
+      stackLabel: "Bản mod là những lớp chồng lên trên trò chơi",
+      stackGame: "Tệp trò chơi",
+      stackMod: "Mod {n}",
+      stackNote: "Khi hai bản mod cùng thay đổi một tệp, bản nằm cao hơn trong danh sách sẽ được ưu tiên.",
       items: [
         { t: "Trình quản lý bản mod", d: "Thêm bản mod dưới dạng thư mục hoặc tệp ZIP, sắp xếp thứ tự và bật hoặc tắt chúng. Bản mod chung áp dụng cho mọi trò chơi Ren'Py, và khi có gì trục trặc, bạn có thể khởi động trò chơi một lần không mod." },
         { t: "Thư viện ảnh", d: "Xem hình ảnh, nhạc và video được đóng gói trong các tệp lưu trữ .rpa của trò chơi." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "Narra nói được",
       promises: ["Không tài khoản.", "Không quảng cáo.", "Không phân tích, không theo dõi."],
       promisesNote: "Trò chơi và bản lưu của bạn ở lại trên thiết bị và trong iCloud của chính bạn.",
+      lock: "Muốn giữ riêng tư một trò chơi? Khóa nó bằng Face ID, Touch ID hoặc mật mã, và ảnh bìa của nó sẽ được làm mờ trong thư viện.",
       privacyLink: "Đọc chính sách quyền riêng tư",
     },
+  },
+  more: {
+    label: "Chỉ mục",
+    title: "Và vài điều nữa",
+    items: [
+      "Kéo thư viện xuống để tìm trò chơi mới",
+      "Cỡ chữ, viền chữ và phông chữ ngay khi đang chơi",
+      "Cuộn bằng hai ngón và bánh xe cuộn trên màn hình",
+      "Xem nội dung bản lưu, cho người tò mò",
+      "Thời gian chơi của từng trò chơi",
+      "Mở khóa thư viện riêng của trò chơi",
+      "Quản lý bộ nhớ",
+      "Báo cáo lỗi kèm nhật ký khi trò chơi bị văng",
+      "Giao diện sáng và tối",
+      "Âm thanh trở lại sau cuộc gọi hoặc báo thức",
+    ],
   },
   epilogue: {
     label: "Lời kết",
@@ -174,12 +194,13 @@ export default {
         h: "Những gì ở lại trên thiết bị",
         p: [
           "Trò chơi bạn nhập, ảnh bìa của chúng, bản lưu, cài đặt, thời gian chơi, ảnh chụp màn hình, phông chữ và bản mod được lưu trong Narra trên thiết bị của bạn. Chúng không được gửi cho tôi và tôi không thể xem chúng.",
+          "Tiện ích Chơi gần đây, các lối tắt trên Màn hình chính và Siri đọc thư viện của bạn ngay trên thiết bị. Nếu bạn khóa một trò chơi bằng Face ID hoặc Touch ID, việc xác minh do thiết bị của bạn thực hiện; Narra không bao giờ thấy dữ liệu sinh trắc học của bạn.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "Nếu đồng bộ iCloud đang bật (mặc định là bật), Narra sao chép bản lưu trò chơi của bạn vào iCloud Drive của chính bạn để chúng có thể chuyển giữa các thiết bị. Bản thân trò chơi không được tải lên. Dữ liệu này nằm trong tài khoản iCloud của bạn, dưới sự kiểm soát của Apple và theo chính sách quyền riêng tư của Apple; tôi không có quyền truy cập vào dữ liệu đó.",
+          "Nếu đồng bộ iCloud đang bật (mặc định là bật), Narra sao chép bản lưu trò chơi của bạn vào iCloud Drive của chính bạn, trong lúc bạn chơi và sau đó, để chúng có thể chuyển giữa các thiết bị. Bản thân trò chơi không được tải lên. Dữ liệu này nằm trong tài khoản iCloud của bạn, dưới sự kiểm soát của Apple và theo chính sách quyền riêng tư của Apple; tôi không có quyền truy cập vào dữ liệu đó.",
           "Bạn có thể tắt đồng bộ bất cứ lúc nào trong Cài đặt của Narra, ở mục Bản lưu & iCloud. Tắt đồng bộ không xóa bất cứ thứ gì đã có trên iCloud.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Trẻ em",
         p: [
-          "Narra không thu thập dữ liệu cá nhân từ bất kỳ ai, kể cả trẻ em. Narra không kèm sẵn trò chơi nào; nội dung bạn nhập vào và việc nội dung đó có phù hợp với độ tuổi của bạn hay không là do bạn quyết định.",
+          "Narra không thu thập dữ liệu cá nhân từ bất kỳ ai, kể cả trẻ em. Ngoài câu chuyện mẫu ngắn của riêng mình, Narra không kèm sẵn trò chơi nào; nội dung bạn nhập vào và việc nội dung đó có phù hợp với độ tuổi của bạn hay không là do bạn quyết định.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "Nội dung của bạn",
         p: [
-          "Narra không cung cấp, bán hay phân phối trò chơi hoặc bất kỳ nội dung nào khác. Bạn chịu trách nhiệm về các trò chơi, bản mod, phông chữ và tệp bạn nhập vào, cũng như về việc có quyền sử dụng chúng.",
+          "Ngoài câu chuyện mẫu ngắn của riêng mình, Narra không cung cấp, bán hay phân phối trò chơi hoặc bất kỳ nội dung nào khác. Bạn chịu trách nhiệm về các trò chơi, bản mod, phông chữ và tệp bạn nhập vào, cũng như về việc có quyền sử dụng chúng.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Hỏi và đáp",
     basicsTitle: "Trước khi bắt đầu",
     basics: [
-      { q: "Narra có kèm sẵn trò chơi không?", a: "Không. Narra không kèm theo, không bán và không tải trò chơi về. Narra chơi những trò chơi Ren'Py bạn đã có, chẳng hạn bản PC hoặc Mac bạn nhận từ người làm trò chơi." },
+      { q: "Narra có kèm sẵn trò chơi không?", a: "Chỉ có một câu chuyện mẫu ngắn của riêng Narra. Narra không bán và không tải trò chơi về. Narra chơi những trò chơi Ren'Py bạn đã có, chẳng hạn bản PC hoặc Mac bạn nhận từ người làm trò chơi." },
       { q: "Narra có miễn phí không?", a: "Có, mọi tính năng đều miễn phí. Gói đăng ký ủng hộ không bắt buộc chỉ mở khóa các chủ đề nền động, còn tiền tip không mở khóa gì cả." },
-      { q: "Narra có chơi được trò chơi làm bằng công cụ khác không?", a: "Không. Narra chỉ dành cho trò chơi Ren'Py." },
-      { q: "Bản lưu của tôi có đồng bộ giữa các thiết bị không?", a: "Có, qua iCloud của chính bạn. Bật hoặc tắt trong Cài đặt của Narra, ở mục Bản lưu & iCloud. Nhà phát triển không thể xem dữ liệu iCloud của bạn." },
-      { q: "Narra có tải trò chơi của tôi lên không?", a: "Không. Trò chơi ở lại trên thiết bị của bạn. Khi bật đồng bộ, chỉ bản lưu được gửi lên iCloud của chính bạn. Nếu bạn bật dịch trong trò chơi, văn bản cần dịch sẽ được gửi tới Google Dịch." },
+      { q: "Bản lưu của tôi có đồng bộ giữa các thiết bị không?", a: "Có, qua iCloud của chính bạn, kể cả khi đang chơi. Bật hoặc tắt trong Cài đặt của Narra, ở mục Bản lưu & iCloud. Nhà phát triển không thể xem dữ liệu iCloud của bạn." },
     ],
     reportTitle: "Báo cáo sự cố",
     reportIntro: "Cách nhanh nhất là ngay trong ứng dụng:",

@@ -1,14 +1,18 @@
 ---
-// One chapter of the story: numbered title with a scene-break ornament, a line from Narra,
-// a short lead and the features as a quiet list (no card grid). The art column holds the
-// chapter's Narra pose, or, once screenshots are in, the app screen in a phone frame.
+// One chapter of the story: numbered title with a scene-break ornament, a line from Narra
+// (typed out once), a short lead and at most four features as a quiet list (no card grid).
+// The art column holds the chapter's own illustration (slot "art"), the Narra pose, or,
+// once screenshots are in, the app screen in a phone frame.
+//
+// Motion: the head, Narra's box, lead and list rise in one after another as they enter the
+// view; the art pops in and then floats; the big numeral drifts with a slow parallax.
 import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Ornament from "./Ornament.astro";
 import Say from "./Say.astro";
 import PhoneFrame from "./PhoneFrame.astro";
 import { chapterLabel, chapterNumeral, type Lang } from "../i18n/languages";
-import { SCREENS, screenFor, type ScreenName } from "../lib/screens";
+import { firstScreen, SCREENS, type ScreenName } from "../lib/screens";
 import { sparklePath } from "../lib/sparkle";
 
 interface Props {
@@ -20,32 +24,35 @@ interface Props {
   lead: string;
   items: { t: string; d: string }[];
   mascot?: ImageMetadata;
-  screen?: ScreenName;
+  /** Screenshot names to try, in order (src/lib/screens.ts). */
+  screens?: ScreenName[];
   screenAlt?: string;
   showScreens: boolean;
   /** No art column: the chapter brings its own full-width illustration in the default slot. */
   wide?: boolean;
 }
-const { lang, n, id, title, say, lead, items, mascot, screen, screenAlt = "", showScreens, wide = false } = Astro.props;
+const { lang, n, id, title, say, lead, items, mascot, screens, screenAlt = "", showScreens, wide = false } = Astro.props;
 const side = n % 2 === 1 ? "end" : "start";
-const useScreen = showScreens && screen !== undefined;
-const art = !wide && (useScreen || mascot);
+const shot = showScreens && screens ? firstScreen(lang, screens) : undefined;
+const useScreen = showScreens && screens !== undefined && screens.length > 0;
+const customArt = Astro.slots.has("art");
+const art = !wide && (useScreen || customArt || mascot);
 ---
-<section id={`chapter-${n}`} class:list={["chapter", `chapter-${id}`]} aria-labelledby={`chapter-${n}-title`} data-chapter={id}>
+<section id={`chapter-${n}`} class:list={["chapter", `chapter-${id}`]} aria-labelledby={`chapter-${n}-title`} data-chapter={id} data-loop>
   <div class:list={["container", "grid", { "has-art": art }]} data-side={side}>
     <div class="text">
-      <header class="head" data-reveal>
-        <p class="label">{chapterLabel(lang, n)}</p>
-        <h2 id={`chapter-${n}-title`}>{title}</h2>
-        <Ornament />
+      <header class="head">
+        <p class="label" data-rise style="--i:0">{chapterLabel(lang, n)}</p>
+        <h2 id={`chapter-${n}-title`} data-rise style="--i:1">{title}</h2>
+        <div data-rise style="--i:2"><Ornament /></div>
       </header>
-      <Say text={say} />
-      <p class="lead">{lead}</p>
-      <slot name="aside" />
+      <div data-rise style="--i:3"><Say text={say} /></div>
+      <p class="lead" data-rise style="--i:4">{lead}</p>
+      {Astro.slots.has("aside") && <div data-rise style="--i:5"><slot name="aside" /></div>}
       <ul class="features" role="list">
         {
-          items.map((item) => (
-            <li>
+          items.map((item, i) => (
+            <li data-rise style={`--i:${i + 5}`}>
               <svg class="bullet" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
                 <path d={sparklePath(8, 8, 7)} fill="currentColor" />
               </svg>
@@ -59,22 +66,27 @@ const art = !wide && (useScreen || mascot);
     {
       art && (
         <div class="art">
-          <div class="art-inner">
+          <div class="art-inner" data-pop>
             <span class="numeral" aria-hidden="true">{chapterNumeral(lang, n)}</span>
             {useScreen ? (
-              <PhoneFrame image={screenFor(lang, screen!)} alt={screenAlt} orientation={SCREENS[screen!]} name={screen!} />
+              <PhoneFrame image={shot?.image} alt={screenAlt} orientation={SCREENS[shot?.name ?? screens![0]]} name={shot?.name ?? screens![0]} />
+            ) : customArt ? (
+              <slot name="art" />
             ) : (
-              <Picture
-                src={mascot!}
-                alt=""
-                widths={[240, 360, 520, 720]}
-                sizes="(min-width: 900px) 360px, 220px"
-                formats={["avif"]} fallbackFormat="webp"
-                quality={78}
-                loading="lazy"
-                decoding="async"
-                class="mascot"
-              />
+              <div class="float">
+                <Picture
+                  src={mascot!}
+                  alt=""
+                  widths={[240, 360, 520, 720]}
+                  sizes="(min-width: 900px) 360px, 220px"
+                  formats={["avif"]}
+                  fallbackFormat="webp"
+                  quality={78}
+                  loading="lazy"
+                  decoding="async"
+                  class="mascot"
+                />
+              </div>
             )}
           </div>
         </div>
@@ -89,6 +101,24 @@ const art = !wide && (useScreen || mascot);
     position: relative;
     padding-block-start: var(--section-gap);
     scroll-margin-block-start: var(--s-4);
+    view-timeline: --chapter block;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .numeral {
+        animation: numeral-drift linear both;
+        animation-timeline: --chapter;
+        animation-range: cover;
+      }
+    }
+  }
+  @keyframes numeral-drift {
+    from {
+      transform: translateY(70px);
+    }
+    to {
+      transform: translateY(-70px);
+    }
   }
   .grid {
     display: grid;

@@ -49,22 +49,21 @@ export default {
     ],
     next: "Sonraki satır",
     begin: "Hikâyeye başla",
-    compat: "Ren'Py 7.4 ile 8.6 arasında yapılmış oyunlar için. Narra'nın içinde oyun yok; oyunlarını sen getirirsin.",
+    compat: "Ren'Py 7.4 ile 8.6 arasında yapılmış oyunlar için. Kısa bir örnek hikâye dışında Narra'nın içinde oyun yok; oyunlarını sen getirirsin.",
     sceneAlt: "Gece uyuyan bir kasabanın üstünde süzülen, parlayan bir kitap okuyan Narra",
   },
   chapters: {
     arrive: {
       title: "Hikâyelerini getir",
-      say: "Oyun satmıyorum, içimde de oyun yok. Sen zaten sahip olduklarını getiriyorsun, ben de onları evinde hissettiriyorum.",
-      lead: "Bir Ren'Py oyununu Dosyalar uygulamasından klasör ya da ZIP arşivi olarak ekle. Birkaçını birden seç, Narra hepsini sırayla ekler.",
+      say: "Oyun satmıyorum. Zaten sahip olduklarını getir, ben de onları evinde hissettireyim. Henüz oynayacak bir şeyin yok mu? Yanımda kısa bir hikâye getirdim.",
+      lead: "Bir Ren'Py oyununu Dosyalar uygulamasından klasör ya da ZIP, RAR veya 7z arşivi olarak ekle; parçalara bölünmüş olsa bile. Parolalı RAR ve 7z arşivleri de, Android için paketlenmiş Ren'Py oyunları (APK) da olur.",
       pathLabel: "Ya da oyunu buraya bırak, Narra onu kendisi bulur:",
       path: ["Dosyalar", "iPhone'umda", "Narra", "Games"],
       items: [
+        { t: "Denemek için ilk hikâye", d: "Narra'yla birlikte kısa bir örnek hikâye gelir; kendi oyunlarını eklemeden önce her şeyi deneyebilirsin." },
+        { t: "Koleksiyonlar, arama ve durum", d: "Oyunları kendi düzenine göre grupla ve sürükleyerek yerine koy. Hepsini adıyla, favorilerinle ya da oynadıklarınla bul." },
+        { t: "Kayıtları koruyan güncelleme", d: "Bir oyunun yeni sürümünü ekle ya da oyunun ayarlarından Oyunu Güncelle'yi seç. Kayıtların yerinde kalır." },
         { t: "Kapaklar kendiliğinden", d: "Narra kapağı oyunun kendi görsellerinden seçer. İstersen her zaman kendin değiştirebilirsin." },
-        { t: "Koleksiyonlar", d: "Oyunları seriye, havaya ya da canın nasıl isterse öyle grupla. Bir oyuna basılı tut ve sürükleyerek yerine koy." },
-        { t: "Arama, filtre, durum", d: "Oyunu adıyla bul, yalnız favorilerini göster; oynadığını, bitirdiğini ya da sonraya bıraktığını işaretle." },
-        { t: "Kayıtları koruyan güncelleme", d: "Zaten olan bir oyunun yeni sürümünü ekle, Narra güncellemeyi önerir. Kayıtların yerinde kalır." },
-        { t: "Aşağı çekip yenile", d: "Narra açıkken Games klasörüne oyun mu kopyaladın? Kütüphaneyi aşağı çek, Narra bir daha baksın." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Sana göre kısa çubuk", d: "Geri sar, atla, metin kutusunu gizle ya da klavyeyi aç; hepsi küçük bir çubukta. Taşı, boyutunu ve saydamlığını ayarla, en fazla beş düğme seç." },
         { t: "Duraklatma ekranı", d: "Ne kadar okuduğun, ne kadar oynadığın, hızlı ayarlar ve tüm araçlar tek yerde." },
         { t: "Hızlı kaydet ve yükle", d: "Tek dokunuş; Narra işin bittiğini haber verir." },
-        { t: "Ekran görüntüleri", d: "Sevdiğin bir sahneyi sakla. Görüntüler Dosyalar uygulamasındaki Screenshots klasörüne gider." },
+        { t: "Ekran görüntüleri", d: "Sevdiğin bir sahneyi sakla. Her oyunun ayarlarında kendi ekran görüntüsü galerisi var; görüntüler Dosyalar uygulamasında da durur." },
       ],
     },
     controls: {
       title: "Nasıl istersen öyle oyna",
       say: "Kanepede, trende, masada. İstersen kumandanı da getir, bana uyar.",
-      lead: "Narra cihazını nasıl tuttuğuna ve neyle oynadığına uyum sağlar.",
+      lead: "Narra cihazını nasıl tuttuğuna, neyle oynadığına ve nereden başlamayı sevdiğine uyum sağlar.",
+      widgetLabel: "Ana ekranda Son Oynananlar widget'ı",
       items: [
-        { t: "Oyun kumandaları", d: "Bir kumanda bağla, tuşlarını istediğin gibi ayarla." },
-        { t: "Klavye kısayolları", d: "Klavyeyle alışık olduğun Ren'Py tuşları çalışır; Narra'nın kendi araçları için de kısayollar var." },
+        { t: "Kumandalar ve klavyeler", d: "Bir oyun kumandası eşle ve her tuşun ne yapacağını seç ya da klavyeyle alışık olduğun Ren'Py tuşlarını ve Narra'nın araç kısayollarını kullan." },
         { t: "iPhone'da dikey", d: "iPhone'unu dik tut ve okumaya devam et, ya da oyun seninle birlikte dönsün." },
         { t: "Kendi klavyesi", d: "Oyun senden bir ad yazmanı istediğinde Narra oyuna uyan kendi klavyesini getirir." },
-        { t: "İki parmakla kaydırma", d: "Metin geçmişini iki parmakla kaydır ya da ekrana küçük bir kaydırma tekerleği koy." },
+        { t: "Doğrudan ana ekrandan", d: "Devam etmek için Narra simgesine basılı tut, Siri ya da Kestirmeler ile bir oyun başlat veya Son Oynananlar widget'ını ekle." },
       ],
     },
     saves: {
       title: "Güvenebileceğin kayıtlar",
       say: "Bir şeyi değiştirmeden ya da silmeden önce güvenlik yedeği alırım. Eski alışkanlık.",
       lead: "Her oyunun kendi kayıt yöneticisi var. Kayıtları ekran görüntüleriyle gör, yedekle, dışa aktar, geri yükle ya da baştan başla.",
+      cardsLabel: "Kayıt yöneticisinde iCloud ile eşitlenen kayıt yuvaları",
       items: [
-        { t: "iCloud eşitleme", d: "Kayıtların kendi iCloud'un üzerinden iPhone ile iPad arasında gidip gelir; oynamayı bitirir bitirmez yüklenir." },
-        { t: "Yedekler", d: "Tek bir oyunu ya da hepsini birden yedekle. ZIP arşivleri Dosyalar uygulamasında Narra altında görünür." },
+        { t: "Oyun sırasında da iCloud eşitleme", d: "Kayıtların kendi iCloud'un üzerinden iPhone ile iPad arasında gidip gelir. Narra değişiklikleri oynarken ve başka bir uygulamaya geçtiğinde yükler." },
+        { t: "Yedekler", d: "Tek bir oyunu ya da hepsini birden yedekle; Narra her oyun açılışında da taze bir kopya alır. ZIP arşivleri Dosyalar uygulamasında durur." },
         { t: "İçe ve dışa aktarma", d: "Kayıtları bilgisayardan ya da başka bir cihazdan getir. Yuva doluysa karar senin: ikisini de tut, üzerine yaz ya da atla." },
         { t: "Güvenlik yedekleri", d: "Geri yükleme, silme ya da sıfırlama önce mutlaka güvenlik yedeği alır; tek bir yanlış dokunuş son olmaz." },
-        { t: "Kayıt denetleyicisi", d: "Bir kaydın içinde ne olduğunu mu merak ediyorsun? Aç; verisine, metnine ve ekran görüntüsüne bak." },
       ],
     },
     extras: {
       title: "Modlar, galeri ve birkaç sır",
       say: "Bunların bazıları meraklılar için. Kimseye söylemem.",
       lead: "Biraz daha ileri gitmek istediğin günler için.",
+      stackLabel: "Modlar oyunun üstüne katman olarak biner",
+      stackGame: "Oyun dosyaları",
+      stackMod: "Mod {n}",
+      stackNote: "İki mod aynı dosyayı değiştirirse listede üstte olan kazanır.",
       items: [
         { t: "Mod yöneticisi", d: "Modları klasör ya da ZIP olarak ekle, sıraya koy, aç ya da kapat. Genel modlar tüm Ren'Py oyunlarına uygulanır; bir şeyler ters giderse oyunu bir kez modsuz başlatabilirsin." },
         { t: "Galeri", d: "Oyunun .rpa arşivlerindeki görsellere, müziklere ve videolara göz at." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "Narra'nın konuştuğu diller",
       promises: ["Hesap yok.", "Reklam yok.", "Analiz yok, izleme yok."],
       promisesNote: "Oyunların ve kayıtların cihazında ve kendi iCloud'unda kalır.",
+      lock: "Bir oyunun gizli kalmasını mı istiyorsun? Face ID, Touch ID ya da cihaz parolanla kilitle; kapağı kütüphanende bulanık kalır.",
       privacyLink: "Gizlilik politikasını oku",
     },
+  },
+  more: {
+    label: "Dizin",
+    title: "Ve birkaç şey daha",
+    items: [
+      "Yeni oyunlar için kütüphaneyi aşağı çekip yenileme",
+      "Oynarken yazı boyutu, kontur ve yazı tipi",
+      "İki parmakla kaydırma ve ekranda kaydırma tekerleği",
+      "Meraklılar için kayıt denetleyicisi",
+      "Her oyun için oynama süresi",
+      "Oyunun kendi galerisini açma",
+      "Depolama yöneticisi",
+      "Bir oyun çökerse günlükleriyle hata raporu",
+      "Açık ve koyu görünüm",
+      "Bir aramadan ya da alarmdan sonra geri gelen ses",
+    ],
   },
   epilogue: {
     label: "Son söz",
@@ -174,12 +194,13 @@ export default {
         h: "Cihazında kalanlar",
         p: [
           "İçe aktardığın oyunlar, kapakları, kayıtların, ayarların, oynama süren, ekran görüntülerin, yazı tiplerin ve modların cihazında, Narra'nın içinde saklanır. Bana gönderilmez, onları göremem.",
+          "Son Oynananlar widget'ı, ana ekran kısayolları ve Siri kütüphaneni cihazın üzerinde okur. Bir oyunu Face ID ya da Touch ID ile kilitlersen doğrulamayı cihazın yapar; Narra biyometrik verilerini hiçbir zaman görmez.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "iCloud eşitlemesi açıksa (varsayılan olarak açıktır), Narra oyun kayıtlarını cihazların arasında taşınabilsinler diye kendi iCloud Drive'ına kopyalar. Oyunların kendisi yüklenmez. Bu veriler iCloud hesabında, Apple'ın denetiminde ve Apple'ın gizlilik politikasına tabi olarak durur; benim erişimim yoktur.",
+          "iCloud eşitlemesi açıksa (varsayılan olarak açıktır), Narra oyun kayıtlarını cihazların arasında taşınabilsinler diye oynarken ve sonrasında kendi iCloud Drive'ına kopyalar. Oyunların kendisi yüklenmez. Bu veriler iCloud hesabında, Apple'ın denetiminde ve Apple'ın gizlilik politikasına tabi olarak durur; benim erişimim yoktur.",
           "Eşitlemeyi istediğin zaman Narra'nın Ayarlar ekranında Kayıtlar ve iCloud bölümünden kapatabilirsin. Kapatmak iCloud'da duran hiçbir şeyi silmez.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Çocuklar",
         p: [
-          "Narra, çocuklar dahil kimseden kişisel veri toplamaz. Narra'nın içinde oyun yoktur; içe aktardığın içerik ve yaşına uygun olup olmadığı senin kararındır.",
+          "Narra, çocuklar dahil kimseden kişisel veri toplamaz. Kendi kısa örnek hikâyesi dışında Narra'nın içinde oyun yoktur; içe aktardığın içerik ve yaşına uygun olup olmadığı senin kararındır.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "İçeriğin",
         p: [
-          "Narra oyun ya da başka bir içerik sağlamaz, satmaz, dağıtmaz. İçe aktardığın oyunlardan, modlardan, yazı tiplerinden ve dosyalardan ve onları kullanma hakkına sahip olmaktan sen sorumlusun.",
+          "Kendi kısa örnek hikâyesi dışında Narra oyun ya da başka bir içerik sağlamaz, satmaz, dağıtmaz. İçe aktardığın oyunlardan, modlardan, yazı tiplerinden ve dosyalardan ve onları kullanma hakkına sahip olmaktan sen sorumlusun.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Soru ve cevaplar",
     basicsTitle: "Başlamadan önce",
     basics: [
-      { q: "Narra'nın içinde oyun var mı?", a: "Hayır. Narra oyun içermez, satmaz, indirmez. Zaten sahip olduğun Ren'Py oyunlarını, örneğin yapımcılarından edindiğin PC ya da Mac sürümlerini oynatır." },
+      { q: "Narra'nın içinde oyun var mı?", a: "Yalnız kendine ait kısa bir örnek hikâye. Narra oyun satmaz, indirmez; zaten sahip olduğun Ren'Py oyunlarını, örneğin yapımcılarından edindiğin PC ya da Mac sürümlerini oynatır." },
       { q: "Narra ücretsiz mi?", a: "Evet, tüm özellikleri ücretsiz. İsteğe bağlı destekçi aboneliği yalnız animasyonlu arka plan temalarını açar; bahşişler hiçbir şeyin kilidini açmaz." },
-      { q: "Narra başka motorlarla yapılmış oyunları oynatır mı?", a: "Hayır. Narra yalnız Ren'Py oyunları için yapıldı." },
-      { q: "Kayıtlarım cihazlar arasında eşitlenir mi?", a: "Evet, kendi iCloud'un üzerinden. Narra'nın Ayarlar ekranında Kayıtlar ve iCloud bölümünden açıp kapatabilirsin. Geliştirici iCloud verilerini göremez." },
-      { q: "Narra oyunlarımı bir yere yükler mi?", a: "Hayır. Oyunlar cihazında kalır. Eşitleme açıkken yalnız kayıtlar kendi iCloud'una gider. Oyun içi çeviriyi açarsan çevrilecek metin Google Çeviri'ye gönderilir." },
+      { q: "Kayıtlarım cihazlar arasında eşitlenir mi?", a: "Evet, kendi iCloud'un üzerinden, oynarken bile. Narra'nın Ayarlar ekranında Kayıtlar ve iCloud bölümünden açıp kapatabilirsin. Geliştirici iCloud verilerini göremez." },
     ],
     reportTitle: "Sorun bildirirken",
     reportIntro: "En hızlı yol uygulamanın içinden:",

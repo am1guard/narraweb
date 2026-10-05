@@ -1,0 +1,180 @@
+/*
+  Narra's motion language. Everything here moves only transform and opacity (the one
+  exception is the progress arc's stroke in the in-game scene), and all of it is switched
+  off by Reduce Motion: hidden start states live inside `prefers-reduced-motion:
+  no-preference`, so with Reduce Motion (or without JavaScript) content is simply there.
+
+  - Page to page: cross-document view transitions; logo, header tools and Narra are
+    shared elements (names come from [data-vt], see Base.astro).
+  - Theme: a circle opening from the theme button (ThemeToggle.astro), or a 300 ms
+    colour fade where view transitions aren't available and when the system theme flips.
+  - Scroll: [data-rise] elements rise in as they enter the view (scroll-driven with
+    animation-timeline: view(); an IntersectionObserver adds .is-in once elsewhere).
+  - [data-seq] containers play a short, one-time sequence when they come into view.
+  - .loop animations pause when their section is off screen (.is-offscreen).
+*/
+
+/* ---------- Page transitions ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-old(root) {
+  animation-duration: 180ms;
+}
+::view-transition-new(root) {
+  animation-duration: 340ms;
+  animation-delay: 60ms;
+}
+[data-vt="brand"] {
+  view-transition-name: brand;
+}
+[data-vt="tools"] {
+  view-transition-name: header-tools;
+}
+[data-vt="narra"] {
+  view-transition-name: narra;
+}
+[data-vt="footer-narra"] {
+  view-transition-name: footer-narra;
+}
+
+/* ---------- Theme change ---------- */
+
+/* Circle reveal: the old and new pages are snapshots; only the new one is clipped (by
+   ThemeToggle's script), and nothing else is named or transitions in the meantime. */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html.theme-vt::view-transition-new(root) {
+  z-index: 1;
+}
+html.theme-vt *,
+html.theme-vt *::before,
+html.theme-vt *::after {
+  view-transition-name: none !important;
+  transition: none !important;
+}
+
+/* Fallback and system theme changes: colours fade for 300 ms. */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition:
+    background-color 300ms var(--ease-out),
+    color 300ms var(--ease-out),
+    border-color 300ms var(--ease-out),
+    fill 300ms var(--ease-out),
+    stroke 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out),
+    opacity 300ms var(--ease-out) !important;
+}
+
+/* ---------- Press feedback ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .press {
+    transition:
+      scale 160ms var(--ease-spring),
+      background-color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out),
+      color 160ms var(--ease-out),
+      box-shadow 220ms var(--ease-out) !important;
+  }
+}
+.press:active {
+  scale: 0.97;
+}
+
+/* ---------- Rising into view ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-rise] {
+      animation: rise linear both;
+      animation-timing-function: var(--ease-out);
+      animation-timeline: view();
+      animation-range: entry calc(4% + var(--i, 0) * 3%) entry calc(62% + var(--i, 0) * 3%);
+    }
+    [data-pop] {
+      animation: pop linear both;
+      animation-timing-function: var(--ease-out);
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+  @supports not (animation-timeline: view()) {
+    .js [data-rise] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity var(--dur-enter) var(--ease-out) calc(var(--i, 0) * var(--stagger)),
+        transform var(--dur-enter) var(--ease-out) calc(var(--i, 0) * var(--stagger));
+    }
+    .js [data-pop] {
+      opacity: 0;
+      transform: scale(0.92);
+      transition:
+        opacity var(--dur-enter) var(--ease-out),
+        transform var(--dur-enter) var(--ease-spring);
+    }
+    .js [data-rise].is-in,
+    .js [data-pop].is-in {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Loops ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .float {
+    animation: float 6.4s var(--ease-in-out) infinite alternate;
+  }
+}
+.is-offscreen .loop,
+.is-offscreen .float,
+.loop.is-offscreen,
+.float.is-offscreen {
+  animation-play-state: paused !important;
+}
+@keyframes float {
+  from {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+  to {
+    transform: translateY(4px) rotate(1deg);
+  }
+}

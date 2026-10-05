@@ -1,0 +1,82 @@
+---
+// "And a few more things": everything that didn't need a chapter, as a compact index.
+import Ornament from "./Ornament.astro";
+import { sparklePath } from "../lib/sparkle";
+import type { Dict } from "../i18n";
+
+interface Props {
+  dict: Dict;
+}
+const { dict } = Astro.props;
+const m = dict.more;
+---
+<section id="more" class="more container" aria-labelledby="more-title">
+  <header>
+    <p class="label" data-rise style="--i:0">{m.label}</p>
+    <h2 id="more-title" data-rise style="--i:1">{m.title}</h2>
+    <div data-rise style="--i:2"><Ornament /></div>
+  </header>
+  <ul class="index" role="list">
+    {
+      m.items.map((item, i) => (
+        <li data-rise style={`--i:${3 + (i % 2) + Math.floor(i / 2)}`}>
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">
+            <path d={sparklePath(8, 8, 7)} fill="currentColor" />
+          </svg>
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .more {
+    padding-block-start: var(--section-gap);
+  }
+  .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+  }
+  :global(:lang(ar)) .label,
+  :global(:lang(fa)) .label,
+  :global(:lang(ja)) .label,
+  :global(:lang(ko)) .label,
+  :global(:lang(zh-Hans)) .label,
+  :global(:lang(zh-Hant)) .label {
+    letter-spacing: 0;
+    font-size: var(--fs-label);
+  }
+  h2 {
+    margin-block: var(--s-2) var(--s-4);
+    font-size: var(--fs-h2);
+  }
+  .index {
+    display: grid;
+    gap: 0 var(--s-8);
+    margin-block-start: var(--s-6);
+    list-style: none;
+    columns: 1;
+  }
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-3);
+    padding-block: var(--s-3);
+    border-block-end: 1px solid var(--c-stroke);
+  }
+  li svg {
+    flex: none;
+    color: var(--c-accent);
+    translate: 0 1px;
+  }
+  @media (min-width: 760px) {
+    .index {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

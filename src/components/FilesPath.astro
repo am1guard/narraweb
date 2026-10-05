@@ -6,12 +6,12 @@ interface Props {
 }
 const { label, path } = Astro.props;
 ---
-<div class="files">
+<div class="files" data-seq>
   <p class="files-label">{label}</p>
   <ol class="crumbs" role="list">
     {
       path.map((part, i) => (
-        <li>
+        <li style={`--n:${i}`}>
           {i > 0 && (
             <svg class="sep flip" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">
               <path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -67,7 +67,39 @@ const { label, path } = Astro.props;
     gap: var(--s-1);
     font-weight: 700;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .files:not(.is-in) li {
+      opacity: 0;
+    }
+    .files.is-in li {
+      animation: crumb-in 420ms var(--ease-out) calc(var(--n) * 130ms) both;
+    }
+    .files.is-in .part.last {
+      animation: games-glow 900ms var(--ease-spring) 640ms both;
+    }
+  }
+  @keyframes crumb-in {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+  }
+  @keyframes games-glow {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-accent) 0%, transparent);
+    }
+    45% {
+      transform: scale(1.12);
+      box-shadow: 0 0 0 6px color-mix(in srgb, var(--c-accent) 22%, transparent);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-accent) 0%, transparent);
+    }
+  }
   .part.last {
+    display: inline-flex;
     padding: 2px var(--s-3);
     border-radius: var(--r-badge);
     background: color-mix(in srgb, var(--c-accent) 18%, transparent);

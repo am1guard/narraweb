@@ -13,20 +13,29 @@ const w = dict.chapters.world;
 ---
 <div class="world">
   <p class="langs-label">{w.languagesLabel}</p>
-  <ul class="langs system-font" role="list">
+  <ul class="langs system-font" role="list" data-seq>
     {
-      LANGS.map((l) => (
-        <li lang={l} dir={LANG_INFO[l].dir} class:list={{ current: l === lang }}>
-          {LANG_INFO[l].name}
+      LANGS.map((l, i) => (
+        <li style={`--n:${i}`}>
+          <a
+            class:list={["chip", "press", { current: l === lang }]}
+            href={pathFor(l)}
+            lang={l}
+            hreflang={l}
+            dir={LANG_INFO[l].dir}
+            aria-current={l === lang ? "page" : undefined}
+          >
+            {LANG_INFO[l].name}
+          </a>
         </li>
       ))
     }
   </ul>
 
-  <ul class="promises" role="list">
+  <ul class="promises" role="list" data-seq>
     {
-      w.promises.map((p) => (
-        <li>
+      w.promises.map((p, i) => (
+        <li style={`--n:${i}`}>
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
             <path d={sparklePath(12, 12, 10)} fill="currentColor" />
           </svg>
@@ -37,6 +46,13 @@ const w = dict.chapters.world;
   </ul>
   <p class="note">
     {w.promisesNote} <a href={pathFor(lang, "privacy")}>{w.privacyLink}</a>
+  </p>
+  <p class="lock">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+      <rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+    </svg>
+    <span>{w.lock}</span>
   </p>
 </div>
 
@@ -56,17 +72,65 @@ const w = dict.chapters.world;
     margin-block-start: var(--s-3);
     list-style: none;
   }
-  .langs li {
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 36px;
     padding: var(--s-1) var(--s-3);
     border-radius: var(--r-pill);
     border: 1px solid var(--c-stroke-strong);
+    color: var(--c-text);
     font-size: var(--fs-sm);
     line-height: 1.6;
+    text-decoration: none;
   }
-  .langs li.current {
+  .chip:hover {
+    border-color: var(--c-accent);
+    background: color-mix(in srgb, var(--c-accent) 12%, transparent);
+  }
+  .chip.current {
     border-color: var(--c-accent);
     color: var(--c-accent);
     font-weight: 800;
+  }
+  .lock {
+    display: flex;
+    gap: var(--s-3);
+    align-items: flex-start;
+    margin-block-start: var(--s-6);
+    padding: var(--s-4) var(--s-5);
+    border-radius: var(--r-card);
+    border: 1px solid var(--c-stroke);
+    max-inline-size: 34rem;
+  }
+  .lock svg {
+    flex: none;
+    color: var(--c-accent);
+    margin-block-start: 2px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .langs:not(.is-in) li,
+    :global(.js) .promises:not(.is-in) li {
+      opacity: 0;
+    }
+    .langs.is-in li {
+      animation: chip-in 420ms var(--ease-spring) calc(var(--n) * 35ms) both;
+    }
+    .promises.is-in li {
+      animation: promise-in 640ms var(--ease-out) calc(var(--n) * 160ms) both;
+    }
+  }
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.92);
+    }
+  }
+  @keyframes promise-in {
+    from {
+      opacity: 0;
+      transform: translateX(-14px);
+    }
   }
   .promises {
     display: grid;

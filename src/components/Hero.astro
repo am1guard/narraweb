@@ -1,45 +1,99 @@
 ---
 // Opening scene: the night town backdrop (dark theme), Narra floating with her book, and
 // a visual-novel text window where she introduces herself.
+//
+// Motion (all off with Reduce Motion, paused while the scene is off screen):
+// Narra floats and her book light breathes, the sparkles twinkle out of phase, a few loose
+// pages drift, the moon glows, the title rises line by line once, and the backdrop falls
+// behind with a scroll-driven parallax where the browser supports it.
 import { Picture } from "astro:assets";
 import backdrop from "../assets/brand/hero-backdrop.webp";
 import narra from "../assets/brand/hero-narra.webp";
 import DialogueBox from "./DialogueBox.astro";
 import AppStoreButton from "./AppStoreButton.astro";
+import RevealTitle from "./RevealTitle.astro";
 import { config } from "../config";
 import { app, type Dict } from "../i18n";
 import type { Lang } from "../i18n/languages";
+import { sparklePath } from "../lib/sparkle";
 
 interface Props {
   lang: Lang;
   dict: Dict;
 }
 const { lang, dict } = Astro.props;
+
+// Twinkling sparkles over the sky (percent of the scene), each with its own phase.
+const twinkles = [
+  { x: 9, y: 14, r: 1.1, d: 0 },
+  { x: 22, y: 34, r: 0.7, d: 1.3 },
+  { x: 33, y: 9, r: 0.8, d: 2.6 },
+  { x: 64, y: 12, r: 1, d: 0.7 },
+  { x: 77, y: 40, r: 0.6, d: 2 },
+  { x: 88, y: 8, r: 0.9, d: 3.1 },
+  { x: 95, y: 30, r: 0.7, d: 1.8 },
+  { x: 14, y: 52, r: 0.6, d: 3.5 },
+  { x: 84, y: 58, r: 0.8, d: 0.4 },
+];
+// Loose pages drifting out of the open window (percent of the scene).
+const pages = [
+  { x: 7, y: 46, s: 1, d: 0, r: -14 },
+  { x: 16, y: 63, s: 0.8, d: -7, r: 10 },
+  { x: 27, y: 38, s: 0.65, d: -13, r: -4 },
+  { x: 90, y: 66, s: 0.7, d: -4, r: 18 },
+];
 ---
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-loop>
   <div class="scene" aria-hidden="true">
-    <Picture
-      src={backdrop}
-      alt=""
-      widths={[640, 960, 1280, 1916]}
-      sizes="(min-width: 1100px) 100vw, (min-width: 600px) 160vw, 300vw"
-      formats={["avif"]} fallbackFormat="webp"
-      quality={52}
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      class="backdrop"
-    />
+    <div class="plate">
+      <Picture
+        src={backdrop}
+        alt=""
+        widths={[640, 960, 1280, 1916]}
+        sizes="(min-width: 1100px) 100vw, (min-width: 600px) 160vw, 300vw"
+        formats={["avif"]}
+        fallbackFormat="webp"
+        quality={52}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="backdrop"
+      />
+      <span class="moon-glow loop"></span>
+    </div>
+    <div class="pages">
+      {
+        pages.map((p) => (
+          <svg
+            class="page loop"
+            viewBox="0 0 40 50"
+            style={`--x:${p.x}%;--y:${p.y}%;--s:${p.s};--d:${p.d}s;--r:${p.r}deg`}
+            focusable="false"
+          >
+            <path d="M4 3h24l8 8v36H4Z" fill="#f7e6d2" />
+            <path d="M28 3v8h8" fill="#dcc2a8" />
+            <path d="M9 18h20M9 24h22M9 30h18M9 36h21" stroke="#b99579" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        ))
+      }
+    </div>
+    <svg class="twinkles" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+      {
+        twinkles.map((t) => (
+          <path class="tw loop" d={sparklePath(t.x, t.y, t.r * 1.6)} style={`--d:${t.d}s`} fill="var(--c-glow)" />
+        ))
+      }
+    </svg>
     <div class="veil"></div>
   </div>
 
   <div class="container inner">
     <div class="copy">
       <p class="eyebrow">{dict.hero.eyebrow}</p>
-      <h1 id="hero-title">{app(lang).strings["help.about.tagline"]}</h1>
+      <RevealTitle id="hero-title" text={app(lang).strings["help.about.tagline"]} lang={lang} />
       <div class="actions">
         <AppStoreButton dict={dict} />
-        <a class="discord" href={config.discordUrl} rel="noopener">
+        <a class="discord press" href={config.discordUrl} rel="noopener">
           <span>{dict.cta.discord}</span>
           <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false" class="flip-rtl">
             <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -49,18 +103,22 @@ const { lang, dict } = Astro.props;
     </div>
 
     <div class="stage">
-      <Picture
-        src={narra}
-        alt={dict.hero.sceneAlt}
-        widths={[280, 400, 560]}
-        sizes="(min-width: 900px) 330px, 62vw"
-        formats={["avif"]} fallbackFormat="webp"
-        quality={58}
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="sprite"
-      />
+      <div class="sprite-wrap loop" data-vt="narra">
+        <Picture
+          src={narra}
+          alt={dict.hero.sceneAlt}
+          widths={[280, 400, 560]}
+          sizes="(min-width: 900px) 330px, 62vw"
+          formats={["avif"]}
+          fallbackFormat="webp"
+          quality={58}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="sprite"
+        />
+        <span class="book-glow loop" aria-hidden="true"></span>
+      </div>
       <DialogueBox
         name="Narra"
         lines={dict.hero.lines}
@@ -81,20 +139,82 @@ const { lang, dict } = Astro.props;
     padding-block: calc(var(--header-height) + var(--s-6)) var(--s-8);
     overflow: hidden;
   }
+  /* The scene is as tall as the large viewport, not the hero's content, so loading a web
+     font (which can change the hero's height) never moves the picture: no layout shift. */
   .scene {
     position: absolute;
-    inset: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 100lvh;
+    min-block-size: 640px;
     z-index: -1;
+    overflow: hidden;
+    container-type: size;
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    /* Where the picture is anchored, like object-position (x, y). */
+    --ox: 0.84;
+    --oy: 0;
+  }
+  /* The backdrop keeps its own 1916:821 shape and covers the scene, so the moon glow can
+     be pinned to the moon in the picture. */
+  .plate {
+    --w: max(100cqw, calc(100cqh * 2.3337));
+    --h: max(calc(100cqw / 2.3337), 100cqh);
+    position: absolute;
+    inline-size: var(--w);
+    block-size: var(--h);
+    left: calc((100cqw - var(--w)) * var(--ox));
+    top: calc((100cqh - var(--h)) * var(--oy));
+    opacity: var(--backdrop-opacity);
+    transition: opacity 300ms var(--ease-out);
   }
   .backdrop {
     position: absolute;
     inset: 0;
     inline-size: 100%;
     block-size: 100%;
-    object-fit: cover;
-    object-position: 84% 0%;
+    object-fit: fill;
+  }
+  .moon-glow {
+    position: absolute;
+    inset-block-start: 25.6%;
+    left: 87.7%;
+    inline-size: 30%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    translate: -50% -50%;
+    background: radial-gradient(circle, rgb(246 214 255 / 0.32) 0, rgb(233 166 240 / 0.14) 32%, transparent 62%);
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+  .pages {
+    position: absolute;
+    inset: 0;
     opacity: var(--backdrop-opacity);
-    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  }
+  .page {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    inline-size: calc(26px * var(--s));
+    block-size: auto;
+    rotate: var(--r);
+    opacity: 0.62;
+    filter: drop-shadow(0 0 6px rgb(255 214 170 / 0.45));
+  }
+  .page:nth-child(n + 3) {
+    display: none;
+  }
+  .twinkles {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  .tw {
+    opacity: 0.55;
+    transform-box: fill-box;
+    transform-origin: center;
   }
   .veil {
     position: absolute;
@@ -104,6 +224,7 @@ const { lang, dict } = Astro.props;
       radial-gradient(ellipse 60% 42% at 50% 26%, rgb(18 12 27 / 0.55), transparent 70%),
       linear-gradient(to bottom, transparent 58%, var(--c-bg) 98%);
     opacity: var(--veil-opacity);
+    transition: opacity 300ms var(--ease-out);
   }
   .inner {
     display: flex;
@@ -121,25 +242,25 @@ const { lang, dict } = Astro.props;
   .copy .eyebrow {
     text-shadow: 0 1px 12px rgb(0 0 0 / 0.5);
   }
-  h1 {
+  .copy :global(h1) {
     font-size: var(--fs-h1);
     max-inline-size: 18ch;
     text-shadow: 0 2px 24px rgb(0 0 0 / 0.45);
   }
-  :root[data-theme="light"] h1,
+  :root[data-theme="light"] .copy :global(h1),
   :root[data-theme="light"] .copy .eyebrow {
     text-shadow: none;
   }
   @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) h1,
+    :root:not([data-theme="dark"]) .copy :global(h1),
     :root:not([data-theme="dark"]) .copy .eyebrow {
       text-shadow: none;
     }
   }
-  :global(:lang(ja)) h1,
-  :global(:lang(ko)) h1,
-  :global(:lang(zh-Hans)) h1,
-  :global(:lang(zh-Hant)) h1 {
+  :global(:lang(ja)) .copy :global(h1),
+  :global(:lang(ko)) .copy :global(h1),
+  :global(:lang(zh-Hans)) .copy :global(h1),
+  :global(:lang(zh-Hant)) .copy :global(h1) {
     max-inline-size: 14em;
   }
   .actions {
@@ -164,6 +285,15 @@ const { lang, dict } = Astro.props;
   .discord:hover {
     background: color-mix(in srgb, var(--c-text) 10%, transparent);
   }
+  .discord svg {
+    transition: translate var(--dur) var(--ease-spring);
+  }
+  .discord:hover svg {
+    translate: 3px 0;
+  }
+  :global([dir="rtl"]) .discord:hover svg {
+    translate: -3px 0;
+  }
   :global([dir="rtl"]) .flip-rtl {
     transform: scaleX(-1);
   }
@@ -176,10 +306,29 @@ const { lang, dict } = Astro.props;
     inline-size: min(100%, 52rem);
     margin-block-start: var(--s-4);
   }
-  .sprite {
+  .sprite-wrap {
+    position: relative;
     inline-size: var(--sprite);
     aspect-ratio: 1;
     margin-block-end: calc(var(--sprite) * -0.2);
+  }
+  .sprite {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  /* Light from the open book (the pages sit at about 60% x 55% of the picture). */
+  .book-glow {
+    position: absolute;
+    left: 60%;
+    top: 53%;
+    inline-size: 46%;
+    aspect-ratio: 1.3;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgb(255 236 252 / 0.75) 0, rgb(233 166 240 / 0.3) 38%, transparent 68%);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    pointer-events: none;
   }
   .stage :global(.vn) {
     inline-size: 100%;
@@ -190,19 +339,101 @@ const { lang, dict } = Astro.props;
     color: var(--c-text-2);
     font-size: var(--fs-sm);
   }
+  @media (min-width: 700px) {
+    .page:nth-child(n + 3) {
+      display: block;
+    }
+  }
   @media (min-width: 1100px) {
     .hero {
       min-block-size: min(100svh, 1000px);
       padding-block-start: calc(var(--header-height) + var(--s-7));
     }
-    .backdrop {
-      object-position: 50% 30%;
+    .scene {
+      --ox: 0.5;
+      --oy: 0.3;
     }
   }
   @media (min-width: 1700px) {
-    .backdrop {
-      mask-image: linear-gradient(to bottom, #000 60%, transparent), linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+    .scene {
+      mask-image: linear-gradient(to bottom, #000 62%, transparent), linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
       mask-composite: intersect;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sprite-wrap {
+      animation: hero-float 5.6s var(--ease-in-out) infinite alternate;
+    }
+    .book-glow {
+      animation: hero-breathe 3.4s var(--ease-in-out) infinite alternate;
+    }
+    .tw {
+      animation: hero-twinkle 3.8s var(--ease-in-out) var(--d) infinite;
+    }
+    .page {
+      animation: hero-drift 22s var(--ease-in-out) var(--d) infinite alternate;
+    }
+    .moon-glow {
+      animation: hero-moon 7s var(--ease-in-out) infinite alternate;
+    }
+    @supports (animation-timeline: scroll()) {
+      .plate,
+      .pages {
+        animation: hero-parallax linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 100vh;
+      }
+    }
+  }
+  @keyframes hero-float {
+    from {
+      transform: translateY(-5px) rotate(-1.2deg);
+    }
+    to {
+      transform: translateY(5px) rotate(1.2deg);
+    }
+  }
+  @keyframes hero-breathe {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 0.85;
+    }
+  }
+  @keyframes hero-twinkle {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: scale(0.6);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes hero-drift {
+    from {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    to {
+      transform: translate(46px, -70px) rotate(24deg);
+    }
+  }
+  @keyframes hero-moon {
+    from {
+      opacity: 0.45;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+  @keyframes hero-parallax {
+    to {
+      transform: translateY(16%);
     }
   }
 </style>

@@ -15,12 +15,12 @@ const { lang, dict, page } = Astro.props;
 ---
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href={pathFor(lang)} aria-label={dict.nav.home}>
+    <a class="brand press" href={pathFor(lang)} aria-label={dict.nav.home} data-vt="brand">
       <Image src={appIcon} alt="" width={36} height={36} densities={[1, 2, 3]} loading="eager" class="brand-icon" />
       <span class="brand-name" aria-hidden="true">Narra</span>
     </a>
-    <nav class="tools" aria-label="Narra">
-      <a class="nav-link" href={pathFor(lang, "support")} aria-current={page === "support" ? "page" : undefined}>{dict.nav.support}</a>
+    <nav class="tools" aria-label="Narra" data-vt="tools">
+      <a class="nav-link press" href={pathFor(lang, "support")} aria-current={page === "support" ? "page" : undefined}>{dict.nav.support}</a>
       <LanguagePicker lang={lang} page={page} label={dict.nav.language} />
       <ThemeToggle toLight={dict.nav.toLight} toDark={dict.nav.toDark} />
     </nav>

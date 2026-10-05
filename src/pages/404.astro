@@ -17,13 +17,13 @@ const texts = Object.fromEntries(
 ---
 <Base lang="en" page="404" title={dict.meta.notFoundTitle} description={dict.notFound.say}>
   <div class="container lost">
-    <Picture src={lost} alt="" widths={[220, 320, 480]} sizes="240px" formats={["avif"]} fallbackFormat="webp" loading="eager" class="mascot" />
+    <div class="float" data-vt="narra"><Picture src={lost} alt="" widths={[220, 320, 480]} sizes="240px" formats={["avif"]} fallbackFormat="webp" loading="eager" class="mascot" /></div>
     <h1 data-nf="title">{dict.notFound.title}</h1>
     <figure class="say">
       <figcaption>Narra</figcaption>
       <blockquote><p data-nf="say">{dict.notFound.say}</p></blockquote>
     </figure>
-    <a class="home" href="/" data-nf="back">{dict.notFound.back}</a>
+    <a class="home press" href="/" data-nf="back">{dict.notFound.back}</a>
   </div>
   <script is:inline define:vars={{ texts }}>
     (function () {

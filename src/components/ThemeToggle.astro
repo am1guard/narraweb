@@ -7,7 +7,7 @@ interface Props {
 }
 const { toLight, toDark } = Astro.props;
 ---
-<button class="theme" type="button" data-theme-toggle data-to-light={toLight} data-to-dark={toDark} aria-label={toLight}>
+<button class="theme press" type="button" data-theme-toggle data-to-light={toLight} data-to-dark={toDark} aria-label={toLight}>
   <svg class="sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
     <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8" />
     <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -18,8 +18,11 @@ const { toLight, toDark } = Astro.props;
 </button>
 
 <script>
+  // Theme switch. With view transitions the new theme opens as a circle from the button
+  // (about 560 ms); otherwise colours fade for 300 ms; with Reduce Motion it's instant.
   const root = document.documentElement;
   const media = window.matchMedia("(prefers-color-scheme: light)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const current = () => (root.dataset.theme as "light" | "dark" | undefined) ?? (media.matches ? "light" : "dark");
   const sync = () => {
     for (const button of document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")) {
@@ -29,13 +32,37 @@ const { toLight, toDark } = Astro.props;
   for (const button of document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")) {
     button.addEventListener("click", () => {
       const next = current() === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      try {
-        localStorage.setItem("narra-theme", next);
-      } catch {
-        /* storage unavailable: the choice lasts for this page only */
+      const apply = () => {
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem("narra-theme", next);
+        } catch {
+          /* storage unavailable: the choice lasts for this page only */
+        }
+        sync();
+      };
+      if (reduce.matches) return apply();
+      if (!document.startViewTransition) {
+        root.classList.add("theme-fade");
+        apply();
+        window.setTimeout(() => root.classList.remove("theme-fade"), 360);
+        return;
       }
-      sync();
+      const r = button.getBoundingClientRect();
+      const x = r.left + r.width / 2;
+      const y = r.top + r.height / 2;
+      const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      root.classList.add("theme-vt");
+      const transition = document.startViewTransition(apply);
+      transition.ready
+        .then(() =>
+          root.animate(
+            { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+            { duration: 560, easing: "cubic-bezier(0.22, 0.8, 0.24, 1)", pseudoElement: "::view-transition-new(root)" },
+          ),
+        )
+        .catch(() => {});
+      transition.finished.finally(() => root.classList.remove("theme-vt"));
     });
   }
   media.addEventListener("change", sync);
@@ -61,6 +88,15 @@ const { toLight, toDark } = Astro.props;
   }
   .sun {
     display: block;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .theme:hover svg {
+      rotate: 18deg;
+      transition: rotate var(--dur) var(--ease-spring);
+    }
+    .theme svg {
+      transition: rotate var(--dur) var(--ease-out);
+    }
   }
   .moon {
     display: none;

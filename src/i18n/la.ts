@@ -49,22 +49,21 @@ export default {
     ],
     next: "Versus sequens",
     begin: "Fabulam incipe",
-    compat: "Pro ludis Ren'Py 7.4 ad 8.6 factis. Narra nullos ludos secum affert; tuos tu affers.",
+    compat: "Pro ludis Ren'Py 7.4 ad 8.6 factis. Praeter unam brevem fabulam exemplarem, Narra nullos ludos secum affert; tuos tu affers.",
     sceneAlt: "Narra noctu super oppidum dormiens volitans, librum lucentem legens",
   },
   chapters: {
     arrive: {
       title: "Fabulas tuas affer",
-      say: "Ludos non vendo nec ullos mecum fero. Tu affers quos iam habes, ego facio ut hic domi sint.",
-      lead: "Ludum Ren'Py ex applicatione Files ut capsam vel archivum ZIP adde. Plures simul elige, et Narra eos deinceps singulos addet.",
+      say: "Ludos non vendo. Tu affers quos iam habes, ego facio ut hic domi sint. Nihil adhuc quod ludas? Brevem fabulam meam attuli.",
+      lead: "Ludum Ren'Py ex applicatione Files adde, ut capsam vel archivum ZIP, RAR aut 7z, etiam in partes divisum. Archiva RAR et 7z tessera munita funguntur, itemque ludi Ren'Py ad Android compositi (APK).",
       pathLabel: "Aut ludum huc demitte, et Narra eum sua sponte inveniet:",
       path: ["Files", "On My iPhone", "Narra", "Games"],
       items: [
+        { t: "Prima fabula experienda", d: "Brevis fabula exemplaris cum Narra venit, ut omnia experiaris antequam ludos tuos addas." },
+        { t: "Collectiones, quaestio, status", d: "Ludos tuo modo congrega et in locum suum trahe. Quemvis nomine, dilectis, vel eo quod nunc ludis invenies." },
+        { t: "Renovationes quae servata conservant", d: "Novam versionem ludi adde, vel in optionibus eius Lusum renova elige. Servata tua manent ubi sunt." },
         { t: "Tegumenta pro te inventa", d: "Narra tegumentum ex imaginibus ipsius ludi sumit. Tuum semper eligere potes." },
-        { t: "Collectiones", d: "Ludos per series, per animum, vel quomodo libet congrega. Ludum tange et tene ut eum in locum suum trahas." },
-        { t: "Quaestio, filtra, status", d: "Ludum nomine inveni, dilectos tantum ostende, et nota quos ludis, quos perfecisti, quos in posterum servas." },
-        { t: "Renovationes quae servata conservant", d: "Novam versionem ludi quem iam habes adde, et Narra eum renovare offert. Servata tua manent ubi sunt." },
-        { t: "Trahe ut renoves", d: "Ludumne in capsam Games exscripsisti dum Narra aperta erat? Bibliothecam deorsum trahe, et illa iterum quaerit." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Fascia brevis tuo arbitrio", d: "Ex parva fascia retrorsum i, praeteri, capsam textus cela vel clavile aperi. Eam move, magnitudinem et opacitatem muta, et usque ad quinque bullas elige." },
         { t: "Pagina intermissionis", d: "Quantum legeris, quamdiu luseris, optiones celeres et omnia instrumenta uno loco." },
         { t: "Celeriter serva et onera", d: "Unus tactus, et Narra te certiorem facit rem confectam esse." },
-        { t: "Imagines scaenae", d: "Scaenam quae tibi placet retine. Imagines in capsam Screenshots in applicatione Files eunt." },
+        { t: "Imagines scaenae", d: "Scaenam quae tibi placet retine. Quisque ludus in optionibus suis pinacothecam imaginum suam habet, et imagines etiam in applicatione Files sunt." },
       ],
     },
     controls: {
       title: "Lude tuo modo",
       say: "In lecto, in tramine, ad mensam. Moderatorem affer, si vis. Mihi non obest.",
-      lead: "Narra se accommodat ad modum quo instrumentum tenes, et ad id quo ludis.",
+      lead: "Narra se accommodat ad modum quo instrumentum tenes, ad id quo ludis, et ad modum quo incipere mavis.",
+      widgetLabel: "Instrumentum «Nuper lusi» in Home Screen",
       items: [
-        { t: "Moderatores ludorum", d: "Moderatorem coniunge et bullas eius ut vis dispone." },
-        { t: "Compendia clavium", d: "Cum clavili, claves Ren'Py usitatae operantur, una cum compendiis instrumentorum ipsius Narrae." },
+        { t: "Moderatores et clavilia", d: "Moderatorem ludorum coniunge et quid quaeque bulla faciat elige, vel clavili utere cum clavibus Ren'Py usitatis et compendiis instrumentorum Narrae." },
         { t: "Erectum in iPhone", d: "iPhone erectum tene et perge legere, vel sine ludum tecum verti." },
         { t: "Clavile proprium", d: "Cum ludus te nomen scribere iubet, Narra clavile ludo aptum affert." },
-        { t: "Volutio duobus digitis", d: "Historiam textus duobus digitis volve, vel parvam rotam volvendi in scaena pone." },
+        { t: "Recta ex Home Screen", d: "Iconem Narrae tange et tene ut pergas, ludum per Siri vel Shortcuts incipe, vel instrumentum «Nuper lusi» adde." },
       ],
     },
     saves: {
       title: "Servata quibus confidere potes",
       say: "Antequam quidquam muto vel deleo, exemplar tutelae facio. Vetus consuetudo.",
       lead: "Quisque ludus suum administratorem servatorum habet. Quodque servatum cum imagine sua vide, exemplaria fac, exporta, restitue, vel de integro incipe.",
+      cardsLabel: "Loci servatorum in administratore servatorum, cum iCloud synchronizati",
       items: [
-        { t: "Synchronizatio iCloud", d: "Servata inter iPhone et iPad per tuum iCloud transeunt, statim ut ludere desinis missa." },
-        { t: "Exemplaria", d: "Unius ludi vel omnium simul exemplaria fac. Archiva ZIP in applicatione Files sub Narra apparent." },
+        { t: "Synchronizatio iCloud, etiam dum ludis", d: "Servata inter iPhone et iPad per tuum iCloud transeunt. Narra mutationes mittit dum ludis, et iterum cum ad aliam applicationem transis." },
+        { t: "Exemplaria", d: "Unius ludi vel omnium simul exemplaria fac, et Narra recens exemplar servat quotiens ludus aperitur. Archiva ZIP in applicatione Files sunt." },
         { t: "Importare et exportare", d: "Servata ex computatro vel alio instrumento affer. Si locus occupatus est, tu decernis: utrumque servare, substituere, an omittere." },
         { t: "Exemplaria tutelae", d: "Restitutio, deletio vel renovatio semper prius exemplar tutelae facit, ne unus tactus perperam factus finis sit." },
-        { t: "Inspector servatorum", d: "Scire vis quid in servato insit? Aperi et data eius, textum et imaginem inspice." },
       ],
     },
     extras: {
       title: "Mutationes, pinacotheca, et pauca arcana",
       say: "Quaedam ex his curiosis sunt. Nemini dicam.",
       lead: "Pro diebus quibus paulo ulterius progredi vis.",
+      stackLabel: "Mutationes strata super ludum sunt",
+      stackGame: "Fasciculi ludi",
+      stackMod: "Mutatio {n}",
+      stackNote: "Cum duae mutationes eundem fasciculum mutant, ea quae in indice superior est vincit.",
       items: [
         { t: "Administrator mutationum", d: "Mutationes ut capsas vel fasciculos ZIP adde, ordine dispone, accende vel exstingue. Mutationes universales omnibus ludis Ren'Py valent, et ludum semel sine mutationibus incipere potes cum aliquid perperam fit." },
         { t: "Pinacotheca", d: "Imagines, musicam et pelliculas in archivis .rpa ludi inclusas perlustra." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "Narra loquitur",
       promises: ["Nulla ratio.", "Nulla praeconia.", "Nullae analyses, nulla vestigatio."],
       promisesNote: "Ludi et servata tua in instrumento tuo et in tuo iCloud manent.",
+      lock: "Visne ludum secretum servari? Eum Face ID, Touch ID aut tessera claude, et tegumentum eius in bibliotheca obscuratum manet.",
       privacyLink: "Rationem secreti lege",
     },
+  },
+  more: {
+    label: "Index",
+    title: "Et pauca alia",
+    items: [
+      "Novi ludi quaesiti bibliotheca deorsum tracta",
+      "Magnitudo textus, ambitus et litterae dum ludis",
+      "Volutio duobus digitis et rota volvendi in scaena",
+      "Inspector servatorum curiosis",
+      "Tempus ludendi cuiusque ludi",
+      "Pinacotheca ipsius ludi reserata",
+      "Administrator spatii",
+      "Relationes errorum cum commentariis, si ludus corruit",
+      "Species lucida et obscura",
+      "Sonus post vocationem telephonicam vel excitatorium restitutus",
+    ],
   },
   epilogue: {
     label: "Epilogus",
@@ -174,12 +194,13 @@ export default {
         h: "Quae in instrumento tuo manent",
         p: [
           "Ludi quos importas, eorum tegumenta, servata, optiones, tempus lusus, imagines scaenae, litterae et mutationes tuae intra Narra in instrumento tuo servantur. Ad me non mittuntur, nec ea videre possum.",
+          "Instrumentum (widget) «Nuper lusi», compendia Home Screen et Siri bibliothecam tuam in ipso instrumento tuo legunt. Si ludum Face ID vel Touch ID claudis, probatio ab instrumento tuo fit; Narra notitias tuas biometricas numquam videt.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "Si synchronizatio iCloud accensa est (quod ex praefinito est), Narra servata ludorum tuorum in tuum iCloud Drive exscribit, ut inter instrumenta tua transire possint. Ipsi ludi non mittuntur. Haec data in ratione tua iCloud sunt, sub potestate Apple et ratione secreti Apple; ego nullum ad ea accessum habeo.",
+          "Si synchronizatio iCloud accensa est (quod ex praefinito est), Narra servata ludorum tuorum in tuum iCloud Drive exscribit, dum ludis et postea, ut inter instrumenta tua transire possint. Ipsi ludi non mittuntur. Haec data in ratione tua iCloud sunt, sub potestate Apple et ratione secreti Apple; ego nullum ad ea accessum habeo.",
           "Synchronizationem quovis tempore in Optionibus Narrae, sub Servata et iCloud, exstinguere potes. Exstinctio nihil delet quod iam in iCloud est.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Pueri",
         p: [
-          "Narra a nemine notitias personales colligit, ne a pueris quidem. Narra nullos ludos continet; quae importas, et utrum aetati tuae conveniant, tuum est.",
+          "Narra a nemine notitias personales colligit, ne a pueris quidem. Praeter suam brevem fabulam exemplarem, Narra nullos ludos continet; quae importas, et utrum aetati tuae conveniant, tuum est.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "Contenta tua",
         p: [
-          "Narra nec ludos nec ulla alia contenta praebet, vendit vel distribuit. Tu ipse rationem reddis de ludis, mutationibus, litteris et fasciculis quos importas, deque iure eis utendi.",
+          "Praeter suam brevem fabulam exemplarem, Narra nec ludos nec ulla alia contenta praebet, vendit vel distribuit. Tu ipse rationem reddis de ludis, mutationibus, litteris et fasciculis quos importas, deque iure eis utendi.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Quaestiones et responsa",
     basicsTitle: "Antequam incipis",
     basics: [
-      { q: "Habetne Narra ludos inclusos?", a: "Minime. Narra ludos nec continet nec vendit nec deponit. Ludos Ren'Py quos iam habes ludit, ut versiones pro PC vel Mac ab auctoribus acceptas." },
+      { q: "Habetne Narra ludos inclusos?", a: "Tantum brevem fabulam exemplarem suam. Narra ludos nec vendit nec deponit; ludos Ren'Py quos iam habes ludit, ut versiones pro PC vel Mac ab auctoribus acceptas." },
       { q: "Estne Narra gratuita?", a: "Ita, omnia munera gratuita sunt. Subscriptio fautoris optionalis tantum themata fundi animata reserat, et stipes nihil reserant." },
-      { q: "Luditne Narra ludos aliis machinis factos?", a: "Minime. Narra solis ludis Ren'Py facta est." },
-      { q: "Synchronizanturne servata mea inter instrumenta?", a: "Ita, per tuum iCloud. In Optionibus Narrae, sub Servata et iCloud, accende vel exstingue. Auctor data tua iCloud videre non potest." },
-      { q: "Mittitne Narra ludos meos alio?", a: "Minime. Ludi in instrumento tuo manent. Tantum servata in tuum iCloud eunt cum synchronizatio accensa est. Si translationem in ludo accendis, textus convertendus ad Google Translate mittitur." },
+      { q: "Synchronizanturne servata mea inter instrumenta?", a: "Ita, per tuum iCloud, etiam dum ludis. In Optionibus Narrae, sub Servata et iCloud, accende vel exstingue. Auctor data tua iCloud videre non potest." },
     ],
     reportTitle: "Difficultatem nuntiare",
     reportIntro: "Via celerrima est intra applicationem:",

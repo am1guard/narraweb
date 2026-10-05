@@ -15,9 +15,12 @@ interface Props {
   eager?: boolean;
   class?: string;
 }
-const { image, alt, orientation = "portrait", name, eager = false, class: className } = Astro.props;
+const { image, alt, orientation: hint = "portrait", name, eager = false, class: className } = Astro.props;
+// A real screenshot decides the shape (iPhone Air: 1260 x 2736); placeholders use the hint.
+const orientation = image ? (image.width > image.height ? "landscape" : "portrait") : hint;
+const ratio = image ? `${image.width} / ${image.height}` : orientation === "portrait" ? "1260 / 2736" : "2736 / 1260";
 ---
-<figure class:list={["phone", orientation, className]}>
+<figure class:list={["phone", orientation, className]} style={`--ratio:${ratio}`}>
   <div class="screen">
     {
       image ? (
@@ -65,12 +68,11 @@ const { image, alt, orientation = "portrait", name, eager = false, class: classN
     position: relative;
     overflow: hidden;
     border-radius: 38px;
-    aspect-ratio: 1206 / 2622;
+    aspect-ratio: var(--ratio);
     background: #120c1b;
     container-type: inline-size;
   }
   .landscape .screen {
-    aspect-ratio: 2622 / 1206;
     border-radius: 30px;
   }
   .shot,

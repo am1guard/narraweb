@@ -49,22 +49,21 @@ export default {
     ],
     next: "Nächste Zeile",
     begin: "Die Geschichte beginnen",
-    compat: "Für Spiele, die mit Ren'Py 7.4 bis 8.6 erstellt wurden. Narra enthält keine Spiele; die bringst du selbst mit.",
+    compat: "Für Spiele, die mit Ren'Py 7.4 bis 8.6 erstellt wurden. Bis auf eine kurze Beispielgeschichte enthält Narra keine Spiele; die bringst du selbst mit.",
     sceneAlt: "Narra schwebt nachts über einer schlafenden Stadt und liest in einem leuchtenden Buch",
   },
   chapters: {
     arrive: {
       title: "Bring deine eigenen Geschichten mit",
-      say: "Ich verkaufe keine Spiele und habe auch keine dabei. Du bringst die mit, die du schon hast, und ich sorge dafür, dass sie sich wie zu Hause fühlen.",
-      lead: "Füge ein Ren'Py-Spiel aus der Dateien-App als Ordner oder ZIP-Archiv hinzu. Wähle mehrere auf einmal, und Narra fügt sie nacheinander hinzu.",
+      say: "Ich verkaufe keine Spiele. Bring die mit, die du schon hast, und ich sorge dafür, dass sie sich wie zu Hause fühlen. Noch nichts zum Spielen da? Ich habe eine kleine Geschichte von mir mitgebracht.",
+      lead: "Füge ein Ren'Py-Spiel aus der Dateien-App als Ordner oder als ZIP-, RAR- oder 7z-Archiv hinzu, auch wenn es in mehrere Teile aufgeteilt ist. Passwortgeschützte RAR- und 7z-Archive funktionieren, ebenso Ren'Py-Spiele, die für Android verpackt wurden (APK).",
       pathLabel: "Oder leg ein Spiel hier ab, und Narra findet es von selbst:",
       path: ["Dateien", "Auf meinem iPhone", "Narra", "Games"],
       items: [
+        { t: "Eine erste Geschichte zum Ausprobieren", d: "Narra bringt eine kurze Beispielgeschichte mit, damit du alles ausprobieren kannst, bevor du deine eigenen Spiele hinzufügst." },
+        { t: "Sammlungen, Suche und Status", d: "Ordne Spiele ganz nach deiner Art und zieh sie an ihren Platz. Finde jedes davon über seinen Namen, über deine Favoriten oder über das, was du gerade spielst." },
+        { t: "Updates, die deine Spielstände behalten", d: "Füge eine neuere Version eines Spiels hinzu oder wähle in seinen Einstellungen „Spiel aktualisieren“. Deine Spielstände bleiben, wo sie sind." },
         { t: "Cover, für dich gefunden", d: "Narra nimmt ein Cover aus den Bildern des Spiels. Du kannst jederzeit ein eigenes wählen." },
-        { t: "Sammlungen", d: "Ordne Spiele nach Reihe, nach Stimmung oder ganz, wie du magst. Halte ein Spiel gedrückt und zieh es an seinen Platz." },
-        { t: "Suche, Filter, Status", d: "Finde ein Spiel über seinen Namen, zeig nur deine Favoriten an und markiere, was du gerade spielst, abgeschlossen hast oder dir für später aufhebst." },
-        { t: "Updates, die deine Spielstände behalten", d: "Füge eine neuere Version eines Spiels hinzu, das du schon hast, und Narra bietet an, es zu aktualisieren. Deine Spielstände bleiben, wo sie sind." },
-        { t: "Zum Aktualisieren ziehen", d: "Du hast ein Spiel in den Ordner „Games“ kopiert, während Narra offen war? Zieh deine Bibliothek nach unten, und Narra schaut noch einmal nach." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Eine kompakte Leiste nach deinem Geschmack", d: "Zurückspulen, überspringen, das Textfeld ausblenden oder die Tastatur öffnen, alles über eine kleine Leiste. Verschiebe sie, ändere Größe und Deckkraft und wähle bis zu fünf Tasten." },
         { t: "Pausenbildschirm", d: "Wie weit du gelesen hast, wie lange du gespielt hast, schnelle Einstellungen und alle Werkzeuge an einem Ort." },
         { t: "Schnellspeichern und -laden", d: "Einmal tippen, und Narra sagt dir, dass es geklappt hat." },
-        { t: "Bildschirmfotos", d: "Halte eine Szene fest, die dir gefällt. Bildschirmfotos landen im Ordner „Screenshots“ der Dateien-App." },
+        { t: "Bildschirmfotos", d: "Halte eine Szene fest, die dir gefällt. Jedes Spiel hat in seinen Einstellungen eine eigene Galerie mit Bildschirmfotos, und die Bilder findest du auch in der Dateien-App." },
       ],
     },
     controls: {
       title: "Spiel, wie du willst",
       say: "Auf dem Sofa, im Zug, am Schreibtisch. Bring ruhig einen Controller mit. Mich stört das nicht.",
-      lead: "Narra passt sich daran an, wie du dein Gerät hältst und womit du spielst.",
+      lead: "Narra passt sich daran an, wie du dein Gerät hältst, womit du spielst und wie du am liebsten loslegst.",
+      widgetLabel: "Das Widget „Zuletzt gespielt“ auf dem Home-Bildschirm",
       items: [
-        { t: "Gamecontroller", d: "Verbinde einen Controller und belege seine Tasten so, wie du willst." },
-        { t: "Tastaturkurzbefehle", d: "Mit einer Tastatur funktionieren die üblichen Ren'Py-Tasten, dazu Kurzbefehle für Narras eigene Werkzeuge." },
+        { t: "Controller und Tastaturen", d: "Verbinde einen Gamecontroller und leg fest, was jede Taste tut, oder nutze eine Tastatur mit den üblichen Ren'Py-Tasten und Kurzbefehlen für Narras Werkzeuge." },
         { t: "Hochformat auf dem iPhone", d: "Halte dein iPhone aufrecht und lies weiter, oder lass das Spiel sich mit dir drehen." },
         { t: "Eine eigene Tastatur", d: "Wenn ein Spiel dich bittet, einen Namen einzugeben, bringt Narra eine Tastatur mit, die zum Spiel passt." },
-        { t: "Mit zwei Fingern scrollen", d: "Scrolle mit zwei Fingern durch den Textverlauf, oder leg ein kleines Scrollrad auf den Bildschirm." },
+        { t: "Direkt vom Home-Bildschirm", d: "Halte das Narra-Symbol gedrückt, um weiterzuspielen, starte ein Spiel mit Siri oder über die Kurzbefehle-App, oder füge das Widget „Zuletzt gespielt“ hinzu." },
       ],
     },
     saves: {
       title: "Spielstände, auf die du dich verlassen kannst",
       say: "Bevor ich etwas ändere oder lösche, mache ich eine Sicherheitskopie. Alte Gewohnheit.",
       lead: "Jedes Spiel hat seine eigene Spielstand-Verwaltung. Sieh jeden Spielstand mit seinem Bildschirmfoto, sichere, exportiere oder stelle sie wieder her, oder fang von vorn an.",
+      cardsLabel: "Speicherplätze in der Spielstand-Verwaltung, mit iCloud synchronisiert",
       items: [
-        { t: "iCloud-Synchronisierung", d: "Spielstände wandern über deine eigene iCloud zwischen iPhone und iPad und werden hochgeladen, sobald du mit dem Spielen fertig bist." },
-        { t: "Sicherungen", d: "Sichere ein Spiel oder alle auf einmal. Die ZIP-Archive erscheinen in der Dateien-App unter Narra." },
+        { t: "iCloud-Synchronisierung, auch beim Spielen", d: "Spielstände wandern über deine eigene iCloud zwischen iPhone und iPad. Narra lädt Änderungen hoch, während du spielst, und noch einmal, wenn du zu einer anderen App wechselst." },
+        { t: "Sicherungen", d: "Sichere ein Spiel oder alle auf einmal, und Narra legt bei jedem Spielstart eine frische Kopie an. Die ZIP-Archive findest du in der Dateien-App." },
         { t: "Importieren und exportieren", d: "Hol Spielstände von einem Computer oder einem anderen Gerät. Ist ein Platz schon belegt, entscheidest du: beide behalten, ersetzen oder überspringen." },
         { t: "Sicherheitskopien", d: "Wiederherstellen, Löschen oder Zurücksetzen erstellt immer zuerst eine Sicherheitskopie, damit ein falscher Tipp nicht das Ende ist." },
-        { t: "Spielstand-Inspektor", d: "Neugierig, was in einem Spielstand steckt? Öffne ihn und sieh dir Daten, Text und Bildschirmfoto an." },
       ],
     },
     extras: {
       title: "Mods, eine Galerie und ein paar Geheimnisse",
       say: "Manches davon ist für Neugierige. Ich verrate es niemandem.",
       lead: "Für die Tage, an denen du ein bisschen weiter gehen willst.",
+      stackLabel: "Mods liegen als Ebenen über dem Spiel",
+      stackGame: "Spieldateien",
+      stackMod: "Mod {n}",
+      stackNote: "Wenn zwei Mods dieselbe Datei ändern, setzt sich der durch, der in der Liste weiter oben steht.",
       items: [
         { t: "Mod-Verwaltung", d: "Füge Mods als Ordner oder ZIP-Dateien hinzu, bring sie in eine Reihenfolge und schalte sie ein oder aus. Globale Mods gelten für alle Ren'Py-Spiele, und wenn etwas nicht stimmt, kannst du ein Spiel einmal ohne Mods starten." },
         { t: "Galerie", d: "Stöbere durch die Bilder, Musik und Videos in den .rpa-Archiven eines Spiels." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "Narra spricht",
       promises: ["Kein Konto.", "Keine Werbung.", "Keine Analyse, kein Tracking."],
       promisesNote: "Deine Spiele und Spielstände bleiben auf deinem Gerät und in deiner eigenen iCloud.",
+      lock: "Soll ein Spiel privat bleiben? Sperre es mit Face ID, Touch ID oder deinem Gerätecode, und sein Cover bleibt in deiner Bibliothek unscharf.",
       privacyLink: "Datenschutzrichtlinie lesen",
     },
+  },
+  more: {
+    label: "Register",
+    title: "Und noch ein paar Dinge",
+    items: [
+      "Bibliothek nach unten ziehen, um neue Spiele zu finden",
+      "Textgröße, Kontur und Schrift beim Spielen",
+      "Scrollen mit zwei Fingern und ein Scrollrad auf dem Bildschirm",
+      "Ein Spielstand-Inspektor für Neugierige",
+      "Spielzeit für jedes Spiel",
+      "Die eigene Galerie eines Spiels freischalten",
+      "Eine Speicherverwaltung",
+      "Fehlerberichte mit Protokollen, wenn ein Spiel abstürzt",
+      "Helles und dunkles Erscheinungsbild",
+      "Ton, der nach einem Anruf oder Wecker zurückkommt",
+    ],
   },
   epilogue: {
     label: "Epilog",
@@ -174,12 +194,13 @@ export default {
         h: "Was auf deinem Gerät bleibt",
         p: [
           "Die Spiele, die du importierst, ihre Cover, deine Spielstände, Einstellungen, Spielzeit, Bildschirmfotos, Schriften und Mods werden in Narra auf deinem Gerät gespeichert. Sie werden nicht an mich gesendet, und ich kann sie nicht sehen.",
+          "Das Widget „Zuletzt gespielt“, die Kurzbefehle auf dem Home-Bildschirm und Siri lesen deine Bibliothek auf dem Gerät. Wenn du ein Spiel mit Face ID oder Touch ID sperrst, übernimmt dein Gerät die Prüfung; Narra sieht deine biometrischen Daten nie.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "Wenn die iCloud-Synchronisierung aktiv ist (standardmäßig ist sie das), kopiert Narra deine Spielstände in dein eigenes iCloud Drive, damit sie zwischen deinen Geräten wandern können. Die Spiele selbst werden nicht hochgeladen. Diese Daten liegen in deinem iCloud-Account, unter der Kontrolle von Apple und gemäß Apples Datenschutzrichtlinie; ich habe keinen Zugriff darauf.",
+          "Wenn die iCloud-Synchronisierung aktiv ist (standardmäßig ist sie das), kopiert Narra deine Spielstände in dein eigenes iCloud Drive, während du spielst und danach, damit sie zwischen deinen Geräten wandern können. Die Spiele selbst werden nicht hochgeladen. Diese Daten liegen in deinem iCloud-Account, unter der Kontrolle von Apple und gemäß Apples Datenschutzrichtlinie; ich habe keinen Zugriff darauf.",
           "Du kannst die Synchronisierung jederzeit in den Einstellungen von Narra unter „Spielstände & iCloud“ ausschalten. Das Ausschalten löscht nichts, was bereits in iCloud liegt.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Kinder",
         p: [
-          "Narra erhebt von niemandem personenbezogene Daten, auch nicht von Kindern. Narra enthält keine Spiele; welche Inhalte du importierst und ob sie für dein Alter geeignet sind, liegt bei dir.",
+          "Narra erhebt von niemandem personenbezogene Daten, auch nicht von Kindern. Bis auf eine eigene kurze Beispielgeschichte enthält Narra keine Spiele; welche Inhalte du importierst und ob sie für dein Alter geeignet sind, liegt bei dir.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "Deine Inhalte",
         p: [
-          "Narra stellt keine Spiele oder sonstigen Inhalte bereit, verkauft sie nicht und verbreitet sie nicht. Du bist für die Spiele, Mods, Schriften und Dateien verantwortlich, die du importierst, und dafür, dass du das Recht hast, sie zu verwenden.",
+          "Bis auf eine eigene kurze Beispielgeschichte stellt Narra keine Spiele oder sonstigen Inhalte bereit, verkauft sie nicht und verbreitet sie nicht. Du bist für die Spiele, Mods, Schriften und Dateien verantwortlich, die du importierst, und dafür, dass du das Recht hast, sie zu verwenden.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Fragen und Antworten",
     basicsTitle: "Bevor du loslegst",
     basics: [
-      { q: "Enthält Narra Spiele?", a: "Nein. Narra enthält keine Spiele, verkauft keine und lädt keine herunter. Die App spielt Ren'Py-Spiele, die du schon hast, etwa die PC- oder Mac-Versionen, die du von ihren Entwicklern bekommen hast." },
+      { q: "Enthält Narra Spiele?", a: "Nur eine eigene kurze Beispielgeschichte. Narra verkauft keine Spiele und lädt keine herunter; die App spielt Ren'Py-Spiele, die du schon hast, etwa die PC- oder Mac-Versionen, die du von ihren Entwicklern bekommen hast." },
       { q: "Ist Narra kostenlos?", a: "Ja, alle Funktionen sind kostenlos. Das optionale Unterstützer-Abo schaltet nur die animierten Hintergrund-Designs frei, und Trinkgelder schalten nichts frei." },
-      { q: "Spielt Narra auch Spiele, die mit anderen Engines gemacht wurden?", a: "Nein. Narra ist nur für Ren'Py-Spiele gemacht." },
-      { q: "Werden meine Spielstände zwischen Geräten synchronisiert?", a: "Ja, über deine eigene iCloud. Schalte das in den Einstellungen von Narra unter „Spielstände & iCloud“ ein oder aus. Der Entwickler kann deine iCloud-Daten nicht sehen." },
-      { q: "Lädt Narra meine Spiele hoch?", a: "Nein. Spiele bleiben auf deinem Gerät. Nur Spielstände gehen in deine eigene iCloud, wenn die Synchronisierung aktiv ist. Wenn du die Übersetzung im Spiel einschaltest, wird der zu übersetzende Text an Google Übersetzer gesendet." },
+      { q: "Werden meine Spielstände zwischen Geräten synchronisiert?", a: "Ja, über deine eigene iCloud, sogar während du spielst. Schalte das in den Einstellungen von Narra unter „Spielstände & iCloud“ ein oder aus. Der Entwickler kann deine iCloud-Daten nicht sehen." },
     ],
     reportTitle: "Ein Problem melden",
     reportIntro: "Am schnellsten geht es direkt in der App:",

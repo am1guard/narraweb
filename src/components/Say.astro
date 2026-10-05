@@ -1,14 +1,19 @@
 ---
-// One line from Narra in a small visual-novel text window (no typing; only the opening scene types).
+// One line from Narra in a small visual-novel text window. With `type`, the line types
+// itself out once when it scrolls into view (src/scripts/motion.ts); the full text is
+// always in the DOM and the typed copy is hidden from assistive technology.
 interface Props {
   text: string;
   class?: string;
+  type?: boolean;
 }
-const { text, class: className } = Astro.props;
+const { text, class: className, type = true } = Astro.props;
 ---
-<figure class:list={["say", className]}>
+<figure class:list={["say", className]} data-type={type ? "" : undefined}>
   <figcaption class="say-name">Narra</figcaption>
-  <blockquote class="say-text"><p>{text}</p></blockquote>
+  <blockquote class="say-text">
+    <p class="say-line"><span class="say-full">{text}</span><span class="say-typed" aria-hidden="true"></span></p>
+  </blockquote>
 </figure>
 
 <style>
@@ -40,5 +45,19 @@ const { text, class: className } = Astro.props;
     margin: 0;
     font-size: var(--fs-lead);
     line-height: 1.5;
+  }
+  .say-line {
+    position: relative;
+  }
+  .say-typed {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  :global(.type-ready) .say[data-type]:not(.is-typed) .say-full {
+    color: transparent;
+  }
+  :global(.type-ready) .say[data-type].is-typing {
+    cursor: pointer;
   }
 </style>

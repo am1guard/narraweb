@@ -23,14 +23,14 @@ const sections = [{ id: "basics", title: s.basicsTitle, items: s.basics }, ...ap
         <Ornament />
         <p class="intro">{s.intro}</p>
       </div>
-      <Picture src={explain} alt="" widths={[200, 320, 440]} sizes="200px" formats={["avif"]} fallbackFormat="webp" loading="eager" class="mascot" />
+      <div class="mascot-wrap float" data-vt="narra"><Picture src={explain} alt="" widths={[200, 320, 440]} sizes="200px" formats={["avif"]} fallbackFormat="webp" loading="eager" class="mascot" /></div>
     </header>
 
     <section class="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">{s.contactTitle}</h2>
       <ul role="list">
         <li>
-          <a class="channel" href={`mailto:${config.supportEmail}`}>
+          <a class="channel press" href={`mailto:${config.supportEmail}`}>
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
               <path d="M3.5 6.5h17v11h-17Zm0 .5 8.5 6.5L20.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
             </svg>
@@ -41,7 +41,7 @@ const sections = [{ id: "basics", title: s.basicsTitle, items: s.basics }, ...ap
           </a>
         </li>
         <li>
-          <a class="channel" href={config.discordUrl} rel="noopener">
+          <a class="channel press" href={config.discordUrl} rel="noopener">
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
               <path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16.5h-7l-4.5 3.5v-3.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
             </svg>
@@ -209,6 +209,23 @@ const sections = [{ id: "basics", title: s.basicsTitle, items: s.basics }, ...ap
   }
   details[open] summary svg {
     transform: rotate(180deg);
+  }
+  summary:hover span {
+    color: var(--c-accent);
+  }
+  summary span {
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    details[open] p {
+      animation: answer-in 260ms var(--ease-out);
+    }
+  }
+  @keyframes answer-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
   }
   details p {
     padding-block-end: var(--s-4);

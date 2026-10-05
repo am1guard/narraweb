@@ -49,22 +49,21 @@ export default {
     ],
     next: "Další řádek",
     begin: "Začít příběh",
-    compat: "Pro hry vytvořené v Ren'Py 7.4 až 8.6. Narra neobsahuje žádné hry; ty si přineseš vlastní.",
+    compat: "Pro hry vytvořené v Ren'Py 7.4 až 8.6. Kromě jednoho krátkého ukázkového příběhu Narra neobsahuje žádné hry; ty si přineseš vlastní.",
     sceneAlt: "Narra se v noci vznáší nad spícím městečkem a čte zářící knihu",
   },
   chapters: {
     arrive: {
       title: "Přines si vlastní příběhy",
-      say: "Hry neprodávám a žádné v sobě nemám. Ty přineseš ty, které už máš, a já se postarám, aby se tu cítily jako doma.",
-      lead: "Přidej hru v Ren'Py z aplikace Soubory jako složku nebo archiv ZIP. Vyber jich víc najednou a Narra je přidá jednu po druhé.",
+      say: "Hry neprodávám. Přines ty, které už máš, a já se postarám, aby se tu cítily jako doma. Ještě nemáš co hrát? Přinesla jsem si vlastní krátký příběh.",
+      lead: "Přidej hru v Ren'Py z aplikace Soubory jako složku nebo archiv ZIP, RAR či 7z, i když je rozdělený na několik částí. Fungují i archivy RAR a 7z chráněné heslem a také hry v Ren'Py zabalené pro Android (APK).",
       pathLabel: "Nebo hru zkopíruj sem a Narra ji najde sama:",
       path: ["Soubory", "Na mém iPhonu", "Narra", "Games"],
       items: [
+        { t: "První příběh na vyzkoušení", d: "S Narrou dostaneš krátký ukázkový příběh, takže si můžeš všechno vyzkoušet, ještě než přidáš vlastní hry." },
+        { t: "Kolekce, hledání a stav", d: "Seskup hry po svém a přetáhni je na místo. Najdi kteroukoli z nich podle názvu, mezi oblíbenými nebo podle toho, co právě hraješ." },
+        { t: "Aktualizace, které zachovají uložené hry", d: "Přidej novější verzi hry, nebo v jejím nastavení zvol Aktualizovat hru. Uložené hry zůstanou, kde jsou." },
         { t: "Obaly najde sama", d: "Narra vezme obal z obrázků samotné hry. Vždycky si můžeš vybrat vlastní." },
-        { t: "Kolekce", d: "Seskup hry podle série, podle nálady nebo jakkoli chceš. Podrž hru a přetáhni ji na místo." },
-        { t: "Hledání, filtry, stav", d: "Najdi hru podle názvu, zobraz jen oblíbené a označ, co právě hraješ, co máš dohrané a co si necháváš na později." },
-        { t: "Aktualizace, které zachovají uložené hry", d: "Přidej novější verzi hry, kterou už máš, a Narra nabídne, že ji aktualizuje. Uložené hry zůstanou, kde jsou." },
-        { t: "Obnovení stažením dolů", d: "Dostala se hra do složky Games, zatímco byla Narra otevřená? Stáhni knihovnu dolů a Narra se podívá znovu." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Kompaktní lišta podle tebe", d: "Vracej se zpět, přeskakuj, skryj textové pole nebo otevři klávesnici z malé lišty. Přesuň ji, změň její velikost a průhlednost a vyber až pět tlačítek." },
         { t: "Obrazovka pozastavení", d: "Kolik máš přečteno, jak dlouho hraješ, rychlá nastavení a všechny nástroje na jednom místě." },
         { t: "Rychlé uložení a načtení", d: "Jedno klepnutí a Narra ti dá vědět, že je hotovo." },
-        { t: "Snímky obrazovky", d: "Uchovej si scénu, která se ti líbí. Snímky se ukládají do složky Screenshots v aplikaci Soubory." },
+        { t: "Snímky obrazovky", d: "Uchovej si scénu, která se ti líbí. Každá hra má v nastavení vlastní galerii snímků obrazovky a obrázky najdeš i v aplikaci Soubory." },
       ],
     },
     controls: {
       title: "Hraj po svém",
       say: "Na gauči, ve vlaku, u stolu. Klidně si vezmi ovladač. Mně to nevadí.",
-      lead: "Narra se přizpůsobí tomu, jak zařízení držíš a čím hraješ.",
+      lead: "Narra se přizpůsobí tomu, jak zařízení držíš, čím hraješ a jak se ti nejlíp začíná.",
+      widgetLabel: "Widget Nedávno hrané na ploše",
       items: [
-        { t: "Herní ovladače", d: "Připoj ovladač a nastav si jeho tlačítka, jak chceš." },
-        { t: "Klávesové zkratky", d: "S klávesnicí fungují obvyklé klávesy Ren'Py a k tomu zkratky pro vlastní nástroje Narry." },
+        { t: "Ovladače a klávesnice", d: "Připoj herní ovladač a urči, co které tlačítko dělá, nebo použij klávesnici s obvyklými klávesami Ren'Py a zkratkami pro nástroje Narry." },
         { t: "Na výšku na iPhonu", d: "Drž iPhone na výšku a čti dál, nebo nech hru otáčet se s tebou." },
         { t: "Vlastní klávesnice", d: "Když po tobě hra chce napsat jméno, Narra přinese klávesnici, která ke hře sedí." },
-        { t: "Posouvání dvěma prsty", d: "Posouvej historii textu dvěma prsty, nebo si na obrazovku dej malé rolovací kolečko." },
+        { t: "Rovnou z plochy", d: "Podrž ikonu Narry a pokračuj ve hře, spusť hru přes Siri nebo aplikaci Zkratky, nebo si přidej widget Nedávno hrané." },
       ],
     },
     saves: {
       title: "Uložené hry, na které se můžeš spolehnout",
       say: "Než cokoli změním nebo smažu, udělám bezpečnostní zálohu. Starý zvyk.",
       lead: "Každá hra má vlastního správce uložených her. Prohlédni si každou uloženou hru i se snímkem obrazovky, zálohuj je, exportuj, obnov, nebo začni znovu.",
+      cardsLabel: "Pozice ve správci uložených her synchronizované s iCloudem",
       items: [
-        { t: "Synchronizace s iCloudem", d: "Uložené hry putují mezi iPhonem a iPadem přes tvůj vlastní iCloud a nahrají se hned, jak přestaneš hrát." },
-        { t: "Zálohy", d: "Zálohuj jednu hru, nebo všechny najednou. Archivy ZIP najdeš v aplikaci Soubory ve složce Narra." },
+        { t: "Synchronizace s iCloudem, i během hraní", d: "Uložené hry putují mezi iPhonem a iPadem přes tvůj vlastní iCloud. Narra nahrává změny už během hraní a pak znovu, když přepneš do jiné aplikace." },
+        { t: "Zálohy", d: "Zálohuj jednu hru, nebo všechny najednou, a Narra si při každém otevření hry uloží čerstvou kopii. Archivy ZIP najdeš v aplikaci Soubory." },
         { t: "Import a export", d: "Přenes uložené hry z počítače nebo z jiného zařízení. Když je pozice obsazená, rozhodneš ty: ponechat obě, nahradit, nebo přeskočit." },
         { t: "Bezpečnostní zálohy", d: "Obnovení, smazání i reset vždy nejdřív vytvoří bezpečnostní zálohu, takže jedno špatné klepnutí neznamená konec." },
-        { t: "Inspektor uložených her", d: "Zajímá tě, co je uvnitř uložené hry? Otevři ji a prohlédni si její data, text a snímek obrazovky." },
       ],
     },
     extras: {
       title: "Módy, galerie a pár tajemství",
       say: "Některé z těch věcí jsou pro zvědavce. Nikomu to neřeknu.",
       lead: "Pro dny, kdy chceš zajít o kousek dál.",
+      stackLabel: "Módy jsou vrstvy nad hrou",
+      stackGame: "Soubory hry",
+      stackMod: "Mód {n}",
+      stackNote: "Když dva módy mění stejný soubor, vyhraje ten, který je v seznamu výš.",
       items: [
         { t: "Správce módů", d: "Přidávej módy jako složky nebo soubory ZIP, seřaď je a zapínej nebo vypínej. Globální módy platí pro všechny hry v Ren'Py, a když něco zlobí, můžeš hru jednou spustit bez módů." },
         { t: "Galerie", d: "Procházej obrázky, hudbu a videa uložené v archivech .rpa dané hry." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "Narra mluví",
       promises: ["Žádný účet.", "Žádné reklamy.", "Žádná analytika, žádné sledování."],
       promisesNote: "Tvoje hry i uložené hry zůstávají v zařízení a ve tvém vlastním iCloudu.",
+      lock: "Chceš si nějakou hru nechat pro sebe? Zamkni ji pomocí Face ID, Touch ID nebo kódu zařízení a její obal zůstane v knihovně rozmazaný.",
       privacyLink: "Přečíst zásady ochrany osobních údajů",
     },
+  },
+  more: {
+    label: "Rejstřík",
+    title: "A pár dalších věcí",
+    items: [
+      "Hledání nových her stažením knihovny dolů",
+      "Velikost, obrys a písmo textu během hraní",
+      "Posouvání dvěma prsty a rolovací kolečko na obrazovce",
+      "Inspektor uložených her pro zvědavce",
+      "Doba hraní u každé hry",
+      "Odemčení vlastní galerie hry",
+      "Správce úložiště",
+      "Hlášení o chybě s protokoly, když hra spadne",
+      "Světlý a tmavý vzhled",
+      "Zvuk, který se vrátí po hovoru nebo budíku",
+    ],
   },
   epilogue: {
     label: "Epilog",
@@ -174,12 +194,13 @@ export default {
         h: "Co zůstává v tvém zařízení",
         p: [
           "Hry, které importuješ, jejich obaly, tvoje uložené hry, nastavení, doba hraní, snímky obrazovky, písma a módy se ukládají v Narře ve tvém zařízení. Neposílají se mi a nevidím je.",
+          "Widget Nedávno hrané, zkratky na ploše a Siri čtou tvou knihovnu přímo v zařízení. Když hru zamkneš pomocí Face ID nebo Touch ID, ověření provede tvoje zařízení; Narra tvoje biometrické údaje nikdy nevidí.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "Pokud je zapnutá synchronizace s iCloudem (ve výchozím stavu je), Narra kopíruje tvoje uložené hry na tvůj vlastní iCloud Drive, aby se mohly přenášet mezi zařízeními. Samotné hry se nenahrávají. Tato data jsou ve tvém účtu iCloud, pod kontrolou společnosti Apple a podle jejích zásad ochrany osobních údajů; já k nim přístup nemám.",
+          "Pokud je zapnutá synchronizace s iCloudem (ve výchozím stavu je), Narra kopíruje tvoje uložené hry na tvůj vlastní iCloud Drive, během hraní i potom, aby se mohly přenášet mezi zařízeními. Samotné hry se nenahrávají. Tato data jsou ve tvém účtu iCloud, pod kontrolou společnosti Apple a podle jejích zásad ochrany osobních údajů; já k nim přístup nemám.",
           "Synchronizaci můžeš kdykoli vypnout v Nastavení Narry v části Uložené hry a iCloud. Vypnutím se nesmaže nic, co už na iCloudu je.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Děti",
         p: [
-          "Narra neshromažďuje osobní údaje od nikoho, ani od dětí. Narra neobsahuje žádné hry; o obsahu, který importuješ, a o tom, zda je vhodný pro tvůj věk, rozhoduješ ty.",
+          "Narra neshromažďuje osobní údaje od nikoho, ani od dětí. Kromě vlastního krátkého ukázkového příběhu Narra neobsahuje žádné hry; o obsahu, který importuješ, a o tom, zda je vhodný pro tvůj věk, rozhoduješ ty.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "Tvůj obsah",
         p: [
-          "Narra neposkytuje, neprodává ani nešíří hry ani žádný jiný obsah. Za hry, módy, písma a soubory, které importuješ, a za to, že máš právo je používat, odpovídáš ty.",
+          "Kromě vlastního krátkého ukázkového příběhu Narra neposkytuje, neprodává ani nešíří hry ani žádný jiný obsah. Za hry, módy, písma a soubory, které importuješ, a za to, že máš právo je používat, odpovídáš ty.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Otázky a odpovědi",
     basicsTitle: "Než začneš",
     basics: [
-      { q: "Obsahuje Narra nějaké hry?", a: "Ne. Narra hry neobsahuje, neprodává ani nestahuje. Přehrává hry v Ren'Py, které už máš, například verze pro PC nebo Mac od jejich tvůrců." },
+      { q: "Obsahuje Narra nějaké hry?", a: "Jen vlastní krátký ukázkový příběh. Narra hry neprodává ani nestahuje; přehrává hry v Ren'Py, které už máš, například verze pro PC nebo Mac od jejich tvůrců." },
       { q: "Je Narra zdarma?", a: "Ano, všechny funkce jsou zdarma. Volitelné předplatné podporovatele odemyká jen animované motivy pozadí a spropitné neodemyká nic." },
-      { q: "Přehraje Narra hry vytvořené v jiných enginech?", a: "Ne. Narra je určená jen pro hry v Ren'Py." },
-      { q: "Synchronizují se moje uložené hry mezi zařízeními?", a: "Ano, přes tvůj vlastní iCloud. Zapnout nebo vypnout to můžeš v Nastavení Narry v části Uložené hry a iCloud. Vývojář tvoje data na iCloudu nevidí." },
-      { q: "Nahrává Narra moje hry někam?", a: "Ne. Hry zůstávají v tvém zařízení. Když je zapnutá synchronizace, na tvůj vlastní iCloud jdou jen uložené hry. Pokud zapneš překlad ve hře, text k překladu se odesílá do Překladače Google." },
+      { q: "Synchronizují se moje uložené hry mezi zařízeními?", a: "Ano, přes tvůj vlastní iCloud, a to i během hraní. Zapnout nebo vypnout to můžeš v Nastavení Narry v části Uložené hry a iCloud. Vývojář tvoje data na iCloudu nevidí." },
     ],
     reportTitle: "Nahlášení problému",
     reportIntro: "Nejrychleji to jde přímo z aplikace:",

@@ -49,22 +49,21 @@ export default {
     ],
     next: "Próxima fala",
     begin: "Começar a história",
-    compat: "Para jogos feitos com Ren'Py 7.4 a 8.6. O Narra não vem com jogos; quem traz os jogos é você.",
+    compat: "Para jogos feitos com Ren'Py 7.4 a 8.6. Tirando uma pequena história de exemplo, o Narra não vem com jogos; quem traz os jogos é você.",
     sceneAlt: "A Narra flutuando sobre uma cidadezinha adormecida à noite, lendo um livro que brilha",
   },
   chapters: {
     arrive: {
       title: "Traga suas próprias histórias",
-      say: "Eu não vendo jogos e não venho com nenhum. Você traz os que já tem, e eu faço com que eles se sintam em casa.",
-      lead: "Adicione um jogo de Ren'Py pelo app Arquivos, como pasta ou arquivo ZIP. Escolha vários de uma vez e a Narra adiciona um depois do outro.",
+      say: "Eu não vendo jogos. Traga os que você já tem, e eu faço com que eles se sintam em casa. Ainda não tem nada para jogar? Eu trouxe uma historinha minha.",
+      lead: "Adicione um jogo de Ren'Py pelo app Arquivos como pasta ou como arquivo ZIP, RAR ou 7z, mesmo que esteja dividido em partes. Arquivos RAR e 7z protegidos por senha também funcionam, assim como jogos de Ren'Py empacotados para Android (APK).",
       pathLabel: "Ou coloque um jogo aqui e a Narra o encontra sozinha:",
       path: ["Arquivos", "No Meu iPhone", "Narra", "Games"],
       items: [
+        { t: "Uma primeira história para experimentar", d: "Uma pequena história de exemplo vem com o Narra, para você experimentar tudo antes de adicionar seus próprios jogos." },
+        { t: "Coleções, busca e status", d: "Agrupe os jogos do seu jeito e arraste-os até o lugar certo. Encontre qualquer um pelo nome, pelos favoritos ou pelo que você está jogando." },
+        { t: "Atualizações que mantêm seus salvamentos", d: "Adicione uma versão mais nova de um jogo ou escolha Atualizar jogo nos ajustes dele. Seus salvamentos ficam onde estão." },
         { t: "Capas encontradas para você", d: "A Narra pega uma capa das próprias imagens do jogo. Você sempre pode escolher a sua." },
-        { t: "Coleções", d: "Agrupe os jogos por série, por clima ou do jeito que quiser. Toque e segure um jogo para arrastá-lo até o lugar certo." },
-        { t: "Busca, filtros e status", d: "Encontre um jogo pelo nome, mostre só os favoritos e marque o que você está jogando, o que já terminou e o que deixou para depois." },
-        { t: "Atualizações que mantêm seus salvamentos", d: "Adicione uma versão mais nova de um jogo que você já tem e a Narra oferece para atualizá-lo. Seus salvamentos ficam onde estão." },
-        { t: "Puxe para atualizar", d: "Copiou um jogo para a pasta Games com o Narra aberto? Puxe sua biblioteca para baixo e ela procura de novo." },
       ],
     },
     engine: {
@@ -94,37 +93,41 @@ export default {
         { t: "Uma barra compacta do seu jeito", d: "Volte, pule, oculte a caixa de texto ou abra o teclado por uma barra pequena. Mova, mude o tamanho, deixe mais transparente e escolha até cinco botões." },
         { t: "Tela de pausa", d: "Quanto você já leu, quanto tempo jogou, ajustes rápidos e todas as ferramentas num só lugar." },
         { t: "Salvamento e carregamento rápidos", d: "Um toque, e a Narra avisa que está feito." },
-        { t: "Capturas de tela", d: "Guarde uma cena de que você gostou. As capturas vão para a pasta Screenshots no app Arquivos." },
+        { t: "Capturas de tela", d: "Guarde uma cena de que você gostou. Cada jogo tem sua própria galeria de capturas de tela nos ajustes dele, e as imagens também ficam no app Arquivos." },
       ],
     },
     controls: {
       title: "Jogue do seu jeito",
       say: "No sofá, no trem, na mesa. Traga um controle se quiser. Eu não me importo.",
-      lead: "O Narra se adapta ao jeito como você segura o dispositivo e ao que você usa para jogar.",
+      lead: "O Narra se adapta ao jeito como você segura o dispositivo, ao que você usa para jogar e a como você gosta de começar.",
+      widgetLabel: "O widget Recentes na Tela de Início",
       items: [
-        { t: "Controles de jogo", d: "Conecte um controle e configure os botões como quiser." },
-        { t: "Atalhos de teclado", d: "Com um teclado, as teclas de sempre do Ren'Py funcionam, junto com atalhos para as ferramentas do próprio Narra." },
+        { t: "Controles e teclados", d: "Conecte um controle de jogo e escolha o que cada botão faz, ou use um teclado com as teclas de sempre do Ren'Py e atalhos para as ferramentas do Narra." },
         { t: "Retrato no iPhone", d: "Segure o iPhone em pé e continue lendo, ou deixe o jogo girar junto com você." },
         { t: "Um teclado próprio", d: "Quando um jogo pede para você digitar um nome, a Narra traz um teclado que combina com o jogo." },
-        { t: "Rolagem com dois dedos", d: "Role o histórico de texto com dois dedos ou coloque uma pequena roda de rolagem na tela." },
+        { t: "Direto da Tela de Início", d: "Toque e segure o ícone do Narra para continuar, inicie um jogo com a Siri ou o app Atalhos, ou adicione o widget Recentes." },
       ],
     },
     saves: {
       title: "Salvamentos em que você pode confiar",
       say: "Antes de mudar ou apagar qualquer coisa, eu faço um backup de segurança. Mania antiga.",
       lead: "Cada jogo tem seu próprio gerenciador de salvamentos. Veja cada salvamento com sua captura de tela, faça backup, exporte, restaure ou comece do zero.",
+      cardsLabel: "Espaços de salvamento no gerenciador de salvamentos, sincronizados com o iCloud",
       items: [
-        { t: "Sincronização pelo iCloud", d: "Os salvamentos vão e vêm entre seu iPhone e seu iPad pelo seu próprio iCloud, enviados assim que você termina de jogar." },
-        { t: "Backups", d: "Faça backup de um jogo ou de todos de uma vez. Os arquivos ZIP aparecem no app Arquivos, na pasta Narra." },
+        { t: "Sincronização pelo iCloud, até enquanto você joga", d: "Os salvamentos vão e vêm entre seu iPhone e seu iPad pelo seu próprio iCloud. O Narra envia as mudanças enquanto você joga e de novo quando você muda para outro app." },
+        { t: "Backups", d: "Faça backup de um jogo ou de todos de uma vez, e o Narra guarda uma cópia nova sempre que um jogo é aberto. Os arquivos ZIP ficam no app Arquivos." },
         { t: "Importar e exportar", d: "Traga salvamentos de um computador ou de outro dispositivo. Se um espaço já estiver ocupado, você decide: manter ambos, substituir ou pular." },
         { t: "Backups de segurança", d: "Restaurar, apagar ou redefinir sempre faz um backup de segurança antes, então um toque errado não é o fim." },
-        { t: "Inspetor de salvamentos", d: "Curioso para saber o que tem dentro de um salvamento? Abra e veja os dados, o texto e a captura de tela." },
       ],
     },
     extras: {
       title: "Mods, uma galeria e alguns segredos",
       say: "Algumas dessas coisas são para os curiosos. Não vou contar para ninguém.",
       lead: "Para os dias em que você quer ir um pouco mais longe.",
+      stackLabel: "Os mods são camadas sobre o jogo",
+      stackGame: "Arquivos do jogo",
+      stackMod: "Mod {n}",
+      stackNote: "Quando dois mods mudam o mesmo arquivo, vence o que está mais acima na lista.",
       items: [
         { t: "Gerenciador de mods", d: "Adicione mods como pastas ou arquivos ZIP, coloque-os em ordem e ative ou desative cada um. Os mods globais valem para todos os jogos Ren'Py, e você pode iniciar um jogo uma vez sem mods quando algo der errado." },
         { t: "Galeria", d: "Navegue pelas imagens, músicas e vídeos guardados dentro dos arquivos .rpa de um jogo." },
@@ -139,8 +142,25 @@ export default {
       languagesLabel: "O Narra fala",
       promises: ["Sem conta.", "Sem anúncios.", "Sem análises, sem rastreamento."],
       promisesNote: "Seus jogos e salvamentos ficam no seu dispositivo e no seu próprio iCloud.",
+      lock: "Quer manter um jogo em segredo? Bloqueie-o com Face ID, Touch ID ou seu código, e a capa dele fica desfocada na sua biblioteca.",
       privacyLink: "Ler a política de privacidade",
     },
+  },
+  more: {
+    label: "Índice",
+    title: "E mais algumas coisas",
+    items: [
+      "Puxar a biblioteca para baixo para procurar jogos novos",
+      "Tamanho, contorno e fonte do texto enquanto você joga",
+      "Rolagem com dois dedos e roda de rolagem na tela",
+      "Um inspetor de salvamentos para os curiosos",
+      "Tempo de jogo de cada jogo",
+      "Desbloquear a galeria do próprio jogo",
+      "Um gerenciador de armazenamento",
+      "Relatórios de erro com registros quando um jogo trava",
+      "Aparência clara e escura",
+      "Som que volta depois de uma ligação ou de um alarme",
+    ],
   },
   epilogue: {
     label: "Epílogo",
@@ -174,12 +194,13 @@ export default {
         h: "O que fica no seu dispositivo",
         p: [
           "Os jogos que você importa, as capas deles, seus salvamentos, ajustes, tempo de jogo, capturas de tela, fontes e mods ficam armazenados dentro do Narra no seu dispositivo. Eles não são enviados para mim, e eu não consigo vê-los.",
+          "O widget Recentes, os atalhos da Tela de Início e a Siri leem sua biblioteca no dispositivo. Se você bloquear um jogo com Face ID ou Touch ID, a verificação é feita pelo seu dispositivo; o Narra nunca vê seus dados biométricos.",
         ],
       },
       {
         h: "iCloud",
         p: [
-          "Se a sincronização pelo iCloud estiver ativada (ela vem ativada por padrão), o Narra copia os salvamentos dos seus jogos para o seu próprio iCloud Drive, para que eles possam passar de um dispositivo para outro. Os jogos em si não são enviados. Esses dados ficam na sua conta do iCloud, sob o controle da Apple e sujeitos à política de privacidade da Apple; eu não tenho acesso a eles.",
+          "Se a sincronização pelo iCloud estiver ativada (ela vem ativada por padrão), o Narra copia os salvamentos dos seus jogos para o seu próprio iCloud Drive, enquanto você joga e depois, para que eles possam passar de um dispositivo para outro. Os jogos em si não são enviados. Esses dados ficam na sua conta do iCloud, sob o controle da Apple e sujeitos à política de privacidade da Apple; eu não tenho acesso a eles.",
           "Você pode desativar a sincronização a qualquer momento nos Ajustes do Narra, em Salvamentos e iCloud. Desativá-la não apaga nada que já esteja no iCloud.",
         ],
       },
@@ -221,7 +242,7 @@ export default {
       {
         h: "Crianças",
         p: [
-          "O Narra não coleta dados pessoais de ninguém, inclusive de crianças. O Narra não inclui nenhum jogo; o conteúdo que você importa, e se ele é adequado para a sua idade, é decisão sua.",
+          "O Narra não coleta dados pessoais de ninguém, inclusive de crianças. Com exceção de sua própria pequena história de exemplo, o Narra não inclui jogos; o conteúdo que você importa, e se ele é adequado para a sua idade, é decisão sua.",
         ],
       },
       {
@@ -251,7 +272,7 @@ export default {
       {
         h: "Seu conteúdo",
         p: [
-          "O Narra não fornece, vende nem distribui jogos ou qualquer outro conteúdo. Você é responsável pelos jogos, mods, fontes e arquivos que importa, e por ter o direito de usá-los.",
+          "Com exceção de sua própria pequena história de exemplo, o Narra não fornece, vende nem distribui jogos ou qualquer outro conteúdo. Você é responsável pelos jogos, mods, fontes e arquivos que importa, e por ter o direito de usá-los.",
         ],
       },
       {
@@ -289,11 +310,9 @@ export default {
     faqTitle: "Perguntas e respostas",
     basicsTitle: "Antes de começar",
     basics: [
-      { q: "O Narra vem com jogos?", a: "Não. O Narra não inclui, não vende e não baixa jogos. Ele roda jogos de Ren'Py que você já tem, como as versões para PC ou Mac que você conseguiu com os criadores." },
+      { q: "O Narra vem com jogos?", a: "Só uma pequena história de exemplo própria. O Narra não vende nem baixa jogos; ele roda os jogos de Ren'Py que você já tem, como as versões para PC ou Mac que você conseguiu com os criadores." },
       { q: "O Narra é grátis?", a: "Sim, todos os recursos são gratuitos. A assinatura de apoiador, que é opcional, só desbloqueia os temas de fundo animados, e as gorjetas não desbloqueiam nada." },
-      { q: "O Narra roda jogos feitos com outros motores?", a: "Não. O Narra foi feito só para jogos de Ren'Py." },
-      { q: "Meus salvamentos sincronizam entre dispositivos?", a: "Sim, pelo seu próprio iCloud. Ative ou desative isso nos Ajustes do Narra, em Salvamentos e iCloud. O desenvolvedor não consegue ver seus dados do iCloud." },
-      { q: "O Narra envia meus jogos para algum lugar?", a: "Não. Os jogos ficam no seu dispositivo. Só os salvamentos vão para o seu próprio iCloud quando a sincronização está ativada. Se você ativar a tradução no jogo, o texto que está sendo traduzido é enviado ao Google Tradutor." },
+      { q: "Meus salvamentos sincronizam entre dispositivos?", a: "Sim, pelo seu próprio iCloud, até enquanto você joga. Ative ou desative isso nos Ajustes do Narra, em Salvamentos e iCloud. O desenvolvedor não consegue ver seus dados do iCloud." },
     ],
     reportTitle: "Como relatar um problema",
     reportIntro: "O jeito mais rápido é pelo próprio app:",

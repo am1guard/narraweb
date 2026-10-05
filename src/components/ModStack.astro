@@ -1,0 +1,122 @@
+---
+// Chapter "extras": mods drawn as layers stacked on the game, top one wins. On first view
+// the game's base lands and the mod layers drop onto it one by one.
+import { Picture } from "astro:assets";
+import gallery from "../assets/mascot/gallery_welcome.webp";
+import type { Dict } from "../i18n";
+
+interface Props {
+  dict: Dict;
+}
+const { dict } = Astro.props;
+const x = dict.chapters.extras;
+const layers = [
+  { label: x.stackMod.replace("{n}", "2"), kind: "mod top" },
+  { label: x.stackMod.replace("{n}", "1"), kind: "mod" },
+  { label: x.stackGame, kind: "game" },
+];
+---
+<figure class="modstack" data-seq>
+  <div class="narra float" aria-hidden="true">
+    <Picture src={gallery} alt="" widths={[180, 280, 400]} sizes="(min-width: 900px) 190px, 140px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" />
+  </div>
+  <ol class="layers" role="list" aria-label={x.stackLabel}>
+    {
+      layers.map((l, i) => (
+        <li class:list={["layer", l.kind]} style={`--n:${layers.length - 1 - i}`}>
+          <span class="plate" aria-hidden="true" />
+          <span class="name">{l.label}</span>
+        </li>
+      ))
+    }
+  </ol>
+  <figcaption class="note">{x.stackNote}</figcaption>
+</figure>
+
+<style>
+  .modstack {
+    display: grid;
+    justify-items: center;
+    gap: var(--s-4);
+    margin: 0;
+  }
+  .narra {
+    inline-size: clamp(140px, 10vw + 60px, 190px);
+    margin-block-end: -18px;
+    position: relative;
+    z-index: 2;
+  }
+  .narra :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+  }
+  .layers {
+    display: grid;
+    gap: 0;
+    inline-size: min(100%, 300px);
+    list-style: none;
+    margin: 0;
+  }
+  .layer {
+    position: relative;
+    display: grid;
+    place-items: center;
+    block-size: 64px;
+    margin-block-start: -18px;
+  }
+  .layer:first-child {
+    margin-block-start: 0;
+  }
+  .plate {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    transform: perspective(600px) rotateX(52deg);
+    border: 1px solid var(--c-dialogue-stroke);
+    box-shadow: 0 14px 24px rgb(0 0 0 / 0.25);
+  }
+  .game .plate {
+    background: linear-gradient(135deg, var(--c-surface-raised), color-mix(in srgb, var(--c-text-2) 25%, var(--c-surface)));
+  }
+  .mod .plate {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--c-cta-start) 70%, transparent), color-mix(in srgb, var(--c-cta-end) 70%, transparent));
+  }
+  .top .plate {
+    background: linear-gradient(135deg, var(--c-cta-start), var(--c-cta-end));
+  }
+  .name {
+    position: relative;
+    font-weight: 800;
+    font-size: var(--fs-sm);
+    color: var(--c-text);
+  }
+  .mod .name {
+    color: #fff;
+  }
+  .layer:nth-child(1) {
+    z-index: 3;
+  }
+  .layer:nth-child(2) {
+    z-index: 2;
+  }
+  .note {
+    max-inline-size: 18rem;
+    text-align: center;
+    color: var(--c-text-2);
+    font-size: var(--fs-sm);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .modstack:not(.is-in) .layer {
+      opacity: 0;
+    }
+    .modstack.is-in .layer {
+      animation: layer-in 620ms var(--ease-spring) calc(150ms + var(--n) * 200ms) both;
+    }
+  }
+  @keyframes layer-in {
+    from {
+      opacity: 0;
+      transform: translateY(-34px);
+    }
+  }
+</style>

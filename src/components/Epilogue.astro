@@ -17,17 +17,17 @@ interface Props {
 const { lang, dict } = Astro.props;
 const e = dict.epilogue;
 ---
-<section id="epilogue" class="epilogue" aria-labelledby="epilogue-title">
+<section id="epilogue" class="epilogue" aria-labelledby="epilogue-title" data-loop>
   <div class="container">
     <div class="grid">
       <div class="text">
-        <header data-reveal>
-          <p class="label">{e.label}</p>
-          <h2 id="epilogue-title">{e.title}</h2>
-          <Ornament />
+        <header>
+          <p class="label" data-rise style="--i:0">{e.label}</p>
+          <h2 id="epilogue-title" data-rise style="--i:1">{e.title}</h2>
+          <div data-rise style="--i:2"><Ornament /></div>
         </header>
-        <p class="lead">{e.lead}</p>
-        <dl class="ways">
+        <p class="lead" data-rise style="--i:3">{e.lead}</p>
+        <dl class="ways" data-rise style="--i:4">
           <div>
             <dt>{e.supporterTitle}</dt>
             <dd>{e.supporter}</dd>
@@ -38,12 +38,12 @@ const e = dict.epilogue;
           </div>
         </dl>
       </div>
-      <div class="art">
+      <div class="art" data-pop>
         <Picture src={heart} alt="" widths={[240, 360, 520]} sizes="(min-width: 900px) 300px, 200px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" class="mascot" />
       </div>
     </div>
 
-    <div class="finale">
+    <div class="finale" data-seq>
       <Picture src={wave} alt="" widths={[260, 400, 560]} sizes="(min-width: 900px) 300px, 220px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" class="wave" />
       <figure class="farewell">
         <figcaption class="name">Narra</figcaption>
@@ -52,9 +52,9 @@ const e = dict.epilogue;
       <nav class="choices" aria-labelledby="choices-title">
         <p id="choices-title" class="choices-title">{e.choices}</p>
         <ul role="list">
-          <li class="primary"><AppStoreButton dict={dict} size="large" /></li>
-          <li><a class="choice" href={config.discordUrl} rel="noopener">{dict.cta.discord}</a></li>
-          <li><a class="choice" href={pathFor(lang, "support")}>{e.faq}</a></li>
+          <li class="primary" style="--n:0"><AppStoreButton dict={dict} size="large" /></li>
+          <li style="--n:1"><a class="choice press" href={config.discordUrl} rel="noopener">{dict.cta.discord}</a></li>
+          <li style="--n:2"><a class="choice press" href={pathFor(lang, "support")}>{e.faq}</a></li>
         </ul>
       </nav>
     </div>
@@ -139,6 +139,47 @@ const e = dict.epilogue;
     aspect-ratio: 1;
     margin-block-end: calc(min(60vw, 280px) * -0.16);
     filter: drop-shadow(0 0 28px color-mix(in srgb, var(--c-glow) 28%, transparent));
+  }
+  /* Narra waves once when the ending comes into view, then the choices appear. */
+  @media (prefers-reduced-motion: no-preference) {
+    .wave {
+      transform-origin: 50% 88%;
+    }
+    .finale.is-in .wave {
+      animation: wave 1500ms var(--ease-in-out) 200ms both;
+    }
+    :global(.js) .finale:not(.is-in) .choices li {
+      opacity: 0;
+    }
+    .finale.is-in .choices li {
+      animation: choice-in 480ms var(--ease-out) calc(700ms + var(--n, 0) * 90ms) both;
+    }
+  }
+  @keyframes wave {
+    0% {
+      rotate: 0deg;
+    }
+    18% {
+      rotate: -7deg;
+    }
+    38% {
+      rotate: 6deg;
+    }
+    58% {
+      rotate: -4deg;
+    }
+    78% {
+      rotate: 2deg;
+    }
+    100% {
+      rotate: 0deg;
+    }
+  }
+  @keyframes choice-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
   }
   .farewell {
     position: relative;

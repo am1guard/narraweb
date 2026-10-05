@@ -36,7 +36,12 @@ const preload: Record<string, string[]> = {
   cjk: ["nunito-latin-wght-normal.woff2"],
 };
 if (lang === "vi") preload.latin.push("nunito-vietnamese-wght-normal.woff2", "cormorant-garamond-vietnamese-600-normal.woff2");
-const themeScript = `(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("narra-theme");if(t==="light"||t==="dark")d.dataset.theme=t}catch(e){}})();`;
+// Runs in <head> before the first paint:
+// - .js class and the saved theme (no flash of the wrong theme);
+// - when the system theme flips (and the visitor hasn't picked one), colours fade for 300 ms;
+// - page transitions: shared elements keep their view-transition-name only if they're on
+//   screen when the old page leaves / the new one appears, so nothing flies in from off screen.
+const themeScript = `(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("narra-theme");if(t==="light"||t==="dark")d.dataset.theme=t}catch(e){}var rm=matchMedia("(prefers-reduced-motion: reduce)");matchMedia("(prefers-color-scheme: light)").addEventListener("change",function(){if(d.dataset.theme||rm.matches)return;d.classList.add("theme-fade");setTimeout(function(){d.classList.remove("theme-fade")},360)});function prune(e){if(!e.viewTransition)return;var h=innerHeight;document.querySelectorAll("[data-vt]").forEach(function(el){var r=el.getBoundingClientRect();el.style.viewTransitionName=r.bottom>0&&r.top<h?"":"none"})}addEventListener("pageswap",prune);addEventListener("pagereveal",prune)})();`;
 ---
 <!doctype html>
 <html lang={lang} dir={info.dir}>
@@ -91,22 +96,7 @@ const themeScript = `(function(){var d=document.documentElement;d.classList.add(
     <Footer lang={lang} dict={dict} />
     {lang === "en" && <LangSuggest page={page === "404" ? "" : page} />}
     <script>
-      // Chapter titles fade in once as they come into view (only without Reduce Motion;
-      // the CSS for [data-reveal] lives in global.css and needs the .js class).
-      const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
-      if (items.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (!entry.isIntersecting) continue;
-              entry.target.classList.add("is-revealed");
-              observer.unobserve(entry.target);
-            }
-          },
-          { rootMargin: "0px 0px -10% 0px" },
-        );
-        items.forEach((item) => observer.observe(item));
-      }
+      import "../scripts/motion";
     </script>
   </body>
 </html>

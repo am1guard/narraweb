@@ -17,7 +17,9 @@ function compare(reference: unknown, other: unknown, path: string, lang: string,
   if (typeof reference === "string") {
     if (typeof other !== "string") problems.push(`${lang}: ${path} should be text`);
     else if (other.trim() === "" && reference.trim() !== "") problems.push(`${lang}: ${path} is empty`);
-    else if (reference.includes("{date}") && !other.includes("{date}")) problems.push(`${lang}: ${path} lost {date}`);
+    else
+      for (const token of reference.match(/\{\w+\}/g) ?? [])
+        if (!other.includes(token)) problems.push(`${lang}: ${path} lost ${token}`);
     return;
   }
   if (Array.isArray(reference)) {

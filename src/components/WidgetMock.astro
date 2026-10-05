@@ -1,0 +1,114 @@
+---
+// Chapter "controls": the Recently Played widget as it appears on the Home Screen, with
+// the sample story in it (the only game Narra brings). Drawn, not a screenshot.
+import { Picture } from "astro:assets";
+import welcome from "../assets/mascot/welcome.webp";
+import { app, type Dict } from "../i18n";
+import type { Lang } from "../i18n/languages";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+}
+const { lang, dict } = Astro.props;
+const s = app(lang).strings;
+---
+<figure class="widget-wrap" data-seq>
+  <div class="widget" role="img" aria-label={dict.chapters.controls.widgetLabel}>
+    <p class="w-title" aria-hidden="true">{s["widget.recent.title"]}</p>
+    <div class="w-row" aria-hidden="true">
+      <span class="cover">
+        <Picture src={welcome} alt="" widths={[96, 160]} sizes="64px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" />
+      </span>
+      <span class="w-text">
+        <span class="w-name">{s["sample.title"]}</span>
+        <span class="w-go">
+          <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><path d="M5 3.5v9l7-4.5Z" fill="currentColor" /></svg>
+          {s["widget.continue"]}
+        </span>
+      </span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .widget-wrap {
+    margin: var(--s-6) 0 0;
+  }
+  .widget {
+    display: grid;
+    gap: var(--s-3);
+    inline-size: min(100%, 330px);
+    padding: var(--s-4);
+    border-radius: 26px;
+    background: linear-gradient(160deg, #2a1d40, #160f22);
+    color: #f3eefa;
+    box-shadow: var(--shadow-soft), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  }
+  .w-title {
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    color: #c4a1ff;
+  }
+  .w-row {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+  }
+  .cover {
+    flex: none;
+    inline-size: 64px;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: radial-gradient(circle at 70% 20%, #7442d6, #1d1529 70%);
+  }
+  .cover :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: contain;
+  }
+  .w-text {
+    display: grid;
+    gap: 6px;
+    min-inline-size: 0;
+  }
+  .w-name {
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .w-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    justify-self: start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgb(196 161 255 / 0.18);
+    color: #e3d3ff;
+    font-size: var(--fs-xs);
+    font-weight: 800;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .widget-wrap:not(.is-in) .widget {
+      opacity: 0;
+    }
+    .widget-wrap.is-in .widget {
+      animation: widget-in 600ms var(--ease-spring) 120ms both;
+    }
+    .widget-wrap.is-in .w-go {
+      animation: go-pulse 900ms var(--ease-in-out) 760ms both;
+    }
+  }
+  @keyframes widget-in {
+    from {
+      opacity: 0;
+      transform: scale(0.88) translateY(10px);
+    }
+  }
+  @keyframes go-pulse {
+    50% {
+      transform: scale(1.08);
+    }
+  }
+</style>

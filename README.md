@@ -43,17 +43,19 @@ src/assets/screens/<dil>/<ad>.png     o dile özel (ör. tr/, ja/, zh-Hans/); va
 
 | Ad | Yön ve boyut | Gösterildiği bölüm |
 | --- | --- | --- |
-| `library` | dikey 1206x2622 | Bölüm I (oyun ekleme ve kütüphane) |
-| `hub` | dikey 1206x2622 | yuva hazır, şimdilik kullanılmıyor |
-| `engine-picker` | dikey 1206x2622 | Bölüm II (motor sürümleri) |
-| `in-game-narra` | yatay 2622x1206 | Bölüm III için ayrılmış; bu bölüm şimdilik çizimle anlatılıyor |
-| `pause` | yatay 2622x1206 | Bölüm IV (kontroller) |
-| `saves` | dikey 1206x2622 | Bölüm V (kayıtlar) |
-| `mods` | dikey 1206x2622 | Bölüm VI (modlar, galeri) |
-| `gallery` | dikey 1206x2622 | yuva hazır, şimdilik kullanılmıyor |
-| `settings` | dikey 1206x2622 | Bölüm VII (diller, gizlilik) |
+| `library` | dikey 1260x2736 | Bölüm I (oyun ekleme ve kütüphane) |
+| `hub` | dikey 1260x2736 | Bölüm II'de `engine-picker` yoksa |
+| `engine-picker` | dikey 1260x2736 | Bölüm II (motor sürümleri) |
+| `in-game-narra` | yatay 2736x1260 | Bölüm III için ayrılmış; bu bölüm çizimle anlatılıyor |
+| `portrait-play` | dikey 1260x2736 | Bölüm IV (kontroller); yoksa `pause` |
+| `pause` | yatay 2736x1260 | Bölüm IV, `portrait-play` yoksa |
+| `saves` | dikey 1260x2736 | Bölüm V (kayıtlar) |
+| `mods` | dikey 1260x2736 | Bölüm VI (modlar, galeri) |
+| `gallery` | dikey 1260x2736 | Bölüm VI'da `mods` yoksa |
+| `proactive` | yatay 2736x1260 | yuva hazır, şimdilik kullanılmıyor |
+| `settings` | dikey 1260x2736 | Bölüm VII (diller, gizlilik) |
 
-PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Hepsi eklenince `src/config.ts` içinde `screensReady: true` yapın. Eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür; bu yüzden hepsi gelmeden açmayın. Denemek için: `NARRA_SCREENS_READY=1 npm run build`.
+PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Telefon çerçevesi görüntünün kendi oranını alır (iPhone Air 1260x2736 varsayılır, başka boyutlar da olur). Ekran görüntüleri açıkken kayıt kartları ve mod katmanları çizimleri sağ kolondan metnin içine geçer. Hepsi eklenince `src/config.ts` içinde `screensReady: true` yapın. Eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür; bu yüzden hepsi gelmeden açmayın. Denemek için: `NARRA_SCREENS_READY=1 npm run build`.
 
 Telefon çerçevesi CSS ile çizilir; ekran görüntüsünün kendisinde çerçeve olmamalı (Simulator'daki "Save Screen" ya da cihaz ekran görüntüsü olduğu gibi).
 
@@ -94,9 +96,18 @@ Telefon çerçevesi CSS ile çizilir; ekran görüntüsünün kendisinde çerçe
 4. Settings > Pages > Custom domain: `playnarra.app` yazıp kaydedin (`public/CNAME` dosyası da aynı adı taşır). DNS denetimi geçince **Enforce HTTPS** kutusunu işaretleyin. `.app` alan adları tarayıcılarda yalnız HTTPS ile açılır (HSTS ön yükleme listesindedir); sertifika hazır olana kadar site açılmayabilir, bu birkaç dakika ile birkaç saat sürebilir.
 5. İsteğe bağlı: GitHub hesabı ayarlarında (Settings > Pages) alan adını doğrulayın; başkasının aynı alan adını kendi deposuna bağlamasını önler.
 
+## Hareket
+
+Hareket dili `src/styles/motion.css` ve `src/scripts/motion.ts` içindedir (bileşene özel hareketler bileşenin kendi `<style>` bloğunda). Hepsi yalnız transform ve opacity kullanır (tek istisna oyun içi sahnedeki ilerleme yayının çizgi uzunluğu) ve Hareketi Azalt açıkken kapanır: gizli başlangıç durumları yalnız `prefers-reduced-motion: no-preference` içinde tanımlıdır, bu yüzden Hareketi Azalt'ta ya da JavaScript olmadan içerik her zaman görünür.
+
+- Sayfa geçişleri: `@view-transition { navigation: auto; }`; logo, üst çubuk araçları, Narra ve alt bilgideki Narra paylaşılan öğe (`data-vt`). Ekranda olmayan öğenin adı geçişte kaldırılır (`<head>` içindeki küçük betik), uçarak gelmez.
+- Tema: düğmeden açılan dairesel maske (View Transitions), desteklenmezse ve sistem teması değişince 300 ms renk geçişi.
+- Kaydırma: `[data-rise]` öğeleri `animation-timeline: view()` ile belirir; desteklemeyen tarayıcıda IntersectionObserver bir kez `.is-in` ekler. `[data-seq]` kapsayıcıları (zaman çizelgesi, oyun içi sahne, Dosyalar yolu, dil çipleri, kayıt kartları, mod katmanları, widget, son bölüm) görünüme girince bir kez oynar.
+- Sonsuz döngüler (`.loop`, `.float`) bulundukları bölüm (`[data-loop]`) ekran dışındayken durur.
+
 ## Gizlilik
 
-Site çerez, analiz ya da üçüncü taraf betik ve yazı tipi kullanmaz. Tarayıcıda yalnız iki şey saklanır, ikisi de `localStorage`'da ve yalnız o tarayıcıda: seçilen tema (`narra-theme`) ve dil önerisinin kapatıldığı (`narra-lang-dismissed`). İkisi de erişilemezse sayfa yine çalışır.
+Site çerez, analiz ya da üçüncü taraf betik ve yazı tipi kullanmaz. Site Cloudflare arkasında yayımlanıyorsa Cloudflare Web Analytics (otomatik betik ekleme) kapalı olmalı; açıkken gizlilik sayfasındaki "analiz yok" ifadesi doğru olmaz. Tarayıcıda yalnız iki şey saklanır, ikisi de `localStorage`'da ve yalnız o tarayıcıda: seçilen tema (`narra-theme`) ve dil önerisinin kapatıldığı (`narra-lang-dismissed`). İkisi de erişilemezse sayfa yine çalışır.
 
 ## Klasör yapısı
 

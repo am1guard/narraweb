@@ -14,8 +14,10 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
 ---
 <footer class="site-footer">
   <div class="container">
-    <div class="peek" aria-hidden="true">
-      <Picture src={peek} alt="" widths={[160, 320]} sizes="160px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" />
+    <div class="peek" aria-hidden="true" data-seq data-vt="footer-narra">
+      <div class="peek-inner">
+        <Picture src={peek} alt="" widths={[160, 320]} sizes="160px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" />
+      </div>
     </div>
     <div class="cols">
       <div class="about">
@@ -24,11 +26,11 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
       </div>
       <nav aria-label={dict.nav.support}>
         <ul role="list" class="links">
-          <li><a href={pathFor(lang, "support")}>{dict.nav.support}</a></li>
-          <li><a href={pathFor(lang, "privacy")}>{dict.nav.privacy}</a></li>
-          <li><a href={pathFor(lang, "terms")}>{dict.nav.terms}</a></li>
-          <li><a href={config.discordUrl} rel="noopener">Discord</a></li>
-          <li><a href={`mailto:${config.supportEmail}`}>{dict.footer.email}</a></li>
+          <li><a class="press" href={pathFor(lang, "support")}>{dict.nav.support}</a></li>
+          <li><a class="press" href={pathFor(lang, "privacy")}>{dict.nav.privacy}</a></li>
+          <li><a class="press" href={pathFor(lang, "terms")}>{dict.nav.terms}</a></li>
+          <li><a class="press" href={config.discordUrl} rel="noopener">Discord</a></li>
+          <li><a class="press" href={`mailto:${config.supportEmail}`}>{dict.footer.email}</a></li>
         </ul>
       </nav>
     </div>
@@ -56,9 +58,21 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
     transform: translateY(-100%);
     pointer-events: none;
   }
+  .peek {
+    overflow: hidden;
+  }
   .peek :global(img) {
     inline-size: 100%;
     block-size: auto;
+  }
+  /* Narra slides up from behind the footer's edge the first time it comes into view. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .peek:not(.is-in) .peek-inner {
+      translate: 0 100%;
+    }
+    .peek-inner {
+      transition: translate 900ms var(--ease-spring) 150ms;
+    }
   }
   .cols {
     display: flex;

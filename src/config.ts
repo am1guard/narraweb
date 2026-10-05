@@ -10,7 +10,7 @@ export const config = {
   appStoreUrl: "",
   /** Numeric App Store ID. While empty, the Smart App Banner meta tag is left out. */
   appStoreId: "",
-  supportEmail: "emirhantr38@gmail.com",
+  supportEmail: "support@playnarra.app",
   discordUrl: "https://discord.gg/3Sm26Urvrw",
   developer: "Emir Han Temur",
   /**

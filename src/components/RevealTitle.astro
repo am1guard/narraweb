@@ -1,0 +1,62 @@
+---
+// A heading whose words rise in line by line on the first view of the page.
+// Words are split at build time (Intl.Segmenter, so Japanese and Chinese split too) and
+// punctuation stays with its word. A tiny inline script measures which line each word
+// landed on before the first paint and staggers them by line. The full text stays one
+// heading for screen readers; without JavaScript or with Reduce Motion it simply shows.
+import type { Lang } from "../i18n/languages";
+
+interface Props {
+  id: string;
+  text: string;
+  lang: Lang;
+}
+const { id, text, lang } = Astro.props;
+
+type Part = { word: string } | { space: string };
+const parts: Part[] = [];
+// Arabic and Persian stay one run of text: splitting cursive script into boxes can change
+// the line height when the web font arrives. The whole title rises as one line instead.
+const whole = lang === "ar" || lang === "fa";
+const segmenter = new Intl.Segmenter(lang === "la" ? "en" : lang, { granularity: "word" });
+for (const { segment, isWordLike } of whole ? [] : segmenter.segment(text)) {
+  if (/^\s+$/.test(segment)) parts.push({ space: segment });
+  else if (!isWordLike && parts.length && "word" in parts[parts.length - 1]) (parts[parts.length - 1] as { word: string }).word += segment;
+  else if (!isWordLike && parts.length === 0) parts.push({ word: segment });
+  else if (isWordLike && parts.length && "word" in parts[parts.length - 1] && /['’]$/.test((parts[parts.length - 1] as { word: string }).word))
+    (parts[parts.length - 1] as { word: string }).word += segment;
+  else parts.push({ word: segment });
+}
+const script = `(function(){var h=document.getElementById(${JSON.stringify(id)});if(!h||matchMedia("(prefers-reduced-motion: reduce)").matches)return;var w=h.querySelectorAll(".w"),top=null,line=-1;for(var i=0;i<w.length;i++){var t=w[i].offsetTop;if(top===null||t>top+4){line++;top=t}w[i].style.setProperty("--line",line)}h.classList.add("is-rising")})();`;
+---
+<h1 id={id} class="reveal-title">{whole ? <span class="w whole">{text}</span> : parts.map((p) => ("word" in p ? <span class="w">{p.word}</span> : p.space))}</h1>
+<script is:inline set:html={script} />
+
+<style>
+  .w {
+    display: inline-block;
+  }
+  .w.whole {
+    display: inline;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-title.is-rising .w.whole {
+      display: inline-block;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-title.is-rising .w {
+      animation: title-rise 760ms var(--ease-out) calc(80ms + var(--line, 0) * 130ms) both;
+    }
+  }
+  @keyframes title-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.35em);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

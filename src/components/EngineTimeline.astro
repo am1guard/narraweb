@@ -12,19 +12,19 @@ const PY3 = ["8.0.3", "8.1.3", "8.2.3", "8.3.7", "8.4.1", "8.5.3", "8.5.4", "8.6
 const PRE = new Set(["8.5.4", "8.6.0"]);
 const e = dict.chapters.engine;
 const bands = [
-  { label: e.py2, versions: PY2, key: "py2" },
-  { label: e.py3, versions: PY3, key: "py3" },
+  { label: e.py2, versions: PY2, key: "py2", offset: 0 },
+  { label: e.py3, versions: PY3, key: "py3", offset: PY2.length },
 ];
 ---
-<figure class="timeline">
+<figure class="timeline" data-seq>
   <figcaption class="caption">{e.timelineLabel}</figcaption>
   <div class="bands">
     {
       bands.map((band) => (
-        <div class:list={["band", band.key]} style={`--count:${band.versions.length}`}>
+        <div class:list={["band", band.key]} style={`--count:${band.versions.length};--start:${band.offset};--len:${band.versions.length}`}>
           <ol role="list">
-            {band.versions.map((v) => (
-              <li class:list={{ pre: PRE.has(v) }}>
+            {band.versions.map((v, i) => (
+              <li class:list={{ pre: PRE.has(v) }} style={`--n:${band.offset + i}`}>
                 <span class="dot" aria-hidden="true" />
                 <span class="ver" dir="ltr">{v}</span>
                 {PRE.has(v) && (
@@ -108,15 +108,72 @@ const bands = [
     margin-block-start: calc(-1 * var(--s-1));
   }
   .band-label {
+    position: relative;
     margin-block-start: var(--s-3);
     padding-block-start: var(--s-2);
-    border-block-start: 1px solid var(--c-stroke-strong);
     font-size: var(--fs-xs);
     font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--c-text-2);
     text-align: center;
+  }
+  /* The band under each Python generation; it fills from the start once the dots are lit. */
+  .band-label::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 2px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--c-stroke-strong), color-mix(in srgb, var(--c-accent) 70%, transparent));
+    transform-origin: left center;
+  }
+  :global([dir="rtl"]) .band-label::before {
+    transform-origin: right center;
+    background: linear-gradient(to left, var(--c-stroke-strong), color-mix(in srgb, var(--c-accent) 70%, transparent));
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .timeline:not(.is-in) .dot,
+    :global(.js) .timeline:not(.is-in) .ver,
+    :global(.js) .timeline:not(.is-in) li .moon {
+      opacity: 0;
+    }
+    :global(.js) .timeline:not(.is-in) .band-label::before,
+    :global(.js) .timeline:not(.is-in) ol::before {
+      transform: scaleX(0);
+    }
+    .timeline.is-in .dot {
+      animation: dot-on 520ms var(--ease-spring) calc(var(--n) * 70ms) both;
+    }
+    .timeline.is-in .ver,
+    .timeline.is-in li .moon {
+      animation: ver-on 420ms var(--ease-out) calc(var(--n) * 70ms + 80ms) both;
+    }
+    .timeline.is-in .band-label::before,
+    .timeline.is-in ol::before {
+      transition: transform calc(var(--len) * 70ms + 300ms) var(--ease-out) calc(var(--start) * 70ms);
+    }
+  }
+  @keyframes dot-on {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.35);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes ver-on {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
   }
   .legend {
     margin-block-start: var(--s-4);
@@ -142,6 +199,10 @@ const bands = [
       block-size: 2px;
       background: linear-gradient(to right, var(--c-stroke-strong), color-mix(in srgb, var(--c-accent) 60%, transparent));
       z-index: -1;
+      transform-origin: left center;
+    }
+    :global([dir="rtl"]) ol::before {
+      transform-origin: right center;
     }
     .bands {
       isolation: isolate;

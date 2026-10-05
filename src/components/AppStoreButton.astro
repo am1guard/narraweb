@@ -14,7 +14,7 @@ const live = config.appStoreUrl.trim() !== "";
 ---
 {
   live ? (
-    <a class:list={["cta", size]} href={config.appStoreUrl} rel="noopener">
+    <a class:list={["cta", "press", size]} href={config.appStoreUrl} rel="noopener">
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
         <path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
@@ -62,9 +62,6 @@ const live = config.appStoreUrl.trim() !== "";
   }
   .cta:hover {
     box-shadow: 0 14px 36px color-mix(in srgb, var(--c-cta-start) 55%, transparent);
-  }
-  .cta:active {
-    transform: scale(0.97);
   }
   .soon {
     color: var(--c-text);
