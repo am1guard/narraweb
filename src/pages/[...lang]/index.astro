@@ -49,7 +49,6 @@ const jsonLd = {
   url: new URL(Astro.url.pathname, config.siteUrl).href,
   image: new URL("/icon-512.png", config.siteUrl).href,
   inLanguage: [...LANGS],
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   author: { "@type": "Person", name: config.developer },
   ...(config.appStoreUrl ? { downloadUrl: config.appStoreUrl, installUrl: config.appStoreUrl } : {}),
 };

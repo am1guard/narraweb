@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: um player de visual novels de Ren'Py para iPhone e iPad",
     homeDescription:
-      "O Narra roda no iPhone e no iPad as visual novels de Ren'Py que você já tem. Treze versões do motor incluídas, um gerenciador de salvamentos com sincronização pelo iCloud, mods, uma galeria e uma pequena guia chamada Narra. Grátis, sem conta e sem rastreamento.",
+      "O Narra roda no iPhone e no iPad as visual novels de Ren'Py que você já tem. Treze versões do motor incluídas, um gerenciador de salvamentos com sincronização pelo iCloud, mods, uma galeria e uma pequena guia chamada Narra. Compra única, sem conta e sem rastreamento.",
     privacyTitle: "Política de Privacidade",
     privacyDescription:
       "O que o Narra faz com as suas informações: sem conta, sem anúncios, sem análises. Seus jogos e salvamentos ficam no seu dispositivo e no seu próprio iCloud.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epílogo",
-    title: "Grátis, da primeira à última página",
-    lead: "Todos os recursos do Narra são gratuitos. O Narra é feito por um único desenvolvedor, Emir Han Temur, e se você quiser ajudar o app a crescer, há duas formas.",
+    title: "Compre uma vez, e é seu",
+    lead: "Compre o Narra uma vez e tudo é seu. O Narra é feito por um único desenvolvedor, Emir Han Temur. Se quiser contribuir mais, a assinatura opcional de apoiador desbloqueia os temas animados, e as gorjetas apoiam o desenvolvimento.",
     supporterTitle: "Assinatura de apoiador",
     supporter: "Mensal ou anual. Ela desbloqueia os temas de fundo animados, e é só isso que ela desbloqueia.",
     tipsTitle: "Gorjetas",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Antes de começar",
     basics: [
       { q: "O Narra vem com jogos?", a: "Só uma pequena história de exemplo própria. O Narra não vende nem baixa jogos; ele roda os jogos de Ren'Py que você já tem, como as versões para PC ou Mac que você conseguiu com os criadores." },
-      { q: "O Narra é grátis?", a: "Sim, todos os recursos são gratuitos. A assinatura de apoiador, que é opcional, só desbloqueia os temas de fundo animados, e as gorjetas não desbloqueiam nada." },
+      { q: "Quanto custa o Narra?", a: "O Narra é uma compra única; a App Store mostra o preço da sua região. A assinatura opcional de apoiador desbloqueia os temas de fundo animados. As gorjetas não desbloqueiam nada; são só apoio." },
       { q: "Meus salvamentos sincronizam entre dispositivos?", a: "Sim, pelo seu próprio iCloud, até enquanto você joga. Ative ou desative isso nos Ajustes do Narra, em Salvamentos e iCloud. O desenvolvedor não consegue ver seus dados do iCloud." },
     ],
     reportTitle: "Como relatar um problema",

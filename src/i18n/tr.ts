@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: iPhone ve iPad için Ren'Py görsel roman oynatıcısı",
     homeDescription:
-      "Narra, sahip olduğun Ren'Py görsel romanlarını iPhone ve iPad'de oynatır. On üç gömülü motor sürümü, iCloud eşitlemeli kayıt yöneticisi, modlar, galeri ve Narra adında küçük bir rehber. Ücretsiz; hesap yok, izleme yok.",
+      "Narra, sahip olduğun Ren'Py görsel romanlarını iPhone ve iPad'de oynatır. On üç gömülü motor sürümü, iCloud eşitlemeli kayıt yöneticisi, modlar, galeri ve Narra adında küçük bir rehber. Bir kez al; hesap yok, izleme yok.",
     privacyTitle: "Gizlilik Politikası",
     privacyDescription:
       "Narra bilgilerinle ne yapar: hesap yok, reklam yok, analiz yok. Oyunların ve kayıtların cihazında ve kendi iCloud'unda kalır.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Son söz",
-    title: "İlk sayfadan son sayfaya ücretsiz",
-    lead: "Narra'nın tüm özellikleri ücretsiz. Narra'yı tek bir geliştirici, Emir Han Temur yapıyor; büyümesine yardım etmek istersen iki yolu var.",
+    title: "Bir kez al, hepsi senin",
+    lead: "Narra'yı bir kez al, hepsi senin. Narra'yı tek bir geliştirici, Emir Han Temur yapıyor. Daha fazlasını yapmak istersen isteğe bağlı destekçi aboneliği animasyonlu temaları açar, bahşişler de geliştirmeyi destekler.",
     supporterTitle: "Destekçi aboneliği",
     supporter: "Aylık ya da yıllık. Animasyonlu arka plan temalarını açar; açtığı tek şey de bu.",
     tipsTitle: "Bahşiş",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Başlamadan önce",
     basics: [
       { q: "Narra'nın içinde oyun var mı?", a: "Yalnız kendine ait kısa bir örnek hikâye. Narra oyun satmaz, indirmez; zaten sahip olduğun Ren'Py oyunlarını, örneğin yapımcılarından edindiğin PC ya da Mac sürümlerini oynatır." },
-      { q: "Narra ücretsiz mi?", a: "Evet, tüm özellikleri ücretsiz. İsteğe bağlı destekçi aboneliği yalnız animasyonlu arka plan temalarını açar; bahşişler hiçbir şeyin kilidini açmaz." },
+      { q: "Narra ne kadar?", a: "Narra tek seferlik bir satın almadır; fiyatı App Store'da bölgene göre görünür. İsteğe bağlı destekçi aboneliği animasyonlu arka plan temalarını açar. Bahşişler hiçbir şey açmaz; yalnız destektir." },
       { q: "Kayıtlarım cihazlar arasında eşitlenir mi?", a: "Evet, kendi iCloud'un üzerinden, oynarken bile. Narra'nın Ayarlar ekranında Kayıtlar ve iCloud bölümünden açıp kapatabilirsin. Geliştirici iCloud verilerini göremez." },
     ],
     reportTitle: "Sorun bildirirken",

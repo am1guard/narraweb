@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: ein Player für Ren'Py-Visual-Novels auf iPhone und iPad",
     homeDescription:
-      "Narra spielt die Ren'Py-Visual-Novels, die du schon hast, auf iPhone und iPad. Dreizehn eingebaute Engine-Versionen, eine Spielstand-Verwaltung mit iCloud-Synchronisierung, Mods, eine Galerie und eine kleine Begleiterin namens Narra. Kostenlos, ohne Konto und ohne Tracking.",
+      "Narra spielt die Ren'Py-Visual-Novels, die du schon hast, auf iPhone und iPad. Dreizehn eingebaute Engine-Versionen, eine Spielstand-Verwaltung mit iCloud-Synchronisierung, Mods, eine Galerie und eine kleine Begleiterin namens Narra. Einmal kaufen, ohne Konto und ohne Tracking.",
     privacyTitle: "Datenschutzrichtlinie",
     privacyDescription:
       "Was Narra mit deinen Daten macht: kein Konto, keine Werbung, keine Analyse. Deine Spiele und Spielstände bleiben auf deinem Gerät und in deiner eigenen iCloud.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epilog",
-    title: "Kostenlos, von der ersten bis zur letzten Seite",
-    lead: "Jede Funktion in Narra ist kostenlos. Narra wird von einem einzigen Entwickler gemacht, Emir Han Temur. Wenn du helfen möchtest, dass die App wächst, gibt es zwei Wege.",
+    title: "Einmal kaufen, alles gehört dir",
+    lead: "Du kaufst Narra einmal, und alles gehört dir. Narra wird von einem einzigen Entwickler gemacht, Emir Han Temur. Wenn du mehr geben möchtest, schaltet das optionale Unterstützer-Abo die animierten Designs frei, und Trinkgelder unterstützen die Entwicklung.",
     supporterTitle: "Unterstützer-Abo",
     supporter: "Monatlich oder jährlich. Es schaltet die animierten Hintergrund-Designs frei, und sonst nichts.",
     tipsTitle: "Trinkgeld",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Bevor du loslegst",
     basics: [
       { q: "Enthält Narra Spiele?", a: "Nur eine eigene kurze Beispielgeschichte. Narra verkauft keine Spiele und lädt keine herunter; die App spielt Ren'Py-Spiele, die du schon hast, etwa die PC- oder Mac-Versionen, die du von ihren Entwicklern bekommen hast." },
-      { q: "Ist Narra kostenlos?", a: "Ja, alle Funktionen sind kostenlos. Das optionale Unterstützer-Abo schaltet nur die animierten Hintergrund-Designs frei, und Trinkgelder schalten nichts frei." },
+      { q: "Was kostet Narra?", a: "Narra ist ein einmaliger Kauf; den Preis für deine Region zeigt der App Store. Das optionale Unterstützer-Abo schaltet die animierten Hintergrund-Designs frei. Trinkgelder schalten nichts frei, sie sind einfach Unterstützung." },
       { q: "Werden meine Spielstände zwischen Geräten synchronisiert?", a: "Ja, über deine eigene iCloud, sogar während du spielst. Schalte das in den Einstellungen von Narra unter „Spielstände & iCloud“ ein oder aus. Der Entwickler kann deine iCloud-Daten nicht sehen." },
     ],
     reportTitle: "Ein Problem melden",

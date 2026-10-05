@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: přehrávač vizuálních románů v Ren'Py pro iPhone a iPad",
     homeDescription:
-      "Narra na iPhonu a iPadu přehraje vizuální romány v Ren'Py, které už máš. Třináct vestavěných verzí enginu, správce uložených her se synchronizací přes iCloud, módy, galerie a malá průvodkyně jménem Narra. Zdarma, bez účtu a bez sledování.",
+      "Narra na iPhonu a iPadu přehraje vizuální romány v Ren'Py, které už máš. Třináct vestavěných verzí enginu, správce uložených her se synchronizací přes iCloud, módy, galerie a malá průvodkyně jménem Narra. Jednorázový nákup, bez účtu a bez sledování.",
     privacyTitle: "Zásady ochrany osobních údajů",
     privacyDescription:
       "Co Narra dělá s tvými údaji: žádný účet, žádné reklamy, žádná analytika. Tvoje hry i uložené hry zůstávají v zařízení a ve tvém vlastním iCloudu.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epilog",
-    title: "Zdarma, od první stránky po poslední",
-    lead: "Všechny funkce Narry jsou zdarma. Narru vytváří jediný vývojář, Emir Han Temur, a pokud chceš pomoct, aby rostla, máš dvě možnosti.",
+    title: "Koupíš jednou a je tvoje",
+    lead: "Narru koupíš jednou a všechno je tvoje. Narru vytváří jediný vývojář, Emir Han Temur. Pokud chceš přispět víc, volitelné předplatné podporovatele odemyká animované motivy a spropitné podporuje vývoj.",
     supporterTitle: "Předplatné podporovatele",
     supporter: "Měsíční nebo roční. Odemyká animované motivy pozadí, a nic víc.",
     tipsTitle: "Spropitné",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Než začneš",
     basics: [
       { q: "Obsahuje Narra nějaké hry?", a: "Jen vlastní krátký ukázkový příběh. Narra hry neprodává ani nestahuje; přehrává hry v Ren'Py, které už máš, například verze pro PC nebo Mac od jejich tvůrců." },
-      { q: "Je Narra zdarma?", a: "Ano, všechny funkce jsou zdarma. Volitelné předplatné podporovatele odemyká jen animované motivy pozadí a spropitné neodemyká nic." },
+      { q: "Kolik Narra stojí?", a: "Narra je jednorázový nákup; cenu pro tvou oblast ukáže App Store. Volitelné předplatné podporovatele odemyká animované motivy pozadí. Spropitné nic neodemyká, je to jen podpora." },
       { q: "Synchronizují se moje uložené hry mezi zařízeními?", a: "Ano, přes tvůj vlastní iCloud, a to i během hraní. Zapnout nebo vypnout to můžeš v Nastavení Narry v části Uložené hry a iCloud. Vývojář tvoje data na iCloudu nevidí." },
     ],
     reportTitle: "Nahlášení problému",

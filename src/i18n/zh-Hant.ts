@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra：適用於 iPhone 和 iPad 的 Ren'Py 視覺小說播放器",
     homeDescription:
-      "Narra 在 iPhone 和 iPad 上執行你已經擁有的 Ren'Py 視覺小說。內建十三個引擎版本、支援 iCloud 同步的存檔管理器、模組、圖庫，還有一位名叫 Narra 的小嚮導。免費，不需要帳號，也不追蹤你。",
+      "Narra 在 iPhone 和 iPad 上執行你已經擁有的 Ren'Py 視覺小說。內建十三個引擎版本、支援 iCloud 同步的存檔管理器、模組、圖庫，還有一位名叫 Narra 的小嚮導。一次購買，不需要帳號，也不追蹤你。",
     privacyTitle: "隱私權政策",
     privacyDescription:
       "Narra 如何處理你的資訊：沒有帳號，沒有廣告，沒有分析。你的遊戲和存檔只留在你的裝置和你自己的 iCloud 中。",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "尾聲",
-    title: "從第一頁到最後一頁，全部免費",
-    lead: "Narra 的所有功能都免費。Narra 由一位開發者 Emir Han Temur 製作，如果你想幫助它成長，有兩種方式。",
+    title: "一次購買，全部歸你",
+    lead: "Narra 只需購買一次，全部歸你所有。Narra 由一位開發者 Emir Han Temur 製作。如果你想多支持一點，選擇性的支持者訂閱會解鎖動態主題，小費則用於支持開發。",
     supporterTitle: "支持者訂閱",
     supporter: "按月或按年。它會解鎖動態背景主題，也只解鎖這些。",
     tipsTitle: "小費",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "開始之前",
     basics: [
       { q: "Narra 有附遊戲嗎？", a: "只附帶一個簡短的範例故事。Narra 不販售也不下載遊戲；它執行你已經擁有的 Ren'Py 遊戲，例如你從創作者那裡取得的 PC 或 Mac 版本。" },
-      { q: "Narra 免費嗎？", a: "是的，所有功能都免費。選擇性的支持者訂閱只會解鎖動態背景主題，小費不會解鎖任何內容。" },
+      { q: "Narra 多少錢？", a: "Narra 是一次性購買，價格以 App Store 上你所在地區的顯示為準。選擇性的支持者訂閱會解鎖動態背景主題。小費不會解鎖任何內容，只是一份支持。" },
       { q: "我的存檔會在裝置之間同步嗎？", a: "會，透過你自己的 iCloud，遊玩時也會同步。可以在 Narra 的設定中，於「存檔與 iCloud」底下開啟或關閉。開發者看不到你的 iCloud 資料。" },
     ],
     reportTitle: "回報問題",

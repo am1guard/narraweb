@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: trình chơi visual novel Ren'Py cho iPhone và iPad",
     homeDescription:
-      "Narra chơi những visual novel Ren'Py bạn đã có trên iPhone và iPad. Mười ba phiên bản công cụ có sẵn, trình quản lý bản lưu có đồng bộ iCloud, bản mod, thư viện ảnh và một người dẫn đường nhỏ tên là Narra. Miễn phí, không cần tài khoản, không theo dõi.",
+      "Narra chơi những visual novel Ren'Py bạn đã có trên iPhone và iPad. Mười ba phiên bản công cụ có sẵn, trình quản lý bản lưu có đồng bộ iCloud, bản mod, thư viện ảnh và một người dẫn đường nhỏ tên là Narra. Mua một lần, không cần tài khoản, không theo dõi.",
     privacyTitle: "Chính sách quyền riêng tư",
     privacyDescription:
       "Narra làm gì với thông tin của bạn: không tài khoản, không quảng cáo, không phân tích. Trò chơi và bản lưu của bạn ở lại trên thiết bị và trong iCloud của chính bạn.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Lời kết",
-    title: "Miễn phí từ trang đầu đến trang cuối",
-    lead: "Mọi tính năng của Narra đều miễn phí. Narra do một nhà phát triển duy nhất, Emir Han Temur, làm ra, và nếu bạn muốn giúp Narra lớn lên thì có hai cách.",
+    title: "Mua một lần, tất cả là của bạn",
+    lead: "Mua Narra một lần là mọi thứ thuộc về bạn. Narra do một nhà phát triển duy nhất, Emir Han Temur, làm ra. Nếu bạn muốn ủng hộ thêm, gói đăng ký ủng hộ không bắt buộc sẽ mở khóa các chủ đề động, còn tiền tip giúp phát triển ứng dụng.",
     supporterTitle: "Gói đăng ký ủng hộ",
     supporter: "Theo tháng hoặc theo năm. Gói này mở khóa các chủ đề nền động, và chỉ mở khóa đúng thế thôi.",
     tipsTitle: "Tiền tip",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Trước khi bắt đầu",
     basics: [
       { q: "Narra có kèm sẵn trò chơi không?", a: "Chỉ có một câu chuyện mẫu ngắn của riêng Narra. Narra không bán và không tải trò chơi về. Narra chơi những trò chơi Ren'Py bạn đã có, chẳng hạn bản PC hoặc Mac bạn nhận từ người làm trò chơi." },
-      { q: "Narra có miễn phí không?", a: "Có, mọi tính năng đều miễn phí. Gói đăng ký ủng hộ không bắt buộc chỉ mở khóa các chủ đề nền động, còn tiền tip không mở khóa gì cả." },
+      { q: "Narra giá bao nhiêu?", a: "Narra là gói mua một lần; App Store hiển thị giá theo khu vực của bạn. Gói đăng ký ủng hộ không bắt buộc mở khóa các chủ đề nền động. Tiền tip không mở khóa gì cả, chỉ là sự ủng hộ." },
       { q: "Bản lưu của tôi có đồng bộ giữa các thiết bị không?", a: "Có, qua iCloud của chính bạn, kể cả khi đang chơi. Bật hoặc tắt trong Cài đặt của Narra, ở mục Bản lưu & iCloud. Nhà phát triển không thể xem dữ liệu iCloud của bạn." },
     ],
     reportTitle: "Báo cáo sự cố",

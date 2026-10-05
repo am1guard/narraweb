@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: un lettore di visual novel Ren'Py per iPhone e iPad",
     homeDescription:
-      "Narra fa girare su iPhone e iPad le visual novel Ren'Py che hai già. Tredici versioni del motore incluse, un gestore dei salvataggi con sincronizzazione iCloud, mod, una galleria e una piccola guida di nome Narra. Gratis, senza account e senza tracciamento.",
+      "Narra fa girare su iPhone e iPad le visual novel Ren'Py che hai già. Tredici versioni del motore incluse, un gestore dei salvataggi con sincronizzazione iCloud, mod, una galleria e una piccola guida di nome Narra. Un solo acquisto, senza account e senza tracciamento.",
     privacyTitle: "Informativa sulla privacy",
     privacyDescription:
       "Cosa fa Narra con le tue informazioni: niente account, niente pubblicità, niente analisi. I tuoi giochi e i tuoi salvataggi restano sul tuo dispositivo e nel tuo iCloud.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epilogo",
-    title: "Gratis, dalla prima all'ultima pagina",
-    lead: "Tutte le funzioni di Narra sono gratuite. Narra è fatta da un solo sviluppatore, Emir Han Temur, e se vuoi aiutarla a crescere, ci sono due modi.",
+    title: "Comprala una volta, ed è tua",
+    lead: "Compri Narra una volta e tutto è tuo. Narra è fatta da un solo sviluppatore, Emir Han Temur. Se vuoi fare di più, l'abbonamento sostenitore, facoltativo, sblocca i temi animati, e le mance sostengono lo sviluppo.",
     supporterTitle: "Abbonamento sostenitore",
     supporter: "Mensile o annuale. Sblocca i temi di sfondo animati, e non sblocca nient'altro.",
     tipsTitle: "Mance",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Prima di iniziare",
     basics: [
       { q: "Narra include dei giochi?", a: "Solo una sua breve storia di esempio. Narra non vende e non scarica giochi; fa girare i giochi Ren'Py che hai già, come le versioni per PC o Mac che hai ottenuto dai loro creatori." },
-      { q: "Narra è gratis?", a: "Sì, tutte le funzioni sono gratuite. L'abbonamento sostenitore, facoltativo, sblocca solo i temi di sfondo animati, e le mance non sbloccano nulla." },
+      { q: "Quanto costa Narra?", a: "Narra si acquista una sola volta; l'App Store mostra il prezzo per la tua zona. L'abbonamento sostenitore, facoltativo, sblocca i temi di sfondo animati. Le mance non sbloccano nulla: sono solo un sostegno." },
       { q: "I miei salvataggi si sincronizzano tra dispositivi?", a: "Sì, tramite il tuo iCloud, anche mentre giochi. Puoi attivarla o disattivarla nelle Impostazioni di Narra, in Salvataggi e iCloud. Lo sviluppatore non può vedere i tuoi dati iCloud." },
     ],
     reportTitle: "Segnalare un problema",

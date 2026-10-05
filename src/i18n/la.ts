@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: fabulae visuales Ren'Py in iPhone et iPad",
     homeDescription:
-      "Narra fabulas visuales Ren'Py quas iam habes in iPhone et iPad ludit. Tredecim versiones machinae inclusae, administrator servatorum cum synchronizatione iCloud, mutationes, pinacotheca et parva dux nomine Narra. Gratuita, sine ratione, sine vestigatione.",
+      "Narra fabulas visuales Ren'Py quas iam habes in iPhone et iPad ludit. Tredecim versiones machinae inclusae, administrator servatorum cum synchronizatione iCloud, mutationes, pinacotheca et parva dux nomine Narra. Semel emitur, sine ratione, sine vestigatione.",
     privacyTitle: "Ratio secreti",
     privacyDescription:
       "Quid Narra cum notitiis tuis faciat: nulla ratio, nulla praeconia, nullae analyses. Ludi et servata tua in instrumento tuo et in tuo iCloud manent.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epilogus",
-    title: "Gratis, a prima pagina ad ultimam",
-    lead: "Omnia Narrae munera gratuita sunt. Narra ab uno auctore, Emir Han Temur, fit; si eam crescere adiuvare vis, duae viae patent.",
+    title: "Semel eme, tota tua est",
+    lead: "Narram semel eme, et omnia tua sunt. Narra ab uno auctore, Emir Han Temur, fit. Si plus dare vis, subscriptio fautoris optionalis themata animata reserat, et stipes opus adiuvant.",
     supporterTitle: "Subscriptio fautoris",
     supporter: "Menstrua vel annua. Themata fundi animata reserat, nec quicquam aliud.",
     tipsTitle: "Stipes",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Antequam incipis",
     basics: [
       { q: "Habetne Narra ludos inclusos?", a: "Tantum brevem fabulam exemplarem suam. Narra ludos nec vendit nec deponit; ludos Ren'Py quos iam habes ludit, ut versiones pro PC vel Mac ab auctoribus acceptas." },
-      { q: "Estne Narra gratuita?", a: "Ita, omnia munera gratuita sunt. Subscriptio fautoris optionalis tantum themata fundi animata reserat, et stipes nihil reserant." },
+      { q: "Quanti constat Narra?", a: "Narra semel emitur; App Store pretium regionis tuae ostendit. Subscriptio fautoris optionalis themata fundi animata reserat. Stipes nihil reserant; tantum auxilium sunt." },
       { q: "Synchronizanturne servata mea inter instrumenta?", a: "Ita, per tuum iCloud, etiam dum ludis. In Optionibus Narrae, sub Servata et iCloud, accende vel exstingue. Auctor data tua iCloud videre non potest." },
     ],
     reportTitle: "Difficultatem nuntiare",

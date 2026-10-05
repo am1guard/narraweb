@@ -8,7 +8,7 @@ const en = {
   meta: {
     homeTitle: "Narra: a Ren'Py visual novel player for iPhone and iPad",
     homeDescription:
-      "Narra plays the Ren'Py visual novels you already have on iPhone and iPad. Thirteen built-in engine versions, a save manager with iCloud sync, mods, a gallery and a small guide named Narra. Free, with no account and no tracking.",
+      "Narra plays the Ren'Py visual novels you already have on iPhone and iPad. Thirteen built-in engine versions, a save manager with iCloud sync, mods, a gallery and a small guide named Narra. One purchase, no account and no tracking.",
     privacyTitle: "Privacy Policy",
     privacyDescription:
       "What Narra does with your information: no account, no ads, no analytics. Your games and saves stay on your device and in your own iCloud.",
@@ -170,8 +170,8 @@ const en = {
   },
   epilogue: {
     label: "Epilogue",
-    title: "Free, from the first page to the last",
-    lead: "Every feature in Narra is free. Narra is made by one developer, Emir Han Temur, and if you'd like to help it grow, there are two ways.",
+    title: "Buy once, and it's yours",
+    lead: "Buy Narra once and it's all yours. Narra is made by one developer, Emir Han Temur. If you'd like to give more, the optional supporter subscription unlocks the animated themes, and tips help development.",
     supporterTitle: "Supporter subscription",
     supporter: "Monthly or yearly. It unlocks the animated background themes, and that's all it unlocks.",
     tipsTitle: "Tips",
@@ -312,7 +312,7 @@ const en = {
     basicsTitle: "Before you start",
     basics: [
       { q: "Does Narra come with games?", a: "Only a short sample story of its own. Narra doesn't sell or download games; it plays the Ren'Py games you already have, such as the PC or Mac versions you got from their creators." },
-      { q: "Is Narra free?", a: "Yes, every feature is free. The optional supporter subscription only unlocks the animated background themes, and tips don't unlock anything." },
+      { q: "How much does Narra cost?", a: "Narra is a one-time purchase; the App Store shows the price for your region. The optional supporter subscription unlocks the animated background themes. Tips don't unlock anything; they're simply support." },
       { q: "Do my saves sync between devices?", a: "Yes, through your own iCloud, even while you play. Turn it on or off in Narra's Settings, under Saves & iCloud. The developer can't see your iCloud data." },
     ],
     reportTitle: "Reporting a problem",

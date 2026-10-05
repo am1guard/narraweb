@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: iPhone과 iPad를 위한 Ren'Py 비주얼 노벨 플레이어",
     homeDescription:
-      "Narra는 이미 가지고 있는 Ren'Py 비주얼 노벨을 iPhone과 iPad에서 플레이하게 해 줘요. 내장된 13개 엔진 버전, iCloud 동기화를 지원하는 저장 데이터 관리자, 모드, 갤러리, 그리고 Narra라는 작은 안내자까지. 무료이고, 계정도 추적도 없어요.",
+      "Narra는 이미 가지고 있는 Ren'Py 비주얼 노벨을 iPhone과 iPad에서 플레이하게 해 줘요. 내장된 13개 엔진 버전, iCloud 동기화를 지원하는 저장 데이터 관리자, 모드, 갤러리, 그리고 Narra라는 작은 안내자까지. 한 번 구입하면 끝, 계정도 추적도 없어요.",
     privacyTitle: "개인정보 처리방침",
     privacyDescription:
       "Narra가 내 정보를 어떻게 다루는지: 계정 없음, 광고 없음, 분석 없음. 게임과 저장 데이터는 내 기기와 내 iCloud에만 있어요.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "에필로그",
-    title: "첫 페이지부터 마지막 페이지까지 무료",
-    lead: "Narra의 모든 기능은 무료예요. Narra는 개발자 한 명, Emir Han Temur가 만들고 있어요. Narra가 자라는 데 힘을 보태고 싶다면 두 가지 방법이 있어요.",
+    title: "한 번 구입하면 모두 내 것",
+    lead: "Narra는 한 번 구입하면 모두 내 것이에요. Narra는 개발자 한 명, Emir Han Temur가 만들고 있어요. 더 힘을 보태고 싶다면 선택 사항인 후원자 구독으로 애니메이션 테마를 잠금 해제할 수 있고, 팁은 개발을 응원해요.",
     supporterTitle: "후원자 구독",
     supporter: "월간 또는 연간. 애니메이션 배경 테마가 잠금 해제되고, 잠금 해제되는 건 그게 전부예요.",
     tipsTitle: "팁",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "시작하기 전에",
     basics: [
       { q: "Narra에 게임이 들어 있나요?", a: "Narra 자체의 짧은 샘플 이야기 하나만 들어 있어요. Narra는 게임을 판매하거나 다운로드하지 않아요. 제작자에게서 받은 PC 또는 Mac 버전처럼, 이미 가지고 있는 Ren'Py 게임을 플레이하는 앱이에요." },
-      { q: "Narra는 무료인가요?", a: "네, 모든 기능이 무료예요. 선택 사항인 후원자 구독은 애니메이션 배경 테마만 잠금 해제하고, 팁으로는 아무것도 잠금 해제되지 않아요." },
+      { q: "Narra는 얼마인가요?", a: "Narra는 한 번만 구입하면 돼요. 가격은 지역에 따라 App Store에 표시돼요. 선택 사항인 후원자 구독은 애니메이션 배경 테마를 잠금 해제해요. 팁으로는 아무것도 잠금 해제되지 않으며, 순수한 응원이에요." },
       { q: "저장 데이터가 기기 간에 동기화되나요?", a: "네, 내 iCloud를 통해, 플레이하는 동안에도 동기화돼요. Narra 설정의 저장 데이터 및 iCloud에서 켜고 끌 수 있어요. 개발자는 내 iCloud 데이터를 볼 수 없어요." },
     ],
     reportTitle: "문제 신고하기",

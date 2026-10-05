@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra: un reproductor de novelas visuales de Ren'Py para iPhone y iPad",
     homeDescription:
-      "Narra reproduce en iPhone y iPad las novelas visuales de Ren'Py que ya tienes. Trece versiones del motor incluidas, un gestor de partidas con sincronización con iCloud, mods, una galería y una pequeña guía llamada Narra. Gratis, sin cuenta y sin rastreo.",
+      "Narra reproduce en iPhone y iPad las novelas visuales de Ren'Py que ya tienes. Trece versiones del motor incluidas, un gestor de partidas con sincronización con iCloud, mods, una galería y una pequeña guía llamada Narra. Una sola compra, sin cuenta y sin rastreo.",
     privacyTitle: "Política de privacidad",
     privacyDescription:
       "Qué hace Narra con tu información: sin cuenta, sin anuncios, sin analíticas. Tus juegos y tus partidas se quedan en tu dispositivo y en tu propio iCloud.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Epílogo",
-    title: "Gratis, de la primera página a la última",
-    lead: "Todas las funciones de Narra son gratis. Narra la hace un solo desarrollador, Emir Han Temur, y si quieres ayudar a que crezca, hay dos maneras.",
+    title: "Cómprala una vez y es tuya",
+    lead: "Compra Narra una vez y todo es tuyo. Narra la hace un solo desarrollador, Emir Han Temur. Si quieres aportar más, la suscripción opcional de colaborador desbloquea los temas animados, y las propinas apoyan el desarrollo.",
     supporterTitle: "Suscripción de colaborador",
     supporter: "Mensual o anual. Desbloquea los temas de fondo animados, y eso es todo lo que desbloquea.",
     tipsTitle: "Propinas",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Antes de empezar",
     basics: [
       { q: "¿Narra incluye juegos?", a: "Solo una breve historia de ejemplo propia. Narra no vende ni descarga juegos; reproduce los juegos de Ren'Py que ya tienes, como las versiones para PC o Mac que conseguiste de sus creadores." },
-      { q: "¿Narra es gratis?", a: "Sí, todas las funciones son gratis. La suscripción de colaborador, que es opcional, solo desbloquea los temas de fondo animados, y las propinas no desbloquean nada." },
+      { q: "¿Cuánto cuesta Narra?", a: "Narra es una compra única; el App Store muestra el precio de tu región. La suscripción opcional de colaborador desbloquea los temas de fondo animados. Las propinas no desbloquean nada; son solo apoyo." },
       { q: "¿Mis partidas se sincronizan entre dispositivos?", a: "Sí, a través de tu propio iCloud, incluso mientras juegas. Actívalo o desactívalo en los Ajustes de Narra, en Partidas e iCloud. El desarrollador no puede ver tus datos de iCloud." },
     ],
     reportTitle: "Informar de un problema",

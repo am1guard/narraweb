@@ -4,7 +4,7 @@ export default {
   meta: {
     homeTitle: "Narra : un lecteur de visual novels Ren'Py pour iPhone et iPad",
     homeDescription:
-      "Narra lit les visual novels Ren'Py que vous avez déjà, sur iPhone et iPad. Treize versions du moteur intégrées, un gestionnaire de sauvegardes synchronisé avec iCloud, des mods, une galerie et une petite guide nommée Narra. Gratuit, sans compte et sans pistage.",
+      "Narra lit les visual novels Ren'Py que vous avez déjà, sur iPhone et iPad. Treize versions du moteur intégrées, un gestionnaire de sauvegardes synchronisé avec iCloud, des mods, une galerie et une petite guide nommée Narra. Un seul achat, sans compte et sans pistage.",
     privacyTitle: "Politique de confidentialité",
     privacyDescription:
       "Ce que Narra fait de vos informations : pas de compte, pas de publicité, pas d'outils d'analyse. Vos jeux et vos sauvegardes restent sur votre appareil et dans votre propre iCloud.",
@@ -166,8 +166,8 @@ export default {
   },
   epilogue: {
     label: "Épilogue",
-    title: "Gratuit, de la première à la dernière page",
-    lead: "Toutes les fonctionnalités de Narra sont gratuites. Narra est l'œuvre d'un seul développeur, Emir Han Temur, et si vous souhaitez l'aider à grandir, il y a deux façons de le faire.",
+    title: "Achetez-le une fois, il est à vous",
+    lead: "Achetez Narra une fois, et tout est à vous. Narra est l'œuvre d'un seul développeur, Emir Han Temur. Si vous souhaitez aller plus loin, l'abonnement supporter facultatif débloque les thèmes animés, et les pourboires soutiennent le développement.",
     supporterTitle: "Abonnement supporter",
     supporter: "Mensuel ou annuel. Il débloque les thèmes d'arrière-plan animés, et rien d'autre.",
     tipsTitle: "Pourboires",
@@ -308,7 +308,7 @@ export default {
     basicsTitle: "Avant de commencer",
     basics: [
       { q: "Narra contient-il des jeux ?", a: "Seulement une courte histoire d'exemple qui lui est propre. Narra ne vend ni ne télécharge aucun jeu ; l'app lit les jeux Ren'Py que vous avez déjà, comme les versions PC ou Mac obtenues auprès de leurs créateurs." },
-      { q: "Narra est-il gratuit ?", a: "Oui, toutes les fonctionnalités sont gratuites. L'abonnement supporter facultatif ne débloque que les thèmes d'arrière-plan animés, et les pourboires ne débloquent rien." },
+      { q: "Combien coûte Narra ?", a: "Narra s'achète une seule fois ; l'App Store affiche le prix pour votre région. L'abonnement supporter facultatif débloque les thèmes d'arrière-plan animés. Les pourboires ne débloquent rien : ils sont simplement un soutien." },
       { q: "Mes sauvegardes se synchronisent-elles entre mes appareils ?", a: "Oui, via votre propre iCloud, même pendant que vous jouez. Activez ou désactivez la synchronisation dans les Réglages de Narra, sous Sauvegardes et iCloud. Le développeur ne peut pas voir vos données iCloud." },
     ],
     reportTitle: "Signaler un problème",
