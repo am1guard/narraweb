@@ -5,6 +5,11 @@
 // shifts) and shown one at a time with a typewriter effect. Click, Space or Enter on the
 // arrow button moves on; the last line hands over to `beginHref`.
 // Without JavaScript, or with Reduce Motion, the text simply appears.
+//
+// variant "box": the classic text window with a name tag.
+// variant "whisper": no window at all, just a small NARRA label and the line in the display
+// serif, set beside the speaker (the hero). Where the hero takes it out of the flow, only the
+// current line is laid out, so it grows upwards from the arrow.
 interface Props {
   name: string;
   lines: string[];
@@ -12,10 +17,11 @@ interface Props {
   nextLabel: string;
   beginLabel: string;
   beginHref: string;
+  variant?: "box" | "whisper";
 }
-const { name, lines, label, nextLabel, beginLabel, beginHref } = Astro.props;
+const { name, lines, label, nextLabel, beginLabel, beginHref, variant = "box" } = Astro.props;
 ---
-<div class="vn" data-vn>
+<div class:list={["vn", variant]} data-vn>
   <p class="vn-name" aria-hidden="true">{name}</p>
   <div class="vn-lines" role="group" aria-label={label}>
     {
@@ -241,6 +247,41 @@ const { name, lines, label, nextLabel, beginLabel, beginHref } = Astro.props;
     :global(.is-offscreen) .vn-next svg {
       animation-play-state: paused;
     }
+  }
+  /* ---------- Whisper: a line beside the speaker, no window ---------- */
+  .vn.whisper {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .whisper .vn-name {
+    position: static;
+    transform: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--c-text-2);
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .whisper .vn-lines {
+    margin-block-start: var(--s-1);
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    line-height: 1.18;
+    color: var(--c-text);
+  }
+  .whisper .vn-controls {
+    position: static;
+    margin-block-start: var(--s-1);
+    margin-inline-start: calc(var(--s-3) * -1);
   }
   @keyframes bob {
     0%,

@@ -1,11 +1,15 @@
 ---
-// Opening scene: the night town backdrop (dark theme), Narra floating with her book, and
-// a visual-novel text window where she introduces herself.
+// Opening scene: the night town with its moon (dark theme), the title on the inline-start
+// side and Narra floating with her book on the other, a small "NARRA" line beside her, and
+// a bank of clouds wrapping the bottom of the scene that dissolves into the first chapter.
+//
+// Narra's lines are the visual novel ritual: the first one is shown, a click (or the arrow
+// button) brings the next, and the last one hands over to the first chapter.
 //
 // Motion (all off with Reduce Motion, paused while the scene is off screen):
 // Narra floats and her book light breathes, the sparkles twinkle out of phase, a few loose
-// pages drift, the moon glows, the title rises line by line once, and the backdrop falls
-// behind with a scroll-driven parallax where the browser supports it.
+// pages drift, the moon glows, the clouds slide by very slowly, the title rises line by
+// line once, and the backdrop falls behind with a scroll-driven parallax where supported.
 import { Picture } from "astro:assets";
 import backdrop from "../assets/brand/hero-backdrop.webp";
 import narra from "../assets/brand/hero-narra.webp";
@@ -15,13 +19,14 @@ import RevealTitle from "./RevealTitle.astro";
 import { config } from "../config";
 import { app, type Dict } from "../i18n";
 import type { Lang } from "../i18n/languages";
-import { sparklePath } from "../lib/sparkle";
+import { seeded, sparklePath } from "../lib/sparkle";
 
 interface Props {
   lang: Lang;
   dict: Dict;
 }
 const { lang, dict } = Astro.props;
+const live = config.appStoreUrl.trim() !== "";
 
 // Twinkling sparkles over the sky (percent of the scene), each with its own phase.
 const twinkles = [
@@ -35,13 +40,43 @@ const twinkles = [
   { x: 14, y: 52, r: 0.6, d: 3.5 },
   { x: 84, y: 58, r: 0.8, d: 0.4 },
 ];
-// Loose pages drifting out of the open window (percent of the scene).
+// Loose pages drifting through the sky (percent of the scene).
 const pages = [
   { x: 7, y: 46, s: 1, d: 0, r: -14 },
   { x: 16, y: 63, s: 0.8, d: -7, r: 10 },
-  { x: 27, y: 38, s: 0.65, d: -13, r: -4 },
+  { x: 41, y: 30, s: 0.65, d: -13, r: -4 },
   { x: 90, y: 66, s: 0.7, d: -4, r: 18 },
 ];
+
+// The cloud bank: each layer is a skyline of overlapping puffs (ellipses of one colour,
+// so they merge into one silhouette with a wavy top). The pattern repeats every PERIOD
+// units and is drawn TILES times; a layer keeps the drawing's shape (aspect-ratio) and
+// slides by exactly one period, so the loop has no seam and the puffs are never stretched.
+const PERIOD = 1200;
+const TILES = 4;
+type Puff = { cx: number; cy: number; rx: number; ry: number };
+function puffs(seed: number, rMin: number, rMax: number, tall: number): Puff[] {
+  const rand = seeded(seed);
+  const row: Puff[] = [];
+  let x = 0;
+  while (x < PERIOD) {
+    const rx = rMin + rand() * (rMax - rMin);
+    const cy = 188 + rand() * 24;
+    // Never taller than the box, so no puff is cut flat by its top.
+    const ry = Math.min(rx * (tall + rand() * 0.35), cy - 6);
+    row.push({ cx: x + rx * 0.5, cy, rx, ry });
+    x += rx * (0.75 + rand() * 0.6);
+  }
+  const f = (n: number) => Math.round(n * 10) / 10;
+  const shifts = Array.from({ length: TILES + 1 }, (_, i) => (i - 1) * PERIOD);
+  return shifts.flatMap((shift) => row.map((p) => ({ cx: f(p.cx + shift), cy: f(p.cy), rx: f(p.rx), ry: f(p.ry) })));
+}
+const clouds = [
+  { cls: "back", puffs: puffs(0x6e617272, 110, 230, 0.55) },
+  { cls: "mid", puffs: puffs(0x61636c64, 70, 160, 0.5) },
+  { cls: "front", puffs: puffs(0x7374616e, 60, 150, 0.6) },
+];
+const title = app(lang).strings["help.about.tagline"];
 ---
 <section class="hero" aria-labelledby="hero-title" data-loop>
   <div class="scene" aria-hidden="true">
@@ -90,16 +125,30 @@ const pages = [
   <div class="container inner">
     <div class="copy">
       <p class="eyebrow">{dict.hero.eyebrow}</p>
-      <RevealTitle id="hero-title" text={app(lang).strings["help.about.tagline"]} lang={lang} />
+      <RevealTitle id="hero-title" text={title} lang={lang} accent="Ren'Py" />
       <div class="actions">
-        <AppStoreButton dict={dict} />
-        <a class="discord press" href={config.discordUrl} rel="noopener">
-          <span>{dict.cta.discord}</span>
-          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false" class="flip-rtl">
-            <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
+        {
+          live ? (
+            <>
+              <AppStoreButton dict={dict} />
+              <a class="discord-link press" href={config.discordUrl} rel="noopener">
+                <span>{dict.cta.discord}</span>
+                <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false" class="flip-rtl">
+                  <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </>
+          ) : (
+            <>
+              <a class="discord-cta press" href={config.discordUrl} rel="noopener">
+                {dict.cta.discord}
+              </a>
+              <p class="soon">{dict.cta.comingSoon}</p>
+            </>
+          )
+        }
       </div>
+      <p class="compat">{dict.hero.compat}</p>
     </div>
 
     <div class="stage">
@@ -107,8 +156,8 @@ const pages = [
         <Picture
           src={narra}
           alt={dict.hero.sceneAlt}
-          widths={[280, 400, 560]}
-          sizes="(min-width: 900px) 330px, 62vw"
+          widths={[320, 480, 640, 880]}
+          sizes="(min-width: 1100px) 440px, (min-width: 900px) 34vw, 64vw"
           formats={["avif"]}
           fallbackFormat="webp"
           quality={58}
@@ -119,24 +168,50 @@ const pages = [
         />
         <span class="book-glow loop" aria-hidden="true"></span>
       </div>
-      <DialogueBox
-        name="Narra"
-        lines={dict.hero.lines}
-        label={dict.hero.dialogueLabel}
-        nextLabel={dict.hero.next}
-        beginLabel={dict.hero.begin}
-        beginHref="#chapter-1"
-      />
-      <p class="compat">{dict.hero.compat}</p>
+      <div class="whisper-wrap">
+        <DialogueBox
+          variant="whisper"
+          name="Narra"
+          lines={dict.hero.lines}
+          label={dict.hero.dialogueLabel}
+          nextLabel={dict.hero.next}
+          beginLabel={dict.hero.begin}
+          beginHref="#chapter-1"
+        />
+      </div>
     </div>
+  </div>
+
+  <div class="clouds" aria-hidden="true">
+    {
+      clouds.map((c) => (
+        <div class:list={["cloud-layer", c.cls, "loop"]}>
+          <svg viewBox={`0 0 ${PERIOD * TILES} 200`} focusable="false">
+            <defs>
+              <linearGradient id={`hero-cloud-${c.cls}`} gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="200">
+                <stop offset="0" class="lit" />
+                <stop offset="0.55" class="lit" />
+                <stop offset="1" class="shade" />
+              </linearGradient>
+            </defs>
+            <g fill={`url(#hero-cloud-${c.cls})`}>
+              {c.puffs.map((p) => (
+                <ellipse cx={p.cx} cy={p.cy} rx={p.rx} ry={p.ry} />
+              ))}
+            </g>
+          </svg>
+        </div>
+      ))
+    }
   </div>
 </section>
 
 <style>
   .hero {
+    --clouds: clamp(130px, 10vw + 96px, 250px);
     position: relative;
     isolation: isolate;
-    padding-block: calc(var(--header-height) + var(--s-6)) var(--s-8);
+    padding-block: calc(var(--header-height) + var(--s-6)) calc(var(--clouds) * 0.62);
     overflow: hidden;
   }
   /* The scene is as tall as the large viewport, not the hero's content, so loading a web
@@ -151,12 +226,18 @@ const pages = [
     overflow: hidden;
     container-type: size;
     mask-image: linear-gradient(to bottom, #000 62%, transparent);
-    /* Where the picture is anchored, like object-position (x, y). */
-    --ox: 0.84;
+    /* Where the picture is anchored, like object-position (x, y). On a phone the moon only
+       peeks in at the edge, so it never sits behind the title. */
+    --ox: 0.8;
     --oy: 0;
   }
+  /* Right to left, the whole night is mirrored: the moon rises over Narra's side. */
+  :global([dir="rtl"]) .scene {
+    transform: scaleX(-1);
+  }
   /* The backdrop keeps its own 1916:821 shape and covers the scene, so the moon glow can
-     be pinned to the moon in the picture. */
+     be pinned to the moon in the picture. Physical left on purpose: the moon is in the
+     picture's top right whatever the writing direction. */
   .plate {
     --w: max(100cqw, calc(100cqh * 2.3337));
     --h: max(calc(100cqw / 2.3337), 100cqh);
@@ -216,62 +297,126 @@ const pages = [
     transform-box: fill-box;
     transform-origin: center;
   }
+  /* Darkens the sky behind the title (inline-start side) and the top under the header. */
   .veil {
     position: absolute;
     inset: 0;
     background:
       linear-gradient(to bottom, rgb(18 12 27 / 0.55), rgb(18 12 27 / 0.1) 22%, transparent 42%),
-      radial-gradient(ellipse 60% 42% at 50% 26%, rgb(18 12 27 / 0.55), transparent 70%),
+      radial-gradient(ellipse 58% 52% at 26% 46%, rgb(18 12 27 / 0.62), transparent 72%),
       linear-gradient(to bottom, transparent 58%, var(--c-bg) 98%);
     opacity: var(--veil-opacity);
     transition: opacity 300ms var(--ease-out);
   }
+
+  /* ---------- Layout ---------- */
   .inner {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: var(--s-7);
     align-items: center;
-    text-align: center;
   }
   .copy {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--s-4);
-    max-inline-size: 46rem;
+    min-inline-size: 0;
   }
   .copy .eyebrow {
+    color: var(--c-text-2);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.16em;
     text-shadow: 0 1px 12px rgb(0 0 0 / 0.5);
   }
   .copy :global(h1) {
-    font-size: var(--fs-h1);
-    max-inline-size: 18ch;
+    --title: clamp(2.75rem, 1.2rem + 5vw, 5.5rem);
+    font-size: var(--title);
+    line-height: 1.02;
+    max-inline-size: 13ch;
+    text-wrap: balance;
     text-shadow: 0 2px 24px rgb(0 0 0 / 0.45);
   }
-  :root[data-theme="light"] .copy :global(h1),
-  :root[data-theme="light"] .copy .eyebrow {
-    text-shadow: none;
+  /* Long titles (compound words, longer scripts) get a smaller size, so the longest word
+     always fits the column; each word rises as one unbreakable box. */
+  :global(:lang(de)) .copy :global(h1),
+  :global(:lang(ru)) .copy :global(h1),
+  :global(:lang(cs)) .copy :global(h1),
+  :global(:lang(vi)) .copy :global(h1),
+  :global(:lang(pt)) .copy :global(h1),
+  :global(:lang(es)) .copy :global(h1),
+  :global(:lang(la)) .copy :global(h1) {
+    --title: clamp(2.125rem, 1.1rem + 3.6vw, 4.25rem);
+    max-inline-size: 14ch;
   }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) .copy :global(h1),
-    :root:not([data-theme="dark"]) .copy .eyebrow {
-      text-shadow: none;
-    }
+  :global(:lang(ar)) .copy :global(h1),
+  :global(:lang(fa)) .copy :global(h1) {
+    --title: clamp(2.125rem, 1.3rem + 3vw, 4rem);
+    line-height: 1.4;
+    max-inline-size: 13em;
   }
   :global(:lang(ja)) .copy :global(h1),
   :global(:lang(ko)) .copy :global(h1),
   :global(:lang(zh-Hans)) .copy :global(h1),
   :global(:lang(zh-Hant)) .copy :global(h1) {
-    max-inline-size: 14em;
+    --title: clamp(2rem, 1.3rem + 3vw, 3.75rem);
+    line-height: 1.3;
+    max-inline-size: 10em;
+  }
+  :root[data-theme="light"] .copy :global(h1),
+  :root[data-theme="light"] .copy .eyebrow,
+  :root[data-theme="light"] .compat {
+    text-shadow: none;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .copy :global(h1),
+    :root:not([data-theme="dark"]) .copy .eyebrow,
+    :root:not([data-theme="dark"]) .compat {
+      text-shadow: none;
+    }
   }
   .actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: var(--s-3) var(--s-5);
-    margin-block-start: var(--s-3);
+    gap: var(--s-3) var(--s-6);
+    margin-block-start: var(--s-4);
   }
-  .discord {
+  .discord-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 50px;
+    padding-inline: var(--s-6);
+    border-radius: var(--r-badge);
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+    font-weight: 800;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--c-accent) 30%, transparent);
+    touch-action: manipulation;
+  }
+  .discord-cta:hover {
+    background: color-mix(in srgb, var(--c-accent) 86%, var(--c-text));
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--c-accent) 42%, transparent);
+  }
+  .soon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    color: var(--c-text);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+  .soon::before {
+    content: "";
+    inline-size: 6px;
+    block-size: 6px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    flex: none;
+  }
+  .discord-link {
     display: inline-flex;
     align-items: center;
     gap: var(--s-1);
@@ -282,35 +427,32 @@ const pages = [
     font-weight: 700;
     text-decoration: none;
   }
-  .discord:hover {
+  .discord-link:hover {
     background: color-mix(in srgb, var(--c-text) 10%, transparent);
-  }
-  .discord svg {
-    transition: translate var(--dur) var(--ease-spring);
-  }
-  .discord:hover svg {
-    translate: 3px 0;
-  }
-  :global([dir="rtl"]) .discord:hover svg {
-    translate: -3px 0;
   }
   :global([dir="rtl"]) .flip-rtl {
     transform: scaleX(-1);
   }
+  .compat {
+    max-inline-size: 30rem;
+    color: var(--c-text-2);
+    font-size: var(--fs-xs);
+    line-height: 1.55;
+    text-shadow: 0 1px 10px rgb(0 0 0 / 0.6);
+  }
+
+  /* ---------- Narra and her line ---------- */
   .stage {
-    --sprite: min(62vw, 330px);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    inline-size: min(100%, 52rem);
-    margin-block-start: var(--s-4);
+    min-inline-size: 0;
   }
   .sprite-wrap {
     position: relative;
-    inline-size: var(--sprite);
+    inline-size: min(64vw, 300px);
     aspect-ratio: 1;
-    margin-block-end: calc(var(--sprite) * -0.2);
   }
   .sprite {
     inline-size: 100%;
@@ -330,28 +472,130 @@ const pages = [
     opacity: 0.4;
     pointer-events: none;
   }
-  .stage :global(.vn) {
+  .whisper-wrap {
+    inline-size: min(100%, 22rem);
+    margin-block-start: calc(var(--s-4) * -1);
+  }
+  .whisper-wrap :global(.vn-lines) {
+    text-shadow: 0 1px 14px rgb(0 0 0 / 0.55);
+  }
+  /* Only the current line is laid out, so the name stays right above the words and the
+     arrow right under them. A longer line moves things below only after the visitor's own
+     click (not counted as a layout shift). */
+  :global(.js) .whisper-wrap :global(.vn-line:not(.is-current)) {
+    display: none;
+  }
+  :root[data-theme="light"] .whisper-wrap :global(.vn-lines) {
+    text-shadow: none;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .whisper-wrap :global(.vn-lines) {
+      text-shadow: none;
+    }
+  }
+
+  /* ---------- Cloud bank ---------- */
+  .clouds {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: var(--clouds);
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    /* The bank dissolves into the page, so the first chapter starts on the plain night. */
+    mask-image: linear-gradient(to bottom, #000 80%, transparent);
+  }
+  .cloud-layer {
+    position: absolute;
+    left: 0;
+    inset-block-end: 0;
+    block-size: 100%;
+    aspect-ratio: 24; /* PERIOD * TILES : 200 */
+  }
+  .cloud-layer svg {
+    display: block;
     inline-size: 100%;
+    block-size: 100%;
   }
-  .compat {
-    margin-block-start: var(--s-4);
-    max-inline-size: 40rem;
-    color: var(--c-text-2);
-    font-size: var(--fs-sm);
+  .back {
+    block-size: 100%;
+    opacity: 0.4;
+    filter: blur(8px);
   }
+  .back .lit {
+    stop-color: var(--c-cloud-3);
+  }
+  .mid {
+    block-size: 80%;
+    opacity: 0.72;
+    filter: blur(5px);
+  }
+  .mid .lit {
+    stop-color: var(--c-cloud-2);
+  }
+  .front {
+    block-size: 70%;
+    opacity: 1;
+    filter: blur(3px) drop-shadow(0 -4px 16px color-mix(in srgb, var(--c-glow) 55%, transparent));
+  }
+  .front .lit {
+    stop-color: var(--c-cloud-1);
+  }
+  /* Lit by the moon from above, the clouds fade downwards into the night. */
+  .shade {
+    stop-color: var(--c-cloud-3);
+    stop-opacity: 0;
+  }
+  .front .shade {
+    stop-color: var(--c-cloud-2);
+    stop-opacity: 0.25;
+  }
+
+  /* ---------- Wider screens: title and Narra side by side ---------- */
   @media (min-width: 700px) {
     .page:nth-child(n + 3) {
       display: block;
     }
   }
+  @media (min-width: 900px) {
+    .inner {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: var(--s-6);
+    }
+    .stage {
+      display: block;
+    }
+    .sprite-wrap {
+      inline-size: var(--hero-narra);
+      max-inline-size: calc(100% - 3rem);
+      margin-inline-start: auto;
+    }
+    /* Narra's line sits by her lower inline-start side, as in a visual novel; out of the
+       flow, it grows upwards from the arrow. */
+    .whisper-wrap {
+      position: absolute;
+      inset-inline-start: -4rem;
+      inset-block-end: 16%;
+      inline-size: 11rem;
+      margin: 0;
+    }
+  }
   @media (min-width: 1100px) {
     .hero {
       min-block-size: min(100svh, 1000px);
-      padding-block-start: calc(var(--header-height) + var(--s-7));
+      display: flex;
+      align-items: center;
+      padding-block-start: calc(var(--header-height) + var(--s-6));
     }
     .scene {
-      --ox: 0.5;
       --oy: 0.3;
+    }
+  }
+  /* Side by side, 0.87 keeps the moon in the top inline-end corner, beside the title. */
+  @media (min-width: 900px) {
+    .scene {
+      --ox: 0.87;
     }
   }
   @media (min-width: 1700px) {
@@ -376,6 +620,20 @@ const pages = [
     }
     .moon-glow {
       animation: hero-moon 7s var(--ease-in-out) infinite alternate;
+    }
+    .cloud-layer {
+      will-change: transform;
+      animation: hero-clouds linear infinite;
+    }
+    .back {
+      animation-duration: 240s;
+    }
+    .mid {
+      animation-duration: 170s;
+      animation-direction: reverse;
+    }
+    .front {
+      animation-duration: 120s;
     }
     @supports (animation-timeline: scroll()) {
       .plate,
@@ -429,6 +687,14 @@ const pages = [
     to {
       opacity: 1;
       transform: scale(1.05);
+    }
+  }
+  @keyframes hero-clouds {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-25%); /* one period of four */
     }
   }
   @keyframes hero-parallax {

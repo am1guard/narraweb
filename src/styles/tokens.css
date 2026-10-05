@@ -22,6 +22,12 @@
   --c-on-cta: #ffffff;
   --c-focus: #e9a6f0;
   --c-scrim: rgb(9 6 14 / 0.62);
+  --c-on-accent: #160d24;
+
+  /* Hero cloud bank: front, middle, back (solid; each layer has its own opacity) */
+  --c-cloud-1: #f7f0ff;
+  --c-cloud-2: #c3a0f2;
+  --c-cloud-3: #6f4bb0;
 
   /* Dialogue box: like a visual novel text window over the scene */
   --c-dialogue: rgb(24 17 36 / 0.95);
@@ -85,6 +91,8 @@
   --header-height: 68px;
   --mascot-chapter: clamp(220px, 18vw + 120px, 380px);
   --phone-width: clamp(220px, 14vw + 140px, 320px);
+  --hero-narra: clamp(300px, 24vw + 90px, 440px);
+  --walker: clamp(140px, 6vw + 100px, 196px);
 
   /* Motion (Theme.Motion) */
   --dur-fast: 150ms;
@@ -129,6 +137,10 @@
   --c-stroke-strong: rgb(106 59 200 / 0.24);
   --c-focus: #6a3bc8;
   --c-scrim: rgb(30 21 48 / 0.4);
+  --c-on-accent: #ffffff;
+  --c-cloud-1: #ffffff;
+  --c-cloud-2: #e2cdfa;
+  --c-cloud-3: #c9adf0;
   --c-dialogue: rgb(255 255 255 / 0.94);
   --c-dialogue-stroke: rgb(106 59 200 / 0.24);
   --c-nametag: #6a3bc8;
@@ -154,6 +166,10 @@
     --c-stroke-strong: rgb(106 59 200 / 0.24);
     --c-focus: #6a3bc8;
     --c-scrim: rgb(30 21 48 / 0.4);
+    --c-on-accent: #ffffff;
+    --c-cloud-1: #ffffff;
+    --c-cloud-2: #e2cdfa;
+    --c-cloud-3: #c9adf0;
     --c-dialogue: rgb(255 255 255 / 0.94);
     --c-dialogue-stroke: rgb(106 59 200 / 0.24);
     --c-nametag: #6a3bc8;

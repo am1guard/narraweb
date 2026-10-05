@@ -10,8 +10,10 @@ interface Props {
   id: string;
   text: string;
   lang: Lang;
+  /** A word to set in the accent colour (e.g. "Ren'Py"). Left plain if the text doesn't contain it. */
+  accent?: string;
 }
-const { id, text, lang } = Astro.props;
+const { id, text, lang, accent } = Astro.props;
 
 type Part = { word: string } | { space: string };
 const parts: Part[] = [];
@@ -27,12 +29,35 @@ for (const { segment, isWordLike } of whole ? [] : segmenter.segment(text)) {
     (parts[parts.length - 1] as { word: string }).word += segment;
   else parts.push({ word: segment });
 }
+// Splits a word around the accent so the accent keeps its own colour inside the rising word.
+const pieces = (word: string): { text: string; accent: boolean }[] => {
+  const at = accent ? word.indexOf(accent) : -1;
+  if (!accent || at < 0) return [{ text: word, accent: false }];
+  return [
+    { text: word.slice(0, at), accent: false },
+    { text: accent, accent: true },
+    { text: word.slice(at + accent.length), accent: false },
+  ].filter((p) => p.text !== "");
+};
 const script = `(function(){var h=document.getElementById(${JSON.stringify(id)});if(!h||matchMedia("(prefers-reduced-motion: reduce)").matches)return;var w=h.querySelectorAll(".w"),top=null,line=-1;for(var i=0;i<w.length;i++){var t=w[i].offsetTop;if(top===null||t>top+4){line++;top=t}w[i].style.setProperty("--line",line)}h.classList.add("is-rising")})();`;
 ---
-<h1 id={id} class="reveal-title">{whole ? <span class="w whole">{text}</span> : parts.map((p) => ("word" in p ? <span class="w">{p.word}</span> : p.space))}</h1>
+<h1 id={id} class="reveal-title">
+  {
+    whole ? (
+      <span class="w whole">{pieces(text).map((p) => (p.accent ? <span class="accent">{p.text}</span> : p.text))}</span>
+    ) : (
+      parts.map((p) =>
+        "word" in p ? <span class="w">{pieces(p.word).map((x) => (x.accent ? <span class="accent">{x.text}</span> : x.text))}</span> : p.space,
+      )
+    )
+  }
+</h1>
 <script is:inline set:html={script} />
 
 <style>
+  .accent {
+    color: var(--c-accent);
+  }
   .w {
     display: inline-block;
   }

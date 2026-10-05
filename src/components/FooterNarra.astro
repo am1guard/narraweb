@@ -1,0 +1,507 @@
+---
+// Narra wandering along the top edge of the footer. She's a little ghost, so she doesn't
+// walk: she drifts (narra-drift), bobbing, leaning into the direction she's going, her
+// hair and tail swaying, and she mirrors when she turns round.
+//
+// What she does (the state machine in the script below):
+// - The first time the footer comes into view she is peeking over its edge at the
+//   inline-end side (narra-peek), the same place the still Narra stands without motion.
+// - She drifts a few hundred pixels at a time. Stopping in the middle she looks at the
+//   visitor (narra-look), now and then she waves (narra-wave). Stopping at an end of the
+//   edge she sits down there and reads (narra-sit).
+// - Reaching the very end of the page sends her to the nearest end to peek again.
+// - After a long while with no scrolling, pointer or keys she curls up and sleeps
+//   (narra-sleep) with a few z's above her, until the visitor moves again.
+// - Pointing at her makes her wave; a tap or click makes her hop and wave (and wakes her).
+//
+// Poses come from src/lib/walk-poses.ts. Every drawing has the same head size and is
+// centred on the face, so a pose is drawn at its own size (relative to narra-look, whose
+// height is --walker), bottom-centred on the footer's edge line, and poses cross-fade.
+//
+// Only transform and opacity move. The loop runs while the footer is on screen and the tab
+// is visible. With Reduce Motion (or without JavaScript) she stays still, peeking over the
+// edge. Decorative: aria-hidden, never focusable; the box she listens on is >= 140 px.
+import { getImage } from "astro:assets";
+import { REFERENCE_POSE, WALK_POSES, poseImage } from "../lib/walk-poses";
+
+const STILL_POSE = "narra-peek";
+const refPose = WALK_POSES.find((p) => p.name === REFERENCE_POSE)!;
+const ref = poseImage(refPose);
+const refHeight = ref.image.height;
+
+const poses = await Promise.all(
+  WALK_POSES.map(async (pose) => {
+    const { image, own } = poseImage(pose);
+    // A borrowed picture (square, with air around her) is shown at the reference size.
+    const rw = own ? image.width / refHeight : 1;
+    const rh = own ? image.height / refHeight : 1;
+    const css = Math.round(rw * 196); // the largest --walker
+    const widths = [...new Set([css, css * 2].map((w) => Math.min(w, image.width)))];
+    const img = await getImage({ src: image, widths, sizes: `${css}px`, format: "webp", quality: 74 });
+    return { ...pose, rw, rh, css, src: img.src, srcset: img.srcSet.attribute, w: image.width, h: image.height };
+  }),
+);
+---
+<div class="walker" aria-hidden="true" data-walker data-vt="footer-narra">
+  <div class="w-face">
+    <div class="w-lean">
+      <div class="w-hop">
+        <div class="w-bob loop">
+          {
+            poses.map((p) => {
+              const attrs = { src: p.src, srcset: p.srcset, sizes: `${p.css}px`, alt: "", width: p.w, height: p.h, loading: "lazy" as const, decoding: "async" as const, draggable: "false" as const };
+              return (
+                <div class:list={["pose", `sway-${p.sway}`, { "is-on": p.name === STILL_POSE }]} data-pose={p.name} style={`--rw:${p.rw.toFixed(4)};--rh:${p.rh.toFixed(4)}`}>
+                  {p.sway === "none" ? (
+                    <img class="layer" {...attrs} />
+                  ) : (
+                    <>
+                      <img class="layer body" {...attrs} />
+                      <img class="layer hair loop" {...attrs} />
+                      <img class="layer tail loop" {...attrs} />
+                    </>
+                  )}
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="zzz">
+    <span class="loop">z</span><span class="loop">z</span><span class="loop">z</span>
+  </div>
+</div>
+
+<script>
+  type Mode = "drift" | "pause" | "sleep";
+  type PausePose = "narra-look" | "narra-wave" | "narra-sit" | "narra-peek";
+  // Every number that sets her pace lives here (seconds, pixels, pixels per second).
+  const SPEED = 34;
+  const EASE_DISTANCE = 56;
+  const STEP = [140, 420];
+  const EDGE = 10;
+  const SLEEP_AFTER = 20;
+  const PAUSES: Record<PausePose, [number, number]> = {
+    "narra-look": [2.2, 3.4],
+    "narra-wave": [2.2, 2.6],
+    "narra-sit": [5, 7],
+    "narra-peek": [3, 4],
+  };
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const walker = document.querySelector<HTMLElement>("[data-walker]");
+  const track = walker?.parentElement;
+  const footer = walker?.closest("footer");
+
+  if (walker && track && footer && !reduce.matches) {
+    const rtl = document.documentElement.dir === "rtl";
+    const face = walker.querySelector<HTMLElement>(".w-face")!;
+    const hopper = walker.querySelector<HTMLElement>(".w-hop")!;
+    const poseEls = new Map(Array.from(walker.querySelectorAll<HTMLElement>("[data-pose]"), (el) => [el.dataset.pose!, el]));
+    const between = (a: number, b: number) => a + Math.random() * (b - a);
+    const clamp = (v: number) => Math.min(Math.max(v, 0), maxX);
+
+    let maxX = 0;
+    let p = 0; // distance from the inline-start end of the edge
+    let from = 0;
+    let target = 0;
+    let dir = -1; // logical: +1 towards inline-end
+    let mode: Mode = "pause";
+    let pose = "narra-peek";
+    let timer = between(...PAUSES["narra-peek"]);
+    let wantPeek = false;
+    let atBottom = false;
+    let lastActive = performance.now();
+    let running = false;
+    let onScreen = false;
+    let raf = 0;
+    let last = 0;
+
+    const atEdge = () => p < EDGE || p > maxX - EDGE;
+    const measure = () => {
+      maxX = Math.max(0, track.clientWidth - walker.offsetWidth);
+      p = clamp(p);
+      target = clamp(target);
+    };
+    const place = () => {
+      walker.style.transform = `translate3d(${((rtl ? -1 : 1) * p).toFixed(1)}px,0,0)`;
+    };
+    const setPose = (name: string) => {
+      pose = name;
+      for (const [key, el] of poseEls) el.classList.toggle("is-on", key === name);
+      walker.classList.toggle("is-sleeping", name === "narra-sleep");
+    };
+    const faceTowards = (logical: number) => {
+      const right = logical > 0 !== rtl; // the drift drawing faces right
+      face.classList.toggle("is-left", !right);
+    };
+
+    const pauseFor = (name: PausePose, seconds?: number) => {
+      walker.classList.remove("is-drifting");
+      setPose(name);
+      mode = "pause";
+      timer = seconds ?? between(...PAUSES[name]);
+    };
+
+    const startDrift = () => {
+      if (wantPeek) {
+        // Off to the nearest end of the edge to peek.
+        target = p < maxX / 2 ? 0 : maxX;
+        if (Math.abs(target - p) < 2) {
+          wantPeek = false;
+          return pauseFor("narra-peek");
+        }
+        dir = Math.sign(target - p);
+      } else {
+        if (p < EDGE) dir = 1;
+        else if (p > maxX - EDGE) dir = -1;
+        else if (Math.random() < 0.35) dir = -dir;
+        target = clamp(p + dir * between(STEP[0], STEP[1]));
+        if (Math.abs(target - p) < 60) {
+          dir = -dir;
+          target = clamp(p + dir * between(STEP[0], STEP[1]));
+        }
+        if (Math.abs(target - p) < 4) return pauseFor("narra-look");
+      }
+      from = p;
+      faceTowards(dir);
+      setPose("narra-drift");
+      walker.classList.add("is-drifting");
+      mode = "drift";
+    };
+
+    const arrive = () => {
+      if (wantPeek && atEdge()) {
+        wantPeek = false;
+        return pauseFor("narra-peek");
+      }
+      if (atEdge()) return pauseFor("narra-sit");
+      pauseFor(Math.random() < 0.25 ? "narra-wave" : "narra-look");
+    };
+
+    const sleep = () => {
+      walker.classList.remove("is-drifting");
+      setPose("narra-sleep");
+      mode = "sleep";
+    };
+    const wake = () => {
+      if (mode === "sleep") pauseFor("narra-look", 1.6);
+    };
+
+    const step = (dt: number, now: number) => {
+      const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      if (bottom && !atBottom && pose !== "narra-peek") {
+        wantPeek = true;
+        if (mode === "pause") timer = Math.min(timer, 0.6);
+        else if (mode === "drift") target = p < maxX / 2 ? 0 : maxX;
+      }
+      atBottom = bottom;
+
+      if (mode === "sleep") return;
+      if (mode === "pause") {
+        timer -= dt;
+        if (timer > 0) return;
+        if ((now - lastActive) / 1000 > SLEEP_AFTER) return sleep();
+        return startDrift();
+      }
+      // Ease out of the start and into the stop, so she never jerks.
+      dir = Math.sign(target - p) || dir;
+      const edge = Math.min(Math.abs(p - from), Math.abs(target - p));
+      const v = SPEED * Math.min(1, Math.max(0.22, edge / EASE_DISTANCE));
+      p += dir * v * dt;
+      faceTowards(dir);
+      if ((dir > 0 && p >= target) || (dir < 0 && p <= target)) {
+        p = target;
+        arrive();
+      }
+      place();
+    };
+
+    const frame = (now: number) => {
+      step(Math.min((now - last) / 1000, 0.1), now);
+      last = now;
+      raf = requestAnimationFrame(frame);
+    };
+    const sync = () => {
+      const should = onScreen && !document.hidden;
+      if (should === running) return;
+      running = should;
+      if (running) {
+        last = performance.now();
+        raf = requestAnimationFrame(frame);
+      } else cancelAnimationFrame(raf);
+    };
+
+    // Start exactly where the still Narra stands (the inline-end end), so going live moves nothing.
+    measure();
+    p = maxX;
+    target = p;
+    walker.classList.add("is-live");
+    place();
+    faceTowards(dir);
+
+    new ResizeObserver(() => {
+      measure();
+      place();
+    }).observe(track);
+    new IntersectionObserver((entries) => {
+      onScreen = entries.some((e) => e.isIntersecting);
+      sync();
+    }).observe(footer);
+    document.addEventListener("visibilitychange", sync);
+
+    const active = () => {
+      lastActive = performance.now();
+      wake();
+    };
+    for (const type of ["scroll", "pointermove", "pointerdown", "keydown", "touchstart"])
+      window.addEventListener(type, active, { passive: true });
+
+    // Pointing at her: she stops and waves. A tap or click: a small hop as well.
+    const greet = () => {
+      if (pose === "narra-wave") {
+        timer = Math.max(timer, 1.6);
+        return;
+      }
+      pauseFor("narra-wave", 2.4);
+    };
+    walker.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") greet();
+    });
+    walker.addEventListener("click", () => {
+      hopper.classList.remove("is-hopping");
+      void hopper.offsetWidth; // restart the hop
+      hopper.classList.add("is-hopping");
+      greet();
+    });
+    hopper.addEventListener("animationend", () => hopper.classList.remove("is-hopping"));
+    reduce.addEventListener("change", () => {
+      if (!reduce.matches) return;
+      cancelAnimationFrame(raf);
+      running = false;
+      onScreen = false;
+      pauseFor("narra-peek", Infinity);
+    });
+  }
+</script>
+
+<style>
+  /* The box she lives in: as tall as narra-look, standing on the footer's top edge line.
+     It is also what she listens on for pointing and taps. */
+  .walker {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    inline-size: var(--walker);
+    block-size: var(--walker);
+    pointer-events: auto;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .walker.is-live {
+    inset-inline-end: auto;
+    inset-inline-start: 0;
+    will-change: transform;
+  }
+  .w-face,
+  .w-lean,
+  .w-hop,
+  .w-bob {
+    position: absolute;
+    inset: 0;
+  }
+  .w-face.is-left {
+    transform: scaleX(-1);
+  }
+  /* Each pose at its own size, bottom-centred: the face is the drawing's horizontal
+     centre, so it stays put through cross-fades and turns. */
+  .pose {
+    position: absolute;
+    inset-block-end: 0;
+    left: 50%;
+    inline-size: calc(var(--walker) * var(--rw));
+    block-size: calc(var(--walker) * var(--rh));
+    translate: -50% 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pose.is-on {
+    opacity: 1;
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    -webkit-user-drag: none;
+  }
+  /* Hair (top) and tail (bottom) are copies of the same picture, masked to their part and
+     swayed around the point where they meet the body; the masks overlap a little, so no
+     seam shows. */
+  .body {
+    mask-image: linear-gradient(to bottom, transparent 22%, #000 32%, #000 60%, transparent 72%);
+  }
+  .hair {
+    mask-image: linear-gradient(to bottom, #000 26%, transparent 36%);
+    transform-origin: 50% 34%;
+  }
+  .tail {
+    mask-image: linear-gradient(to bottom, transparent 56%, #000 66%);
+    transform-origin: 50% 58%;
+  }
+  /* The z's of a nap, above her head; outside the mirrored part so they always read. */
+  /* Just above the sleeping head (narra-sleep is about 0.8 of the box tall). */
+  .zzz {
+    position: absolute;
+    inset-block-end: 70%;
+    inset-inline-end: 18%;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    color: var(--c-accent);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .zzz span:nth-child(1) {
+    font-size: 1rem;
+  }
+  .zzz span:nth-child(2) {
+    font-size: 1.25rem;
+    margin-block-end: 8px;
+  }
+  .zzz span:nth-child(3) {
+    font-size: 1.5rem;
+    margin-block-end: 18px;
+  }
+  .walker.is-sleeping .zzz {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .w-face {
+      transition: transform 380ms var(--ease-in-out);
+    }
+    .w-lean {
+      transform-origin: 50% 85%;
+      transition: transform 600ms var(--ease-in-out);
+    }
+    .walker.is-drifting .w-lean {
+      transform: rotate(4deg);
+    }
+    .pose {
+      transition: opacity 320ms var(--ease-out);
+    }
+    .zzz {
+      transition: opacity 400ms var(--ease-out);
+    }
+    .zzz span {
+      display: inline-block;
+      animation: walker-z 2.7s var(--ease-out) infinite;
+    }
+    .zzz span:nth-child(2) {
+      animation-delay: 0.9s;
+    }
+    .zzz span:nth-child(3) {
+      animation-delay: 1.8s;
+    }
+    .w-bob {
+      animation: walker-bob 2.2s var(--ease-in-out) infinite alternate;
+    }
+    .sway-soft .hair {
+      animation: walker-hair 3.2s var(--ease-in-out) infinite alternate;
+    }
+    .sway-soft .tail {
+      animation: walker-tail 2.6s var(--ease-in-out) -1.3s infinite alternate;
+    }
+    .sway-strong .hair {
+      animation: walker-hair-strong 1.9s var(--ease-in-out) infinite alternate;
+    }
+    .sway-strong .tail {
+      animation: walker-tail-strong 1.6s var(--ease-in-out) -0.8s infinite alternate;
+    }
+    .w-hop.is-hopping {
+      animation: walker-hop 560ms var(--ease-out);
+    }
+    /* Peeking holds the edge and sitting rests on it: no bob for those two (the switch
+       happens under the cross-fade, so the small settle doesn't show). */
+    .walker:has([data-pose="narra-peek"].is-on) .w-bob,
+    .walker:has([data-pose="narra-sit"].is-on) .w-bob {
+      animation: none;
+    }
+  }
+  @keyframes walker-bob {
+    from {
+      transform: translateY(-6px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes walker-hair {
+    from {
+      transform: rotate(-1.6deg);
+    }
+    to {
+      transform: rotate(1.6deg);
+    }
+  }
+  @keyframes walker-tail {
+    from {
+      transform: skewX(-3deg);
+    }
+    to {
+      transform: skewX(3deg);
+    }
+  }
+  @keyframes walker-hair-strong {
+    from {
+      transform: rotate(-3.2deg);
+    }
+    to {
+      transform: rotate(1deg);
+    }
+  }
+  @keyframes walker-tail-strong {
+    from {
+      transform: skewX(-7deg);
+    }
+    to {
+      transform: skewX(1deg);
+    }
+  }
+  @keyframes walker-z {
+    0% {
+      opacity: 0;
+      transform: translate(0, 4px) scale(0.7);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(8px, -22px) scale(1.1);
+    }
+  }
+  @keyframes walker-hop {
+    0% {
+      transform: none;
+    }
+    35% {
+      transform: translateY(-22px) scale(1.03, 0.98);
+    }
+    70% {
+      transform: translateY(2px) scale(1.02, 0.97);
+    }
+    100% {
+      transform: none;
+    }
+  }
+</style>
