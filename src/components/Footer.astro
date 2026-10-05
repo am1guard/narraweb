@@ -1,6 +1,8 @@
 ---
-import { Picture } from "astro:assets";
-import peek from "../assets/mascot/guide_peek.webp";
+// A small footer: name and tagline with the links on one line, the fine print in one block
+// under it. Narra wanders along its top edge (FooterNarra), in the gap above the line, so
+// she never covers the links or the text.
+import FooterNarra from "./FooterNarra.astro";
 import { config } from "../config";
 import { pathFor, type Lang } from "../i18n/languages";
 import { app, type Dict } from "../i18n";
@@ -12,18 +14,16 @@ interface Props {
 const { lang, dict } = Astro.props;
 const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
 ---
-<footer class="site-footer">
+<footer class="site-footer" data-loop>
   <div class="container">
-    <div class="peek" aria-hidden="true" data-seq data-vt="footer-narra">
-      <div class="peek-inner">
-        <Picture src={peek} alt="" widths={[160, 320]} sizes="160px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" />
-      </div>
+    <div class="edge">
+      <FooterNarra />
     </div>
-    <div class="cols">
-      <div class="about">
-        <p class="name">Narra</p>
-        <p class="tagline">{app(lang).strings["help.about.tagline"]}</p>
-      </div>
+    <div class="row">
+      <p class="about">
+        <span class="name">Narra</span>
+        <span class="tagline">{app(lang).strings["help.about.tagline"]}</span>
+      </p>
       <nav aria-label={dict.nav.support}>
         <ul role="list" class="links">
           <li><a class="press" href={pathFor(lang, "support")}>{dict.nav.support}</a></li>
@@ -34,68 +34,65 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
         </ul>
       </nav>
     </div>
-    <div class="fine">
-      <p>© {year} Narra. {dict.footer.madeBy}</p>
-      <p>{dict.footer.independent}</p>
-      <p>{dict.footer.trademarks}</p>
-    </div>
+    <p class="fine">
+      © {year} Narra. {dict.footer.madeBy} {dict.footer.independent} {dict.footer.trademarks}
+    </p>
   </div>
 </footer>
 
 <style>
   .site-footer {
     position: relative;
-    margin-block-start: var(--section-gap);
-    padding-block: var(--s-8) var(--s-9);
+    /* Room above the line for Narra (her tallest pose is about 1.3 times --walker). */
+    margin-block-start: max(var(--section-gap), calc(var(--walker) * 1.32 + var(--s-6)));
+    padding-block: var(--s-4) var(--s-6);
     border-block-start: 1px solid var(--c-stroke-strong);
     background: color-mix(in srgb, var(--c-surface) 55%, var(--c-bg));
+    /* Her wide drifting pose may reach past the page edge: clip it sideways only. */
+    overflow-x: clip;
+    overflow-y: visible;
   }
-  .peek {
+  .container {
+    position: relative;
+  }
+  /* A zero-height strip on the footer's top line, as wide as the content: Narra's path. */
+  .edge {
     position: absolute;
-    inset-block-start: 0;
-    inset-inline-end: max(var(--gutter), 8vw);
-    inline-size: 120px;
-    transform: translateY(-100%);
+    inset-block-start: calc(var(--s-4) * -1 - 1px);
+    inset-inline: var(--gutter);
+    block-size: 0;
     pointer-events: none;
   }
-  .peek {
-    overflow: hidden;
-  }
-  .peek :global(img) {
-    inline-size: 100%;
-    block-size: auto;
-  }
-  /* Narra slides up from behind the footer's edge the first time it comes into view. */
-  @media (prefers-reduced-motion: no-preference) {
-    :global(.js) .peek:not(.is-in) .peek-inner {
-      translate: 0 100%;
-    }
-    .peek-inner {
-      transition: translate 900ms var(--ease-spring) 150ms;
-    }
-  }
-  .cols {
+  .row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: var(--s-7);
+    gap: var(--s-1) var(--s-6);
+  }
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--s-3);
+    min-inline-size: 0;
   }
   .name {
-    font-family: "Cormorant Garamond", var(--font-display);
-    font-weight: 600;
-    font-size: 2rem;
-    line-height: 1.1;
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: 1.5rem;
+    line-height: 1.2;
   }
   .tagline {
-    margin-block-start: var(--s-1);
     color: var(--c-text-2);
-    max-inline-size: 26rem;
+    font-size: var(--fs-sm);
   }
   .links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--s-1) var(--s-2);
+    gap: 0 var(--s-1);
     margin: 0;
+    margin-inline: calc(var(--s-3) * -1);
     list-style: none;
   }
   .links a {
@@ -105,6 +102,7 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
     padding-inline: var(--s-3);
     border-radius: var(--r-control);
     color: var(--c-text);
+    font-size: var(--fs-sm);
     font-weight: 700;
     text-decoration: none;
   }
@@ -112,11 +110,11 @@ const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
     background: color-mix(in srgb, var(--c-text) 10%, transparent);
   }
   .fine {
-    margin-block-start: var(--s-7);
-    display: grid;
-    gap: var(--s-1);
+    margin-block-start: var(--s-2);
+    padding-block-start: var(--s-3);
+    border-block-start: 1px solid var(--c-stroke);
     color: var(--c-text-2);
     font-size: var(--fs-xs);
-    max-inline-size: 48rem;
+    line-height: 1.55;
   }
 </style>
