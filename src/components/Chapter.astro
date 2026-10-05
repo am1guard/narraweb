@@ -1,0 +1,231 @@
+---
+// One chapter of the story: numbered title with a scene-break ornament, a line from Narra,
+// a short lead and the features as a quiet list (no card grid). The art column holds the
+// chapter's Narra pose, or, once screenshots are in, the app screen in a phone frame.
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Ornament from "./Ornament.astro";
+import Say from "./Say.astro";
+import PhoneFrame from "./PhoneFrame.astro";
+import { chapterLabel, chapterNumeral, type Lang } from "../i18n/languages";
+import { SCREENS, screenFor, type ScreenName } from "../lib/screens";
+import { sparklePath } from "../lib/sparkle";
+
+interface Props {
+  lang: Lang;
+  n: number;
+  id: string;
+  title: string;
+  say: string;
+  lead: string;
+  items: { t: string; d: string }[];
+  mascot?: ImageMetadata;
+  screen?: ScreenName;
+  screenAlt?: string;
+  showScreens: boolean;
+  /** No art column: the chapter brings its own full-width illustration in the default slot. */
+  wide?: boolean;
+}
+const { lang, n, id, title, say, lead, items, mascot, screen, screenAlt = "", showScreens, wide = false } = Astro.props;
+const side = n % 2 === 1 ? "end" : "start";
+const useScreen = showScreens && screen !== undefined;
+const art = !wide && (useScreen || mascot);
+---
+<section id={`chapter-${n}`} class:list={["chapter", `chapter-${id}`]} aria-labelledby={`chapter-${n}-title`} data-chapter={id}>
+  <div class:list={["container", "grid", { "has-art": art }]} data-side={side}>
+    <div class="text">
+      <header class="head" data-reveal>
+        <p class="label">{chapterLabel(lang, n)}</p>
+        <h2 id={`chapter-${n}-title`}>{title}</h2>
+        <Ornament />
+      </header>
+      <Say text={say} />
+      <p class="lead">{lead}</p>
+      <slot name="aside" />
+      <ul class="features" role="list">
+        {
+          items.map((item) => (
+            <li>
+              <svg class="bullet" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                <path d={sparklePath(8, 8, 7)} fill="currentColor" />
+              </svg>
+              <h3>{item.t}</h3>
+              <p>{item.d}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    {
+      art && (
+        <div class="art">
+          <div class="art-inner">
+            <span class="numeral" aria-hidden="true">{chapterNumeral(lang, n)}</span>
+            {useScreen ? (
+              <PhoneFrame image={screenFor(lang, screen!)} alt={screenAlt} orientation={SCREENS[screen!]} name={screen!} />
+            ) : (
+              <Picture
+                src={mascot!}
+                alt=""
+                widths={[240, 360, 520, 720]}
+                sizes="(min-width: 900px) 360px, 220px"
+                formats={["avif"]} fallbackFormat="webp"
+                quality={78}
+                loading="lazy"
+                decoding="async"
+                class="mascot"
+              />
+            )}
+          </div>
+        </div>
+      )
+    }
+  </div>
+  <slot />
+</section>
+
+<style>
+  .chapter {
+    position: relative;
+    padding-block-start: var(--section-gap);
+    scroll-margin-block-start: var(--s-4);
+  }
+  .grid {
+    display: grid;
+    gap: var(--s-7);
+  }
+  .text {
+    max-inline-size: var(--text-max);
+  }
+  .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    line-height: 1.2;
+  }
+  :global(:lang(ar)) .label,
+  :global(:lang(fa)) .label,
+  :global(:lang(ja)) .label,
+  :global(:lang(ko)) .label,
+  :global(:lang(zh-Hans)) .label,
+  :global(:lang(zh-Hant)) .label {
+    letter-spacing: 0;
+    font-size: var(--fs-label);
+  }
+  h2 {
+    margin-block: var(--s-2) var(--s-4);
+    font-size: var(--fs-h2);
+  }
+  .lead {
+    margin-block-start: var(--s-6);
+    font-size: var(--fs-lead);
+    color: var(--c-text);
+  }
+  .features {
+    margin-block-start: var(--s-7);
+    list-style: none;
+    display: grid;
+  }
+  .features li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    column-gap: var(--s-3);
+    padding-block: var(--s-4);
+    border-block-start: 1px solid var(--c-stroke);
+  }
+  .features li:last-child {
+    border-block-end: 1px solid var(--c-stroke);
+  }
+  .bullet {
+    grid-row: 1 / span 2;
+    margin-block-start: 0.4em;
+    color: var(--c-accent);
+  }
+  h3 {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 800;
+    line-height: 1.4;
+  }
+  .features p {
+    color: var(--c-text-2);
+    margin-block-start: 2px;
+  }
+  .art {
+    display: flex;
+    justify-content: center;
+  }
+  .art-inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    inline-size: 100%;
+  }
+  .art-inner::before {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--c-glow) calc(var(--glow-opacity) * 110%), transparent) 0, transparent 70%);
+    z-index: -1;
+  }
+  .mascot {
+    inline-size: 220px;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+  .numeral {
+    position: absolute;
+    inset-block-start: -0.2em;
+    inset-inline-start: 0;
+    z-index: -1;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(7rem, 5rem + 7vw, 13rem);
+    line-height: 1;
+    color: var(--c-accent);
+    opacity: 0.13;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Mobile: the art comes first, small, then the text. */
+  .art {
+    order: -1;
+  }
+
+  @media (min-width: 900px) {
+    .grid.has-art {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+      align-items: start;
+      column-gap: var(--s-9);
+    }
+    .grid.has-art[data-side="start"] {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    }
+    .art {
+      order: 0;
+      align-self: stretch;
+    }
+    .grid[data-side="start"] .art {
+      order: -1;
+    }
+    .art-inner {
+      position: sticky;
+      inset-block-start: 14vh;
+      align-self: start;
+      margin-block-start: var(--s-9);
+    }
+    .mascot {
+      inline-size: var(--mascot-chapter);
+    }
+    .numeral {
+      inset-block-start: -0.35em;
+      inset-inline-start: -0.32em;
+    }
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import { Picture } from "astro:assets";
+import peek from "../assets/mascot/guide_peek.webp";
+import { config } from "../config";
+import { pathFor, type Lang } from "../i18n/languages";
+import { app, type Dict } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+}
+const { lang, dict } = Astro.props;
+const year = new Date(`${config.lastUpdated}T12:00:00Z`).getUTCFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="peek" aria-hidden="true">
+      <Picture src={peek} alt="" widths={[160, 320]} sizes="160px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" />
+    </div>
+    <div class="cols">
+      <div class="about">
+        <p class="name">Narra</p>
+        <p class="tagline">{app(lang).strings["help.about.tagline"]}</p>
+      </div>
+      <nav aria-label={dict.nav.support}>
+        <ul role="list" class="links">
+          <li><a href={pathFor(lang, "support")}>{dict.nav.support}</a></li>
+          <li><a href={pathFor(lang, "privacy")}>{dict.nav.privacy}</a></li>
+          <li><a href={pathFor(lang, "terms")}>{dict.nav.terms}</a></li>
+          <li><a href={config.discordUrl} rel="noopener">Discord</a></li>
+          <li><a href={`mailto:${config.supportEmail}`}>{dict.footer.email}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fine">
+      <p>© {year} Narra. {dict.footer.madeBy}</p>
+      <p>{dict.footer.independent}</p>
+      <p>{dict.footer.trademarks}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    margin-block-start: var(--section-gap);
+    padding-block: var(--s-8) var(--s-9);
+    border-block-start: 1px solid var(--c-stroke-strong);
+    background: color-mix(in srgb, var(--c-surface) 55%, var(--c-bg));
+  }
+  .peek {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: max(var(--gutter), 8vw);
+    inline-size: 120px;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+  .peek :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+  }
+  .cols {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-7);
+  }
+  .name {
+    font-family: "Cormorant Garamond", var(--font-display);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+  .tagline {
+    margin-block-start: var(--s-1);
+    color: var(--c-text-2);
+    max-inline-size: 26rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-2);
+    margin: 0;
+    list-style: none;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--touch);
+    padding-inline: var(--s-3);
+    border-radius: var(--r-control);
+    color: var(--c-text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .links a:hover {
+    background: color-mix(in srgb, var(--c-text) 10%, transparent);
+  }
+  .fine {
+    margin-block-start: var(--s-7);
+    display: grid;
+    gap: var(--s-1);
+    color: var(--c-text-2);
+    font-size: var(--fs-xs);
+    max-inline-size: 48rem;
+  }
+</style>

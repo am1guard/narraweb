@@ -1,0 +1,104 @@
+---
+// GitHub Pages serves this one file for every missing URL. It renders in English and, if
+// the path starts with a language prefix (/tr/..., /ja/...), switches its few lines to that language.
+import { Picture } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import lost from "../assets/mascot/no_results.webp";
+import { t } from "../i18n";
+import { LANGS, LANG_INFO, pathFor, slugOf } from "../i18n/languages";
+
+const dict = t("en");
+const texts = Object.fromEntries(
+  LANGS.filter((l) => l !== "en").map((l) => [
+    slugOf(l),
+    { lang: l, dir: LANG_INFO[l].dir, home: pathFor(l), ...t(l).notFound, docTitle: t(l).meta.notFoundTitle },
+  ]),
+);
+---
+<Base lang="en" page="404" title={dict.meta.notFoundTitle} description={dict.notFound.say}>
+  <div class="container lost">
+    <Picture src={lost} alt="" widths={[220, 320, 480]} sizes="240px" formats={["avif"]} fallbackFormat="webp" loading="eager" class="mascot" />
+    <h1 data-nf="title">{dict.notFound.title}</h1>
+    <figure class="say">
+      <figcaption>Narra</figcaption>
+      <blockquote><p data-nf="say">{dict.notFound.say}</p></blockquote>
+    </figure>
+    <a class="home" href="/" data-nf="back">{dict.notFound.back}</a>
+  </div>
+  <script is:inline define:vars={{ texts }}>
+    (function () {
+      var slug = location.pathname.split("/")[1];
+      var x = slug && texts[slug.toLowerCase()];
+      if (!x) return;
+      var root = document.querySelector(".lost");
+      root.lang = x.lang;
+      root.dir = x.dir;
+      root.querySelector('[data-nf="title"]').textContent = x.title;
+      document.title = x.docTitle + " · Narra";
+      root.querySelector('[data-nf="say"]').textContent = x.say;
+      var back = root.querySelector('[data-nf="back"]');
+      back.textContent = x.back;
+      back.href = x.home;
+    })();
+  </script>
+</Base>
+
+<style>
+  .lost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: calc(var(--header-height) + var(--s-8)) var(--s-8);
+  }
+  .mascot {
+    inline-size: 240px;
+    aspect-ratio: 1;
+  }
+  .mascot :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  h1 {
+    margin-block-start: var(--s-4);
+    font-size: var(--fs-h2);
+  }
+  .say {
+    position: relative;
+    inline-size: min(100%, 34rem);
+    margin: var(--s-7) 0 0;
+    padding: var(--s-6) var(--s-5) var(--s-4);
+    border-radius: var(--r-card);
+    background: var(--c-dialogue);
+    border: 1px solid var(--c-dialogue-stroke);
+    text-align: start;
+  }
+  .say blockquote {
+    margin: 0;
+    font-size: var(--fs-lead);
+  }
+  figcaption {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--s-5);
+    transform: translateY(-50%);
+    padding: 2px var(--s-3);
+    border-radius: var(--r-pill);
+    background: var(--c-nametag);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+  }
+  .home {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--cta-height);
+    margin-block-start: var(--s-7);
+    padding-inline: var(--s-6);
+    border-radius: var(--r-button);
+    background: linear-gradient(to right, var(--c-cta-start), var(--c-cta-end));
+    color: var(--c-on-cta);
+    font-weight: 800;
+    text-decoration: none;
+  }
+</style>

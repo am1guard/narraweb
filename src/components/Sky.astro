@@ -1,0 +1,36 @@
+---
+// Decorative night sky: the app's NarraStaticBackground (radial glows + fixed sparkles).
+import { sparklePath, stars } from "../lib/sparkle";
+
+interface Props {
+  seed?: number;
+  count?: number;
+  class?: string;
+}
+const { seed = 0x4e415252, count = 26, class: className = "" } = Astro.props;
+const W = 1440;
+const H = 900;
+const list = stars(count, W, H, seed);
+---
+<div class:list={["sky", className]} aria-hidden="true">
+  <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMin slice" focusable="false">
+    {list.map((s) => <path d={sparklePath(s.x, s.y, s.size)} fill="var(--c-glow)" fill-opacity={(s.opacity * 0.9).toFixed(2)} />)}
+  </svg>
+</div>
+
+<style>
+  .sky {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--c-glow) calc(var(--glow-opacity) * 100%), transparent) 0, transparent min(520px, 70vw)),
+      radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--c-cta-start) calc(var(--glow-opacity) * 80%), transparent) 0, transparent min(420px, 60vw));
+  }
+  svg {
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: var(--star-opacity);
+  }
+</style>

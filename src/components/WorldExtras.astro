@@ -1,0 +1,98 @@
+---
+// Chapter "world": every language named in itself, then three plain promises.
+import { LANGS, LANG_INFO, pathFor, type Lang } from "../i18n/languages";
+import type { Dict } from "../i18n";
+import { sparklePath } from "../lib/sparkle";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+}
+const { lang, dict } = Astro.props;
+const w = dict.chapters.world;
+---
+<div class="world">
+  <p class="langs-label">{w.languagesLabel}</p>
+  <ul class="langs system-font" role="list">
+    {
+      LANGS.map((l) => (
+        <li lang={l} dir={LANG_INFO[l].dir} class:list={{ current: l === lang }}>
+          {LANG_INFO[l].name}
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="promises" role="list">
+    {
+      w.promises.map((p) => (
+        <li>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d={sparklePath(12, 12, 10)} fill="currentColor" />
+          </svg>
+          <span>{p}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="note">
+    {w.promisesNote} <a href={pathFor(lang, "privacy")}>{w.privacyLink}</a>
+  </p>
+</div>
+
+<style>
+  .world {
+    margin-block-start: var(--s-7);
+  }
+  .langs-label {
+    font-weight: 800;
+    font-size: var(--fs-sm);
+    color: var(--c-text-2);
+  }
+  .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin-block-start: var(--s-3);
+    list-style: none;
+  }
+  .langs li {
+    padding: var(--s-1) var(--s-3);
+    border-radius: var(--r-pill);
+    border: 1px solid var(--c-stroke-strong);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+  }
+  .langs li.current {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    font-weight: 800;
+  }
+  .promises {
+    display: grid;
+    gap: var(--s-2);
+    margin-block-start: var(--s-8);
+    list-style: none;
+  }
+  .promises li {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.35rem);
+    line-height: 1.2;
+  }
+  .promises svg {
+    flex: none;
+    color: var(--c-accent);
+  }
+  .note {
+    margin-block-start: var(--s-5);
+    color: var(--c-text-2);
+  }
+  .note a {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+</style>

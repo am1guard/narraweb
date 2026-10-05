@@ -1,0 +1,127 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import LangSuggest from "../components/LangSuggest.astro";
+import Sky from "../components/Sky.astro";
+import { config } from "../config";
+import { LANGS, LANG_INFO, pathFor, type Lang } from "../i18n/languages";
+import { t } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  /** "" for the home page, or "privacy" | "support" | "terms"; "404" for the error page. */
+  page: string;
+  title: string;
+  description: string;
+  jsonLd?: Record<string, unknown>;
+}
+const { lang, page, title, description, jsonLd } = Astro.props;
+const dict = t(lang);
+const info = LANG_INFO[lang];
+const isError = page === "404";
+const canonical = isError ? undefined : new URL(pathFor(lang, page), config.siteUrl).href;
+const ogImage = new URL(`/og/${lang.toLowerCase()}.png`, config.siteUrl).href;
+
+// Preload the fonts the first screen needs, per writing system.
+const preload: Record<string, string[]> = {
+  latin: ["nunito-latin-wght-normal.woff2", "cormorant-garamond-latin-600-normal.woff2"],
+  cyrillic: [
+    "nunito-cyrillic-wght-normal.woff2",
+    "nunito-latin-wght-normal.woff2",
+    "cormorant-garamond-cyrillic-600-normal.woff2",
+    "cormorant-garamond-latin-600-normal.woff2",
+  ],
+  arabic: ["vazirmatn-arabic-wght-normal.woff2", "amiri-arabic-700-subset.woff2"],
+  cjk: ["nunito-latin-wght-normal.woff2"],
+};
+if (lang === "vi") preload.latin.push("nunito-vietnamese-wght-normal.woff2", "cormorant-garamond-vietnamese-600-normal.woff2");
+const themeScript = `(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("narra-theme");if(t==="light"||t==="dark")d.dataset.theme=t}catch(e){}})();`;
+---
+<!doctype html>
+<html lang={lang} dir={info.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{page === "" ? title : `${title} · Narra`}</title>
+    <meta name="description" content={description} />
+    <script is:inline set:html={themeScript} />
+    {preload[info.script].map((file) => <link rel="preload" href={`/fonts/${file}`} as="font" type="font/woff2" crossorigin />)}
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#120c1b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f3fb" media="(prefers-color-scheme: light)" />
+    {isError ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {
+      !isError &&
+        LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(pathFor(l, page), config.siteUrl).href} />)
+    }
+    {!isError && <link rel="alternate" hreflang="x-default" href={new URL(pathFor("en", page), config.siteUrl).href} />}
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    {config.appStoreId && <meta name="apple-itunes-app" content={`app-id=${config.appStoreId}`} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Narra" />
+    <meta property="og:title" content={page === "" ? title : `${title} · Narra`} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content={info.og} />
+    {LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LANG_INFO[l].og} />)}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={dict.meta.ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={page === "" ? title : `${title} · Narra`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={dict.meta.ogAlt} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <slot name="head" />
+  </head>
+  <body data-page={page || "home"}>
+    <div class="night" aria-hidden="true"><Sky seed={0x4e415253} count={18} /></div>
+    <a class="skip-link" href="#main">{dict.nav.skip}</a>
+    <Header lang={lang} dict={dict} page={page === "404" ? "" : page} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} dict={dict} />
+    {lang === "en" && <LangSuggest page={page === "404" ? "" : page} />}
+    <script>
+      // Chapter titles fade in once as they come into view (only without Reduce Motion;
+      // the CSS for [data-reveal] lives in global.css and needs the .js class).
+      const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      if (items.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px" },
+        );
+        items.forEach((item) => observer.observe(item));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  main:focus {
+    outline: none;
+  }
+  /* The app's static background: glows and sparkles stay put while the story scrolls over them. */
+  .night {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    transform: translateZ(0);
+    opacity: 0.5;
+  }
+</style>

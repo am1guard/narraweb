@@ -1,0 +1,163 @@
+---
+import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
+import Chapter from "../../components/Chapter.astro";
+import FilesPath from "../../components/FilesPath.astro";
+import EngineTimeline from "../../components/EngineTimeline.astro";
+import HelperScene from "../../components/HelperScene.astro";
+import WorldExtras from "../../components/WorldExtras.astro";
+import Epilogue from "../../components/Epilogue.astro";
+import { config, screensReady } from "../../config";
+import { t } from "../../i18n";
+import { LANGS, chapterNumeral, langPaths, type Lang } from "../../i18n/languages";
+import type { ScreenName } from "../../lib/screens";
+
+import add from "../../assets/mascot/onboarding_add.webp";
+import keyPose from "../../assets/mascot/settings.webp";
+import gamepad from "../../assets/brand/narra-gamepad.webp";
+import cloud from "../../assets/brand/narra-cloud.webp";
+import gallery from "../../assets/mascot/gallery_welcome.webp";
+import book from "../../assets/mascot/welcome.webp";
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const dict = t(lang);
+const c = dict.chapters;
+
+const chapters = [
+  { id: "arrive", data: c.arrive, mascot: add, screen: "library" },
+  { id: "engine", data: c.engine, mascot: keyPose, screen: "engine-picker" },
+  { id: "helper", data: c.helper, mascot: undefined, screen: "in-game-narra" },
+  { id: "controls", data: c.controls, mascot: gamepad, screen: "pause" },
+  { id: "saves", data: c.saves, mascot: cloud, screen: "saves" },
+  { id: "extras", data: c.extras, mascot: gallery, screen: "mods" },
+  { id: "world", data: c.world, mascot: book, screen: "settings" },
+] as const satisfies readonly { id: string; screen: ScreenName; [k: string]: unknown }[];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Narra",
+  description: dict.meta.homeDescription,
+  operatingSystem: "iOS, iPadOS",
+  applicationCategory: "GameApplication",
+  url: new URL(Astro.url.pathname, config.siteUrl).href,
+  image: new URL("/icon-512.png", config.siteUrl).href,
+  inLanguage: [...LANGS],
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Person", name: config.developer },
+  ...(config.appStoreUrl ? { downloadUrl: config.appStoreUrl, installUrl: config.appStoreUrl } : {}),
+};
+---
+<Base lang={lang} page="" title={dict.meta.homeTitle} description={dict.meta.homeDescription} jsonLd={jsonLd}>
+  <Hero lang={lang} dict={dict} />
+
+  <nav class="container toc" aria-labelledby="toc-title">
+    <h2 id="toc-title" class="toc-title">{dict.nav.contents}</h2>
+    <ol role="list">
+      {
+        chapters.map((ch, i) => (
+          <li>
+            <a href={`#chapter-${i + 1}`}>
+              <span class="num">{chapterNumeral(lang, i + 1)}</span>
+              <span class="name">{ch.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href="#epilogue">
+          <span class="num" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M8 1Q9.5 6.5 15 8Q9.5 9.5 8 15Q6.5 9.5 1 8Q6.5 6.5 8 1Z" fill="currentColor" /></svg>
+          </span>
+          <span class="name">{dict.epilogue.label}</span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  {
+    chapters.map((ch, i) => (
+      <Chapter
+        lang={lang}
+        n={i + 1}
+        id={ch.id}
+        title={ch.data.title}
+        say={ch.data.say}
+        lead={ch.data.lead}
+        items={"items" in ch.data ? ch.data.items : []}
+        mascot={ch.mascot}
+        screen={ch.screen}
+        screenAlt={ch.data.title}
+        showScreens={screensReady}
+        wide={ch.id === "helper"}
+      >
+        {ch.id === "arrive" && <FilesPath slot="aside" label={c.arrive.pathLabel} path={c.arrive.path} />}
+        {ch.id === "engine" && <div class="container"><EngineTimeline dict={dict} /></div>}
+        {ch.id === "helper" && <HelperScene lang={lang} dict={dict} />}
+        {ch.id === "world" && <div slot="aside"><WorldExtras lang={lang} dict={dict} /></div>}
+      </Chapter>
+    ))
+  }
+
+  <Epilogue lang={lang} dict={dict} />
+</Base>
+
+<style>
+  .toc {
+    padding-block-start: var(--s-8);
+  }
+  .toc-title {
+    font-size: 1.0625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+  }
+  :global(:lang(ar)) .toc-title,
+  :global(:lang(fa)) .toc-title,
+  :global(:lang(ja)) .toc-title,
+  :global(:lang(ko)) .toc-title,
+  :global(:lang(zh-Hans)) .toc-title,
+  :global(:lang(zh-Hant)) .toc-title {
+    letter-spacing: 0;
+  }
+  .toc ol {
+    display: grid;
+    gap: 0 var(--s-7);
+    margin-block-start: var(--s-3);
+    list-style: none;
+    border-block-start: 1px solid var(--c-stroke);
+  }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-4);
+    min-block-size: var(--touch);
+    padding-block: var(--s-2);
+    border-block-end: 1px solid var(--c-stroke);
+    color: var(--c-text);
+    text-decoration: none;
+  }
+  .toc a:hover .name {
+    color: var(--c-accent);
+  }
+  .num {
+    flex: none;
+    min-inline-size: 2.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--c-accent);
+  }
+  .name {
+    font-weight: 700;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  @media (min-width: 900px) {
+    .toc ol {
+      grid-template-columns: 1fr 1fr;
+      border-block-start: 0;
+    }
+  }
+</style>

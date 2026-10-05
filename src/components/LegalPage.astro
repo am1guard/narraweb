@@ -1,0 +1,95 @@
+---
+// Shared layout for the privacy policy and the terms: a readable single column with numbered sections.
+import Ornament from "./Ornament.astro";
+import { config } from "../config";
+import { formatDate, type Lang } from "../i18n/languages";
+import type { Dict } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+  title: string;
+  intro: string[];
+  sections: { h: string; p: string[]; link?: { text: string; href: string } }[];
+}
+const { lang, dict, title, intro, sections } = Astro.props;
+---
+<article class="container legal">
+  <header>
+    <h1>{title}</h1>
+    <p class="date">{dict.legal.effective.replace("{date}", formatDate(lang, config.lastUpdated))}</p>
+    <Ornament />
+  </header>
+  {dict.legal.translationNote && <p class="note">{dict.legal.translationNote}</p>}
+  <div class="intro">
+    {intro.map((p) => <p>{p}</p>)}
+    <slot name="intro" />
+  </div>
+  {
+    sections.map((section, i) => (
+      <section aria-labelledby={`s${i + 1}`}>
+        <h2 id={`s${i + 1}`}>
+          <span class="n" aria-hidden="true">{(i + 1).toLocaleString(lang === "la" ? "en" : lang)}</span>
+          {section.h}
+        </h2>
+        {section.p.map((p) => <p>{p}</p>)}
+        {section.link && (
+          <p>
+            <a href={section.link.href} rel="noopener">{section.link.text}</a>
+          </p>
+        )}
+      </section>
+    ))
+  }
+  <p class="contact"><a href={`mailto:${config.supportEmail}`}>{config.supportEmail}</a></p>
+</article>
+
+<style>
+  .legal {
+    max-inline-size: calc(44rem + 2 * var(--gutter));
+    padding-block-start: calc(var(--header-height) + var(--s-8));
+  }
+  h1 {
+    font-size: var(--fs-h2);
+  }
+  .date {
+    margin-block: var(--s-2) var(--s-4);
+    color: var(--c-text-2);
+    font-size: var(--fs-sm);
+  }
+  .note {
+    margin-block-start: var(--s-6);
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--r-control);
+    border: 1px dashed var(--c-stroke-strong);
+    color: var(--c-text-2);
+    font-size: var(--fs-sm);
+  }
+  .intro {
+    margin-block-start: var(--s-7);
+    display: grid;
+    gap: var(--s-4);
+    font-size: var(--fs-lead);
+  }
+  section {
+    margin-block-start: var(--s-8);
+    display: grid;
+    gap: var(--s-3);
+  }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-3);
+    font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem);
+  }
+  .n {
+    color: var(--c-accent);
+    font-size: 0.8em;
+    min-inline-size: 1.4em;
+  }
+  .contact {
+    margin-block-start: var(--s-5);
+    font-weight: 800;
+    font-size: var(--fs-lead);
+  }
+</style>

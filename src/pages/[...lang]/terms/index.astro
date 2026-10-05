@@ -1,0 +1,16 @@
+---
+import Base from "../../../layouts/Base.astro";
+import LegalPage from "../../../components/LegalPage.astro";
+import { t } from "../../../i18n";
+import { langPaths, type Lang } from "../../../i18n/languages";
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+const dict = t(lang);
+const EULA = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/";
+---
+<Base lang={lang} page="terms" title={dict.meta.termsTitle} description={dict.meta.termsDescription}>
+  <LegalPage lang={lang} dict={dict} title={dict.meta.termsTitle} intro={dict.terms.intro} sections={dict.terms.sections}>
+    <p slot="intro"><a href={EULA} rel="noopener">{dict.terms.eulaLink}</a></p>
+  </LegalPage>
+</Base>

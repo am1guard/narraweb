@@ -1,0 +1,13 @@
+---
+import Base from "../../../layouts/Base.astro";
+import LegalPage from "../../../components/LegalPage.astro";
+import { t } from "../../../i18n";
+import { langPaths, type Lang } from "../../../i18n/languages";
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+const dict = t(lang);
+---
+<Base lang={lang} page="privacy" title={dict.meta.privacyTitle} description={dict.meta.privacyDescription}>
+  <LegalPage lang={lang} dict={dict} title={dict.meta.privacyTitle} intro={dict.privacy.intro} sections={dict.privacy.sections} />
+</Base>

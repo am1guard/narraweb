@@ -1,0 +1,2535 @@
+{
+ "en": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Adding Games",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "How do I add a game?",
+      "a": "Tap Add Game in your library, then choose a Ren'Py game folder or a ZIP archive. You can pick several at once and Narra adds them one by one."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "How do I get a game onto my iPhone or iPad?",
+      "a": "Download the PC or Mac version of the game, or copy it from your computer with AirDrop, iCloud Drive or Finder. Once it appears in the Files app, add it from Narra. You can leave it zipped; Narra unpacks it for you."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "How does Narra know a folder is a Ren'Py game?",
+      "a": "A Ren'Py game has a “game” folder with .rpa or .rpyc files inside. Choose the folder that contains “game”, or a ZIP of it. Narra also looks a couple of folders deeper, so an extra wrapper folder is fine."
+     },
+     {
+      "id": "formats",
+      "q": "Which formats are supported?",
+      "a": "Right now you can add game folders and ZIP archives. Support for RAR, 7z and Android APK files is planned for a future update."
+     },
+     {
+      "id": "duplicate",
+      "q": "What if I add a game I already have?",
+      "a": "Narra asks what to do: update the existing game with the new files, add it as a separate copy, or skip it. Your saves are kept when you update."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Your Library",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Where do the covers come from?",
+      "a": "Narra picks a cover from the game's own images, such as its main menu background, splash screen or icon. If it finds none, it makes a colorful cover from the title."
+     },
+     {
+      "id": "collections",
+      "q": "What are collections?",
+      "a": "Collections let you group games your own way, for example by series or mood. Create one with New Collection in the menu at the top right of your library."
+     },
+     {
+      "id": "findGames",
+      "q": "How do I find a game quickly?",
+      "a": "Use the search field above your games. The filter button shows only favorites or a single status, and the sort button orders games by last played, date added or name."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "How do favorites and status work?",
+      "a": "Touch and hold a game to add it to your favorites or set its status: Playing, Completed, Dropped or Backlog. Both show up as badges on the game's card."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Saves & Storage",
+    "items": [
+     {
+      "id": "backup",
+      "q": "How do I back up my saves?",
+      "a": "Open the menu at the top right of your library and choose Back Up All Game Saves. Narra creates a separate ZIP archive for each game with saves and puts it in the Saves folder, which you can find in the Files app under Narra. You can also share the archives."
+     },
+     {
+      "id": "storage",
+      "q": "How can I free up space?",
+      "a": "Choose Storage Manager from the menu at the top right of your library to see how much space each game uses. Removing games you've finished is the quickest way to free up room."
+     },
+     {
+      "id": "deleteApp",
+      "q": "What happens if I delete Narra?",
+      "a": "Your games and saves live inside Narra, so deleting the app removes them too. Back up your saves before you delete it."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Playing",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Why does Narra close after a game?",
+      "a": "The Ren'Py engine can start only once per launch, so after you quit a game Narra asks to close. Open it again to keep playing or start another game. Your saves stay in the game's folder and are uploaded to iCloud first when sync is on."
+     },
+     {
+      "id": "compatibility",
+      "q": "Will every Ren'Py game work?",
+      "a": "Narra is built for the PC and Mac versions of Ren'Py games and plays most of them, from Ren'Py 7 (Python 2) to Ren'Py 8. Some that rely on unusual add-ons may not work. If a game gives you trouble, please report it."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App & Privacy",
+    "items": [
+     {
+      "id": "language",
+      "q": "How do I change the language?",
+      "a": "Narra follows your device language. To pick a different one just for Narra, open the Settings app, go to Apps > Narra > Language and choose from 17 languages."
+     },
+     {
+      "id": "appearance",
+      "q": "Can I use light or dark mode?",
+      "a": "Yes. Narra follows your device by default. Open Settings from the menu at the top right of your library and choose Appearance to keep Narra always light or always dark."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Troubleshooting",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra says my file isn't a Ren'Py game.",
+      "a": "Make sure you picked the folder that contains the “game” folder, or a ZIP of it. Android APK files and games made with other engines can't be added right now."
+     },
+     {
+      "id": "unreadable",
+      "q": "A file can't be read or is greyed out.",
+      "a": "If the file is in iCloud Drive, download it first: in the Files app, tap the cloud icon next to it and wait until it finishes. Items that look greyed out in the picker use a format that isn't supported yet."
+     },
+     {
+      "id": "space",
+      "q": "Narra says there isn't enough space.",
+      "a": "Adding a ZIP needs room for both the archive and the unpacked game. Free up space on your device, or use Storage Manager to remove games you no longer play."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "A cozy home for your Ren'Py visual novels.",
+   "engine.speech.choice": "A choice is coming up. Save first?",
+   "engine.speech.mainMenuResume": "We're at the main menu. Shall we pick up where you left off?",
+   "engine.speech.saveReminder": "You haven't saved in a while.",
+   "engine.speech.justLoaded": "Back where you were.",
+   "engine.helper.saved": "Saved!",
+   "engine.speech.more": "More",
+   "engine.hud.quickSave": "Quick Save",
+   "engine.hud.rollback": "Roll back",
+   "settings.category.cloud": "Saves & iCloud",
+   "help.contact.report": "Report a Problem",
+   "help.title": "Help & Support"
+  }
+ },
+ "tr": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Oyun Ekleme",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Nasıl oyun eklerim?",
+      "a": "Kütüphanende Oyun Ekle'ye dokun, ardından bir Ren'Py oyun klasörü ya da ZIP arşivi seç. Aynı anda birden fazla seçebilirsin; Narra hepsini sırayla ekler."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Bir oyunu iPhone ya da iPad'ime nasıl aktarırım?",
+      "a": "Oyunun PC ya da Mac sürümünü indir veya bilgisayarından AirDrop, iCloud Drive ya da Finder ile kopyala. Dosyalar uygulamasında göründüğünde Narra'dan ekle. ZIP olarak bırakabilirsin; Narra onu senin için açar."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra bir klasörün Ren'Py oyunu olduğunu nasıl anlar?",
+      "a": "Bir Ren'Py oyununda içinde .rpa ya da .rpyc dosyaları olan bir “game” klasörü bulunur. “game” klasörünü içeren klasörü ya da onun ZIP'ini seç. Narra birkaç klasör derine de bakar; yani oyunun fazladan bir klasörün içinde olması sorun değil."
+     },
+     {
+      "id": "formats",
+      "q": "Hangi biçimler destekleniyor?",
+      "a": "Şu an oyun klasörleri ve ZIP arşivleri eklenebiliyor. RAR, 7z ve Android APK desteği ilerideki bir güncelleme için planlanıyor."
+     },
+     {
+      "id": "duplicate",
+      "q": "Zaten eklediğim bir oyunu tekrar eklersem ne olur?",
+      "a": "Narra ne yapacağını sorar: mevcut oyunu yeni dosyalarla güncelleyebilir, ayrı bir kopya olarak ekleyebilir ya da atlayabilirsin. Güncellediğinde kayıtların korunur."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Kütüphanen",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Kapaklar nereden geliyor?",
+      "a": "Narra kapağı oyunun kendi görsellerinden seçer; örneğin ana menü arka planı, açılış ekranı ya da simgesi. Hiçbirini bulamazsa başlıktan renkli bir kapak oluşturur."
+     },
+     {
+      "id": "collections",
+      "q": "Koleksiyonlar nedir?",
+      "a": "Koleksiyonlar oyunları kendi istediğin gibi gruplamanı sağlar; örneğin seriye ya da ruh hâline göre. Kütüphanenin sağ üstündeki menüden Yeni Koleksiyon ile bir tane oluştur."
+     },
+     {
+      "id": "findGames",
+      "q": "Bir oyunu hızlıca nasıl bulurum?",
+      "a": "Oyunlarının üstündeki arama alanını kullan. Filtre düğmesi yalnızca favorileri ya da tek bir durumu gösterir; sıralama düğmesi oyunları son oynanana, eklenme tarihine ya da isme göre dizer."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Favoriler ve durum nasıl çalışır?",
+      "a": "Bir oyuna basılı tutarak onu favorilerine ekleyebilir ya da durumunu belirleyebilirsin: Oynanıyor, Tamamlandı, Bırakıldı veya Beklemede. İkisi de oyunun kartında rozet olarak görünür."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Kayıtlar ve Depolama",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Kayıtlarımı nasıl yedeklerim?",
+      "a": "Kütüphanenin sağ üstündeki menüden Tüm Oyun Kayıtlarını Yedekle'yi seç. Narra kaydı olan her oyun için ayrı bir ZIP arşivi oluşturur ve Saves klasörüne koyar; bu klasörü Dosyalar uygulamasında Narra altında bulabilirsin. Arşivleri ayrıca paylaşabilirsin."
+     },
+     {
+      "id": "storage",
+      "q": "Nasıl yer açabilirim?",
+      "a": "Her oyunun ne kadar yer kapladığını görmek için kütüphanenin sağ üstündeki menüden Depolama Yöneticisi'ni seç. Bitirdiğin oyunları kaldırmak yer açmanın en hızlı yoludur."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Narra'yı silersem ne olur?",
+      "a": "Oyunların ve kayıtların Narra'nın içinde durur; uygulamayı silmek onları da kaldırır. Silmeden önce kayıtlarını yedekle."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Oynama",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Oyundan sonra Narra neden kapanıyor?",
+      "a": "Ren'Py motoru her açılışta yalnız bir kez başlayabilir; bu yüzden oyundan çıkınca Narra kapanmak ister. Oynamaya devam etmek ya da başka bir oyun açmak için yeniden aç. Kayıtların oyunun klasöründe kalır ve eşitleme açıksa önce iCloud'a yüklenir."
+     },
+     {
+      "id": "compatibility",
+      "q": "Her Ren'Py oyunu çalışacak mı?",
+      "a": "Narra, Ren'Py oyunlarının PC ve Mac sürümleri için tasarlandı ve Ren'Py 7'den (Python 2) Ren'Py 8'e kadar çoğunu oynatır. Alışılmadık eklentilere dayanan bazıları çalışmayabilir. Sorun çıkaran bir oyun olursa lütfen bildir."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "Uygulama ve Gizlilik",
+    "items": [
+     {
+      "id": "language",
+      "q": "Dili nasıl değiştiririm?",
+      "a": "Narra cihazının dilini kullanır. Yalnızca Narra için farklı bir dil seçmek istersen Ayarlar uygulamasında Uygulamalar > Narra > Dil bölümüne git ve 17 dilden birini seç."
+     },
+     {
+      "id": "appearance",
+      "q": "Açık ya da koyu modu kullanabilir miyim?",
+      "a": "Evet. Narra varsayılan olarak cihazını takip eder. Kütüphanenin sağ üstündeki menüden Ayarlar'ı aç ve Görünüm'den Narra'yı hep açık ya da hep koyu yap."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Sorun Giderme",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra dosyamın Ren'Py oyunu olmadığını söylüyor.",
+      "a": "“game” klasörünü içeren klasörü ya da onun ZIP'ini seçtiğinden emin ol. Android APK dosyaları ve başka motorlarla yapılmış oyunlar şu an eklenemiyor."
+     },
+     {
+      "id": "unreadable",
+      "q": "Bir dosya okunamıyor ya da soluk görünüyor.",
+      "a": "Dosya iCloud Drive'daysa önce indir: Dosyalar uygulamasında yanındaki bulut simgesine dokun ve inmesini bekle. Seçicide soluk görünen ögeler henüz desteklenmeyen bir biçimdedir."
+     },
+     {
+      "id": "space",
+      "q": "Narra yeterli alan olmadığını söylüyor.",
+      "a": "Bir ZIP eklemek hem arşiv hem de açılmış oyun için yer ister. Cihazında yer aç ya da artık oynamadığın oyunları kaldırmak için Depolama Yöneticisi'ni kullan."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Ren'Py görsel romanların için sıcak bir yuva.",
+   "engine.speech.choice": "Bir seçim geldi. Önce kaydedelim mi?",
+   "engine.speech.mainMenuResume": "Ana menüdeyiz. Kaldığın yerden devam edelim mi?",
+   "engine.speech.saveReminder": "Bir süredir kaydetmedin.",
+   "engine.speech.justLoaded": "Kaldığın yerdeyiz.",
+   "engine.helper.saved": "Kaydettim!",
+   "engine.speech.more": "Diğer",
+   "engine.hud.quickSave": "Hızlı Kaydet",
+   "engine.hud.rollback": "Geri sar",
+   "settings.category.cloud": "Kayıtlar ve iCloud",
+   "help.contact.report": "Sorun Bildir",
+   "help.title": "Yardım ve Destek"
+  }
+ },
+ "es": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Añadir juegos",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "¿Cómo añado un juego?",
+      "a": "Toca Añadir juego en tu biblioteca y elige una carpeta de juego de Ren'Py o un archivo ZIP. Puedes elegir varios a la vez y Narra los añadirá uno por uno."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "¿Cómo paso un juego a mi iPhone o iPad?",
+      "a": "Descarga la versión para PC o Mac del juego, o cópiala desde tu ordenador con AirDrop, iCloud Drive o el Finder. Cuando aparezca en la app Archivos, añádela desde Narra. Puedes dejarla en ZIP: Narra la descomprime por ti."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "¿Cómo sabe Narra que una carpeta es un juego de Ren'Py?",
+      "a": "Un juego de Ren'Py tiene una carpeta “game” con archivos .rpa o .rpyc. Elige la carpeta que contiene “game” o un ZIP de ella. Narra también busca un par de carpetas más adentro, así que no pasa nada si hay una carpeta extra."
+     },
+     {
+      "id": "formats",
+      "q": "¿Qué formatos se admiten?",
+      "a": "Por ahora puedes añadir carpetas de juegos y archivos ZIP. La compatibilidad con archivos RAR, 7z y APK de Android está prevista para una futura actualización."
+     },
+     {
+      "id": "duplicate",
+      "q": "¿Qué pasa si añado un juego que ya tengo?",
+      "a": "Narra te pregunta qué hacer: actualizar el juego existente con los archivos nuevos, añadirlo como copia aparte u omitirlo. Al actualizar, tus partidas se conservan."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Tu biblioteca",
+    "items": [
+     {
+      "id": "covers",
+      "q": "¿De dónde salen las portadas?",
+      "a": "Narra elige una portada entre las imágenes del propio juego, como el fondo del menú principal, la pantalla de inicio o el icono. Si no encuentra ninguna, crea una portada colorida a partir del título."
+     },
+     {
+      "id": "collections",
+      "q": "¿Qué son las colecciones?",
+      "a": "Las colecciones te permiten agrupar juegos a tu manera, por ejemplo por saga o por estado de ánimo. Crea una con Nueva colección en el menú de la esquina superior derecha de tu biblioteca."
+     },
+     {
+      "id": "findGames",
+      "q": "¿Cómo encuentro un juego rápido?",
+      "a": "Usa el campo de búsqueda que hay encima de tus juegos. El botón de filtro muestra solo favoritos o un estado concreto, y el de ordenar los organiza por jugado recientemente, fecha de adición o nombre."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "¿Cómo funcionan los favoritos y el estado?",
+      "a": "Mantén pulsado un juego para añadirlo a favoritos o ponerle un estado: Jugando, Completado, Abandonado o Pendiente. Ambos aparecen como insignias en la tarjeta del juego."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Partidas y almacenamiento",
+    "items": [
+     {
+      "id": "backup",
+      "q": "¿Cómo hago una copia de seguridad de mis partidas?",
+      "a": "Abre el menú de la esquina superior derecha de tu biblioteca y elige Copia de seguridad de todas las partidas. Narra crea un archivo ZIP independiente por cada juego con partidas guardadas y lo guarda en la carpeta Saves, que encontrarás en la app Archivos dentro de Narra. También puedes compartir los archivos."
+     },
+     {
+      "id": "storage",
+      "q": "¿Cómo puedo liberar espacio?",
+      "a": "Elige Gestor de almacenamiento en el menú de la esquina superior derecha de tu biblioteca para ver cuánto ocupa cada juego. Quitar los juegos que ya terminaste es la forma más rápida de liberar espacio."
+     },
+     {
+      "id": "deleteApp",
+      "q": "¿Qué pasa si elimino Narra?",
+      "a": "Tus juegos y partidas están dentro de Narra, así que al eliminar la app también se borran. Haz una copia de seguridad de tus partidas antes de eliminarla."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Jugar",
+    "items": [
+     {
+      "id": "engine",
+      "q": "¿Por qué Narra se cierra después de un juego?",
+      "a": "El motor Ren'Py solo puede iniciarse una vez por apertura, así que al salir de un juego Narra pide cerrarse. Vuelve a abrirla para seguir jugando o empezar otro juego. Tus partidas quedan en la carpeta del juego y, si la sincronización está activada, se suben antes a iCloud."
+     },
+     {
+      "id": "compatibility",
+      "q": "¿Funcionarán todos los juegos de Ren'Py?",
+      "a": "Narra está pensado para las versiones de PC y Mac de los juegos de Ren'Py y ejecuta la mayoría, de Ren'Py 7 (Python 2) a Ren'Py 8. Algunos que usan complementos poco comunes podrían no funcionar. Si un juego te da problemas, infórmanos."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App y privacidad",
+    "items": [
+     {
+      "id": "language",
+      "q": "¿Cómo cambio el idioma?",
+      "a": "Narra usa el idioma de tu dispositivo. Para elegir otro solo para Narra, abre la app Ajustes, ve a Apps > Narra > Idioma y elige entre 17 idiomas."
+     },
+     {
+      "id": "appearance",
+      "q": "¿Puedo usar el modo claro u oscuro?",
+      "a": "Sí. Por defecto, Narra sigue a tu dispositivo. Abre Ajustes desde el menú de la esquina superior derecha de tu biblioteca y elige Apariencia para que Narra sea siempre claro u oscuro."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Solución de problemas",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra dice que mi archivo no es un juego de Ren'Py.",
+      "a": "Asegúrate de elegir la carpeta que contiene la carpeta “game”, o un ZIP de ella. Por ahora no se pueden añadir archivos APK de Android ni juegos hechos con otros motores."
+     },
+     {
+      "id": "unreadable",
+      "q": "Un archivo no se puede leer o aparece atenuado.",
+      "a": "Si el archivo está en iCloud Drive, descárgalo primero: en la app Archivos, toca el icono de la nube que tiene al lado y espera a que termine. Los elementos atenuados en el selector usan un formato que todavía no se admite."
+     },
+     {
+      "id": "space",
+      "q": "Narra dice que no hay espacio suficiente.",
+      "a": "Añadir un ZIP requiere espacio tanto para el archivo como para el juego descomprimido. Libera espacio en tu dispositivo o usa el Gestor de almacenamiento para quitar juegos que ya no juegas."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Un hogar acogedor para tus novelas visuales de Ren'Py.",
+   "engine.speech.choice": "Llega una decisión. ¿Guardamos antes?",
+   "engine.speech.mainMenuResume": "Estamos en el menú principal. ¿Seguimos donde lo dejaste?",
+   "engine.speech.saveReminder": "Hace rato que no guardas.",
+   "engine.speech.justLoaded": "De vuelta donde estabas.",
+   "engine.helper.saved": "¡Guardado!",
+   "engine.speech.more": "Más",
+   "engine.hud.quickSave": "Guardado rápido",
+   "engine.hud.rollback": "Retroceder",
+   "settings.category.cloud": "Partidas e iCloud",
+   "help.contact.report": "Informar de un problema",
+   "help.title": "Ayuda y soporte"
+  }
+ },
+ "fr": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Ajouter des jeux",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Comment ajouter un jeu ?",
+      "a": "Touchez Ajouter un jeu dans votre bibliothèque, puis choisissez un dossier de jeu Ren'Py ou une archive ZIP. Vous pouvez en sélectionner plusieurs à la fois, Narra les ajoute un par un."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Comment mettre un jeu sur mon iPhone ou iPad ?",
+      "a": "Téléchargez la version PC ou Mac du jeu, ou copiez-la depuis votre ordinateur avec AirDrop, iCloud Drive ou le Finder. Dès qu'elle apparaît dans l'app Fichiers, ajoutez-la depuis Narra. Vous pouvez la laisser en ZIP, Narra la décompresse pour vous."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Comment Narra sait-il qu'un dossier est un jeu Ren'Py ?",
+      "a": "Un jeu Ren'Py possède un dossier « game » contenant des fichiers .rpa ou .rpyc. Choisissez le dossier qui contient « game », ou un ZIP de celui-ci. Narra regarde aussi deux niveaux plus bas, un dossier englobant supplémentaire ne pose donc pas de problème."
+     },
+     {
+      "id": "formats",
+      "q": "Quels formats sont pris en charge ?",
+      "a": "Pour l'instant, vous pouvez ajouter des dossiers de jeux et des archives ZIP. La prise en charge des fichiers RAR, 7z et APK Android est prévue dans une prochaine mise à jour."
+     },
+     {
+      "id": "duplicate",
+      "q": "Que se passe-t-il si j'ajoute un jeu que j'ai déjà ?",
+      "a": "Narra vous demande quoi faire : mettre à jour le jeu existant avec les nouveaux fichiers, l'ajouter comme copie distincte ou l'ignorer. Vos sauvegardes sont conservées lors d'une mise à jour."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Votre bibliothèque",
+    "items": [
+     {
+      "id": "covers",
+      "q": "D'où viennent les couvertures ?",
+      "a": "Narra choisit une couverture parmi les images du jeu lui-même, comme le fond du menu principal, l'écran de démarrage ou l'icône. S'il n'en trouve aucune, il crée une couverture colorée à partir du titre."
+     },
+     {
+      "id": "collections",
+      "q": "Que sont les collections ?",
+      "a": "Les collections vous permettent de regrouper vos jeux à votre façon, par exemple par série ou par ambiance. Créez-en une avec Nouvelle collection dans le menu en haut à droite de votre bibliothèque."
+     },
+     {
+      "id": "findGames",
+      "q": "Comment trouver un jeu rapidement ?",
+      "a": "Utilisez le champ de recherche au-dessus de vos jeux. Le bouton de filtre n'affiche que les favoris ou un seul statut, et le bouton de tri classe les jeux par date de dernière partie, date d'ajout ou nom."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Comment fonctionnent les favoris et le statut ?",
+      "a": "Maintenez le doigt sur un jeu pour l'ajouter aux favoris ou lui donner un statut : En cours, Terminé, Abandonné ou À faire. Les deux apparaissent sous forme de badges sur la carte du jeu."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Sauvegardes et stockage",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Comment sauvegarder mes parties ?",
+      "a": "Ouvrez le menu en haut à droite de votre bibliothèque et choisissez Sauvegarder toutes les parties. Narra crée une archive ZIP distincte pour chaque jeu ayant des sauvegardes et la place dans le dossier Saves, visible dans l'app Fichiers sous Narra. Vous pouvez aussi partager les archives."
+     },
+     {
+      "id": "storage",
+      "q": "Comment libérer de l'espace ?",
+      "a": "Choisissez Gestionnaire de stockage dans le menu en haut à droite de votre bibliothèque pour voir l'espace occupé par chaque jeu. Supprimer les jeux terminés est le moyen le plus rapide de libérer de la place."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Que se passe-t-il si je supprime Narra ?",
+      "a": "Vos jeux et sauvegardes se trouvent dans Narra, donc supprimer l'app les efface aussi. Sauvegardez vos parties avant de la supprimer."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Jouer",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Pourquoi Narra se ferme-t-elle après un jeu ?",
+      "a": "Le moteur Ren'Py ne peut démarrer qu'une fois par lancement : après avoir quitté un jeu, Narra demande à se fermer. Rouvrez-la pour continuer ou lancer un autre jeu. Vos sauvegardes restent dans le dossier du jeu et sont d'abord envoyées vers iCloud si la synchronisation est activée."
+     },
+     {
+      "id": "compatibility",
+      "q": "Tous les jeux Ren'Py fonctionneront-ils ?",
+      "a": "Narra est conçu pour les versions PC et Mac des jeux Ren'Py et fait tourner la plupart d'entre eux, de Ren'Py 7 (Python 2) à Ren'Py 8. Certains qui reposent sur des extensions inhabituelles peuvent ne pas fonctionner. Si un jeu vous pose problème, signalez-le."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App et confidentialité",
+    "items": [
+     {
+      "id": "language",
+      "q": "Comment changer la langue ?",
+      "a": "Narra suit la langue de votre appareil. Pour en choisir une autre uniquement pour Narra, ouvrez l'app Réglages, allez dans Apps > Narra > Langue et choisissez parmi 17 langues."
+     },
+     {
+      "id": "appearance",
+      "q": "Puis-je utiliser le mode clair ou sombre ?",
+      "a": "Oui. Par défaut, Narra suit votre appareil. Ouvrez Réglages depuis le menu en haut à droite de votre bibliothèque et choisissez Apparence pour garder Narra toujours clair ou toujours sombre."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Dépannage",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra indique que mon fichier n'est pas un jeu Ren'Py.",
+      "a": "Vérifiez que vous avez choisi le dossier qui contient le dossier « game », ou un ZIP de celui-ci. Les fichiers APK Android et les jeux créés avec d'autres moteurs ne peuvent pas être ajoutés pour l'instant."
+     },
+     {
+      "id": "unreadable",
+      "q": "Un fichier est illisible ou grisé.",
+      "a": "Si le fichier se trouve dans iCloud Drive, téléchargez-le d'abord : dans l'app Fichiers, touchez l'icône de nuage à côté et attendez la fin. Les éléments grisés dans le sélecteur utilisent un format qui n'est pas encore pris en charge."
+     },
+     {
+      "id": "space",
+      "q": "Narra indique qu'il n'y a pas assez d'espace.",
+      "a": "L'ajout d'un ZIP demande de la place pour l'archive et pour le jeu décompressé. Libérez de l'espace sur votre appareil ou utilisez le Gestionnaire de stockage pour retirer les jeux auxquels vous ne jouez plus."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Un foyer douillet pour vos visual novels Ren'Py.",
+   "engine.speech.choice": "Un choix arrive. On sauvegarde d'abord ?",
+   "engine.speech.mainMenuResume": "On est au menu principal. On reprend où tu t'étais arrêté ?",
+   "engine.speech.saveReminder": "Tu n'as pas sauvegardé depuis un moment.",
+   "engine.speech.justLoaded": "De retour où tu étais.",
+   "engine.helper.saved": "Sauvegardé !",
+   "engine.speech.more": "Plus",
+   "engine.hud.quickSave": "Sauvegarde rapide",
+   "engine.hud.rollback": "Revenir en arrière",
+   "settings.category.cloud": "Sauvegardes et iCloud",
+   "help.contact.report": "Signaler un problème",
+   "help.title": "Aide et assistance"
+  }
+ },
+ "de": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Spiele hinzufügen",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Wie füge ich ein Spiel hinzu?",
+      "a": "Tippe in deiner Bibliothek auf „Spiel hinzufügen“ und wähle einen Ren'Py-Spielordner oder ein ZIP-Archiv. Du kannst mehrere auf einmal auswählen, Narra fügt sie nacheinander hinzu."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Wie bekomme ich ein Spiel auf mein iPhone oder iPad?",
+      "a": "Lade die PC- oder Mac-Version des Spiels herunter oder kopiere sie per AirDrop, iCloud Drive oder Finder von deinem Computer. Sobald sie in der Dateien-App erscheint, füge sie in Narra hinzu. Du kannst sie als ZIP lassen, Narra entpackt sie für dich."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Woran erkennt Narra, dass ein Ordner ein Ren'Py-Spiel ist?",
+      "a": "Ein Ren'Py-Spiel hat einen Ordner „game“ mit .rpa- oder .rpyc-Dateien. Wähle den Ordner, der „game“ enthält, oder ein ZIP davon. Narra sucht auch ein paar Ebenen tiefer, ein zusätzlicher Überordner ist also kein Problem."
+     },
+     {
+      "id": "formats",
+      "q": "Welche Formate werden unterstützt?",
+      "a": "Derzeit kannst du Spielordner und ZIP-Archive hinzufügen. Unterstützung für RAR-, 7z- und Android-APK-Dateien ist für ein künftiges Update geplant."
+     },
+     {
+      "id": "duplicate",
+      "q": "Was passiert, wenn ich ein Spiel erneut hinzufüge?",
+      "a": "Narra fragt, was passieren soll: das vorhandene Spiel mit den neuen Dateien aktualisieren, es als separate Kopie hinzufügen oder überspringen. Beim Aktualisieren bleiben deine Spielstände erhalten."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Deine Bibliothek",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Woher kommen die Cover?",
+      "a": "Narra wählt ein Cover aus den Bildern des Spiels, etwa den Hintergrund des Hauptmenüs, den Startbildschirm oder das Symbol. Findet es keines, erstellt es ein farbenfrohes Cover aus dem Titel."
+     },
+     {
+      "id": "collections",
+      "q": "Was sind Sammlungen?",
+      "a": "Mit Sammlungen gruppierst du Spiele nach deinem Geschmack, zum Beispiel nach Reihe oder Stimmung. Lege eine über „Neue Sammlung“ im Menü oben rechts in deiner Bibliothek an."
+     },
+     {
+      "id": "findGames",
+      "q": "Wie finde ich ein Spiel schnell?",
+      "a": "Nutze das Suchfeld über deinen Spielen. Mit dem Filter-Button siehst du nur Favoriten oder einen Status, und der Sortier-Button ordnet nach zuletzt gespielt, Hinzufügedatum oder Name."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Wie funktionieren Favoriten und Status?",
+      "a": "Halte ein Spiel gedrückt, um es zu deinen Favoriten hinzuzufügen oder einen Status festzulegen: Wird gespielt, Abgeschlossen, Abgebrochen oder Geplant. Beides erscheint als Abzeichen auf der Spielkarte."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Spielstände & Speicher",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Wie sichere ich meine Spielstände?",
+      "a": "Öffne das Menü oben rechts in deiner Bibliothek und wähle „Alle Spielstände sichern“. Narra erstellt für jedes Spiel mit Spielständen ein eigenes ZIP-Archiv im Ordner „Saves“, den du in der Dateien-App unter Narra findest. Du kannst die Archive auch teilen."
+     },
+     {
+      "id": "storage",
+      "q": "Wie kann ich Speicherplatz freigeben?",
+      "a": "Wähle „Speicherverwaltung“ im Menü oben rechts in deiner Bibliothek, um zu sehen, wie viel Platz jedes Spiel belegt. Am schnellsten gewinnst du Platz, indem du fertig gespielte Spiele entfernst."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Was passiert, wenn ich Narra lösche?",
+      "a": "Deine Spiele und Spielstände liegen in Narra, deshalb werden sie beim Löschen der App ebenfalls entfernt. Sichere deine Spielstände, bevor du die App löschst."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Spielen",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Warum schließt sich Narra nach einem Spiel?",
+      "a": "Die Ren'Py-Engine kann pro Start nur einmal laufen, deshalb möchte Narra nach dem Beenden eines Spiels schließen. Öffne es erneut, um weiterzuspielen oder ein anderes Spiel zu starten. Deine Spielstände bleiben im Spielordner und werden bei aktiver Synchronisierung zuerst in iCloud hochgeladen."
+     },
+     {
+      "id": "compatibility",
+      "q": "Wird jedes Ren'Py-Spiel funktionieren?",
+      "a": "Narra ist für die PC- und Mac-Versionen von Ren'Py-Spielen gemacht und spielt die meisten davon, von Ren'Py 7 (Python 2) bis Ren'Py 8. Manche mit ungewöhnlichen Erweiterungen laufen vielleicht nicht. Wenn ein Spiel Probleme macht, melde es bitte."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App & Datenschutz",
+    "items": [
+     {
+      "id": "language",
+      "q": "Wie ändere ich die Sprache?",
+      "a": "Narra übernimmt die Sprache deines Geräts. Um nur für Narra eine andere zu wählen, öffne die Einstellungen-App, gehe zu Apps > Narra > Sprache und wähle aus 17 Sprachen."
+     },
+     {
+      "id": "appearance",
+      "q": "Kann ich den hellen oder dunklen Modus nutzen?",
+      "a": "Ja. Standardmäßig folgt Narra deinem Gerät. Öffne „Einstellungen“ im Menü oben rechts in deiner Bibliothek und wähle „Erscheinungsbild“, um Narra immer hell oder immer dunkel anzuzeigen."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Fehlerbehebung",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra sagt, meine Datei sei kein Ren'Py-Spiel.",
+      "a": "Achte darauf, den Ordner zu wählen, der den Ordner „game“ enthält, oder ein ZIP davon. Android-APK-Dateien und Spiele mit anderen Engines lassen sich derzeit nicht hinzufügen."
+     },
+     {
+      "id": "unreadable",
+      "q": "Eine Datei lässt sich nicht lesen oder ist ausgegraut.",
+      "a": "Liegt die Datei in iCloud Drive, lade sie zuerst herunter: Tippe in der Dateien-App auf das Wolkensymbol daneben und warte, bis der Download fertig ist. Ausgegraute Einträge in der Auswahl haben ein Format, das noch nicht unterstützt wird."
+     },
+     {
+      "id": "space",
+      "q": "Narra meldet, dass nicht genug Speicher frei ist.",
+      "a": "Für ein ZIP braucht es Platz für das Archiv und das entpackte Spiel. Gib auf deinem Gerät Speicher frei oder entferne über die Speicherverwaltung Spiele, die du nicht mehr spielst."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Ein gemütliches Zuhause für deine Ren'Py-Visual-Novels.",
+   "engine.speech.choice": "Eine Entscheidung steht an. Erst speichern?",
+   "engine.speech.mainMenuResume": "Wir sind im Hauptmenü. Machen wir da weiter, wo du aufgehört hast?",
+   "engine.speech.saveReminder": "Du hast eine Weile nicht gespeichert.",
+   "engine.speech.justLoaded": "Zurück, wo du warst.",
+   "engine.helper.saved": "Gespeichert!",
+   "engine.speech.more": "Mehr",
+   "engine.hud.quickSave": "Schnellspeichern",
+   "engine.hud.rollback": "Zurückspulen",
+   "settings.category.cloud": "Spielstände & iCloud",
+   "help.contact.report": "Problem melden",
+   "help.title": "Hilfe & Support"
+  }
+ },
+ "it": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Aggiungere giochi",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Come aggiungo un gioco?",
+      "a": "Tocca Aggiungi gioco nella libreria, poi scegli una cartella di un gioco Ren'Py o un archivio ZIP. Puoi selezionarne diversi insieme e Narra li aggiunge uno alla volta."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Come porto un gioco su iPhone o iPad?",
+      "a": "Scarica la versione per PC o Mac del gioco, oppure copiala dal computer con AirDrop, iCloud Drive o il Finder. Quando compare nell'app File, aggiungila da Narra. Puoi lasciarla in ZIP: Narra la estrae per te."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Come capisce Narra che una cartella è un gioco Ren'Py?",
+      "a": "Un gioco Ren'Py ha una cartella “game” con file .rpa o .rpyc. Scegli la cartella che contiene “game”, o un suo ZIP. Narra guarda anche un paio di livelli più in profondità, quindi una cartella in più non è un problema."
+     },
+     {
+      "id": "formats",
+      "q": "Quali formati sono supportati?",
+      "a": "Per ora puoi aggiungere cartelle di giochi e archivi ZIP. Il supporto per file RAR, 7z e APK Android è previsto in un aggiornamento futuro."
+     },
+     {
+      "id": "duplicate",
+      "q": "Cosa succede se aggiungo un gioco che ho già?",
+      "a": "Narra ti chiede cosa fare: aggiornare il gioco esistente con i nuovi file, aggiungerlo come copia separata o saltarlo. Quando aggiorni, i salvataggi vengono mantenuti."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "La tua libreria",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Da dove arrivano le copertine?",
+      "a": "Narra sceglie una copertina tra le immagini del gioco stesso, come lo sfondo del menu principale, la schermata iniziale o l'icona. Se non ne trova, crea una copertina colorata a partire dal titolo."
+     },
+     {
+      "id": "collections",
+      "q": "Cosa sono le raccolte?",
+      "a": "Le raccolte ti permettono di raggruppare i giochi come preferisci, ad esempio per serie o per atmosfera. Creane una con Nuova raccolta dal menu in alto a destra nella libreria."
+     },
+     {
+      "id": "findGames",
+      "q": "Come trovo velocemente un gioco?",
+      "a": "Usa il campo di ricerca sopra i giochi. Il pulsante filtro mostra solo i preferiti o un singolo stato, mentre quello di ordinamento li ordina per giocati di recente, data di aggiunta o nome."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Come funzionano preferiti e stato?",
+      "a": "Tieni premuto un gioco per aggiungerlo ai preferiti o impostarne lo stato: In corso, Completato, Abbandonato o Da giocare. Entrambi compaiono come badge sulla scheda del gioco."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Salvataggi e spazio",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Come faccio il backup dei salvataggi?",
+      "a": "Apri il menu in alto a destra della libreria e scegli Backup di tutti i salvataggi. Narra crea un archivio ZIP separato per ogni gioco con salvataggi e lo mette nella cartella Saves, che trovi nell'app File sotto Narra. Puoi anche condividere gli archivi."
+     },
+     {
+      "id": "storage",
+      "q": "Come posso liberare spazio?",
+      "a": "Scegli Gestione spazio dal menu in alto a destra nella libreria per vedere quanto spazio occupa ogni gioco. Rimuovere i giochi che hai finito è il modo più rapido per liberare spazio."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Cosa succede se elimino Narra?",
+      "a": "I tuoi giochi e salvataggi si trovano in Narra, quindi eliminando l'app vengono eliminati anche loro. Fai un backup dei salvataggi prima di eliminarla."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Giocare",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Perché Narra si chiude dopo un gioco?",
+      "a": "Il motore Ren'Py può avviarsi solo una volta per apertura, quindi dopo aver chiuso un gioco Narra chiede di chiudersi. Riaprila per continuare o avviare un altro gioco. I salvataggi restano nella cartella del gioco e, con la sincronizzazione attiva, vengono prima caricati su iCloud."
+     },
+     {
+      "id": "compatibility",
+      "q": "Funzioneranno tutti i giochi Ren'Py?",
+      "a": "Narra è pensato per le versioni PC e Mac dei giochi Ren'Py e ne fa girare la maggior parte, da Ren'Py 7 (Python 2) a Ren'Py 8. Alcuni che usano estensioni insolite potrebbero non funzionare. Se un gioco ti dà problemi, segnalalo."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App e privacy",
+    "items": [
+     {
+      "id": "language",
+      "q": "Come cambio la lingua?",
+      "a": "Narra usa la lingua del dispositivo. Per sceglierne un'altra solo per Narra, apri l'app Impostazioni, vai su App > Narra > Lingua e scegli tra 17 lingue."
+     },
+     {
+      "id": "appearance",
+      "q": "Posso usare la modalità chiara o scura?",
+      "a": "Sì. Di base Narra segue il dispositivo. Apri Impostazioni dal menu in alto a destra nella libreria e scegli Aspetto per avere Narra sempre chiaro o sempre scuro."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Risoluzione dei problemi",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra dice che il mio file non è un gioco Ren'Py.",
+      "a": "Assicurati di aver scelto la cartella che contiene la cartella “game”, o un suo ZIP. Per ora non è possibile aggiungere file APK Android né giochi creati con altri motori."
+     },
+     {
+      "id": "unreadable",
+      "q": "Un file non si riesce a leggere o è in grigio.",
+      "a": "Se il file si trova in iCloud Drive, scaricalo prima: nell'app File tocca l'icona della nuvola accanto e attendi che finisca. Gli elementi in grigio nel selettore usano un formato non ancora supportato."
+     },
+     {
+      "id": "space",
+      "q": "Narra dice che non c'è abbastanza spazio.",
+      "a": "Aggiungere un ZIP richiede spazio sia per l'archivio sia per il gioco estratto. Libera spazio sul dispositivo oppure usa Gestione spazio per rimuovere i giochi a cui non giochi più."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Una casa accogliente per le tue visual novel Ren'Py.",
+   "engine.speech.choice": "C'è una scelta. Salviamo prima?",
+   "engine.speech.mainMenuResume": "Siamo al menu principale. Riprendiamo da dove eri rimasto?",
+   "engine.speech.saveReminder": "È da un po' che non salvi.",
+   "engine.speech.justLoaded": "Di nuovo dov'eri.",
+   "engine.helper.saved": "Salvato!",
+   "engine.speech.more": "Altro",
+   "engine.hud.quickSave": "Salvataggio rapido",
+   "engine.hud.rollback": "Torna indietro",
+   "settings.category.cloud": "Salvataggi e iCloud",
+   "help.contact.report": "Segnala un problema",
+   "help.title": "Aiuto e supporto"
+  }
+ },
+ "pt": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Adicionar jogos",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Como adiciono um jogo?",
+      "a": "Toque em Adicionar jogo na sua biblioteca e escolha uma pasta de jogo Ren'Py ou um arquivo ZIP. Você pode escolher vários de uma vez e o Narra os adiciona um por um."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Como coloco um jogo no meu iPhone ou iPad?",
+      "a": "Baixe a versão para PC ou Mac do jogo, ou copie-a do computador com AirDrop, iCloud Drive ou o Finder. Quando ela aparecer no app Arquivos, adicione-a pelo Narra. Pode deixar em ZIP, o Narra descompacta para você."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Como o Narra sabe que uma pasta é um jogo Ren'Py?",
+      "a": "Um jogo Ren'Py tem uma pasta “game” com arquivos .rpa ou .rpyc. Escolha a pasta que contém “game” ou um ZIP dela. O Narra também procura algumas pastas mais abaixo, então uma pasta extra por fora não tem problema."
+     },
+     {
+      "id": "formats",
+      "q": "Quais formatos são compatíveis?",
+      "a": "Por enquanto, você pode adicionar pastas de jogos e arquivos ZIP. O suporte a arquivos RAR, 7z e APK do Android está previsto para uma atualização futura."
+     },
+     {
+      "id": "duplicate",
+      "q": "E se eu adicionar um jogo que já tenho?",
+      "a": "O Narra pergunta o que fazer: atualizar o jogo existente com os novos arquivos, adicioná-lo como uma cópia separada ou ignorá-lo. Ao atualizar, seus salvamentos são mantidos."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Sua biblioteca",
+    "items": [
+     {
+      "id": "covers",
+      "q": "De onde vêm as capas?",
+      "a": "O Narra escolhe uma capa entre as imagens do próprio jogo, como o fundo do menu principal, a tela de abertura ou o ícone. Se não encontrar nenhuma, cria uma capa colorida a partir do título."
+     },
+     {
+      "id": "collections",
+      "q": "O que são coleções?",
+      "a": "As coleções permitem agrupar jogos do seu jeito, por exemplo por série ou clima. Crie uma com Nova coleção no menu no canto superior direito da biblioteca."
+     },
+     {
+      "id": "findGames",
+      "q": "Como encontro um jogo rapidamente?",
+      "a": "Use o campo de busca acima dos seus jogos. O botão de filtro mostra só os favoritos ou um único status, e o de ordenação organiza por jogados recentemente, data de adição ou nome."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Como funcionam os favoritos e o status?",
+      "a": "Toque e segure um jogo para adicioná-lo aos favoritos ou definir o status: Jogando, Concluído, Abandonado ou Na fila. Ambos aparecem como selos no cartão do jogo."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Salvamentos e armazenamento",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Como faço backup dos meus salvamentos?",
+      "a": "Abra o menu no canto superior direito da biblioteca e escolha Fazer backup de todos os salvamentos. O Narra cria um arquivo ZIP separado para cada jogo com salvamentos e o coloca na pasta Saves, que fica no app Arquivos, dentro de Narra. Você também pode compartilhar os arquivos."
+     },
+     {
+      "id": "storage",
+      "q": "Como posso liberar espaço?",
+      "a": "Escolha Gerenciador de armazenamento no menu no canto superior direito da biblioteca para ver quanto espaço cada jogo ocupa. Remover os jogos que você já terminou é o jeito mais rápido de liberar espaço."
+     },
+     {
+      "id": "deleteApp",
+      "q": "O que acontece se eu apagar o Narra?",
+      "a": "Seus jogos e salvamentos ficam dentro do Narra, então apagar o app também os remove. Faça backup dos salvamentos antes de apagá-lo."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Jogar",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Por que o Narra fecha depois de um jogo?",
+      "a": "O motor Ren'Py só pode iniciar uma vez por abertura, então depois que você sai de um jogo o Narra pede para fechar. Abra de novo para continuar jogando ou iniciar outro jogo. Seus salvamentos ficam na pasta do jogo e, com a sincronização ativada, são enviados antes ao iCloud."
+     },
+     {
+      "id": "compatibility",
+      "q": "Todos os jogos Ren'Py vão funcionar?",
+      "a": "O Narra foi feito para as versões de PC e Mac dos jogos Ren'Py e roda a maioria deles, do Ren'Py 7 (Python 2) ao Ren'Py 8. Alguns que dependem de complementos incomuns podem não funcionar. Se um jogo der problema, relate para nós."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App e privacidade",
+    "items": [
+     {
+      "id": "language",
+      "q": "Como altero o idioma?",
+      "a": "O Narra segue o idioma do seu dispositivo. Para escolher outro só para o Narra, abra o app Ajustes, vá em Apps > Narra > Idioma e escolha entre 17 idiomas."
+     },
+     {
+      "id": "appearance",
+      "q": "Posso usar o modo claro ou escuro?",
+      "a": "Sim. Por padrão, o Narra segue o seu dispositivo. Abra Ajustes no menu no canto superior direito da biblioteca e escolha Aparência para deixar o Narra sempre claro ou sempre escuro."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Solução de problemas",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "O Narra diz que meu arquivo não é um jogo Ren'Py.",
+      "a": "Confira se você escolheu a pasta que contém a pasta “game”, ou um ZIP dela. Arquivos APK do Android e jogos feitos com outros motores ainda não podem ser adicionados."
+     },
+     {
+      "id": "unreadable",
+      "q": "Um arquivo não pode ser lido ou aparece esmaecido.",
+      "a": "Se o arquivo estiver no iCloud Drive, baixe-o primeiro: no app Arquivos, toque no ícone de nuvem ao lado dele e espere terminar. Itens esmaecidos no seletor usam um formato que ainda não é compatível."
+     },
+     {
+      "id": "space",
+      "q": "O Narra diz que não há espaço suficiente.",
+      "a": "Adicionar um ZIP exige espaço para o arquivo e para o jogo descompactado. Libere espaço no dispositivo ou use o Gerenciador de armazenamento para remover jogos que você não joga mais."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Um cantinho aconchegante para suas visual novels de Ren'Py.",
+   "engine.speech.choice": "Vem aí uma escolha. Salvamos antes?",
+   "engine.speech.mainMenuResume": "Estamos no menu principal. Vamos continuar de onde você parou?",
+   "engine.speech.saveReminder": "Faz um tempo que você não salva.",
+   "engine.speech.justLoaded": "De volta onde você estava.",
+   "engine.helper.saved": "Salvo!",
+   "engine.speech.more": "Mais",
+   "engine.hud.quickSave": "Salvamento rápido",
+   "engine.hud.rollback": "Voltar",
+   "settings.category.cloud": "Salvamentos e iCloud",
+   "help.contact.report": "Relatar um problema",
+   "help.title": "Ajuda e suporte"
+  }
+ },
+ "cs": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Přidávání her",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Jak přidám hru?",
+      "a": "V knihovně klepni na Přidat hru a vyber složku hry Ren'Py nebo archiv ZIP. Můžeš jich vybrat několik najednou a Narra je přidá jednu po druhé."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Jak dostanu hru do iPhonu nebo iPadu?",
+      "a": "Stáhni verzi hry pro PC nebo Mac, nebo ji zkopíruj z počítače přes AirDrop, iCloud Drive či Finder. Jakmile se objeví v aplikaci Soubory, přidej ji v Narra. Můžeš ji nechat v ZIPu, Narra ji rozbalí za tebe."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Jak Narra pozná, že je složka hra Ren'Py?",
+      "a": "Hra Ren'Py má složku „game“ se soubory .rpa nebo .rpyc. Vyber složku, která „game“ obsahuje, nebo její ZIP. Narra se podívá i o pár úrovní hlouběji, takže nevadí, když je hra v další složce."
+     },
+     {
+      "id": "formats",
+      "q": "Jaké formáty jsou podporované?",
+      "a": "Zatím můžeš přidávat složky her a archivy ZIP. Podpora souborů RAR, 7z a Android APK je plánována v některé z dalších aktualizací."
+     },
+     {
+      "id": "duplicate",
+      "q": "Co když přidám hru, kterou už mám?",
+      "a": "Narra se zeptá, co udělat: aktualizovat stávající hru novými soubory, přidat ji jako samostatnou kopii, nebo ji přeskočit. Při aktualizaci zůstanou uložené hry zachovány."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Tvoje knihovna",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Odkud se berou obaly?",
+      "a": "Narra vybere obal z vlastních obrázků hry, například z pozadí hlavní nabídky, úvodní obrazovky nebo ikony. Pokud nic nenajde, vytvoří barevný obal z názvu."
+     },
+     {
+      "id": "collections",
+      "q": "Co jsou kolekce?",
+      "a": "Kolekce ti umožní seskupit hry po svém, třeba podle série nebo nálady. Vytvoř ji přes Nová kolekce v nabídce vpravo nahoře v knihovně."
+     },
+     {
+      "id": "findGames",
+      "q": "Jak rychle najdu hru?",
+      "a": "Použij vyhledávací pole nad hrami. Tlačítko filtru zobrazí jen oblíbené nebo jeden stav a tlačítko řazení seřadí hry podle posledního hraní, data přidání nebo názvu."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Jak fungují oblíbené a stav?",
+      "a": "Podrž hru a přidej ji do oblíbených nebo jí nastav stav: Hraji, Dohráno, Odloženo nebo V plánu. Obojí se zobrazí jako odznak na kartě hry."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Uložené hry a úložiště",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Jak zazálohuji uložené hry?",
+      "a": "Otevři nabídku vpravo nahoře v knihovně a zvol Zálohovat všechny uložené hry. Narra vytvoří pro každou hru s uloženými pozicemi samostatný archiv ZIP ve složce Saves, kterou najdeš v aplikaci Soubory pod Narra. Archivy můžeš také sdílet."
+     },
+     {
+      "id": "storage",
+      "q": "Jak uvolním místo?",
+      "a": "V nabídce vpravo nahoře v knihovně zvol Správce úložiště a uvidíš, kolik místa která hra zabírá. Nejrychleji uvolníš místo odebráním dohraných her."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Co se stane, když Narra smažu?",
+      "a": "Tvoje hry a uložené hry jsou uvnitř Narra, takže smazáním aplikace zmizí i ony. Před smazáním si uložené hry zazálohuj."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Hraní",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Proč se Narra po hře zavře?",
+      "a": "Engine Ren'Py se může spustit jen jednou na jedno otevření, proto se Narra po ukončení hry chce zavřít. Otevři ji znovu, abys pokračoval nebo spustil jinou hru. Uložené hry zůstávají ve složce hry a při zapnuté synchronizaci se nejdřív nahrají na iCloud."
+     },
+     {
+      "id": "compatibility",
+      "q": "Bude fungovat každá hra Ren'Py?",
+      "a": "Narra je určená pro verze her Ren'Py pro PC a Mac a spustí většinu z nich, od Ren'Py 7 (Python 2) po Ren'Py 8. Některé s neobvyklými doplňky nemusí fungovat. Pokud ti nějaká hra dělá potíže, nahlas ji prosím."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "Aplikace a soukromí",
+    "items": [
+     {
+      "id": "language",
+      "q": "Jak změním jazyk?",
+      "a": "Narra používá jazyk zařízení. Chceš-li jiný jen pro Narra, otevři aplikaci Nastavení, přejdi do Aplikace > Narra > Jazyk a vyber si ze 17 jazyků."
+     },
+     {
+      "id": "appearance",
+      "q": "Můžu používat světlý nebo tmavý režim?",
+      "a": "Ano. Narra se ve výchozím stavu řídí zařízením. V nabídce vpravo nahoře v knihovně otevři Nastavení a ve Vzhledu nastav Narra natrvalo světlý nebo tmavý."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Řešení potíží",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra říká, že můj soubor není hra Ren'Py.",
+      "a": "Ujisti se, že jsi vybral složku, která obsahuje složku „game“, nebo její ZIP. Soubory Android APK a hry z jiných enginů zatím přidat nejde."
+     },
+     {
+      "id": "unreadable",
+      "q": "Soubor nejde přečíst nebo je zašedlý.",
+      "a": "Pokud je soubor na iCloud Drive, nejdřív ho stáhni: v aplikaci Soubory klepni na ikonu cloudu vedle něj a počkej na dokončení. Zašedlé položky ve výběru mají formát, který zatím není podporovaný."
+     },
+     {
+      "id": "space",
+      "q": "Narra hlásí, že není dost místa.",
+      "a": "Přidání ZIPu potřebuje místo pro archiv i rozbalenou hru. Uvolni místo v zařízení nebo ve Správci úložiště odeber hry, které už nehraješ."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Útulný domov pro tvé vizuální romány v Ren'Py.",
+   "engine.speech.choice": "Blíží se volba. Uložíme nejdřív?",
+   "engine.speech.mainMenuResume": "Jsme v hlavní nabídce. Pokračujeme tam, kde jsi skončil?",
+   "engine.speech.saveReminder": "Chvíli jsi neukládal.",
+   "engine.speech.justLoaded": "Zpátky tam, kde jsi byl.",
+   "engine.helper.saved": "Uloženo!",
+   "engine.speech.more": "Další",
+   "engine.hud.quickSave": "Rychlé uložení",
+   "engine.hud.rollback": "Vrátit zpět",
+   "settings.category.cloud": "Uložené hry a iCloud",
+   "help.contact.report": "Nahlásit problém",
+   "help.title": "Nápověda a podpora"
+  }
+ },
+ "fa": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "افزودن بازی",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "چطور بازی اضافه کنم؟",
+      "a": "در کتابخانه روی «افزودن بازی» بزنید و یک پوشهٔ بازی Ren'Py یا یک فایل ZIP انتخاب کنید. می‌توانید چند مورد را با هم انتخاب کنید تا Narra آن‌ها را یکی‌یکی اضافه کند."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "چطور یک بازی را به iPhone یا iPad خود منتقل کنم؟",
+      "a": "نسخهٔ PC یا Mac بازی را دانلود کنید یا آن را با AirDrop، iCloud Drive یا Finder از رایانه کپی کنید. وقتی در برنامهٔ Files نمایان شد، از Narra اضافه‌اش کنید. می‌توانید آن را فشرده نگه دارید؛ Narra خودش بازش می‌کند."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra از کجا می‌فهمد یک پوشه بازی Ren'Py است؟",
+      "a": "یک بازی Ren'Py پوشه‌ای به نام «game» دارد که فایل‌های .rpa یا .rpyc در آن است. پوشه‌ای را که «game» را در خود دارد یا ZIP آن را انتخاب کنید. Narra چند پوشه عمیق‌تر را هم بررسی می‌کند، پس یک پوشهٔ اضافی بیرونی مشکلی ندارد."
+     },
+     {
+      "id": "formats",
+      "q": "چه قالب‌هایی پشتیبانی می‌شوند؟",
+      "a": "فعلاً می‌توانید پوشه‌های بازی و فایل‌های ZIP را اضافه کنید. پشتیبانی از فایل‌های RAR، 7z و APK اندروید برای به‌روزرسانی‌های آینده برنامه‌ریزی شده است."
+     },
+     {
+      "id": "duplicate",
+      "q": "اگر بازی‌ای را که قبلاً دارم دوباره اضافه کنم چه می‌شود؟",
+      "a": "Narra می‌پرسد چه کند: بازی موجود را با فایل‌های جدید به‌روز کند، آن را به‌عنوان نسخه‌ای جداگانه اضافه کند یا از آن بگذرد. هنگام به‌روزرسانی ذخیره‌های شما حفظ می‌شوند."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "کتابخانهٔ شما",
+    "items": [
+     {
+      "id": "covers",
+      "q": "جلدها از کجا می‌آیند؟",
+      "a": "Narra جلد را از تصاویر خود بازی انتخاب می‌کند، مثل پس‌زمینهٔ منوی اصلی، صفحهٔ آغازین یا نماد بازی. اگر چیزی پیدا نکند، از روی عنوان یک جلد رنگی می‌سازد."
+     },
+     {
+      "id": "collections",
+      "q": "مجموعه‌ها چه هستند؟",
+      "a": "مجموعه‌ها به شما امکان می‌دهند بازی‌ها را به روش خودتان دسته‌بندی کنید، مثلاً بر اساس مجموعهٔ داستانی یا حال‌وهوا. از منوی بالا سمت راست کتابخانه، با «مجموعهٔ جدید» یکی بسازید."
+     },
+     {
+      "id": "findGames",
+      "q": "چطور سریع یک بازی را پیدا کنم؟",
+      "a": "از کادر جست‌وجوی بالای بازی‌ها استفاده کنید. دکمهٔ فیلتر فقط علاقه‌مندی‌ها یا یک وضعیت را نشان می‌دهد و دکمهٔ مرتب‌سازی بازی‌ها را بر اساس آخرین بازی، تاریخ افزودن یا نام مرتب می‌کند."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "علاقه‌مندی‌ها و وضعیت چطور کار می‌کنند؟",
+      "a": "بازی را لمس کنید و نگه دارید تا به علاقه‌مندی‌ها اضافه شود یا وضعیتش را تعیین کنید: در حال بازی، تمام‌شده، رهاشده یا در صف. هر دو به‌صورت نشان روی کارت بازی دیده می‌شوند."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "ذخیره‌ها و فضای ذخیره‌سازی",
+    "items": [
+     {
+      "id": "backup",
+      "q": "چطور از ذخیره‌هایم پشتیبان بگیرم؟",
+      "a": "منوی بالا سمت راست کتابخانه را باز کنید و «پشتیبان‌گیری از همهٔ ذخیره‌ها» را انتخاب کنید. Narra برای هر بازی دارای ذخیره یک آرشیو ZIP جداگانه می‌سازد و آن را در پوشهٔ Saves می‌گذارد که در برنامهٔ Files زیر Narra پیدا می‌شود. می‌توانید آرشیوها را هم به اشتراک بگذارید."
+     },
+     {
+      "id": "storage",
+      "q": "چطور فضا آزاد کنم؟",
+      "a": "از منوی بالا سمت راست کتابخانه «مدیریت فضای ذخیره‌سازی» را انتخاب کنید تا ببینید هر بازی چقدر فضا گرفته است. حذف بازی‌هایی که تمام کرده‌اید سریع‌ترین راه آزاد کردن فضاست."
+     },
+     {
+      "id": "deleteApp",
+      "q": "اگر Narra را حذف کنم چه می‌شود؟",
+      "a": "بازی‌ها و ذخیره‌های شما درون Narra هستند، پس حذف برنامه آن‌ها را هم پاک می‌کند. پیش از حذف، از ذخیره‌هایتان پشتیبان بگیرید."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "بازی کردن",
+    "items": [
+     {
+      "id": "engine",
+      "q": "چرا Narra بعد از بازی بسته می‌شود؟",
+      "a": "موتور Ren'Py در هر اجرا فقط یک بار می‌تواند شروع شود؛ بنابراین بعد از خروج از بازی Narra می‌خواهد بسته شود. برای ادامه یا شروع بازی دیگر دوباره بازش کنید. ذخیره‌هایتان در پوشهٔ بازی می‌مانند و اگر همگام‌سازی روشن باشد، اول در iCloud بارگذاری می‌شوند."
+     },
+     {
+      "id": "compatibility",
+      "q": "آیا همهٔ بازی‌های Ren'Py کار خواهند کرد؟",
+      "a": "Narra برای نسخه‌های PC و Mac بازی‌های Ren'Py ساخته شده و بیشتر آن‌ها را از Ren'Py 7 (پایتون ۲) تا Ren'Py 8 اجرا می‌کند. برخی که به افزونه‌های غیرمعمول متکی‌اند شاید کار نکنند. اگر بازی‌ای مشکل داشت، لطفاً گزارشش کنید."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "برنامه و حریم خصوصی",
+    "items": [
+     {
+      "id": "language",
+      "q": "چطور زبان را عوض کنم؟",
+      "a": "Narra از زبان دستگاه شما پیروی می‌کند. برای انتخاب زبانی دیگر فقط برای Narra، برنامهٔ Settings را باز کنید، به Apps > Narra > Language بروید و از میان ۱۷ زبان انتخاب کنید."
+     },
+     {
+      "id": "appearance",
+      "q": "آیا می‌توانم از حالت روشن یا تیره استفاده کنم؟",
+      "a": "بله. Narra به‌طور پیش‌فرض از دستگاه شما پیروی می‌کند. از منوی بالا سمت راست کتابخانه «تنظیمات» را باز کنید و در «ظاهر» Narra را همیشه روشن یا همیشه تیره کنید."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "عیب‌یابی",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra می‌گوید فایل من بازی Ren'Py نیست.",
+      "a": "مطمئن شوید پوشه‌ای را انتخاب کرده‌اید که پوشهٔ «game» را در خود دارد، یا ZIP آن را. فعلاً نمی‌توان فایل‌های APK اندروید و بازی‌های ساخته‌شده با موتورهای دیگر را اضافه کرد."
+     },
+     {
+      "id": "unreadable",
+      "q": "یک فایل خوانده نمی‌شود یا کم‌رنگ است.",
+      "a": "اگر فایل در iCloud Drive است، اول آن را دانلود کنید: در برنامهٔ Files روی نماد ابر کنار آن بزنید و صبر کنید تا تمام شود. موارد کم‌رنگ در انتخابگر قالبی دارند که هنوز پشتیبانی نمی‌شود."
+     },
+     {
+      "id": "space",
+      "q": "Narra می‌گوید فضای کافی وجود ندارد.",
+      "a": "افزودن یک ZIP هم برای خود فایل و هم برای بازی بازشده فضا لازم دارد. در دستگاه فضا آزاد کنید یا با «مدیریت فضای ذخیره‌سازی» بازی‌هایی را که دیگر بازی نمی‌کنید حذف کنید."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "خانه‌ای دنج برای رمان‌های تصویری Ren'Py شما.",
+   "engine.speech.choice": "یک انتخاب پیش رو است. اول ذخیره کنیم؟",
+   "engine.speech.mainMenuResume": "در منوی اصلی هستیم. از همان جایی که ماندی ادامه بدهیم؟",
+   "engine.speech.saveReminder": "مدتی است ذخیره نکرده‌ای.",
+   "engine.speech.justLoaded": "برگشتیم همان‌جا که بودی.",
+   "engine.helper.saved": "ذخیره شد!",
+   "engine.speech.more": "بیشتر",
+   "engine.hud.quickSave": "ذخیرهٔ سریع",
+   "engine.hud.rollback": "عقب‌گرد",
+   "settings.category.cloud": "ذخیره‌ها و iCloud",
+   "help.contact.report": "گزارش مشکل",
+   "help.title": "راهنما و پشتیبانی"
+  }
+ },
+ "ru": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Добавление игр",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Как добавить игру?",
+      "a": "Нажмите «Добавить игру» в библиотеке и выберите папку игры на Ren'Py или ZIP-архив. Можно выбрать сразу несколько — Narra добавит их по очереди."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Как перенести игру на iPhone или iPad?",
+      "a": "Скачайте версию игры для ПК или Mac либо скопируйте её с компьютера через AirDrop, iCloud Drive или Finder. Когда она появится в приложении «Файлы», добавьте её в Narra. Распаковывать ZIP не нужно — Narra сделает это сама."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Как Narra понимает, что папка — это игра на Ren'Py?",
+      "a": "У игры на Ren'Py есть папка «game» с файлами .rpa или .rpyc. Выберите папку, в которой лежит «game», или её ZIP-архив. Narra заглядывает и на пару уровней глубже, так что лишняя папка-обёртка не помешает."
+     },
+     {
+      "id": "formats",
+      "q": "Какие форматы поддерживаются?",
+      "a": "Сейчас можно добавлять папки с играми и ZIP-архивы. Поддержка файлов RAR, 7z и Android APK запланирована в одном из будущих обновлений."
+     },
+     {
+      "id": "duplicate",
+      "q": "Что будет, если добавить игру, которая уже есть?",
+      "a": "Narra спросит, что сделать: обновить существующую игру новыми файлами, добавить отдельную копию или пропустить. При обновлении сохранения остаются на месте."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Ваша библиотека",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Откуда берутся обложки?",
+      "a": "Narra берёт обложку из изображений самой игры: фона главного меню, заставки или значка. Если ничего не найдено, создаётся яркая обложка из названия."
+     },
+     {
+      "id": "collections",
+      "q": "Что такое коллекции?",
+      "a": "Коллекции позволяют группировать игры по-своему, например по сериям или настроению. Создайте коллекцию через «Новая коллекция» в меню в правом верхнем углу библиотеки."
+     },
+     {
+      "id": "findGames",
+      "q": "Как быстро найти игру?",
+      "a": "Используйте поле поиска над списком игр. Кнопка фильтра показывает только избранное или один статус, а кнопка сортировки упорядочивает игры по последнему запуску, дате добавления или названию."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Как работают избранное и статус?",
+      "a": "Нажмите и удерживайте игру, чтобы добавить её в избранное или задать статус: «Играю», «Пройдена», «Заброшена» или «В планах». Они отображаются значками на карточке игры."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Сохранения и хранилище",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Как сделать резервную копию сохранений?",
+      "a": "Откройте меню в правом верхнем углу библиотеки и выберите «Резервная копия всех сохранений». Narra создаёт отдельный ZIP-архив для каждой игры с сохранениями и кладёт его в папку Saves, которую можно найти в приложении «Файлы» в разделе Narra. Архивы также можно отправить."
+     },
+     {
+      "id": "storage",
+      "q": "Как освободить место?",
+      "a": "Выберите «Управление хранилищем» в меню в правом верхнем углу библиотеки, чтобы увидеть, сколько места занимает каждая игра. Быстрее всего освободить место — удалить пройденные игры."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Что будет, если удалить Narra?",
+      "a": "Игры и сохранения хранятся внутри Narra, поэтому при удалении приложения они тоже удалятся. Перед удалением сделайте резервную копию сохранений."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Игра",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Почему Narra закрывается после игры?",
+      "a": "Движок Ren'Py может запуститься только один раз за запуск приложения, поэтому после выхода из игры Narra предлагает закрыться. Откройте её снова, чтобы продолжить или начать другую игру. Сохранения остаются в папке игры и при включённой синхронизации сначала загружаются в iCloud."
+     },
+     {
+      "id": "compatibility",
+      "q": "Будут ли работать все игры на Ren'Py?",
+      "a": "Narra создана для версий игр на Ren'Py для ПК и Mac и запускает большинство из них — от Ren'Py 7 (Python 2) до Ren'Py 8. Некоторые игры с необычными дополнениями могут не работать. Если с игрой возникнут проблемы, сообщите нам."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "Приложение и конфиденциальность",
+    "items": [
+     {
+      "id": "language",
+      "q": "Как сменить язык?",
+      "a": "Narra использует язык устройства. Чтобы выбрать другой только для Narra, откройте «Настройки», перейдите в «Приложения» > Narra > «Язык» и выберите один из 17 языков."
+     },
+     {
+      "id": "appearance",
+      "q": "Можно ли включить светлую или тёмную тему?",
+      "a": "Да. По умолчанию Narra следует настройкам устройства. Откройте «Настройки» в меню в правом верхнем углу библиотеки и в разделе «Оформление» выберите всегда светлую или всегда тёмную тему."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Устранение неполадок",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra говорит, что файл не является игрой на Ren'Py.",
+      "a": "Убедитесь, что выбрали папку, в которой лежит папка «game», или её ZIP-архив. Файлы Android APK и игры на других движках пока добавить нельзя."
+     },
+     {
+      "id": "unreadable",
+      "q": "Файл не читается или выглядит серым.",
+      "a": "Если файл лежит в iCloud Drive, сначала загрузите его: в приложении «Файлы» нажмите на значок облака рядом с ним и дождитесь окончания. Серые элементы в окне выбора имеют формат, который пока не поддерживается."
+     },
+     {
+      "id": "space",
+      "q": "Narra сообщает, что не хватает места.",
+      "a": "Для добавления ZIP нужно место и под архив, и под распакованную игру. Освободите место на устройстве или удалите ненужные игры в «Управлении хранилищем»."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Уютный дом для ваших визуальных новелл на Ren'Py.",
+   "engine.speech.choice": "Впереди выбор. Сначала сохранимся?",
+   "engine.speech.mainMenuResume": "Мы в главном меню. Продолжим с того места, где ты остановился?",
+   "engine.speech.saveReminder": "Ты давно не сохранялся.",
+   "engine.speech.justLoaded": "Вернулись туда, где ты был.",
+   "engine.helper.saved": "Сохранено!",
+   "engine.speech.more": "Ещё",
+   "engine.hud.quickSave": "Быстрое сохранение",
+   "engine.hud.rollback": "Назад",
+   "settings.category.cloud": "Сохранения и iCloud",
+   "help.contact.report": "Сообщить о проблеме",
+   "help.title": "Справка и поддержка"
+  }
+ },
+ "ja": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "ゲームの追加",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "ゲームはどうやって追加しますか？",
+      "a": "ライブラリで「ゲームを追加」をタップし、Ren'Pyのゲームフォルダまたは ZIP アーカイブを選びます。複数をまとめて選ぶと、Narraが順番に追加します。"
+     },
+     {
+      "id": "getOnDevice",
+      "q": "iPhoneやiPadにゲームを入れるには？",
+      "a": "ゲームのPC版またはMac版をダウンロードするか、AirDrop、iCloud Drive、Finderでコンピュータからコピーします。「ファイル」アプリに表示されたら、Narraから追加してください。ZIPのままで大丈夫です。Narraが展開します。"
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narraはどうやってフォルダが Ren'Py ゲームだと判断しますか？",
+      "a": "Ren'Pyのゲームには、.rpaまたは.rpycファイルが入った「game」フォルダがあります。「game」を含むフォルダか、そのZIPを選んでください。Narraは数階層下まで探すので、余分なフォルダに入っていても大丈夫です。"
+     },
+     {
+      "id": "formats",
+      "q": "対応しているフォーマットは？",
+      "a": "現在はゲームフォルダとZIPアーカイブを追加できます。RAR、7z、Android APKファイルへの対応は今後のアップデートで予定しています。"
+     },
+     {
+      "id": "duplicate",
+      "q": "すでにあるゲームを追加するとどうなりますか？",
+      "a": "Narraがどうするか確認します。既存のゲームを新しいファイルで更新する、別のコピーとして追加する、またはスキップするかを選べます。更新してもセーブデータは残ります。"
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "ライブラリ",
+    "items": [
+     {
+      "id": "covers",
+      "q": "カバー画像はどこから来ますか？",
+      "a": "Narraはゲーム自身の画像からカバーを選びます。たとえばメインメニューの背景、スプラッシュ画面、アイコンなどです。見つからない場合は、タイトルからカラフルなカバーを作ります。"
+     },
+     {
+      "id": "collections",
+      "q": "コレクションとは？",
+      "a": "コレクションを使うと、シリーズや気分など好きな基準でゲームをまとめられます。ライブラリ右上のメニューにある「新規コレクション」から作成してください。"
+     },
+     {
+      "id": "findGames",
+      "q": "ゲームをすばやく見つけるには？",
+      "a": "ゲーム一覧の上にある検索欄を使ってください。フィルタボタンでお気に入りや特定のステータスだけを表示でき、並べ替えボタンで最近プレイした順、追加日、名前順に並べられます。"
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "お気に入りとステータスの使い方は？",
+      "a": "ゲームを長押しすると、お気に入りに追加したり、ステータス（プレイ中、クリア済み、中断、積みゲー）を設定したりできます。どちらもゲームカードにバッジで表示されます。"
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "セーブデータとストレージ",
+    "items": [
+     {
+      "id": "backup",
+      "q": "セーブデータをバックアップするには？",
+      "a": "ライブラリ右上のメニューを開き、「すべてのセーブデータをバックアップ」を選びます。Narraはセーブデータのあるゲームごとに個別のZIPアーカイブを作成し、Savesフォルダに保存します。このフォルダは「ファイル」アプリのNarra内にあります。アーカイブは共有することもできます。"
+     },
+     {
+      "id": "storage",
+      "q": "空き容量を増やすには？",
+      "a": "ライブラリ右上のメニューから「ストレージ管理」を選ぶと、各ゲームの使用容量を確認できます。クリアしたゲームを削除するのが、空き容量を増やすいちばんの近道です。"
+     },
+     {
+      "id": "deleteApp",
+      "q": "Narraを削除するとどうなりますか？",
+      "a": "ゲームとセーブデータはNarraの中にあるため、アプリを削除すると一緒に消えます。削除する前にセーブデータをバックアップしてください。"
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "プレイ",
+    "items": [
+     {
+      "id": "engine",
+      "q": "ゲームの後にNarraが閉じるのはなぜですか？",
+      "a": "Ren'Pyエンジンは起動ごとに1回しか開始できないため、ゲームを終了するとNarraは閉じるよう求めます。続きを遊ぶか別のゲームを始めるには、再度開いてください。セーブデータはゲームのフォルダに残り、同期がオンなら先にiCloudへアップロードされます。"
+     },
+     {
+      "id": "compatibility",
+      "q": "すべての Ren'Py ゲームが動きますか？",
+      "a": "NarraはRen'PyゲームのPC版・Mac版向けに作られており、Ren'Py 7（Python 2）からRen'Py 8までほとんどのゲームを動かせます。特殊な拡張機能に頼るゲームは動かないことがあります。問題のあるゲームがあれば報告してください。"
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "アプリとプライバシー",
+    "items": [
+     {
+      "id": "language",
+      "q": "言語を変更するには？",
+      "a": "Narraはデバイスの言語に従います。Narraだけ別の言語にしたい場合は、「設定」アプリで「アプリ」>「Narra」>「言語」を開き、17言語から選んでください。"
+     },
+     {
+      "id": "appearance",
+      "q": "ライトモードやダークモードは使えますか？",
+      "a": "はい。Narraは標準でデバイスの設定に従います。ライブラリ右上のメニューから「設定」を開き、「外観」で常にライトまたは常にダークに設定できます。"
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "トラブルシューティング",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narraにファイルが Ren'Py ゲームではないと言われます。",
+      "a": "「game」フォルダを含むフォルダ、またはそのZIPを選んだか確認してください。Android APKファイルや他のエンジンで作られたゲームは、現在は追加できません。"
+     },
+     {
+      "id": "unreadable",
+      "q": "ファイルが読み込めない、またはグレー表示になります。",
+      "a": "ファイルがiCloud Driveにある場合は、先にダウンロードしてください。「ファイル」アプリで横の雲のアイコンをタップし、完了するまで待ちます。選択画面でグレー表示の項目は、まだ対応していない形式です。"
+     },
+     {
+      "id": "space",
+      "q": "Narraに空き容量が足りないと言われます。",
+      "a": "ZIPを追加するには、アーカイブと展開後のゲームの両方の空き容量が必要です。デバイスの空き容量を増やすか、「ストレージ管理」でもう遊ばないゲームを削除してください。"
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Ren'Pyビジュアルノベルのための心地よい居場所。",
+   "engine.speech.choice": "選択肢が来たよ。先にセーブする？",
+   "engine.speech.mainMenuResume": "メインメニューだよ。続きから始める？",
+   "engine.speech.saveReminder": "しばらくセーブしてないよ。",
+   "engine.speech.justLoaded": "さっきの場所に戻ったよ。",
+   "engine.helper.saved": "セーブしたよ！",
+   "engine.speech.more": "その他",
+   "engine.hud.quickSave": "クイックセーブ",
+   "engine.hud.rollback": "巻き戻し",
+   "settings.category.cloud": "セーブデータとiCloud",
+   "help.contact.report": "問題を報告",
+   "help.title": "ヘルプとサポート"
+  }
+ },
+ "ko": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "게임 추가하기",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "게임은 어떻게 추가하나요?",
+      "a": "보관함에서 게임 추가를 탭한 다음 Ren'Py 게임 폴더나 ZIP 압축 파일을 선택하세요. 여러 개를 한 번에 고르면 Narra가 하나씩 추가합니다."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "iPhone이나 iPad로 게임을 옮기려면 어떻게 하나요?",
+      "a": "게임의 PC 또는 Mac 버전을 다운로드하거나 AirDrop, iCloud Drive, Finder로 컴퓨터에서 복사하세요. 파일 앱에 나타나면 Narra에서 추가하면 됩니다. ZIP 그대로 두어도 Narra가 압축을 풀어 줍니다."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra는 폴더가 Ren'Py 게임인지 어떻게 알아보나요?",
+      "a": "Ren'Py 게임에는 .rpa 또는 .rpyc 파일이 들어 있는 “game” 폴더가 있습니다. “game”이 들어 있는 폴더나 그 ZIP 파일을 선택하세요. Narra는 몇 단계 더 안쪽까지 살펴보므로 바깥에 폴더가 하나 더 있어도 괜찮습니다."
+     },
+     {
+      "id": "formats",
+      "q": "어떤 형식을 지원하나요?",
+      "a": "현재는 게임 폴더와 ZIP 압축 파일을 추가할 수 있습니다. RAR, 7z, Android APK 파일 지원은 향후 업데이트에서 계획되어 있습니다."
+     },
+     {
+      "id": "duplicate",
+      "q": "이미 있는 게임을 다시 추가하면 어떻게 되나요?",
+      "a": "Narra가 어떻게 할지 묻습니다. 기존 게임을 새 파일로 업데이트하거나, 별도 사본으로 추가하거나, 건너뛸 수 있습니다. 업데이트해도 저장 데이터는 유지됩니다."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "내 보관함",
+    "items": [
+     {
+      "id": "covers",
+      "q": "표지는 어디에서 가져오나요?",
+      "a": "Narra는 메인 메뉴 배경, 시작 화면, 아이콘 등 게임 자체의 이미지에서 표지를 고릅니다. 찾지 못하면 제목으로 알록달록한 표지를 만듭니다."
+     },
+     {
+      "id": "collections",
+      "q": "컬렉션이란 무엇인가요?",
+      "a": "컬렉션을 사용하면 시리즈나 분위기 등 원하는 방식으로 게임을 묶을 수 있습니다. 보관함 오른쪽 위 메뉴의 새 컬렉션에서 만들어 보세요."
+     },
+     {
+      "id": "findGames",
+      "q": "게임을 빠르게 찾으려면 어떻게 하나요?",
+      "a": "게임 목록 위의 검색창을 사용하세요. 필터 버튼으로 즐겨찾기나 특정 상태만 볼 수 있고, 정렬 버튼으로 최근 플레이, 추가한 날짜, 이름순으로 정렬할 수 있습니다."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "즐겨찾기와 상태는 어떻게 사용하나요?",
+      "a": "게임을 길게 눌러 즐겨찾기에 추가하거나 상태(플레이 중, 완료, 중단, 플레이 예정)를 지정하세요. 둘 다 게임 카드에 배지로 표시됩니다."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "저장 데이터 및 저장 공간",
+    "items": [
+     {
+      "id": "backup",
+      "q": "저장 데이터는 어떻게 백업하나요?",
+      "a": "보관함 오른쪽 위의 메뉴를 열고 ‘모든 저장 데이터 백업’을 선택하세요. Narra는 저장 데이터가 있는 게임마다 별도의 ZIP 압축 파일을 만들어 Saves 폴더에 넣습니다. 이 폴더는 파일 앱의 Narra 안에 있습니다. 압축 파일을 공유할 수도 있습니다."
+     },
+     {
+      "id": "storage",
+      "q": "공간을 확보하려면 어떻게 하나요?",
+      "a": "보관함 오른쪽 위 메뉴에서 저장 공간 관리를 선택하면 게임별 사용 공간을 확인할 수 있습니다. 다 끝낸 게임을 지우는 것이 공간을 확보하는 가장 빠른 방법입니다."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Narra를 삭제하면 어떻게 되나요?",
+      "a": "게임과 저장 데이터는 Narra 안에 있으므로 앱을 삭제하면 함께 지워집니다. 삭제하기 전에 저장 데이터를 백업하세요."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "플레이",
+    "items": [
+     {
+      "id": "engine",
+      "q": "게임이 끝나면 왜 Narra가 닫히나요?",
+      "a": "Ren'Py 엔진은 실행할 때마다 한 번만 시작할 수 있어서, 게임을 끝내면 Narra가 닫으라고 안내합니다. 계속하거나 다른 게임을 하려면 다시 여세요. 저장 데이터는 게임 폴더에 남고, 동기화가 켜져 있으면 먼저 iCloud에 올라갑니다."
+     },
+     {
+      "id": "compatibility",
+      "q": "모든 Ren'Py 게임이 실행되나요?",
+      "a": "Narra는 Ren'Py 게임의 PC 및 Mac 버전을 위해 만들어졌으며 Ren'Py 7(Python 2)부터 Ren'Py 8까지 대부분의 게임을 실행합니다. 특이한 확장 기능을 쓰는 일부 게임은 실행되지 않을 수 있습니다. 문제가 있는 게임은 신고해 주세요."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "앱 및 개인정보 보호",
+    "items": [
+     {
+      "id": "language",
+      "q": "언어는 어떻게 바꾸나요?",
+      "a": "Narra는 기기 언어를 따릅니다. Narra에서만 다른 언어를 쓰려면 설정 앱에서 앱 > Narra > 언어로 이동해 17개 언어 중에서 고르세요."
+     },
+     {
+      "id": "appearance",
+      "q": "라이트 모드나 다크 모드를 쓸 수 있나요?",
+      "a": "네. Narra는 기본적으로 기기 설정을 따릅니다. 보관함 오른쪽 위 메뉴에서 설정을 열고 화면 모드에서 항상 라이트 또는 항상 다크로 지정할 수 있습니다."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "문제 해결",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra가 파일이 Ren'Py 게임이 아니라고 합니다.",
+      "a": "“game” 폴더가 들어 있는 폴더나 그 ZIP 파일을 선택했는지 확인하세요. Android APK 파일과 다른 엔진으로 만든 게임은 아직 추가할 수 없습니다."
+     },
+     {
+      "id": "unreadable",
+      "q": "파일을 읽을 수 없거나 흐리게 표시됩니다.",
+      "a": "파일이 iCloud Drive에 있다면 먼저 다운로드하세요. 파일 앱에서 옆의 구름 아이콘을 탭하고 완료될 때까지 기다리면 됩니다. 선택 화면에서 흐리게 보이는 항목은 아직 지원하지 않는 형식입니다."
+     },
+     {
+      "id": "space",
+      "q": "Narra가 공간이 부족하다고 합니다.",
+      "a": "ZIP을 추가하려면 압축 파일과 압축을 푼 게임 모두를 위한 공간이 필요합니다. 기기의 공간을 확보하거나 저장 공간 관리에서 더 이상 하지 않는 게임을 지우세요."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Ren'Py 비주얼 노벨을 위한 아늑한 보금자리.",
+   "engine.speech.choice": "선택지가 나왔어요. 먼저 저장할까요?",
+   "engine.speech.mainMenuResume": "메인 메뉴예요. 멈춘 곳부터 이어서 할까요?",
+   "engine.speech.saveReminder": "한동안 저장하지 않았어요.",
+   "engine.speech.justLoaded": "있던 곳으로 돌아왔어요.",
+   "engine.helper.saved": "저장했어요!",
+   "engine.speech.more": "더 보기",
+   "engine.hud.quickSave": "빠른 저장",
+   "engine.hud.rollback": "되감기",
+   "settings.category.cloud": "저장 데이터 및 iCloud",
+   "help.contact.report": "문제 신고",
+   "help.title": "도움말 및 지원"
+  }
+ },
+ "zh-Hans": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "添加游戏",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "如何添加游戏？",
+      "a": "在游戏库中轻点“添加游戏”，然后选择一个 Ren'Py 游戏文件夹或 ZIP 压缩包。你可以一次选择多个，Narra 会逐个添加。"
+     },
+     {
+      "id": "getOnDevice",
+      "q": "如何把游戏放到 iPhone 或 iPad 上？",
+      "a": "下载游戏的 PC 或 Mac 版本，或通过隔空投送、iCloud 云盘或访达从电脑拷贝过来。在“文件”应用中出现后，就可以从 Narra 添加。保持 ZIP 格式即可，Narra 会帮你解压。"
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra 如何判断文件夹是 Ren'Py 游戏？",
+      "a": "Ren'Py 游戏包含一个“game”文件夹，里面有 .rpa 或 .rpyc 文件。请选择包含“game”的文件夹或它的 ZIP。Narra 还会向下多查找几层，所以外面多套一层文件夹也没关系。"
+     },
+     {
+      "id": "formats",
+      "q": "支持哪些格式？",
+      "a": "目前可以添加游戏文件夹和 ZIP 压缩包。RAR、7z 和安卓 APK 文件的支持计划在未来的更新中推出。"
+     },
+     {
+      "id": "duplicate",
+      "q": "如果添加已有的游戏会怎样？",
+      "a": "Narra 会询问你要怎么做：用新文件更新现有游戏、作为单独副本添加，或者跳过。更新时你的存档会被保留。"
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "你的游戏库",
+    "items": [
+     {
+      "id": "covers",
+      "q": "封面从哪里来？",
+      "a": "Narra 会从游戏自带的图片中挑选封面，例如主菜单背景、启动画面或图标。如果都找不到，就会根据标题生成一个彩色封面。"
+     },
+     {
+      "id": "collections",
+      "q": "什么是合集？",
+      "a": "合集让你按自己的方式整理游戏，例如按系列或心情分组。在游戏库右上角的菜单中选择“新建合集”即可创建。"
+     },
+     {
+      "id": "findGames",
+      "q": "如何快速找到游戏？",
+      "a": "使用游戏上方的搜索栏。筛选按钮可只显示收藏或某一种状态，排序按钮可按最近游玩、添加日期或名称排列游戏。"
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "收藏和状态如何使用？",
+      "a": "按住游戏即可将其添加到收藏，或设置状态：游玩中、已通关、已弃坑或待玩。两者都会以徽章形式显示在游戏卡片上。"
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "存档与存储",
+    "items": [
+     {
+      "id": "backup",
+      "q": "如何备份存档？",
+      "a": "打开游戏库右上角的菜单，选择“备份所有游戏存档”。Narra 会为每个有存档的游戏单独创建一个 ZIP 压缩包，并放在 Saves 文件夹中，你可以在“文件”App 的 Narra 下找到它。你也可以分享这些压缩包。"
+     },
+     {
+      "id": "storage",
+      "q": "如何释放空间？",
+      "a": "在游戏库右上角的菜单中选择“存储管理”，即可查看每个游戏占用的空间。删除已经玩完的游戏是释放空间最快的方法。"
+     },
+     {
+      "id": "deleteApp",
+      "q": "删除 Narra 会怎样？",
+      "a": "你的游戏和存档都保存在 Narra 中，删除应用也会一并删除它们。删除前请先备份存档。"
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "游玩",
+    "items": [
+     {
+      "id": "engine",
+      "q": "为什么游戏结束后 Narra 会关闭？",
+      "a": "Ren'Py 引擎每次启动只能运行一次，因此退出游戏后 Narra 会请求关闭。重新打开即可继续游玩或开始其他游戏。你的存档保留在游戏文件夹中，开启同步时会先上传到 iCloud。"
+     },
+     {
+      "id": "compatibility",
+      "q": "所有 Ren'Py 游戏都能运行吗？",
+      "a": "Narra 专为 Ren'Py 游戏的 PC 和 Mac 版本打造，可运行从 Ren'Py 7（Python 2）到 Ren'Py 8 的大多数游戏。部分依赖特殊插件的游戏可能无法运行。如果某个游戏出现问题，请向我们报告。"
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "应用与隐私",
+    "items": [
+     {
+      "id": "language",
+      "q": "如何更改语言？",
+      "a": "Narra 跟随设备语言。如果只想为 Narra 选择其他语言，请打开“设置”应用，前往“App”>“Narra”>“语言”，从 17 种语言中选择。"
+     },
+     {
+      "id": "appearance",
+      "q": "可以使用浅色或深色模式吗？",
+      "a": "可以。Narra 默认跟随设备设置。从游戏库右上角的菜单打开“设置”，在“外观”中可让 Narra 始终保持浅色或深色。"
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "故障排除",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra 提示我的文件不是 Ren'Py 游戏。",
+      "a": "请确认你选择的是包含“game”文件夹的文件夹或它的 ZIP。目前还不能添加安卓 APK 文件和用其他引擎制作的游戏。"
+     },
+     {
+      "id": "unreadable",
+      "q": "文件无法读取或显示为灰色。",
+      "a": "如果文件在 iCloud 云盘中，请先下载：在“文件”应用中轻点旁边的云朵图标并等待下载完成。选择器中显示为灰色的项目是暂不支持的格式。"
+     },
+     {
+      "id": "space",
+      "q": "Narra 提示空间不足。",
+      "a": "添加 ZIP 需要同时容纳压缩包和解压后的游戏。请清理设备空间，或在“存储管理”中删除不再玩的游戏。"
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "你的 Ren'Py 视觉小说的温馨小窝。",
+   "engine.speech.choice": "要做选择了。先存档吗？",
+   "engine.speech.mainMenuResume": "我们在主菜单。要从上次的地方继续吗？",
+   "engine.speech.saveReminder": "你有一阵子没存档了。",
+   "engine.speech.justLoaded": "回到刚才的位置了。",
+   "engine.helper.saved": "已保存！",
+   "engine.speech.more": "更多",
+   "engine.hud.quickSave": "快速存档",
+   "engine.hud.rollback": "回退",
+   "settings.category.cloud": "存档与 iCloud",
+   "help.contact.report": "报告问题",
+   "help.title": "帮助与支持"
+  }
+ },
+ "zh-Hant": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "加入遊戲",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "如何加入遊戲？",
+      "a": "在遊戲庫中點一下「加入遊戲」，然後選擇 Ren'Py 遊戲資料夾或 ZIP 壓縮檔。你可以一次選取多個，Narra 會逐一加入。"
+     },
+     {
+      "id": "getOnDevice",
+      "q": "如何把遊戲放到 iPhone 或 iPad 上？",
+      "a": "下載遊戲的 PC 或 Mac 版本，或透過 AirDrop、iCloud 雲碟或 Finder 從電腦拷貝過來。在「檔案」App 中出現後，就能從 Narra 加入。保留 ZIP 格式即可，Narra 會幫你解壓縮。"
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra 如何判斷資料夾是 Ren'Py 遊戲？",
+      "a": "Ren'Py 遊戲包含一個「game」資料夾，裡面有 .rpa 或 .rpyc 檔案。請選擇包含「game」的資料夾或它的 ZIP。Narra 也會往下多找幾層，所以外面多包一層資料夾也沒關係。"
+     },
+     {
+      "id": "formats",
+      "q": "支援哪些格式？",
+      "a": "目前可以加入遊戲資料夾和 ZIP 壓縮檔。RAR、7z 與 Android APK 檔案的支援預計在未來的更新中推出。"
+     },
+     {
+      "id": "duplicate",
+      "q": "如果加入已有的遊戲會怎樣？",
+      "a": "Narra 會詢問你要怎麼做：用新檔案更新現有遊戲、加入成另一份拷貝，或略過。更新時你的存檔會保留。"
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "你的遊戲庫",
+    "items": [
+     {
+      "id": "covers",
+      "q": "封面從哪裡來？",
+      "a": "Narra 會從遊戲本身的圖片中挑選封面，例如主選單背景、啟動畫面或圖示。如果都找不到，就會依標題產生彩色封面。"
+     },
+     {
+      "id": "collections",
+      "q": "什麼是收藏集？",
+      "a": "收藏集讓你依自己的方式整理遊戲，例如依系列或心情分組。在遊戲庫右上角的選單中選擇「新增收藏集」即可建立。"
+     },
+     {
+      "id": "findGames",
+      "q": "如何快速找到遊戲？",
+      "a": "使用遊戲上方的搜尋欄。篩選按鈕可只顯示最愛或單一狀態，排序按鈕可依最近遊玩、加入日期或名稱排列遊戲。"
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "最愛和狀態如何使用？",
+      "a": "按住遊戲即可加入最愛，或設定狀態：遊玩中、已破關、已放棄或待玩。兩者都會以徽章顯示在遊戲卡片上。"
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "存檔與儲存空間",
+    "items": [
+     {
+      "id": "backup",
+      "q": "如何備份存檔？",
+      "a": "開啟遊戲庫右上角的選單，選擇「備份所有遊戲存檔」。Narra 會為每個有存檔的遊戲各自建立一個 ZIP 壓縮檔，並放在 Saves 資料夾中，你可以在「檔案」App 的 Narra 底下找到它。你也可以分享這些壓縮檔。"
+     },
+     {
+      "id": "storage",
+      "q": "如何釋放空間？",
+      "a": "在遊戲庫右上角的選單中選擇「儲存空間管理」，即可查看每個遊戲佔用的空間。移除已經玩完的遊戲是釋放空間最快的方法。"
+     },
+     {
+      "id": "deleteApp",
+      "q": "刪除 Narra 會怎樣？",
+      "a": "你的遊戲與存檔都保存在 Narra 中，刪除 App 也會一併刪除它們。刪除前請先備份存檔。"
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "遊玩",
+    "items": [
+     {
+      "id": "engine",
+      "q": "為什麼遊戲結束後 Narra 會關閉？",
+      "a": "Ren'Py 引擎每次啟動只能執行一次，因此退出遊戲後 Narra 會請求關閉。重新開啟即可繼續遊玩或開始其他遊戲。你的存檔保留在遊戲資料夾中，開啟同步時會先上傳到 iCloud。"
+     },
+     {
+      "id": "compatibility",
+      "q": "所有 Ren'Py 遊戲都能執行嗎？",
+      "a": "Narra 專為 Ren'Py 遊戲的 PC 與 Mac 版本打造，可執行從 Ren'Py 7（Python 2）到 Ren'Py 8 的大多數遊戲。部分仰賴特殊外掛的遊戲可能無法執行。如果某個遊戲出現問題，請回報給我們。"
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "App 與隱私權",
+    "items": [
+     {
+      "id": "language",
+      "q": "如何更改語言？",
+      "a": "Narra 會跟隨裝置語言。若只想為 Narra 選擇其他語言，請打開「設定」App，前往「App」>「Narra」>「語言」，從 17 種語言中選擇。"
+     },
+     {
+      "id": "appearance",
+      "q": "可以使用淺色或深色模式嗎？",
+      "a": "可以。Narra 預設跟隨裝置設定。從遊戲庫右上角的選單打開「設定」，在「外觀」中可讓 Narra 一律使用淺色或深色。"
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "疑難排解",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra 顯示我的檔案不是 Ren'Py 遊戲。",
+      "a": "請確認你選的是包含「game」資料夾的資料夾或它的 ZIP。目前還無法加入 Android APK 檔案與其他引擎製作的遊戲。"
+     },
+     {
+      "id": "unreadable",
+      "q": "檔案無法讀取或呈灰色。",
+      "a": "如果檔案在 iCloud 雲碟中，請先下載：在「檔案」App 中點一下旁邊的雲朵圖示並等待下載完成。選擇器中呈灰色的項目是尚未支援的格式。"
+     },
+     {
+      "id": "space",
+      "q": "Narra 顯示空間不足。",
+      "a": "加入 ZIP 需要同時容納壓縮檔與解壓縮後的遊戲。請清出裝置空間，或在「儲存空間管理」中移除不再玩的遊戲。"
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "你的 Ren'Py 視覺小說的溫馨小窩。",
+   "engine.speech.choice": "要做選擇了。先存檔嗎？",
+   "engine.speech.mainMenuResume": "我們在主選單。要從上次的地方繼續嗎？",
+   "engine.speech.saveReminder": "你有一陣子沒存檔了。",
+   "engine.speech.justLoaded": "回到剛才的位置了。",
+   "engine.helper.saved": "已儲存！",
+   "engine.speech.more": "更多",
+   "engine.hud.quickSave": "快速存檔",
+   "engine.hud.rollback": "倒轉",
+   "settings.category.cloud": "存檔與 iCloud",
+   "help.contact.report": "回報問題",
+   "help.title": "說明與支援"
+  }
+ },
+ "ar": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "إضافة الألعاب",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "كيف أضيف لعبة؟",
+      "a": "اضغط على «إضافة لعبة» في مكتبتك، ثم اختر مجلد لعبة Ren'Py أو أرشيف ZIP. يمكنك اختيار عدة عناصر معًا وسيضيفها Narra واحدًا تلو الآخر."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "كيف أنقل لعبة إلى iPhone أو iPad؟",
+      "a": "نزّل نسخة PC أو Mac من اللعبة، أو انسخها من حاسوبك عبر AirDrop أو iCloud Drive أو Finder. عندما تظهر في تطبيق الملفات، أضفها من Narra. يمكنك تركها بصيغة ZIP، وسيفكّ Narra ضغطها لك."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "كيف يعرف Narra أن المجلد لعبة Ren'Py؟",
+      "a": "تحتوي لعبة Ren'Py على مجلد «game» بداخله ملفات .rpa أو .rpyc. اختر المجلد الذي يحتوي على «game» أو ملف ZIP له. يبحث Narra أيضًا في مستويين أعمق، لذا لا مشكلة في وجود مجلد إضافي حوله."
+     },
+     {
+      "id": "formats",
+      "q": "ما الصيغ المدعومة؟",
+      "a": "يمكنك حاليًا إضافة مجلدات الألعاب وأرشيفات ZIP. دعم ملفات RAR و7z وAPK الخاصة بأندرويد مخطط له في تحديث قادم."
+     },
+     {
+      "id": "duplicate",
+      "q": "ماذا يحدث إذا أضفت لعبة موجودة لديّ؟",
+      "a": "يسألك Narra عمّا تريد: تحديث اللعبة الموجودة بالملفات الجديدة، أو إضافتها كنسخة منفصلة، أو تخطيها. تبقى حفظاتك كما هي عند التحديث."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "مكتبتك",
+    "items": [
+     {
+      "id": "covers",
+      "q": "من أين تأتي الأغلفة؟",
+      "a": "يختار Narra الغلاف من صور اللعبة نفسها، مثل خلفية القائمة الرئيسية أو شاشة البدء أو الأيقونة. وإن لم يجد شيئًا، يصنع غلافًا ملونًا من العنوان."
+     },
+     {
+      "id": "collections",
+      "q": "ما المجموعات؟",
+      "a": "تتيح لك المجموعات تجميع الألعاب بطريقتك، مثلًا حسب السلسلة أو المزاج. أنشئ واحدة عبر «مجموعة جديدة» في القائمة أعلى يمين مكتبتك."
+     },
+     {
+      "id": "findGames",
+      "q": "كيف أجد لعبة بسرعة؟",
+      "a": "استخدم حقل البحث أعلى ألعابك. يعرض زر التصفية المفضلة فقط أو حالة واحدة، ويرتّب زر الترتيب الألعاب حسب آخر ما لُعب أو تاريخ الإضافة أو الاسم."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "كيف تعمل المفضلة والحالة؟",
+      "a": "المس اللعبة مطولًا لإضافتها إلى المفضلة أو تحديد حالتها: قيد اللعب، أو مكتملة، أو متروكة، أو في الانتظار. يظهر كلاهما كشارة على بطاقة اللعبة."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "الحفظات والتخزين",
+    "items": [
+     {
+      "id": "backup",
+      "q": "كيف أنسخ حفظاتي احتياطيًا؟",
+      "a": "افتح القائمة أعلى يمين مكتبتك واختر «نسخ احتياطي لكل حفظات الألعاب». ينشئ Narra أرشيف ZIP منفصلاً لكل لعبة فيها حفظات ويضعه في مجلد Saves الذي تجده في تطبيق الملفات ضمن Narra. يمكنك أيضًا مشاركة الأرشيفات."
+     },
+     {
+      "id": "storage",
+      "q": "كيف أوفّر مساحة؟",
+      "a": "اختر «مدير التخزين» من القائمة أعلى يمين مكتبتك لترى المساحة التي تشغلها كل لعبة. إزالة الألعاب التي أنهيتها هي أسرع طريقة لتوفير المساحة."
+     },
+     {
+      "id": "deleteApp",
+      "q": "ماذا يحدث إذا حذفت Narra؟",
+      "a": "ألعابك وحفظاتك موجودة داخل Narra، لذا يؤدي حذف التطبيق إلى حذفها أيضًا. انسخ حفظاتك احتياطيًا قبل حذفه."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "اللعب",
+    "items": [
+     {
+      "id": "engine",
+      "q": "لماذا يُغلق Narra بعد انتهاء اللعبة؟",
+      "a": "لا يمكن لمحرك Ren'Py أن يبدأ إلا مرة واحدة في كل تشغيل، لذا يطلب Narra الإغلاق بعد الخروج من اللعبة. افتحه مجددًا لمتابعة اللعب أو بدء لعبة أخرى. تبقى ملفات حفظك في مجلد اللعبة، وتُرفع أولًا إلى iCloud إذا كانت المزامنة مفعّلة."
+     },
+     {
+      "id": "compatibility",
+      "q": "هل ستعمل كل ألعاب Ren'Py؟",
+      "a": "صُمّم Narra لنسخ PC وMac من ألعاب Ren'Py ويشغّل معظمها، من Ren'Py 7 (بايثون 2) إلى Ren'Py 8. قد لا تعمل بعض الألعاب التي تعتمد على إضافات غير مألوفة. إن واجهتك مشكلة في لعبة، فأبلغنا بها."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "التطبيق والخصوصية",
+    "items": [
+     {
+      "id": "language",
+      "q": "كيف أغيّر اللغة؟",
+      "a": "يتبع Narra لغة جهازك. لاختيار لغة مختلفة لـ Narra وحده، افتح تطبيق الإعدادات وانتقل إلى التطبيقات > Narra > اللغة واختر من بين 17 لغة."
+     },
+     {
+      "id": "appearance",
+      "q": "هل يمكنني استخدام الوضع الفاتح أو الداكن؟",
+      "a": "نعم. يتبع Narra جهازك افتراضيًا. افتح الإعدادات من القائمة أعلى يمين مكتبتك واختر «المظهر» لإبقاء Narra فاتحًا أو داكنًا دائمًا."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "استكشاف الأخطاء وإصلاحها",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "يقول Narra إن ملفي ليس لعبة Ren'Py.",
+      "a": "تأكد من أنك اخترت المجلد الذي يحتوي على مجلد «game» أو ملف ZIP له. لا يمكن حاليًا إضافة ملفات APK لأندرويد أو الألعاب المصنوعة بمحركات أخرى."
+     },
+     {
+      "id": "unreadable",
+      "q": "تعذّرت قراءة ملف أو يظهر باهتًا.",
+      "a": "إذا كان الملف في iCloud Drive فنزّله أولًا: في تطبيق الملفات اضغط على أيقونة السحابة بجانبه وانتظر حتى يكتمل. العناصر الباهتة في أداة الاختيار بصيغة غير مدعومة بعد."
+     },
+     {
+      "id": "space",
+      "q": "يقول Narra إنه لا توجد مساحة كافية.",
+      "a": "تتطلب إضافة ملف ZIP مساحة للأرشيف وللعبة بعد فك ضغطها. وفّر مساحة على جهازك، أو استخدم «مدير التخزين» لإزالة الألعاب التي لم تعد تلعبها."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "بيت دافئ لرواياتك المرئية المصنوعة بـ Ren'Py.",
+   "engine.speech.choice": "هناك خيار قادم. هل نحفظ أولًا؟",
+   "engine.speech.mainMenuResume": "نحن في القائمة الرئيسية. هل نكمل من حيث توقفت؟",
+   "engine.speech.saveReminder": "لم تحفظ منذ مدة.",
+   "engine.speech.justLoaded": "عدنا إلى حيث كنت.",
+   "engine.helper.saved": "تم الحفظ!",
+   "engine.speech.more": "المزيد",
+   "engine.hud.quickSave": "حفظ سريع",
+   "engine.hud.rollback": "رجوع",
+   "settings.category.cloud": "الحفظ وiCloud",
+   "help.contact.report": "الإبلاغ عن مشكلة",
+   "help.title": "المساعدة والدعم"
+  }
+ },
+ "vi": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Thêm trò chơi",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Làm sao để thêm trò chơi?",
+      "a": "Chạm Thêm trò chơi trong thư viện, rồi chọn một thư mục trò chơi Ren'Py hoặc tệp ZIP. Bạn có thể chọn nhiều mục cùng lúc và Narra sẽ thêm lần lượt từng mục."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Làm sao để đưa trò chơi vào iPhone hoặc iPad?",
+      "a": "Tải bản PC hoặc Mac của trò chơi, hoặc sao chép từ máy tính qua AirDrop, iCloud Drive hay Finder. Khi nó xuất hiện trong ứng dụng Tệp, hãy thêm từ Narra. Bạn có thể để nguyên tệp ZIP, Narra sẽ giải nén giúp bạn."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Narra nhận biết thư mục là trò chơi Ren'Py như thế nào?",
+      "a": "Trò chơi Ren'Py có một thư mục “game” chứa các tệp .rpa hoặc .rpyc. Hãy chọn thư mục chứa “game” hoặc tệp ZIP của nó. Narra cũng tìm sâu thêm vài cấp, nên có thêm một thư mục bọc ngoài cũng không sao."
+     },
+     {
+      "id": "formats",
+      "q": "Hỗ trợ những định dạng nào?",
+      "a": "Hiện tại bạn có thể thêm thư mục trò chơi và tệp ZIP. Hỗ trợ tệp RAR, 7z và APK Android được lên kế hoạch cho bản cập nhật sau."
+     },
+     {
+      "id": "duplicate",
+      "q": "Nếu tôi thêm trò chơi đã có thì sao?",
+      "a": "Narra sẽ hỏi bạn muốn làm gì: cập nhật trò chơi hiện có bằng tệp mới, thêm thành bản sao riêng hoặc bỏ qua. Khi cập nhật, dữ liệu lưu của bạn vẫn được giữ."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Thư viện của bạn",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Ảnh bìa lấy từ đâu?",
+      "a": "Narra chọn ảnh bìa từ chính hình ảnh của trò chơi, như nền menu chính, màn hình khởi động hoặc biểu tượng. Nếu không tìm thấy, Narra sẽ tạo ảnh bìa nhiều màu từ tên trò chơi."
+     },
+     {
+      "id": "collections",
+      "q": "Bộ sưu tập là gì?",
+      "a": "Bộ sưu tập giúp bạn nhóm trò chơi theo cách riêng, ví dụ theo series hoặc tâm trạng. Tạo một bộ bằng Bộ sưu tập mới trong menu ở góc trên bên phải thư viện."
+     },
+     {
+      "id": "findGames",
+      "q": "Làm sao để tìm trò chơi nhanh?",
+      "a": "Dùng ô tìm kiếm phía trên danh sách trò chơi. Nút lọc chỉ hiện mục yêu thích hoặc một trạng thái, còn nút sắp xếp xếp trò chơi theo lần chơi gần nhất, ngày thêm hoặc tên."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Mục yêu thích và trạng thái hoạt động thế nào?",
+      "a": "Chạm và giữ trò chơi để thêm vào mục yêu thích hoặc đặt trạng thái: Đang chơi, Đã hoàn thành, Đã bỏ dở hoặc Chờ chơi. Cả hai đều hiện thành huy hiệu trên thẻ trò chơi."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Dữ liệu lưu & bộ nhớ",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Làm sao để sao lưu dữ liệu lưu?",
+      "a": "Mở menu ở góc trên bên phải thư viện và chọn Sao lưu mọi dữ liệu lưu. Narra tạo một tệp nén ZIP riêng cho mỗi trò chơi có dữ liệu lưu và đặt vào thư mục Saves, bạn có thể tìm thấy trong ứng dụng Tệp, mục Narra. Bạn cũng có thể chia sẻ các tệp nén."
+     },
+     {
+      "id": "storage",
+      "q": "Làm sao để giải phóng dung lượng?",
+      "a": "Chọn Quản lý bộ nhớ trong menu ở góc trên bên phải thư viện để xem mỗi trò chơi chiếm bao nhiêu dung lượng. Gỡ những trò chơi bạn đã chơi xong là cách giải phóng dung lượng nhanh nhất."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Nếu tôi xóa Narra thì sao?",
+      "a": "Trò chơi và dữ liệu lưu của bạn nằm trong Narra, nên xóa ứng dụng cũng sẽ xóa chúng. Hãy sao lưu dữ liệu lưu trước khi xóa."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Chơi game",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Vì sao Narra đóng lại sau khi chơi?",
+      "a": "Công cụ Ren'Py chỉ khởi động được một lần mỗi lần mở ứng dụng, nên sau khi thoát trò chơi Narra sẽ yêu cầu đóng. Hãy mở lại để chơi tiếp hoặc bắt đầu trò khác. Bản lưu nằm trong thư mục trò chơi và được tải lên iCloud trước nếu bật đồng bộ."
+     },
+     {
+      "id": "compatibility",
+      "q": "Mọi trò chơi Ren'Py đều chạy được chứ?",
+      "a": "Narra được xây dựng cho bản PC và Mac của các trò chơi Ren'Py và chạy được phần lớn trong số đó, từ Ren'Py 7 (Python 2) đến Ren'Py 8. Một số dùng tiện ích bổ sung khác thường có thể không chạy. Nếu trò chơi nào gặp sự cố, hãy báo cho chúng tôi."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "Ứng dụng & quyền riêng tư",
+    "items": [
+     {
+      "id": "language",
+      "q": "Làm sao để đổi ngôn ngữ?",
+      "a": "Narra dùng ngôn ngữ của thiết bị. Để chọn ngôn ngữ khác chỉ cho Narra, hãy mở ứng dụng Cài đặt, vào Ứng dụng > Narra > Ngôn ngữ và chọn trong 17 ngôn ngữ."
+     },
+     {
+      "id": "appearance",
+      "q": "Tôi có thể dùng chế độ sáng hoặc tối không?",
+      "a": "Có. Mặc định Narra theo thiết bị của bạn. Mở Cài đặt từ menu ở góc trên bên phải thư viện và chọn Giao diện để Narra luôn sáng hoặc luôn tối."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Khắc phục sự cố",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra báo tệp của tôi không phải trò chơi Ren'Py.",
+      "a": "Hãy chắc rằng bạn đã chọn thư mục chứa thư mục “game”, hoặc tệp ZIP của nó. Hiện chưa thể thêm tệp APK Android và trò chơi làm bằng engine khác."
+     },
+     {
+      "id": "unreadable",
+      "q": "Không đọc được tệp hoặc tệp bị mờ.",
+      "a": "Nếu tệp nằm trong iCloud Drive, hãy tải về trước: trong ứng dụng Tệp, chạm vào biểu tượng đám mây bên cạnh và chờ tải xong. Các mục bị mờ trong trình chọn có định dạng chưa được hỗ trợ."
+     },
+     {
+      "id": "space",
+      "q": "Narra báo không đủ dung lượng.",
+      "a": "Thêm tệp ZIP cần dung lượng cho cả tệp nén lẫn trò chơi sau khi giải nén. Hãy giải phóng dung lượng thiết bị hoặc dùng Quản lý bộ nhớ để gỡ những trò chơi bạn không còn chơi."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Ngôi nhà ấm cúng cho các visual novel Ren'Py của bạn.",
+   "engine.speech.choice": "Sắp có lựa chọn. Lưu trước nhé?",
+   "engine.speech.mainMenuResume": "Mình đang ở menu chính. Tiếp tục từ chỗ bạn dừng nhé?",
+   "engine.speech.saveReminder": "Đã lâu bạn chưa lưu.",
+   "engine.speech.justLoaded": "Đã trở lại chỗ cũ.",
+   "engine.helper.saved": "Đã lưu!",
+   "engine.speech.more": "Thêm",
+   "engine.hud.quickSave": "Lưu nhanh",
+   "engine.hud.rollback": "Tua lại",
+   "settings.category.cloud": "Bản lưu & iCloud",
+   "help.contact.report": "Báo cáo sự cố",
+   "help.title": "Trợ giúp & hỗ trợ"
+  }
+ },
+ "la": {
+  "faq": [
+   {
+    "id": "adding",
+    "title": "Lusus addere",
+    "items": [
+     {
+      "id": "addGame",
+      "q": "Quomodo lusum addo?",
+      "a": "In bibliotheca tua Lusum adde tange, deinde capsam lusus Ren'Py vel archivum ZIP elige. Plures simul eligere potes, et Narra eos singulos addet."
+     },
+     {
+      "id": "getOnDevice",
+      "q": "Quomodo lusum in iPhone vel iPad transfero?",
+      "a": "Versionem lusus pro PC vel Mac depone, aut eam ex computatro per AirDrop, iCloud Drive vel Finder exscribe. Cum in applicatione Files apparuerit, eam ex Narra adde. In ZIP relinquere potes; Narra eam pro te explicat."
+     },
+     {
+      "id": "whatIsRenPy",
+      "q": "Quomodo Narra cognoscit capsam lusum Ren'Py esse?",
+      "a": "Lusus Ren'Py capsam «game» habet cum fasciculis .rpa vel .rpyc. Elige capsam quae «game» continet, vel eius ZIP. Narra etiam paucis gradibus profundius quaerit, itaque capsa exterior addita nihil obest."
+     },
+     {
+      "id": "formats",
+      "q": "Quae formae sustinentur?",
+      "a": "Nunc capsas lusuum et archiva ZIP addere potes. Fasciculi RAR, 7z et APK Android in renovatione futura sustinebuntur."
+     },
+     {
+      "id": "duplicate",
+      "q": "Quid fit si lusum quem iam habeo addo?",
+      "a": "Narra quaerit quid faciendum sit: lusum exstantem novis fasciculis renovare, ut exemplar separatum addere, an praeterire. Cum renovas, servationes tuae manent."
+     }
+    ]
+   },
+   {
+    "id": "library",
+    "title": "Bibliotheca tua",
+    "items": [
+     {
+      "id": "covers",
+      "q": "Unde tegumenta veniunt?",
+      "a": "Narra tegumentum ex imaginibus ipsius lusus eligit, ut ex fundo indicis principalis, tabula initiali vel icone. Si nullam invenit, tegumentum coloratum ex titulo facit."
+     },
+     {
+      "id": "collections",
+      "q": "Quid sunt collectiones?",
+      "a": "Collectiones tibi permittunt lusus tuo modo coniungere, exempli gratia secundum seriem vel animum. Unam crea per Nova collectio in indice ad dextram summam bibliothecae."
+     },
+     {
+      "id": "findGames",
+      "q": "Quomodo lusum celeriter invenio?",
+      "a": "Campo quaerendi supra lusus utere. Puga filtri dilectos tantum vel unum statum ostendit, puga ordinandi lusus secundum nuper lusos, diem additionis vel nomen disponit."
+     },
+     {
+      "id": "favoritesStatus",
+      "q": "Quomodo dilecti et status operantur?",
+      "a": "Lusum tange et tene ut eum dilectis addas vel statum eius statuas: In ludo, Perfecti, Relicti vel Ludendi. Utrumque ut insigne in charta lusus apparet."
+     }
+    ]
+   },
+   {
+    "id": "saves",
+    "title": "Servationes et spatium",
+    "items": [
+     {
+      "id": "backup",
+      "q": "Quomodo servationes meas exscribo?",
+      "a": "Aperi indicem in summa dextra bibliothecae et elige Omnes servationes exscribe. Narra pro quoque lusu servationes habente archivum ZIP separatum creat et in plicam Saves ponit, quam in applicatione Fasciculi sub Narra invenies. Archiva etiam communicare potes."
+     },
+     {
+      "id": "storage",
+      "q": "Quomodo spatium libero?",
+      "a": "Administrator spatii ex indice ad dextram summam bibliothecae elige ut videas quantum spatii quisque lusus occupet. Lusus perfectos removere est via celerrima spatium liberandi."
+     },
+     {
+      "id": "deleteApp",
+      "q": "Quid fit si Narra deleo?",
+      "a": "Lusus et servationes tuae intra Narra habitant, itaque applicatione deleta etiam ipsae removentur. Servationes exscribe antequam eam deleas."
+     }
+    ]
+   },
+   {
+    "id": "playing",
+    "title": "Ludere",
+    "items": [
+     {
+      "id": "engine",
+      "q": "Cur Narra post ludum clauditur?",
+      "a": "Machina Ren'Py semel tantum in quaque apertione incipere potest, itaque post ludum relictum Narra claudi petit. Iterum aperi ut pergas vel alium ludum incipias. Servata tua in folliculo ludi manent et, si synchronizatio accensa est, prius in iCloud mittuntur."
+     },
+     {
+      "id": "compatibility",
+      "q": "Num omnis lusus Ren'Py operabitur?",
+      "a": "Narra versionibus lusuum Ren'Py pro PC et Mac facta est et plerosque, a Ren'Py 7 (Python 2) usque ad Ren'Py 8, ludit. Quidam additamentis insolitis innixi fortasse non operabuntur. Si quis lusus tibi molestiam affert, quaesumus nuntia."
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "title": "Applicatio et secretum",
+    "items": [
+     {
+      "id": "language",
+      "q": "Quomodo linguam muto?",
+      "a": "Narra linguam instrumenti tui sequitur. Ut aliam pro Narra tantum eligas, applicationem Settings aperi, ad Apps > Narra > Language i et ex 17 linguis elige."
+     },
+     {
+      "id": "appearance",
+      "q": "Possumne modo lucido vel obscuro uti?",
+      "a": "Ita. Narra instrumentum tuum sua sponte sequitur. Optiones ex indice ad dextram summam bibliothecae aperi et Species elige ut Narra semper lucidum vel semper obscurum maneat."
+     }
+    ]
+   },
+   {
+    "id": "troubleshooting",
+    "title": "Difficultates solvere",
+    "items": [
+     {
+      "id": "notRenPy",
+      "q": "Narra dicit fasciculum meum lusum Ren'Py non esse.",
+      "a": "Cura ut capsam elegeris quae capsam «game» continet, vel eius ZIP. Fasciculi APK Android et lusus aliis machinis facti nunc addi non possunt."
+     },
+     {
+      "id": "unreadable",
+      "q": "Fasciculus legi non potest vel pallidus apparet.",
+      "a": "Si fasciculus in iCloud Drive est, prius eum depone: in applicatione Files iconem nubis iuxta eum tange et exspecta dum finiatur. Quae in selectore pallida apparent formam nondum sustentam habent."
+     },
+     {
+      "id": "space",
+      "q": "Narra dicit spatium non sufficere.",
+      "a": "ZIP addere spatium et archivo et lusui explicato requirit. Spatium in instrumento libera, aut Administratore spatii lusus quos non iam ludis remove."
+     }
+    ]
+   }
+  ],
+  "strings": {
+   "help.about.tagline": "Domus commoda fabulis tuis visualibus Ren'Py.",
+   "engine.speech.choice": "Electio adest. Servamusne prius?",
+   "engine.speech.mainMenuResume": "In indice principali sumus. Pergamusne unde desiisti?",
+   "engine.speech.saveReminder": "Iam diu non servavisti.",
+   "engine.speech.justLoaded": "Redimus quo eras.",
+   "engine.helper.saved": "Servatum!",
+   "engine.speech.more": "Plura",
+   "engine.hud.quickSave": "Celeriter serva",
+   "engine.hud.rollback": "Retrorsum",
+   "settings.category.cloud": "Servata et iCloud",
+   "help.contact.report": "Difficultatem nuntia",
+   "help.title": "Auxilium et subsidium"
+  }
+ }
+}

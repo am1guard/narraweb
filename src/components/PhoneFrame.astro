@@ -1,0 +1,129 @@
+---
+// An iPhone drawn in CSS (no Apple device artwork). Shows a screenshot, or, when one is
+// missing, a placeholder made of the app's own background and Narra. Placeholders only
+// appear when config.screensReady is true, i.e. while screenshots are being added.
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import placeholderNarra from "../assets/mascot/welcome.webp";
+import Sky from "./Sky.astro";
+
+interface Props {
+  image?: ImageMetadata;
+  alt: string;
+  orientation?: "portrait" | "landscape";
+  name: string;
+  eager?: boolean;
+  class?: string;
+}
+const { image, alt, orientation = "portrait", name, eager = false, class: className } = Astro.props;
+---
+<figure class:list={["phone", orientation, className]}>
+  <div class="screen">
+    {
+      image ? (
+        <Picture
+          src={image}
+          alt={alt}
+          widths={orientation === "portrait" ? [320, 480, 720] : [640, 960, 1400]}
+          sizes={orientation === "portrait" ? "320px" : "(min-width: 900px) 640px, 92vw"}
+          formats={["avif"]} fallbackFormat="webp"
+          quality={80}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          class="shot"
+        />
+      ) : (
+        <div class="placeholder" role="img" aria-label={alt}>
+          <Sky seed={name.length * 7919} count={12} />
+          <div class="ph-narra">
+            <Picture src={placeholderNarra} alt="" widths={[200, 320]} sizes="160px" formats={["avif"]} fallbackFormat="webp" loading="lazy" />
+          </div>
+          <span class="ph-text">{name}</span>
+        </div>
+      )
+    }
+  </div>
+  <span class="island" aria-hidden="true"></span>
+</figure>
+
+<style>
+  .phone {
+    --bezel: 10px;
+    position: relative;
+    margin: 0;
+    padding: var(--bezel);
+    border-radius: 48px;
+    background: linear-gradient(145deg, #3a3346, #17121f 45%, #2b2436);
+    box-shadow: var(--shadow-phone), inset 0 0 0 1.5px rgb(255 255 255 / 0.12);
+    inline-size: var(--phone-width);
+  }
+  .phone.landscape {
+    inline-size: min(100%, 44rem);
+    border-radius: 40px;
+  }
+  .screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 38px;
+    aspect-ratio: 1206 / 2622;
+    background: #120c1b;
+    container-type: inline-size;
+  }
+  .landscape .screen {
+    aspect-ratio: 2622 / 1206;
+    border-radius: 30px;
+  }
+  .shot,
+  .shot :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .island {
+    position: absolute;
+    inset-block-start: calc(var(--bezel) + 2.2%);
+    inset-inline-start: 50%;
+    inline-size: 30%;
+    block-size: 3.4%;
+    border-radius: var(--r-pill);
+    background: #050307;
+    transform: translateX(-50%);
+  }
+  :global([dir="rtl"]) .island {
+    transform: translateX(50%);
+  }
+  .landscape .island {
+    inset-block-start: 50%;
+    inset-inline-start: calc(var(--bezel) + 1.8%);
+    inline-size: 3.4%;
+    block-size: 30%;
+    transform: translateY(-50%);
+  }
+  .placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: var(--s-3);
+    background: #120c1b;
+    color: #b8a9cc;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+  }
+  .ph-narra {
+    inline-size: 45cqi;
+    max-inline-size: 160px;
+    position: relative;
+  }
+  .ph-narra :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+  }
+  .ph-text {
+    position: relative;
+    padding: 2px var(--s-2);
+    border: 1px dashed rgb(196 161 255 / 0.4);
+    border-radius: var(--r-badge);
+  }
+</style>

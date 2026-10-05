@@ -1,0 +1,44 @@
+---
+// One line from Narra in a small visual-novel text window (no typing; only the opening scene types).
+interface Props {
+  text: string;
+  class?: string;
+}
+const { text, class: className } = Astro.props;
+---
+<figure class:list={["say", className]}>
+  <figcaption class="say-name">Narra</figcaption>
+  <blockquote class="say-text"><p>{text}</p></blockquote>
+</figure>
+
+<style>
+  .say {
+    position: relative;
+    margin-block-start: var(--s-5);
+    padding: var(--s-6) var(--s-5) var(--s-4);
+    border-radius: var(--r-card);
+    background: var(--c-dialogue);
+    border: 1px solid var(--c-dialogue-stroke);
+    max-inline-size: var(--text-max);
+  }
+  .say-name {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--s-5);
+    transform: translateY(-50%);
+    padding: 2px var(--s-3);
+    border-radius: var(--r-pill);
+    background: var(--c-nametag);
+    border: 1px solid var(--c-dialogue-stroke);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: 1.0625rem;
+    line-height: 1.25;
+  }
+  .say-text {
+    margin: 0;
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+  }
+</style>

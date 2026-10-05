@@ -1,0 +1,77 @@
+---
+// The one primary call to action. While config.appStoreUrl is empty it shows a quiet
+// "coming soon" plate instead of a link, so nothing looks clickable that isn't.
+import { config } from "../config";
+import type { Dict } from "../i18n";
+import { sparklePath } from "../lib/sparkle";
+
+interface Props {
+  dict: Dict;
+  size?: "regular" | "large";
+}
+const { dict, size = "regular" } = Astro.props;
+const live = config.appStoreUrl.trim() !== "";
+---
+{
+  live ? (
+    <a class:list={["cta", size]} href={config.appStoreUrl} rel="noopener">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>{dict.cta.appStore}</span>
+    </a>
+  ) : (
+    <p class:list={["soon", size]}>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d={sparklePath(12, 12, 9)} fill="currentColor" />
+      </svg>
+      <span>{dict.cta.comingSoon}</span>
+    </p>
+  )
+}
+
+<style>
+  .cta,
+  .soon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    min-block-size: var(--cta-height);
+    padding-inline: var(--s-6);
+    border-radius: var(--r-button);
+    font-weight: 800;
+    font-size: var(--fs-body);
+    line-height: 1.2;
+    text-align: center;
+  }
+  .large {
+    min-block-size: 60px;
+    padding-inline: var(--s-7);
+  }
+  .cta {
+    color: var(--c-on-cta);
+    text-decoration: none;
+    background: linear-gradient(to right, var(--c-cta-start), var(--c-cta-end));
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--c-cta-start) 40%, transparent);
+    transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    touch-action: manipulation;
+  }
+  :global([dir="rtl"]) .cta {
+    background: linear-gradient(to left, var(--c-cta-start), var(--c-cta-end));
+  }
+  .cta:hover {
+    box-shadow: 0 14px 36px color-mix(in srgb, var(--c-cta-start) 55%, transparent);
+  }
+  .cta:active {
+    transform: scale(0.97);
+  }
+  .soon {
+    color: var(--c-text);
+    background: color-mix(in srgb, var(--c-surface) 82%, transparent);
+    border: 1px solid var(--c-dialogue-stroke);
+  }
+  .soon svg {
+    color: var(--c-accent);
+  }
+</style>

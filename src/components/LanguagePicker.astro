@@ -1,0 +1,112 @@
+---
+// Language menu: a <details> disclosure (works without JavaScript); a few lines of script
+// close it on Escape or an outside click. Each language is named in its own script.
+import { LANGS, LANG_INFO, pathFor, type Lang } from "../i18n/languages";
+
+interface Props {
+  lang: Lang;
+  page: string;
+  label: string;
+}
+const { lang, page, label } = Astro.props;
+---
+<details class="langs" data-langs>
+  <summary aria-label={`${label}: ${LANG_INFO[lang].name}`}>
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7" />
+      <path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3Z" fill="none" stroke="currentColor" stroke-width="1.7" />
+    </svg>
+    <span class="current system-font" lang={lang}>{LANG_INFO[lang].name}</span>
+  </summary>
+  <ul class="menu system-font" role="list">
+    {
+      LANGS.map((l) => (
+        <li>
+          <a href={pathFor(l, page)} lang={l} hreflang={l} dir={LANG_INFO[l].dir} aria-current={l === lang ? "page" : undefined}>
+            {LANG_INFO[l].name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  for (const menu of document.querySelectorAll<HTMLDetailsElement>("[data-langs]")) {
+    document.addEventListener("click", (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+    });
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .langs {
+    position: relative;
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: var(--touch);
+    padding-inline: var(--s-3);
+    border-radius: var(--r-control);
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    color: var(--c-text);
+    touch-action: manipulation;
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:hover {
+    background: color-mix(in srgb, var(--c-text) 10%, transparent);
+  }
+  .menu {
+    position: absolute;
+    inset-block-start: calc(100% + var(--s-2));
+    inset-inline-end: 0;
+    z-index: var(--z-menu);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(8.5rem, 1fr));
+    gap: 2px;
+    padding: var(--s-2);
+    margin: 0;
+    list-style: none;
+    border-radius: var(--r-card);
+    background: var(--c-surface);
+    border: 1px solid var(--c-stroke-strong);
+    box-shadow: var(--shadow-soft);
+  }
+  .menu a {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--touch);
+    padding-inline: var(--s-3);
+    border-radius: var(--r-badge);
+    color: var(--c-text);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+  }
+  .menu a:hover {
+    background: color-mix(in srgb, var(--c-accent) 14%, transparent);
+  }
+  .menu a[aria-current="page"] {
+    color: var(--c-accent);
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px var(--c-dialogue-stroke);
+  }
+  @media (max-width: 420px) {
+    .current {
+      display: none;
+    }
+  }
+</style>

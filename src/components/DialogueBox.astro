@@ -1,0 +1,251 @@
+---
+// Visual novel text window. Every line is in the HTML from the start, so screen readers
+// and search engines get the full text (no aria-live). With JavaScript the lines are
+// stacked in one grid cell (the box keeps the height of the longest line, so nothing
+// shifts) and shown one at a time with a typewriter effect. Click, Space or Enter on the
+// arrow button moves on; the last line hands over to `beginHref`.
+// Without JavaScript, or with Reduce Motion, the text simply appears.
+interface Props {
+  name: string;
+  lines: string[];
+  label: string;
+  nextLabel: string;
+  beginLabel: string;
+  beginHref: string;
+}
+const { name, lines, label, nextLabel, beginLabel, beginHref } = Astro.props;
+---
+<div class="vn" data-vn>
+  <p class="vn-name" aria-hidden="true">{name}</p>
+  <div class="vn-lines" role="group" aria-label={label}>
+    {
+      lines.map((line, i) => (
+        <p class:list={["vn-line", { "is-current": i === 0 }]} data-line={i}>
+          <span class="vn-full">{line}</span>
+          <span class="vn-typed" aria-hidden="true" />
+        </p>
+      ))
+    }
+  </div>
+  <div class="vn-controls">
+    <button class="vn-next" type="button" data-vn-next>
+      <span class="sr-only">{nextLabel}</span>
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M4 7.5 10 14l6-6.5Z" fill="currentColor" />
+      </svg>
+    </button>
+    <a class="vn-begin" href={beginHref} data-vn-begin>
+      <span>{beginLabel}</span>
+      <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+        <path d="M10 4v12m0 0-5-5m5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const segmenter = "Segmenter" in Intl ? new Intl.Segmenter(document.documentElement.lang, { granularity: "grapheme" }) : null;
+  const graphemes = (text: string) => (segmenter ? Array.from(segmenter.segment(text), (s) => s.segment) : Array.from(text));
+
+  for (const box of document.querySelectorAll<HTMLElement>("[data-vn]")) {
+    const lines = Array.from(box.querySelectorAll<HTMLElement>(".vn-line"));
+    const next = box.querySelector<HTMLButtonElement>("[data-vn-next]")!;
+    const begin = box.querySelector<HTMLAnchorElement>("[data-vn-begin]")!;
+    const speed = parseFloat(getComputedStyle(box).getPropertyValue("--type-speed")) || 28;
+    let index = 0;
+    let timer = 0;
+    let typing = false;
+
+    box.classList.add("is-live");
+
+    const finish = () => {
+      window.clearTimeout(timer);
+      typing = false;
+      const line = lines[index];
+      line.classList.remove("is-typing");
+      line.querySelector(".vn-typed")!.textContent = "";
+    };
+
+    const show = (i: number) => {
+      lines.forEach((line, n) => line.classList.toggle("is-current", n === i));
+      index = i;
+      const atEnd = i === lines.length - 1;
+      box.classList.toggle("is-end", atEnd);
+      if (reduceMotion.matches) return;
+      const line = lines[i];
+      const full = line.querySelector(".vn-full")!.textContent ?? "";
+      const out = line.querySelector(".vn-typed")!;
+      const parts = graphemes(full);
+      let shown = 0;
+      typing = true;
+      line.classList.add("is-typing");
+      const step = () => {
+        shown += 1;
+        out.textContent = parts.slice(0, shown).join("");
+        if (shown < parts.length) timer = window.setTimeout(step, speed);
+        else finish();
+      };
+      out.textContent = "";
+      timer = window.setTimeout(step, speed);
+    };
+
+    const advance = () => {
+      if (typing) return finish();
+      if (index < lines.length - 1) {
+        const focusWasOnNext = document.activeElement === next;
+        show(index + 1);
+        if (focusWasOnNext && index === lines.length - 1) begin.focus();
+      }
+    };
+
+    next.addEventListener("click", (event) => {
+      event.stopPropagation();
+      advance();
+    });
+    box.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).closest("a, button")) return;
+      if (window.getSelection()?.toString()) return;
+      advance();
+    });
+
+    // Start typing the first line once the box is on screen.
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        observer.disconnect();
+        show(0);
+      }
+    });
+    observer.observe(box);
+  }
+</script>
+
+<style>
+  .vn {
+    --type-speed: 28;
+    position: relative;
+    padding: var(--s-6) var(--s-6) calc(var(--s-2) + var(--touch));
+    border-radius: var(--r-hero);
+    background: var(--c-dialogue);
+    border: 1px solid var(--c-dialogue-stroke);
+    box-shadow: var(--shadow-soft), inset 0 1px 0 rgb(255 255 255 / 0.05);
+    cursor: default;
+    text-align: start;
+  }
+  .vn.is-live {
+    cursor: pointer;
+  }
+  :global(:lang(ja)) .vn,
+  :global(:lang(ko)) .vn,
+  :global(:lang(zh-Hans)) .vn,
+  :global(:lang(zh-Hant)) .vn {
+    --type-speed: 55;
+  }
+  .vn-name {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--s-6);
+    transform: translateY(-50%);
+    padding: var(--s-1) var(--s-4);
+    border-radius: var(--r-pill);
+    background: var(--c-nametag);
+    border: 1px solid var(--c-dialogue-stroke);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: var(--fs-label);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+  .vn-lines {
+    font-size: var(--fs-dialogue);
+    line-height: 1.55;
+  }
+  .vn-line + .vn-line {
+    margin-block-start: var(--s-2);
+  }
+  /* Layout is decided by the .js class set in <head>, before first paint, so the box
+     never changes height when the script starts (no layout shift). */
+  :global(.js) .vn-lines {
+    display: grid;
+  }
+  :global(.js) .vn-line {
+    grid-area: 1 / 1;
+    margin: 0;
+    position: relative;
+    opacity: 0;
+    transition: opacity var(--dur-fast) var(--ease-out);
+  }
+  :global(.js) .vn-line.is-current {
+    opacity: 1;
+  }
+  .vn-line.is-typing .vn-full {
+    color: transparent;
+  }
+  .vn-typed {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .vn-controls {
+    position: absolute;
+    inset-block-end: var(--s-2);
+    inset-inline-end: var(--s-2);
+    display: flex;
+    align-items: center;
+  }
+  .vn-next {
+    display: none;
+    place-items: center;
+    inline-size: var(--touch);
+    block-size: var(--touch);
+    border: 0;
+    border-radius: var(--r-control);
+    background: transparent;
+    color: var(--c-accent);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .vn-next:hover {
+    background: color-mix(in srgb, var(--c-accent) 14%, transparent);
+  }
+  :global(.js) .vn-next {
+    display: grid;
+  }
+  :global(.js) .vn.is-end .vn-next {
+    display: none;
+  }
+  .vn-begin {
+    display: none;
+    align-items: center;
+    gap: var(--s-1);
+    min-block-size: var(--touch);
+    padding-inline: var(--s-3);
+    border-radius: var(--r-control);
+    font-weight: 800;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    color: var(--c-accent);
+  }
+  .vn-begin:hover {
+    background: color-mix(in srgb, var(--c-accent) 14%, transparent);
+  }
+  :global(html:not(.js)) .vn-begin,
+  .vn.is-end .vn-begin {
+    display: inline-flex;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .vn-next svg {
+      animation: bob 1.4s var(--ease-in-out) infinite;
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(-2px);
+    }
+    50% {
+      transform: translateY(2px);
+    }
+  }
+</style>

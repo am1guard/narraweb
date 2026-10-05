@@ -1,0 +1,82 @@
+---
+// Light/dark switch. The page follows the system until the visitor picks one; the
+// choice is kept in localStorage (wrapped in try/catch, the page works without it).
+interface Props {
+  toLight: string;
+  toDark: string;
+}
+const { toLight, toDark } = Astro.props;
+---
+<button class="theme" type="button" data-theme-toggle data-to-light={toLight} data-to-dark={toDark} aria-label={toLight}>
+  <svg class="sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8" />
+    <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+  </svg>
+  <svg class="moon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+    <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+  </svg>
+</button>
+
+<script>
+  const root = document.documentElement;
+  const media = window.matchMedia("(prefers-color-scheme: light)");
+  const current = () => (root.dataset.theme as "light" | "dark" | undefined) ?? (media.matches ? "light" : "dark");
+  const sync = () => {
+    for (const button of document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")) {
+      button.setAttribute("aria-label", current() === "dark" ? button.dataset.toLight! : button.dataset.toDark!);
+    }
+  };
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")) {
+    button.addEventListener("click", () => {
+      const next = current() === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("narra-theme", next);
+      } catch {
+        /* storage unavailable: the choice lasts for this page only */
+      }
+      sync();
+    });
+  }
+  media.addEventListener("change", sync);
+  sync();
+</script>
+
+<style>
+  .theme {
+    display: grid;
+    place-items: center;
+    inline-size: var(--touch);
+    block-size: var(--touch);
+    border: 1px solid transparent;
+    border-radius: var(--r-control);
+    background: transparent;
+    color: var(--c-text);
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+  .theme:hover {
+    background: color-mix(in srgb, var(--c-text) 10%, transparent);
+  }
+  .sun {
+    display: block;
+  }
+  .moon {
+    display: none;
+  }
+  :global(:root[data-theme="light"]) .sun {
+    display: none;
+  }
+  :global(:root[data-theme="light"]) .moon {
+    display: block;
+  }
+  @media (prefers-color-scheme: light) {
+    :global(:root:not([data-theme="dark"])) .sun {
+      display: none;
+    }
+    :global(:root:not([data-theme="dark"])) .moon {
+      display: block;
+    }
+  }
+</style>

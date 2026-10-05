@@ -1,0 +1,346 @@
+---
+// Illustration of Narra during a game: she holds on to the screen edge inside her reading
+// progress arc, offers a suggestion in a speech bubble, and the short bar sits in the corner.
+// The game itself is only hinted at (the site's own night backdrop and an empty text box):
+// no real game is shown. Everything a screen reader needs is in the caption and the list below.
+import { Picture } from "astro:assets";
+import backdrop from "../assets/brand/hero-backdrop.webp";
+import narra from "../assets/mascot/hud_peek.webp";
+import { app, type Dict } from "../i18n";
+import type { Lang } from "../i18n/languages";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+}
+const { lang, dict } = Astro.props;
+const h = dict.chapters.helper;
+const s = app(lang).strings;
+const icons = {
+  rewind: "M4 10a6 6 0 1 0 1.8-4.3M4 4v3.5h3.5",
+  skip: "M3 5l6 5-6 5Zm7 0l6 5-6 5Z",
+  hide: "M3 3l14 14M8.2 8.3a2.5 2.5 0 0 0 3.5 3.5M6 6.2C4.4 7.1 3.2 8.4 2.5 10c1.4 3 4.3 5 7.5 5 1.4 0 2.7-.4 3.9-1M10 5c3.2 0 6.1 2 7.5 5-.4.9-1 1.8-1.6 2.5",
+  keyboard: "M2.5 5.5h15v9h-15ZM5.5 8.5h1M9.5 8.5h1M13.5 8.5h1M6 11.5h8",
+} as const;
+const bar = [
+  { key: "rewind", label: h.bar.rewind },
+  { key: "skip", label: h.bar.skip },
+  { key: "hide", label: h.bar.hide },
+  { key: "keyboard", label: h.bar.keyboard },
+] as const;
+const bubbles = [s["engine.speech.choice"], s["engine.speech.mainMenuResume"], s["engine.speech.saveReminder"]];
+---
+<div class="container helper-wrap">
+  <figure class="scene">
+    <div class="device" aria-hidden="true">
+      <div class="screen">
+        <Picture
+          src={backdrop}
+          alt=""
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1000px) 920px, 92vw"
+          formats={["avif"]} fallbackFormat="webp"
+          quality={60}
+          loading="lazy"
+          decoding="async"
+          class="game-bg"
+        />
+        <div class="textbox">
+          <span class="tb-name"></span>
+          <span class="tb-line"></span>
+          <span class="tb-line short"></span>
+        </div>
+        <div class="shortbar">
+          {
+            bar.map((b) => (
+              <span class="sb-btn">
+                <svg viewBox="0 0 20 20" focusable="false">
+                  <path d={icons[b.key]} fill={b.key === "skip" ? "currentColor" : "none"} stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            ))
+          }
+        </div>
+        <div class="bubble" dir={lang === "ar" || lang === "fa" ? "rtl" : "ltr"} lang={lang}>
+          <p>{s["engine.speech.choice"]}</p>
+          <div class="tiles">
+            <span class="tile">{s["engine.hud.quickSave"]}</span>
+            <span class="tile">{s["engine.hud.rollback"]}</span>
+          </div>
+          <span class="more">{s["engine.speech.more"]}</span>
+        </div>
+        <div class="helper">
+          <svg class="arc" viewBox="0 0 50 100" preserveAspectRatio="none" focusable="false">
+            <path d="M50 96 A46 46 0 0 1 50 4" fill="none" stroke="rgb(20 12 30 / 0.55)" stroke-width="5" />
+            <path d="M50 96 A46 46 0 0 1 50 4" fill="none" stroke="rgb(255 255 255 / 0.85)" stroke-width="2.6" />
+            <path d="M50 96 A46 46 0 0 1 50 4" fill="none" stroke="var(--c-glow-fixed)" stroke-width="2.6" pathLength="100" stroke-dasharray="62 100" stroke-linecap="round" />
+          </svg>
+          <Picture src={narra} alt="" widths={[160, 240, 370]} sizes="120px" formats={["avif"]} fallbackFormat="webp" loading="lazy" decoding="async" class="narra" />
+        </div>
+      </div>
+    </div>
+    <figcaption class="legend">
+      <span class="legend-title">{h.barLabel}</span>
+      <ul role="list">
+        {
+          bar.map((b) => (
+            <li>
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+                <path d={icons[b.key]} fill={b.key === "skip" ? "currentColor" : "none"} stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {b.label}
+            </li>
+          ))
+        }
+      </ul>
+    </figcaption>
+  </figure>
+
+  <div class="says">
+    <h3 class="says-title">{h.bubblesLabel}</h3>
+    <ul role="list">
+      {bubbles.map((line) => <li><q>{line}</q></li>)}
+    </ul>
+    <p class="says-note">{h.bubblesNote}</p>
+  </div>
+</div>
+
+<style>
+  .helper-wrap {
+    margin-block-start: var(--s-8);
+    display: grid;
+    gap: var(--s-7);
+  }
+  .scene {
+    margin: 0;
+  }
+  .device {
+    --c-glow-fixed: #e9a6f0;
+    padding: 9px;
+    border-radius: 34px;
+    background: linear-gradient(145deg, #3a3346, #17121f 45%, #2b2436);
+    box-shadow: var(--shadow-phone), inset 0 0 0 1.5px rgb(255 255 255 / 0.12);
+    max-inline-size: 60rem;
+  }
+  .screen {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2622 / 1206;
+    border-radius: 26px;
+    background: #120c1b;
+    container-type: inline-size;
+    color: #f3eefa;
+    font-family: var(--font-body);
+  }
+  .game-bg,
+  .game-bg :global(img) {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+    filter: brightness(0.82);
+  }
+  .textbox {
+    position: absolute;
+    inset-inline: 5% 5%;
+    inset-block-end: 5%;
+    block-size: 26%;
+    display: grid;
+    align-content: start;
+    gap: 2.4cqi;
+    padding: 3.6cqi 3cqi;
+    border-radius: 2cqi;
+    background: rgb(14 9 22 / 0.78);
+    border: 1px solid rgb(196 161 255 / 0.25);
+  }
+  .tb-name {
+    position: absolute;
+    inset-block-start: -1.4cqi;
+    inset-inline-start: 3cqi;
+    inline-size: 10cqi;
+    block-size: 2.8cqi;
+    border-radius: 99px;
+    background: #2c1f42;
+    border: 1px solid rgb(196 161 255 / 0.35);
+  }
+  .tb-line {
+    block-size: 1.4cqi;
+    inline-size: 70%;
+    border-radius: 99px;
+    background: rgb(243 238 250 / 0.28);
+  }
+  .tb-line.short {
+    inline-size: 46%;
+  }
+  .shortbar {
+    position: absolute;
+    inset-block-start: 4%;
+    inset-inline-start: 3.5%;
+    display: flex;
+    gap: 0.6cqi;
+    padding: 0.6cqi;
+    border-radius: 99px;
+    background: rgb(20 13 31 / 0.82);
+    border: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .sb-btn {
+    display: grid;
+    place-items: center;
+    inline-size: 4.6cqi;
+    block-size: 4.6cqi;
+    border-radius: 50%;
+    color: #f3eefa;
+  }
+  .sb-btn svg {
+    inline-size: 56%;
+    block-size: 56%;
+  }
+  .helper {
+    position: absolute;
+    inset-block-start: 14%;
+    inset-inline-end: 0;
+    block-size: 58%;
+    aspect-ratio: 1 / 2;
+  }
+  .arc {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  .narra {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 50%;
+    block-size: 62%;
+    aspect-ratio: 369 / 480;
+    transform: translateY(-50%);
+  }
+  .narra :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  :global([dir="rtl"]) .arc {
+    transform: scaleX(-1);
+  }
+  :global([dir="rtl"]) .narra {
+    transform: translateY(-50%) scaleX(-1);
+  }
+  .bubble {
+    position: absolute;
+    inset-block-start: 16%;
+    inset-inline-end: 15.5cqi;
+    max-inline-size: 44%;
+    padding: 1.8cqi 2cqi 1.6cqi;
+    border-radius: 2.2cqi;
+    background: #1d1529;
+    border: 1px solid rgb(196 161 255 / 0.35);
+    box-shadow: 0 1cqi 3cqi rgb(0 0 0 / 0.4);
+    font-size: clamp(8px, 1.75cqi, 16px);
+    line-height: 1.35;
+  }
+  .bubble::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 3.2cqi;
+    inset-inline-end: -1cqi;
+    inline-size: 2cqi;
+    block-size: 2cqi;
+    background: #1d1529;
+    border-block-start: 1px solid rgb(196 161 255 / 0.35);
+    border-inline-end: 1px solid rgb(196 161 255 / 0.35);
+    transform: rotate(45deg);
+  }
+  :global([dir="rtl"]) .bubble::after {
+    transform: rotate(-45deg);
+  }
+  .bubble p {
+    font-weight: 700;
+  }
+  .tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8cqi;
+    margin-block-start: 1.2cqi;
+  }
+  .tile {
+    padding: 0.9cqi 1cqi;
+    border-radius: 1.2cqi;
+    background: rgb(196 161 255 / 0.16);
+    color: #e3d3ff;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-align: center;
+  }
+  .more {
+    display: block;
+    margin-block-start: 0.8cqi;
+    color: #c4a1ff;
+    font-weight: 700;
+    font-size: 0.85em;
+    text-align: center;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2) var(--s-5);
+    margin-block-start: var(--s-5);
+    font-size: var(--fs-sm);
+    color: var(--c-text-2);
+  }
+  .legend-title {
+    font-weight: 800;
+    color: var(--c-text);
+  }
+  .legend ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-5);
+    list-style: none;
+  }
+  .legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+  }
+  .legend svg {
+    color: var(--c-accent);
+  }
+  .says-title {
+    font-size: var(--fs-h3);
+    font-weight: 800;
+  }
+  .says ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    margin-block-start: var(--s-4);
+    list-style: none;
+  }
+  .says li {
+    position: relative;
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--r-card) var(--r-card) var(--r-card) var(--r-badge);
+    background: var(--c-surface);
+    border: 1px solid var(--c-dialogue-stroke);
+    font-weight: 700;
+  }
+  .says q {
+    quotes: none;
+  }
+  .says-note {
+    margin-block-start: var(--s-4);
+    color: var(--c-text-2);
+    font-size: var(--fs-sm);
+  }
+  @media (min-width: 1000px) {
+    .helper-wrap {
+      grid-template-columns: minmax(0, 1fr) 17rem;
+      align-items: start;
+      gap: var(--s-8);
+    }
+  }
+</style>

@@ -1,0 +1,113 @@
+# playnarra.app
+
+Narra'nın tanıtım sitesi. Astro ile üretilen durağan bir site; GitHub Pages'te `playnarra.app` alan adıyla yayımlanır. Varsayılan dil İngilizce (`/`), diğer 16 dil kendi önekinde (`/tr/`, `/de/`, `/zh-hans/` ...).
+
+Sayfalar: ana sayfa (görsel roman gibi okunan bölümler), `/privacy/` (App Store Connect'e verilecek kalıcı gizlilik adresi), `/support/`, `/terms/` ve 404.
+
+## Yerel geliştirme
+
+Node 20 ve npm gerekir.
+
+```sh
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # tip denetimi + derleme + iç bağlantı denetimi (dist/)
+npm run preview    # dist/ klasörünü sunar
+```
+
+`npm run build` üç adımdır: `astro check` (eksik ya da fazla çeviri anahtarı burada hata verir), `astro build` (görseller AVIF/WebP'ye burada çevrilir; çeviri dosyaları arasında anahtar ya da liste uzunluğu farkı varsa derleme durur) ve `scripts/check-links.mjs` (kırık iç bağlantı varsa durur).
+
+## Ayarlar: `src/config.ts`
+
+| Alan | Açıklama |
+| --- | --- |
+| `siteUrl` | `https://playnarra.app` |
+| `appStoreUrl` | Boşken indirme düğmesi "Yakında App Store'da" yazısına dönüşür ve bağlantı değildir. |
+| `appStoreId` | Boşken Safari'nin akıllı uygulama bandı (`apple-itunes-app`) eklenmez. |
+| `supportEmail`, `discordUrl` | Destek sayfası, alt bilgi ve gizlilik sayfasında kullanılır. |
+| `screensReady` | Uygulama ekran görüntüleri eklenince `true` yapılır (aşağıya bakın). |
+| `lastUpdated` | Gizlilik politikası ve kullanım şartlarının yürürlük tarihi (YYYY-MM-DD). |
+
+### App Store bağlantısını ayarlama
+
+Uygulama yayımlanınca `appStoreUrl` alanına `https://apps.apple.com/app/id<KİMLİK>` ve `appStoreId` alanına yalnız sayıyı yazın, sonra değişikliği gönderin. Giriş bölümündeki ve son bölümdeki düğmeler kendiliğinden "App Store'dan İndir" bağlantısına döner, JSON-LD'ye indirme adresi eklenir.
+
+## Ekran görüntüleri
+
+Şimdilik bölümleri Narra'nın pozları anlatıyor. Ekran görüntüleri şu yuvalara konur:
+
+```
+src/assets/screens/common/<ad>.png    tüm diller için
+src/assets/screens/<dil>/<ad>.png     o dile özel (ör. tr/, ja/, zh-Hans/); varsa ortak olanın yerine geçer
+```
+
+| Ad | Yön ve boyut | Gösterildiği bölüm |
+| --- | --- | --- |
+| `library` | dikey 1206x2622 | Bölüm I (oyun ekleme ve kütüphane) |
+| `hub` | dikey 1206x2622 | yuva hazır, şimdilik kullanılmıyor |
+| `engine-picker` | dikey 1206x2622 | Bölüm II (motor sürümleri) |
+| `in-game-narra` | yatay 2622x1206 | Bölüm III için ayrılmış; bu bölüm şimdilik çizimle anlatılıyor |
+| `pause` | yatay 2622x1206 | Bölüm IV (kontroller) |
+| `saves` | dikey 1206x2622 | Bölüm V (kayıtlar) |
+| `mods` | dikey 1206x2622 | Bölüm VI (modlar, galeri) |
+| `gallery` | dikey 1206x2622 | yuva hazır, şimdilik kullanılmıyor |
+| `settings` | dikey 1206x2622 | Bölüm VII (diller, gizlilik) |
+
+PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Hepsi eklenince `src/config.ts` içinde `screensReady: true` yapın. Eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür; bu yüzden hepsi gelmeden açmayın. Denemek için: `NARRA_SCREENS_READY=1 npm run build`.
+
+Telefon çerçevesi CSS ile çizilir; ekran görüntüsünün kendisinde çerçeve olmamalı (Simulator'daki "Save Screen" ya da cihaz ekran görüntüsü olduğu gibi).
+
+## Görseller ve yazı tipleri
+
+- Marka görselleri `src/assets/brand/` altında: `hero-backdrop.webp` (giriş zemini, yalnız koyu temada tam görünür), `hero-narra.webp`, `narra-wave.webp`, `narra-gamepad.webp`, `narra-cloud.webp`, `og-background.webp`, `app-icon.webp`.
+- Maskot pozları uygulamanın asset kataloğundan alınır: `npm run assets` (`scripts/prepare-assets.mjs`). Site uygulama deposunun içinde değilse yol verin: `NARRA_APP_DIR=/yol/Narra npm run assets`. Aynı betik favicon ve simgeleri üretir, yazı tiplerini `public/fonts/` altına kopyalar ve `src/styles/fonts.css` dosyasını yazar.
+- Yazı tipleri siteyle birlikte barındırılır (Google Fonts'a istek gitmez). Her dil yalnız kendi alt kümesini indirir (`unicode-range`). Japonca, Korece ve Çince için web yazı tipi indirilmez; sistem yazı tipleri kullanılır.
+  - Nunito (gövde) ve Cormorant Garamond (başlıklar): Latin, Latin Extended, Kiril, Vietnamca.
+  - Vazirmatn (Arapça ve Farsça gövde), Amiri (Arapça ve Farsça başlıklar).
+  - Lisanslar: dördü de SIL Open Font License 1.1 (`public/fonts/*-LICENSE.txt`).
+- Amiri, mobil hız için sitede geçen harflere göre küçültülür: `python3 scripts/subset_amiri.py` (fonttools ve brotli gerekir: `pip install fonttools brotli`). Arapça ya da Farsça metin değişince bu betiği, ardından `npm run assets` çalıştırın.
+- Paylaşım görselleri (1200x630, her dil için): `npm run og` ile `public/og/` altına üretilir. Playwright Chromium ister: `npx playwright install chromium`. Zemin `src/assets/brand/og-background.png` varsa ondan, yoksa `og-background.webp`'den alınır.
+
+## Çeviriler
+
+- Her dilin metni `src/i18n/<dil>.ts` dosyasındadır. Kaynak dil `en.ts`'tir; diğerleri `satisfies Dict` ile ona bağlıdır.
+- Uygulamanın kendi metinleri (slogan, Narra'nın oyun içi cümleleri, SSS) uygulamanın `Localizable.strings` dosyalarından gelir: `python3 scripts/sync_app_strings.py` bunları `src/i18n/app-strings.json` dosyasına yazar. Uygulama metni değişince betiği yeniden çalıştırın.
+- Dil listesi, URL önekleri, yazı yönü ve "Bölüm I / 第1章 / الفصل الأول" biçimleri `src/i18n/languages.ts` içindedir.
+
+### Yeni dil ekleme
+
+1. `src/i18n/languages.ts`: `LANGS` listesine kodu, `LANG_INFO`'ya adı, yönü, Open Graph yerel ayarını ve yazı sistemini; `chapterLabel` ve gerekiyorsa `chapterNumeral`'a bölüm biçimini ekleyin.
+2. `src/i18n/en.ts` dosyasını `src/i18n/<kod>.ts` olarak kopyalayıp çevirin (`import type { Dict } from "./en";` ve `satisfies Dict` ile).
+3. `scripts/sync_app_strings.py` içindeki `LANGS` listesine kodu ekleyip betiği çalıştırın (uygulamada da o dil olmalı).
+4. `scripts/make-og.mjs` içindeki `LANGS` listesine ekleyip `npm run og` çalıştırın.
+5. Yeni bir yazı sistemi gerekiyorsa `scripts/prepare-assets.mjs` içindeki `FONTS` listesine alt kümeyi, `src/styles/tokens.css` içine o dilin yazı tipi yığınını ekleyin.
+6. `npm run build`. Eksik anahtar varsa derleme hangi anahtar olduğunu söyleyerek durur.
+
+## Alan adını GitHub Pages'e bağlama
+
+1. Bu klasörü ayrı bir GitHub deposuna gönderin (ör. `narraweb`). `main` dalına her gönderimde `.github/workflows/deploy.yml` siteyi derleyip yayımlar.
+2. Depo > Settings > Pages > Build and deployment > Source: **GitHub Actions**.
+3. Alan adı sağlayıcınızda DNS kayıtları:
+   - `playnarra.app` (apex) için `A` kayıtları: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - aynı ad için `AAAA` kayıtları: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - `www` için `CNAME` kaydı: `<github-kullanıcı-adı>.github.io`
+4. Settings > Pages > Custom domain: `playnarra.app` yazıp kaydedin (`public/CNAME` dosyası da aynı adı taşır). DNS denetimi geçince **Enforce HTTPS** kutusunu işaretleyin. `.app` alan adları tarayıcılarda yalnız HTTPS ile açılır (HSTS ön yükleme listesindedir); sertifika hazır olana kadar site açılmayabilir, bu birkaç dakika ile birkaç saat sürebilir.
+5. İsteğe bağlı: GitHub hesabı ayarlarında (Settings > Pages) alan adını doğrulayın; başkasının aynı alan adını kendi deposuna bağlamasını önler.
+
+## Gizlilik
+
+Site çerez, analiz ya da üçüncü taraf betik ve yazı tipi kullanmaz. Tarayıcıda yalnız iki şey saklanır, ikisi de `localStorage`'da ve yalnız o tarayıcıda: seçilen tema (`narra-theme`) ve dil önerisinin kapatıldığı (`narra-lang-dismissed`). İkisi de erişilemezse sayfa yine çalışır.
+
+## Klasör yapısı
+
+```
+astro.config.mjs        site adresi, sondaki eğik çizgi, görsel servisi (sharp)
+public/                 CNAME, .nojekyll, robots.txt, simgeler, site.webmanifest, fonts/, og/
+scripts/                prepare-assets.mjs, make-og.mjs, sync_app_strings.py, subset_amiri.py, check-links.mjs
+src/config.ts           site ayarları
+src/i18n/               17 dil dosyası, app-strings.json, languages.ts, index.ts (denetim)
+src/styles/             tokens.css (renk, boşluk, yazı, hareket token'ları), global.css, fonts.css (üretilir)
+src/components/         Hero, DialogueBox, Chapter, Say, HelperScene, EngineTimeline, PhoneFrame, ...
+src/layouts/Base.astro  <head> (SEO, hreflang, Open Graph), üst ve alt bilgi
+src/pages/              [...lang]/ altında ana sayfa, privacy, support, terms; 404.astro; sitemap.xml.ts
+```

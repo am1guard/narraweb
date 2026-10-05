@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import appIcon from "../assets/brand/app-icon.webp";
+import LanguagePicker from "./LanguagePicker.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { pathFor, type Lang } from "../i18n/languages";
+import type { Dict } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+  page: string;
+}
+const { lang, dict, page } = Astro.props;
+---
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={pathFor(lang)} aria-label={dict.nav.home}>
+      <Image src={appIcon} alt="" width={36} height={36} densities={[1, 2, 3]} loading="eager" class="brand-icon" />
+      <span class="brand-name" aria-hidden="true">Narra</span>
+    </a>
+    <nav class="tools" aria-label="Narra">
+      <a class="nav-link" href={pathFor(lang, "support")} aria-current={page === "support" ? "page" : undefined}>{dict.nav.support}</a>
+      <LanguagePicker lang={lang} page={page} label={dict.nav.language} />
+      <ThemeToggle toLight={dict.nav.toLight} toDark={dict.nav.toDark} />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--z-header);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    min-block-size: var(--header-height);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-3);
+    min-block-size: var(--touch);
+    padding-inline-end: var(--s-2);
+    color: var(--c-text);
+    text-decoration: none;
+  }
+  .brand-icon {
+    inline-size: 36px;
+    block-size: 36px;
+    border-radius: 9px;
+    box-shadow: 0 0 0 1px var(--c-stroke-strong);
+  }
+  .brand-name {
+    font-family: "Cormorant Garamond", var(--font-display);
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: var(--s-1);
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--touch);
+    padding-inline: var(--s-3);
+    border-radius: var(--r-control);
+    color: var(--c-text);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    background: color-mix(in srgb, var(--c-text) 10%, transparent);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--c-accent);
+  }
+</style>

@@ -1,0 +1,222 @@
+---
+// Epilogue: what's free (everything) and what supporting does (only animated backgrounds),
+// then Narra waves goodbye with a visual-novel choice menu as the closing call to action.
+import { Picture } from "astro:assets";
+import heart from "../assets/mascot/support_hero.webp";
+import wave from "../assets/brand/narra-wave.webp";
+import Ornament from "./Ornament.astro";
+import AppStoreButton from "./AppStoreButton.astro";
+import { config } from "../config";
+import { pathFor, type Lang } from "../i18n/languages";
+import type { Dict } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  dict: Dict;
+}
+const { lang, dict } = Astro.props;
+const e = dict.epilogue;
+---
+<section id="epilogue" class="epilogue" aria-labelledby="epilogue-title">
+  <div class="container">
+    <div class="grid">
+      <div class="text">
+        <header data-reveal>
+          <p class="label">{e.label}</p>
+          <h2 id="epilogue-title">{e.title}</h2>
+          <Ornament />
+        </header>
+        <p class="lead">{e.lead}</p>
+        <dl class="ways">
+          <div>
+            <dt>{e.supporterTitle}</dt>
+            <dd>{e.supporter}</dd>
+          </div>
+          <div>
+            <dt>{e.tipsTitle}</dt>
+            <dd>{e.tips}</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="art">
+        <Picture src={heart} alt="" widths={[240, 360, 520]} sizes="(min-width: 900px) 300px, 200px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" class="mascot" />
+      </div>
+    </div>
+
+    <div class="finale">
+      <Picture src={wave} alt="" widths={[260, 400, 560]} sizes="(min-width: 900px) 300px, 220px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" class="wave" />
+      <figure class="farewell">
+        <figcaption class="name">Narra</figcaption>
+        <blockquote><p>{e.say}</p></blockquote>
+      </figure>
+      <nav class="choices" aria-labelledby="choices-title">
+        <p id="choices-title" class="choices-title">{e.choices}</p>
+        <ul role="list">
+          <li class="primary"><AppStoreButton dict={dict} size="large" /></li>
+          <li><a class="choice" href={config.discordUrl} rel="noopener">{dict.cta.discord}</a></li>
+          <li><a class="choice" href={pathFor(lang, "support")}>{e.faq}</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<style>
+  .epilogue {
+    padding-block-start: var(--section-gap);
+  }
+  .grid {
+    display: grid;
+    gap: var(--s-7);
+  }
+  .text {
+    max-inline-size: var(--text-max);
+  }
+  .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+  }
+  :global(:lang(ar)) .label,
+  :global(:lang(fa)) .label,
+  :global(:lang(ja)) .label,
+  :global(:lang(ko)) .label,
+  :global(:lang(zh-Hans)) .label,
+  :global(:lang(zh-Hant)) .label {
+    letter-spacing: 0;
+    font-size: var(--fs-label);
+  }
+  h2 {
+    margin-block: var(--s-2) var(--s-4);
+    font-size: var(--fs-h2);
+  }
+  .lead {
+    margin-block-start: var(--s-6);
+    font-size: var(--fs-lead);
+  }
+  .ways {
+    display: grid;
+    gap: var(--s-5);
+    margin-block-start: var(--s-7);
+  }
+  .ways div {
+    padding-inline-start: var(--s-5);
+    border-inline-start: 2px solid var(--c-accent);
+  }
+  dt {
+    font-weight: 800;
+  }
+  dd {
+    color: var(--c-text-2);
+  }
+  .art {
+    display: flex;
+    justify-content: center;
+    order: -1;
+  }
+  .mascot {
+    inline-size: 200px;
+    aspect-ratio: 1;
+  }
+  .mascot :global(img),
+  .wave :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  .finale {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: var(--section-gap);
+    text-align: center;
+  }
+  .wave {
+    inline-size: min(60vw, 280px);
+    aspect-ratio: 1;
+    margin-block-end: calc(min(60vw, 280px) * -0.16);
+    filter: drop-shadow(0 0 28px color-mix(in srgb, var(--c-glow) 28%, transparent));
+  }
+  .farewell {
+    position: relative;
+    inline-size: min(100%, 40rem);
+    margin: 0;
+    padding: var(--s-6) var(--s-6) var(--s-5);
+    border-radius: var(--r-hero);
+    background: var(--c-dialogue);
+    border: 1px solid var(--c-dialogue-stroke);
+    box-shadow: var(--shadow-soft);
+    text-align: start;
+  }
+  .farewell blockquote {
+    margin: 0;
+    font-size: var(--fs-dialogue);
+  }
+  .name {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--s-6);
+    transform: translateY(-50%);
+    padding: var(--s-1) var(--s-4);
+    border-radius: var(--r-pill);
+    background: var(--c-nametag);
+    border: 1px solid var(--c-dialogue-stroke);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: var(--fs-label);
+    line-height: 1.2;
+  }
+  .choices {
+    margin-block-start: var(--s-8);
+    inline-size: min(100%, 28rem);
+  }
+  .choices-title {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  }
+  .choices ul {
+    display: grid;
+    gap: var(--s-3);
+    margin-block-start: var(--s-4);
+    list-style: none;
+  }
+  .choices li > :global(*) {
+    inline-size: 100%;
+  }
+  .choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: var(--cta-height);
+    padding-inline: var(--s-5);
+    border-radius: var(--r-button);
+    background: color-mix(in srgb, var(--c-surface) 85%, transparent);
+    border: 1px solid var(--c-dialogue-stroke);
+    color: var(--c-text);
+    font-weight: 700;
+    text-decoration: none;
+    transition: border-color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+  }
+  .choice:hover {
+    border-color: var(--c-accent);
+    background: color-mix(in srgb, var(--c-accent) 14%, var(--c-surface));
+  }
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+      align-items: center;
+      column-gap: var(--s-9);
+    }
+    .art {
+      order: 0;
+    }
+    .mascot {
+      inline-size: 300px;
+    }
+  }
+</style>

@@ -1,0 +1,118 @@
+---
+// On English pages only: if the browser prefers another of Narra's languages, offer it
+// politely in that language. Never redirects. "Dismiss" is remembered (try/catch).
+import { LANGS, LANG_INFO, pathFor } from "../i18n/languages";
+import { t } from "../i18n";
+
+interface Props {
+  page: string;
+}
+const { page } = Astro.props;
+const offers = Object.fromEntries(
+  LANGS.filter((l) => l !== "en").map((l) => [
+    l,
+    { href: pathFor(l, page), dir: LANG_INFO[l].dir, ...t(l).langSuggest },
+  ]),
+);
+---
+<aside class="suggest" data-suggest hidden>
+  <p class="msg"></p>
+  <div class="actions">
+    <a class="go" href="/"></a>
+    <button class="no" type="button"></button>
+  </div>
+</aside>
+
+<script is:inline define:vars={{ offers }}>
+  (function () {
+    var KEY = "narra-lang-dismissed";
+    try {
+      if (localStorage.getItem(KEY)) return;
+    } catch (e) {}
+    var pick = null;
+    var prefs = navigator.languages || [navigator.language];
+    for (var i = 0; i < prefs.length && !pick; i++) {
+      var tag = String(prefs[i] || "").toLowerCase();
+      if (!tag) continue;
+      var base = tag.split("-")[0];
+      if (base === "en") return; // English is fine
+      if (base === "zh") pick = /hant|tw|hk|mo/.test(tag) ? "zh-Hant" : "zh-Hans";
+      else if (offers[base]) pick = base;
+    }
+    if (!pick) return;
+    var offer = offers[pick];
+    var box = document.querySelector("[data-suggest]");
+    if (!box) return;
+    box.lang = pick;
+    box.dir = offer.dir;
+    box.setAttribute("aria-label", offer.message);
+    box.querySelector(".msg").textContent = offer.message;
+    var go = box.querySelector(".go");
+    go.textContent = offer.action;
+    go.href = offer.href;
+    go.hreflang = pick;
+    var no = box.querySelector(".no");
+    no.textContent = offer.dismiss;
+    no.addEventListener("click", function () {
+      box.hidden = true;
+      try {
+        localStorage.setItem(KEY, "1");
+      } catch (e) {}
+    });
+    box.hidden = false;
+  })();
+</script>
+
+<style>
+  .suggest {
+    position: fixed;
+    inset-block-end: max(var(--s-4), env(safe-area-inset-bottom));
+    inset-inline: var(--gutter);
+    z-index: var(--z-toast);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-2) var(--s-4);
+    max-inline-size: 34rem;
+    margin-inline: auto;
+    padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5);
+    border-radius: var(--r-card);
+    background: var(--c-surface);
+    border: 1px solid var(--c-stroke-strong);
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+  }
+  .suggest[hidden] {
+    display: none;
+  }
+  .actions {
+    display: flex;
+    gap: var(--s-1);
+  }
+  .go,
+  .no {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--touch);
+    padding-inline: var(--s-4);
+    border-radius: var(--r-control);
+    font-weight: 800;
+    font-size: var(--fs-sm);
+  }
+  .go {
+    background: var(--c-accent);
+    color: var(--c-bg);
+    text-decoration: none;
+  }
+  .no {
+    border: 0;
+    background: transparent;
+    color: var(--c-text);
+    cursor: pointer;
+  }
+  .no:hover {
+    background: color-mix(in srgb, var(--c-text) 10%, transparent);
+  }
+</style>
