@@ -1,6 +1,6 @@
 # playnarra.app
 
-Narra'nın tanıtım sitesi. Astro ile üretilen durağan bir site; GitHub Pages'te `playnarra.app` alan adıyla yayımlanır. Varsayılan dil İngilizce (`/`), diğer 16 dil kendi önekinde (`/tr/`, `/de/`, `/zh-hans/` ...).
+Narra'nın tanıtım sitesi. Astro ile üretilen durağan bir site; Cloudflare Workers üzerinden `playnarra.app` alan adıyla yayımlanır. Varsayılan dil İngilizce (`/`), diğer 16 dil kendi önekinde (`/tr/`, `/de/`, `/zh-hans/` ...).
 
 Sayfalar: ana sayfa (görsel roman gibi okunan bölümler), `/privacy/` (App Store Connect'e verilecek kalıcı gizlilik adresi), `/support/`, `/terms/` ve 404.
 
@@ -91,16 +91,14 @@ Telefon çerçevesi CSS ile çizilir; ekran görüntüsünün kendisinde çerçe
 5. Yeni bir yazı sistemi gerekiyorsa `scripts/prepare-assets.mjs` içindeki `FONTS` listesine alt kümeyi, `src/styles/tokens.css` içine o dilin yazı tipi yığınını ekleyin.
 6. `npm run build`. Eksik anahtar varsa derleme hangi anahtar olduğunu söyleyerek durur.
 
-## Alan adını GitHub Pages'e bağlama
+## Yayın (Cloudflare Workers)
 
-1. Bu klasörü ayrı bir GitHub deposuna gönderin (ör. `narraweb`). `main` dalına her gönderimde `.github/workflows/deploy.yml` siteyi derleyip yayımlar.
-2. Depo > Settings > Pages > Build and deployment > Source: **GitHub Actions**.
-3. Alan adı sağlayıcınızda DNS kayıtları:
-   - `playnarra.app` (apex) için `A` kayıtları: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - aynı ad için `AAAA` kayıtları: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - `www` için `CNAME` kaydı: `<github-kullanıcı-adı>.github.io`
-4. Settings > Pages > Custom domain: `playnarra.app` yazıp kaydedin (`public/CNAME` dosyası da aynı adı taşır). DNS denetimi geçince **Enforce HTTPS** kutusunu işaretleyin. `.app` alan adları tarayıcılarda yalnız HTTPS ile açılır (HSTS ön yükleme listesindedir); sertifika hazır olana kadar site açılmayabilir, bu birkaç dakika ile birkaç saat sürebilir.
-5. İsteğe bağlı: GitHub hesabı ayarlarında (Settings > Pages) alan adını doğrulayın; başkasının aynı alan adını kendi deposuna bağlamasını önler.
+Site Cloudflare'de `narraweb` adlı Worker'dan yayımlanır; Worker bu GitHub deposuna bağlıdır. `main` dalına her gönderimde Cloudflare siteyi derler (`npm run build`, çıktı `dist/`) ve yaklaşık bir iki dakikada `playnarra.app`'e yansır.
+
+- DNS: `playnarra.app` kaydı Cloudflare'de Worker türündedir ve proxili (turuncu bulut) kalmalıdır; griye çevrilirse site kapanır.
+- GitHub Pages kullanılmaz (kapalı); `.github/workflows` ve `public/CNAME` bu yüzden yoktur.
+- Cloudflare Web Analytics bu alan adı için kapalıdır. Gizlilik politikası "analiz yok" dediği için açılmamalıdır; açılırsa gizlilik metni de güncellenmelidir.
+- Posta: `support@playnarra.app` Cloudflare Email Routing ile Gmail'e yönlenir (MX + SPF + DMARC kayıtları). Bu kayıtlar silinmemelidir.
 
 ## Hareket
 
