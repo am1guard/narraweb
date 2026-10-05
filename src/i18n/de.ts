@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Mod-Verwaltung", d: "Füge Mods als Ordner oder ZIP-Dateien hinzu, bring sie in eine Reihenfolge und schalte sie ein oder aus. Globale Mods gelten für alle Ren'Py-Spiele, und wenn etwas nicht stimmt, kannst du ein Spiel einmal ohne Mods starten." },
         { t: "Galerie", d: "Stöbere durch die Bilder, Musik und Videos in den .rpa-Archiven eines Spiels." },
-        { t: "Übersetzung im Spiel", d: "Optional. Übersetze den Text eines Spiels, während du spielst. Wenn sie aktiv ist, wird der zu übersetzende Text an Google Übersetzer gesendet." },
         { t: "Cheat-Menü (Beta)", d: "Ein Cheat-Menü und ein paar praktische Werkzeuge wie Zurückspulen, eine FPS-Anzeige und eine Galerie-Freischaltung." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra ist eine App zum Spielen von Ren'Py-Visual-Novels auf iPhone und iPad. Sie wird von Emir Han Temur entwickelt, einem unabhängigen Entwickler (im Folgenden „ich“). Diese Richtlinie erklärt, was mit deinen Daten passiert, wenn du die Narra-App und die Website playnarra.app nutzt.",
-      "Kurz gesagt: Narra hat keine Konten, keine Werbung und keine Analyse, und ich erhebe keine personenbezogenen Daten von dir.",
+      "Kurz gesagt: Narra erhebt keine Daten. Es gibt keine Konten, keine Werbung und keine Analyse, und die App geht nur für iCloud (deine eigenen Spielstände), App-Store-Käufe und Links, die du selbst öffnest, online.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "Wenn die iCloud-Synchronisierung aktiv ist (standardmäßig ist sie das), kopiert Narra deine Spielstände in dein eigenes iCloud Drive, während du spielst und danach, damit sie zwischen deinen Geräten wandern können. Die Spiele selbst werden nicht hochgeladen. Diese Daten liegen in deinem iCloud-Account, unter der Kontrolle von Apple und gemäß Apples Datenschutzrichtlinie; ich habe keinen Zugriff darauf.",
           "Du kannst die Synchronisierung jederzeit in den Einstellungen von Narra unter „Spielstände & iCloud“ ausschalten. Das Ausschalten löscht nichts, was bereits in iCloud liegt.",
         ],
-      },
-      {
-        h: "Übersetzung im Spiel (optional)",
-        p: [
-          "Die Übersetzung ist aus, bis du sie einschaltest. Wenn du sie nutzt, wird der zu übersetzende Spieltext an Google Übersetzer gesendet, und für diesen Text gilt die Datenschutzerklärung von Google. Narra fügt ihm weder deinen Namen noch dein Konto noch irgendeine Kennung hinzu.",
-        ],
-        link: { text: "Datenschutzerklärung von Google", href: "https://policies.google.com/privacy?hl=de" },
       },
       {
         h: "Fehlerberichte und Support-E-Mails",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Diese Website",
         p: [
-          "playnarra.app ist eine statische Website, die auf GitHub Pages gehostet wird. Sie verwendet keine Cookies, keine Analyse und keine Schriften oder Skripte von Drittanbietern. Wenn du das Design wechselst, wird deine Wahl im lokalen Speicher deines Browsers gesichert und verlässt dein Gerät nie.",
-          "Wie jeder Webhoster kann GitHub technische Daten wie IP-Adressen in seinen Serverprotokollen verarbeiten, um den Dienst sicher zu halten.",
+          "playnarra.app ist eine statische Website, die über Cloudflare ausgeliefert wird. Sie verwendet keine Cookies, keine Analyse und keine Schriften oder Skripte von Drittanbietern. Wenn du das Design wechselst, wird deine Wahl im lokalen Speicher deines Browsers gesichert und verlässt dein Gerät nie.",
+          "Um die Website auszuliefern und vor Missbrauch zu schützen, verarbeitet Cloudflare technische Verbindungsdaten wie IP-Adressen gemäß seiner eigenen Datenschutzrichtlinie.",
         ],
-        link: { text: "Datenschutzerklärung von GitHub", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Datenschutzrichtlinie von Cloudflare", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Kinder",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Deine Wahlmöglichkeiten",
         p: [
-          "Da ich deine Daten nicht habe, gibt es für mich nichts herauszugeben oder zu löschen. Wenn du Narra löschst, wird alles entfernt, was die App auf deinem Gerät gespeichert hat. Spielstände in iCloud kannst du in den iCloud-Einstellungen deines Geräts verwalten. Übersetzung und iCloud-Synchronisierung lassen sich jederzeit ausschalten.",
+          "Da ich deine Daten nicht habe, gibt es für mich nichts herauszugeben oder zu löschen. Wenn du Narra löschst, wird alles entfernt, was die App auf deinem Gerät gespeichert hat. Spielstände in iCloud kannst du in den iCloud-Einstellungen deines Geräts verwalten. Die iCloud-Synchronisierung lässt sich jederzeit ausschalten.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "Käufe werden von Apple abgewickelt. Das Unterstützer-Abo verlängert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ende des aktuellen Zeitraums gekündigt wird; du kannst es in den Einstellungen deines App Store-Accounts verwalten oder kündigen. Trinkgelder sind einmalige Zahlungen und schalten nichts frei.",
         ],
-      },
-      {
-        h: "Übersetzung",
-        p: ["Die Übersetzung im Spiel wird von Google Übersetzer bereitgestellt und ist möglicherweise nicht immer genau."],
       },
       {
         h: "Änderungen",

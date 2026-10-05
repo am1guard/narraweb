@@ -135,7 +135,6 @@ const en = {
       items: [
         { t: "Mod manager", d: "Add mods as folders or ZIP files, put them in order, and switch them on or off. Global mods apply to every Ren'Py game, and you can start a game once without mods when something misbehaves." },
         { t: "Gallery", d: "Browse the images, music and videos packed inside a game's .rpa archives." },
-        { t: "In-game translation", d: "Optional. Translate a game's text while you play. When it's on, the text being translated is sent to Google Translate." },
         { t: "Cheat menu (beta)", d: "A cheat menu and a few handy tools, like rollback, an FPS counter and a gallery unlocker." },
       ],
     },
@@ -194,7 +193,7 @@ const en = {
   privacy: {
     intro: [
       "Narra is an app for playing Ren'Py visual novels on iPhone and iPad. It's made by Emir Han Temur, an independent developer (\"I\" and \"me\" below). This policy explains what happens to your information when you use the Narra app and the playnarra.app website.",
-      "The short version: Narra has no accounts, no ads and no analytics, and I don't collect your personal data.",
+      "The short version: Narra doesn't collect any data. It has no accounts, ads or analytics, and it only goes online for iCloud (your own saves), App Store purchases and links you open yourself.",
     ],
     sections: [
       {
@@ -210,13 +209,6 @@ const en = {
           "If iCloud sync is on (it is by default), Narra copies your game saves to your own iCloud Drive, while you play and afterwards, so they can move between your devices. Games themselves are not uploaded. This data lives in your iCloud account, under Apple's control and Apple's privacy policy; I have no access to it.",
           "You can turn sync off at any time in Narra's Settings, under Saves & iCloud. Turning it off doesn't delete anything already in iCloud.",
         ],
-      },
-      {
-        h: "In-game translation (optional)",
-        p: [
-          "Translation is off until you turn it on. When you use it, the game text being translated is sent to Google Translate, and Google's privacy policy applies to that text. Narra doesn't attach your name, account or any identifier to it.",
-        ],
-        link: { text: "Google Privacy Policy", href: "https://policies.google.com/privacy" },
       },
       {
         h: "Error reports and support emails",
@@ -241,10 +233,10 @@ const en = {
       {
         h: "This website",
         p: [
-          "playnarra.app is a static website hosted on GitHub Pages. It uses no cookies, no analytics and no third-party fonts or scripts. If you change the theme, your choice is saved in your browser's local storage and never leaves your device.",
-          "Like any web host, GitHub may process technical data such as IP addresses in its server logs to keep the service secure.",
+          "playnarra.app is a static website served through Cloudflare. It uses no cookies, no analytics and no third-party fonts or scripts. If you change the theme, your choice is saved in your browser's local storage and never leaves your device.",
+          "To deliver the site and protect it from abuse, Cloudflare processes technical connection data such as IP addresses under its own privacy policy.",
         ],
-        link: { text: "GitHub Privacy Statement", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Cloudflare Privacy Policy", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Children",
@@ -255,7 +247,7 @@ const en = {
       {
         h: "Your choices",
         p: [
-          "Because I don't hold your data, there's nothing for me to hand over or delete. Deleting Narra removes everything it stored on your device. Saves in iCloud can be managed in your device's iCloud settings. Translation and iCloud sync can be turned off at any time.",
+          "Because I don't hold your data, there's nothing for me to hand over or delete. Deleting Narra removes everything it stored on your device. Saves in iCloud can be managed in your device's iCloud settings. iCloud sync can be turned off at any time.",
         ],
       },
       {
@@ -293,10 +285,6 @@ const en = {
         p: [
           "Purchases are handled by Apple. The supporter subscription renews automatically unless cancelled at least 24 hours before the end of the current period; you can manage or cancel it in your App Store account settings. Tips are one-time payments and don't unlock anything.",
         ],
-      },
-      {
-        h: "Translation",
-        p: ["In-game translation is provided by Google Translate and may not always be accurate."],
       },
       {
         h: "Changes",

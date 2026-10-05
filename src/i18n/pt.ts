@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Gerenciador de mods", d: "Adicione mods como pastas ou arquivos ZIP, coloque-os em ordem e ative ou desative cada um. Os mods globais valem para todos os jogos Ren'Py, e você pode iniciar um jogo uma vez sem mods quando algo der errado." },
         { t: "Galeria", d: "Navegue pelas imagens, músicas e vídeos guardados dentro dos arquivos .rpa de um jogo." },
-        { t: "Tradução no jogo", d: "Opcional. Traduza o texto de um jogo enquanto joga. Quando está ativada, o texto que está sendo traduzido é enviado ao Google Tradutor." },
         { t: "Menu de trapaças (beta)", d: "Um menu de trapaças e algumas ferramentas úteis, como voltar no texto, um contador de FPS e um desbloqueador de galeria." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "O Narra é um app para jogar visual novels de Ren'Py no iPhone e no iPad. Ele é feito por Emir Han Temur, um desenvolvedor independente (chamado de “eu” daqui em diante). Esta política explica o que acontece com as suas informações quando você usa o app Narra e o site playnarra.app.",
-      "Resumindo: o Narra não tem contas, nem anúncios, nem análises, e eu não coleto seus dados pessoais.",
+      "Resumindo: o Narra não coleta nenhum dado. Não tem contas, nem anúncios, nem análises, e só se conecta à internet para o iCloud (seus próprios salvamentos), compras na App Store e links que você mesmo abre.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "Se a sincronização pelo iCloud estiver ativada (ela vem ativada por padrão), o Narra copia os salvamentos dos seus jogos para o seu próprio iCloud Drive, enquanto você joga e depois, para que eles possam passar de um dispositivo para outro. Os jogos em si não são enviados. Esses dados ficam na sua conta do iCloud, sob o controle da Apple e sujeitos à política de privacidade da Apple; eu não tenho acesso a eles.",
           "Você pode desativar a sincronização a qualquer momento nos Ajustes do Narra, em Salvamentos e iCloud. Desativá-la não apaga nada que já esteja no iCloud.",
         ],
-      },
-      {
-        h: "Tradução no jogo (opcional)",
-        p: [
-          "A tradução fica desativada até você ativá-la. Quando você a usa, o texto do jogo que está sendo traduzido é enviado ao Google Tradutor, e a política de privacidade do Google se aplica a esse texto. O Narra não anexa a ele seu nome, sua conta nem qualquer identificador.",
-        ],
-        link: { text: "Política de Privacidade do Google", href: "https://policies.google.com/privacy?hl=pt-BR" },
       },
       {
         h: "Relatórios de erro e e-mails de suporte",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Este site",
         p: [
-          "playnarra.app é um site estático hospedado no GitHub Pages. Ele não usa cookies, nem análises, nem fontes ou scripts de terceiros. Se você mudar o tema, sua escolha é salva no armazenamento local do seu navegador e nunca sai do seu dispositivo.",
-          "Como qualquer serviço de hospedagem, o GitHub pode processar dados técnicos, como endereços IP, nos registros dos seus servidores para manter o serviço seguro.",
+          "playnarra.app é um site estático servido pela Cloudflare. Ele não usa cookies, nem análises, nem fontes ou scripts de terceiros. Se você mudar o tema, sua escolha é salva no armazenamento local do seu navegador e nunca sai do seu dispositivo.",
+          "Para servir o site e protegê-lo contra abusos, a Cloudflare processa dados técnicos de conexão, como endereços IP, de acordo com a própria política de privacidade.",
         ],
-        link: { text: "Declaração de Privacidade do GitHub", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Política de Privacidade da Cloudflare", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Crianças",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Suas escolhas",
         p: [
-          "Como eu não guardo seus dados, não há nada que eu possa entregar ou apagar. Apagar o Narra remove tudo o que ele armazenou no seu dispositivo. Os salvamentos no iCloud podem ser gerenciados nos ajustes do iCloud do seu dispositivo. A tradução e a sincronização pelo iCloud podem ser desativadas a qualquer momento.",
+          "Como eu não guardo seus dados, não há nada que eu possa entregar ou apagar. Apagar o Narra remove tudo o que ele armazenou no seu dispositivo. Os salvamentos no iCloud podem ser gerenciados nos ajustes do iCloud do seu dispositivo. A sincronização pelo iCloud pode ser desativada a qualquer momento.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "As compras são feitas pela Apple. A assinatura de apoiador é renovada automaticamente, a menos que seja cancelada pelo menos 24 horas antes do fim do período atual; você pode gerenciá-la ou cancelá-la nos ajustes da sua conta da App Store. As gorjetas são pagamentos únicos e não desbloqueiam nada.",
         ],
-      },
-      {
-        h: "Tradução",
-        p: ["A tradução no jogo é fornecida pelo Google Tradutor e nem sempre é precisa."],
       },
       {
         h: "Alterações",

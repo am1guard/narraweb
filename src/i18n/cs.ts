@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Správce módů", d: "Přidávej módy jako složky nebo soubory ZIP, seřaď je a zapínej nebo vypínej. Globální módy platí pro všechny hry v Ren'Py, a když něco zlobí, můžeš hru jednou spustit bez módů." },
         { t: "Galerie", d: "Procházej obrázky, hudbu a videa uložené v archivech .rpa dané hry." },
-        { t: "Překlad ve hře", d: "Volitelný. Překládej text hry během hraní. Když je zapnutý, text k překladu se odesílá do Překladače Google." },
         { t: "Menu cheatů (beta)", d: "Menu cheatů a pár šikovných nástrojů, třeba návrat zpět, počítadlo FPS a odemčení galerie." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra je aplikace pro hraní vizuálních románů v Ren'Py na iPhonu a iPadu. Vytváří ji Emir Han Temur, nezávislý vývojář (níže „já“). Tyto zásady vysvětlují, co se děje s tvými údaji, když používáš aplikaci Narra a web playnarra.app.",
-      "Stručně: Narra nemá účty, reklamy ani analytiku a tvoje osobní údaje neshromažďuji.",
+      "Stručně: Narra neshromažďuje žádná data. Nemá účty, reklamy ani analytiku a k internetu se připojuje jen kvůli iCloudu (tvým vlastním uloženým hrám), nákupům v App Storu a odkazům, které sám otevřeš.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "Pokud je zapnutá synchronizace s iCloudem (ve výchozím stavu je), Narra kopíruje tvoje uložené hry na tvůj vlastní iCloud Drive, během hraní i potom, aby se mohly přenášet mezi zařízeními. Samotné hry se nenahrávají. Tato data jsou ve tvém účtu iCloud, pod kontrolou společnosti Apple a podle jejích zásad ochrany osobních údajů; já k nim přístup nemám.",
           "Synchronizaci můžeš kdykoli vypnout v Nastavení Narry v části Uložené hry a iCloud. Vypnutím se nesmaže nic, co už na iCloudu je.",
         ],
-      },
-      {
-        h: "Překlad ve hře (volitelný)",
-        p: [
-          "Překlad je vypnutý, dokud ho nezapneš. Když ho používáš, text hry k překladu se odesílá do Překladače Google a na tento text se vztahují zásady ochrany soukromí společnosti Google. Narra k němu nepřipojuje tvé jméno, účet ani žádný identifikátor.",
-        ],
-        link: { text: "Zásady ochrany soukromí Google", href: "https://policies.google.com/privacy?hl=cs" },
       },
       {
         h: "Hlášení chyb a e-maily podpoře",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Tento web",
         p: [
-          "playnarra.app je statický web hostovaný na GitHub Pages. Nepoužívá cookies, analytiku ani písma či skripty třetích stran. Když změníš motiv, tvoje volba se uloží do místního úložiště prohlížeče a nikdy neopustí tvoje zařízení.",
-          "Jako každý hosting může GitHub ve svých serverových protokolech zpracovávat technické údaje, například IP adresy, aby udržel službu v bezpečí.",
+          "playnarra.app je statický web poskytovaný přes Cloudflare. Nepoužívá cookies, analytiku ani písma či skripty třetích stran. Když změníš motiv, tvoje volba se uloží do místního úložiště prohlížeče a nikdy neopustí tvoje zařízení.",
+          "Aby mohl web doručovat a chránit ho před zneužitím, zpracovává Cloudflare technické údaje o připojení, například IP adresy, podle svých vlastních zásad ochrany osobních údajů.",
         ],
-        link: { text: "Prohlášení GitHubu o ochraně osobních údajů", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Zásady ochrany osobních údajů Cloudflare", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Děti",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Tvoje volby",
         p: [
-          "Protože tvoje data nemám, nemám co předat ani smazat. Smazáním Narry odstraníš vše, co uložila ve tvém zařízení. Uložené hry na iCloudu můžeš spravovat v nastavení iCloudu ve svém zařízení. Překlad i synchronizaci s iCloudem můžeš kdykoli vypnout.",
+          "Protože tvoje data nemám, nemám co předat ani smazat. Smazáním Narry odstraníš vše, co uložila ve tvém zařízení. Uložené hry na iCloudu můžeš spravovat v nastavení iCloudu ve svém zařízení. Synchronizaci s iCloudem můžeš kdykoli vypnout.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "Nákupy vyřizuje Apple. Předplatné podporovatele se automaticky obnovuje, pokud není zrušeno alespoň 24 hodin před koncem aktuálního období; spravovat nebo zrušit ho můžeš v nastavení svého účtu App Store. Spropitné je jednorázová platba a nic neodemyká.",
         ],
-      },
-      {
-        h: "Překlad",
-        p: ["Překlad ve hře zajišťuje Překladač Google a nemusí být vždy přesný."],
       },
       {
         h: "Změny",

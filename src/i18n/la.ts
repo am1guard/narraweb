@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Administrator mutationum", d: "Mutationes ut capsas vel fasciculos ZIP adde, ordine dispone, accende vel exstingue. Mutationes universales omnibus ludis Ren'Py valent, et ludum semel sine mutationibus incipere potes cum aliquid perperam fit." },
         { t: "Pinacotheca", d: "Imagines, musicam et pelliculas in archivis .rpa ludi inclusas perlustra." },
-        { t: "Translatio in ludo", d: "Optionalis. Textum ludi dum ludis converte. Cum accensa est, textus convertendus ad Google Translate mittitur." },
         { t: "Index fraudium (beta)", d: "Index fraudium et pauca instrumenta utilia, ut regressus, numerator FPS et pinacotheca reserata." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra applicatio est ad fabulas visuales Ren'Py in iPhone et iPad ludendas. Ab Emir Han Temur, auctore independenti, facta est (infra «ego» et «me»). Haec ratio explicat quid notitiis tuis fiat cum applicatione Narra et situ interretiali playnarra.app uteris.",
-      "Breviter: Narra nullas rationes, nulla praeconia, nullas analyses habet, nec ego notitias tuas personales colligo.",
+      "Breviter: Narra nulla data colligit. Nullas rationes, nulla praeconia, nullas analyses habet, et retem tantum adhibet ad iCloud (tua ipsius servata), emptiones in App Store et nexus quos ipse aperis.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "Si synchronizatio iCloud accensa est (quod ex praefinito est), Narra servata ludorum tuorum in tuum iCloud Drive exscribit, dum ludis et postea, ut inter instrumenta tua transire possint. Ipsi ludi non mittuntur. Haec data in ratione tua iCloud sunt, sub potestate Apple et ratione secreti Apple; ego nullum ad ea accessum habeo.",
           "Synchronizationem quovis tempore in Optionibus Narrae, sub Servata et iCloud, exstinguere potes. Exstinctio nihil delet quod iam in iCloud est.",
         ],
-      },
-      {
-        h: "Translatio in ludo (optionalis)",
-        p: [
-          "Translatio exstincta est donec eam accendis. Cum ea uteris, textus ludi convertendus ad Google Translate mittitur, et ratio secreti Google ad eum textum pertinet. Narra nec nomen tuum nec rationem nec ullum signum identificationis ei adiungit.",
-        ],
-        link: { text: "Ratio secreti Google", href: "https://policies.google.com/privacy" },
       },
       {
         h: "Relationes errorum et epistulae subsidii",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Hic situs",
         p: [
-          "playnarra.app situs staticus est in GitHub Pages hospitatus. Nullis crustulis (cookies), nullis analysibus, nullis litteris vel scriptis tertiarum partium utitur. Si thema mutas, electio tua in repositorio locali navigatri tui servatur nec umquam instrumentum tuum relinquit.",
-          "Ut quivis hospes interretialis, GitHub data technica, ut inscriptiones IP, in commentariis servitoris tractare potest, ut servitium tutum servet.",
+          "playnarra.app situs staticus est per Cloudflare praebitus. Nullis crustulis (cookies), nullis analysibus, nullis litteris vel scriptis tertiarum partium utitur. Si thema mutas, electio tua in repositorio locali navigatri tui servatur nec umquam instrumentum tuum relinquit.",
+          "Ut situm praebeat et ab abusu tueatur, Cloudflare data technica conexionis, ut inscriptiones IP, secundum suam rationem secreti tractat.",
         ],
-        link: { text: "Declaratio secreti GitHub", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Ratio secreti Cloudflare", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Pueri",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Electiones tuae",
         p: [
-          "Quia notitias tuas non teneo, nihil habeo quod tradam vel deleam. Narra deleta, omnia quae in instrumento tuo servavit removentur. Servata in iCloud per optiones iCloud instrumenti tui administrari possunt. Translatio et synchronizatio iCloud quovis tempore exstingui possunt.",
+          "Quia notitias tuas non teneo, nihil habeo quod tradam vel deleam. Narra deleta, omnia quae in instrumento tuo servavit removentur. Servata in iCloud per optiones iCloud instrumenti tui administrari possunt. Synchronizatio iCloud quovis tempore exstingui potest.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "Emptiones ab Apple tractantur. Subscriptio fautoris sponte renovatur nisi saltem 24 horis ante finem periodi praesentis revocatur; eam in optionibus rationis tuae App Store administrare vel revocare potes. Stipes solutiones semel factae sunt nec quicquam reserant.",
         ],
-      },
-      {
-        h: "Translatio",
-        p: ["Translatio in ludo a Google Translate praebetur et fortasse non semper accurata est."],
       },
       {
         h: "Mutationes",

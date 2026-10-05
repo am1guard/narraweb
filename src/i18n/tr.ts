@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Mod yöneticisi", d: "Modları klasör ya da ZIP olarak ekle, sıraya koy, aç ya da kapat. Genel modlar tüm Ren'Py oyunlarına uygulanır; bir şeyler ters giderse oyunu bir kez modsuz başlatabilirsin." },
         { t: "Galeri", d: "Oyunun .rpa arşivlerindeki görsellere, müziklere ve videolara göz at." },
-        { t: "Oyun içi çeviri", d: "İsteğe bağlı. Oynarken oyunun metnini çevir. Açıkken çevrilecek metin Google Çeviri'ye gönderilir." },
         { t: "Hile menüsü (beta)", d: "Bir hile menüsü ve geri sarma, FPS sayacı, galeri açıcı gibi birkaç kullanışlı araç." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra, iPhone ve iPad'de Ren'Py görsel romanları oynamak için bir uygulamadır. Bağımsız geliştirici Emir Han Temur tarafından yapılır (aşağıda \"ben\" olarak geçer). Bu politika, Narra uygulamasını ve playnarra.app sitesini kullandığında bilgilerine ne olduğunu açıklar.",
-      "Kısaca: Narra'da hesap, reklam ve analiz yoktur; kişisel verilerini toplamam.",
+      "Kısaca: Narra veri toplamaz. Hesap, reklam ve analiz yoktur; internete yalnız iCloud (kendi kayıtların), App Store satın alımları ve senin açtığın bağlantılar için bağlanır.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "iCloud eşitlemesi açıksa (varsayılan olarak açıktır), Narra oyun kayıtlarını cihazların arasında taşınabilsinler diye oynarken ve sonrasında kendi iCloud Drive'ına kopyalar. Oyunların kendisi yüklenmez. Bu veriler iCloud hesabında, Apple'ın denetiminde ve Apple'ın gizlilik politikasına tabi olarak durur; benim erişimim yoktur.",
           "Eşitlemeyi istediğin zaman Narra'nın Ayarlar ekranında Kayıtlar ve iCloud bölümünden kapatabilirsin. Kapatmak iCloud'da duran hiçbir şeyi silmez.",
         ],
-      },
-      {
-        h: "Oyun içi çeviri (isteğe bağlı)",
-        p: [
-          "Çeviri, sen açana kadar kapalıdır. Kullandığında çevrilecek oyun metni Google Çeviri'ye gönderilir ve o metne Google'ın gizlilik politikası uygulanır. Narra bu metne adını, hesabını ya da herhangi bir tanımlayıcıyı eklemez.",
-        ],
-        link: { text: "Google Gizlilik Politikası", href: "https://policies.google.com/privacy?hl=tr" },
       },
       {
         h: "Hata raporları ve destek e-postaları",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Bu site",
         p: [
-          "playnarra.app, GitHub Pages'te barındırılan durağan bir sitedir. Çerez, analiz ya da üçüncü taraf yazı tipi ve betik kullanmaz. Temayı değiştirirsen seçimin tarayıcının yerel depolamasına kaydedilir ve cihazından dışarı çıkmaz.",
-          "Her barındırma hizmeti gibi GitHub da hizmeti güvende tutmak için sunucu günlüklerinde IP adresi gibi teknik verileri işleyebilir.",
+          "playnarra.app, Cloudflare üzerinden sunulan durağan bir sitedir. Çerez, analiz ya da üçüncü taraf yazı tipi ve betik kullanmaz. Temayı değiştirirsen seçimin tarayıcının yerel depolamasına kaydedilir ve cihazından dışarı çıkmaz.",
+          "Cloudflare, siteyi sunmak ve kötüye kullanımı önlemek için IP adresi gibi teknik bağlantı verilerini kendi gizlilik politikası çerçevesinde işler.",
         ],
-        link: { text: "GitHub Gizlilik Bildirimi", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Cloudflare Gizlilik Politikası", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Çocuklar",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Seçimlerin",
         p: [
-          "Verilerini ben tutmadığım için teslim edecek ya da silecek bir şeyim yok. Narra'yı silmek, cihazında sakladığı her şeyi kaldırır. iCloud'daki kayıtları cihazının iCloud ayarlarından yönetebilirsin. Çeviriyi ve iCloud eşitlemesini istediğin zaman kapatabilirsin.",
+          "Verilerini ben tutmadığım için teslim edecek ya da silecek bir şeyim yok. Narra'yı silmek, cihazında sakladığı her şeyi kaldırır. iCloud'daki kayıtları cihazının iCloud ayarlarından yönetebilirsin. iCloud eşitlemesini istediğin zaman kapatabilirsin.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "Satın alımları Apple yürütür. Destekçi aboneliği, mevcut dönemin bitiminden en az 24 saat önce iptal edilmezse kendiliğinden yenilenir; App Store hesap ayarlarından yönetebilir ya da iptal edebilirsin. Bahşişler tek seferlik ödemelerdir ve hiçbir şeyin kilidini açmaz.",
         ],
-      },
-      {
-        h: "Çeviri",
-        p: ["Oyun içi çeviri Google Çeviri tarafından sağlanır ve her zaman doğru olmayabilir."],
       },
       {
         h: "Değişiklikler",

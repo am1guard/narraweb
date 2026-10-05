@@ -3,7 +3,9 @@
 // to src/assets/screens/<lang>; languages without their own shot fall back to common.
 //
 // Usage: node scripts/import-screens.mjs [raw folder]
-//   default raw folder: ../marketing/screens/raw/iphone-air (contains en/, tr/, ...)
+//   default raw folder: ../marketing/screens/raw/iphone-air
+//   Either PNGs directly in that folder (English only, goes to common) or one subfolder per
+//   language (en/, tr/, ...). Anything that isn't a folder or a PNG is ignored.
 import { mkdir, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -19,8 +21,10 @@ if (!existsSync(RAW)) {
   console.error(`Screenshot folder not found: ${RAW}`);
   process.exit(1);
 }
-for (const lang of await readdir(RAW)) {
-  const from = path.join(RAW, lang);
+const entries = await readdir(RAW, { withFileTypes: true });
+const sources = entries.filter((e) => e.isDirectory()).map((e) => [e.name, path.join(RAW, e.name)]);
+if (entries.some((e) => e.isFile() && e.name.endsWith(".png"))) sources.unshift(["en", RAW]);
+for (const [lang, from] of sources) {
   const to = path.join(SITE, "src/assets/screens", lang === "en" ? "common" : lang);
   await mkdir(to, { recursive: true });
   let count = 0;

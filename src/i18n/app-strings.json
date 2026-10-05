@@ -180,11 +180,6 @@
       "a": "Many Ren'Py games have a gallery, CG room or music room that fills in as you play. To open everything without replaying, turn on Unlock In-Game Gallery in Settings > Cheats & Tools and pick a strength: Safe, Medium or Aggressive. It doesn't write to your saves, so turn it off when you're done. Aggressive can disrupt a game's logic, so try Safe first."
      },
      {
-      "id": "translation",
-      "q": "Can Narra translate a game?",
-      "a": "Yes. Turn on In-game translation in Settings > Text & Reading. Dialogue is translated as you play, starting from the next line, and the game's files are never changed. It needs an internet connection, and the lines being translated are sent to Google Translate. Use Translation Dictionary to keep names as they are or always translate a term the same way."
-     },
-     {
       "id": "screenshot",
       "q": "How do I take a screenshot in a game?",
       "a": "Open the pause screen and choose Take Screenshot under Tools, or turn on Show Screenshot Button in Settings > Display & Controls to keep a button on screen. With a keyboard on iPad, press ⇧⌘S. Screenshots are saved in the Files app under Narra > Screenshots."
@@ -244,7 +239,7 @@
      {
       "id": "privacy",
       "q": "Does Narra upload my games?",
-      "a": "No. Your games and covers stay on this device, and your saves are copied to your own iCloud only when Sync with iCloud is on. Narra has no accounts, ads or analytics, and doesn't track you. If you turn on in-game translation, the lines being translated are sent to Google Translate. Support emails only include what you choose to send. Read the full privacy policy in Settings > About."
+      "a": "No. Your games and covers stay on this device, and your saves are copied to your own iCloud only when Sync with iCloud is on. Narra has no accounts, ads or analytics, and doesn't track you. Support emails only include what you choose to send. Read the full privacy policy in Settings > About."
      }
     ]
    },
@@ -483,11 +478,6 @@
       "a": "Birçok Ren'Py oyununda oynadıkça dolan bir galeri, CG odası ya da müzik odası bulunur. Yeniden oynamadan hepsini açmak için Ayarlar > Hileler ve Araçlar'da Oyun İçi Galeriyi Aç'ı aç ve bir kademe seç: Güvenli, Orta ya da Agresif. Kayıtlarına yazmaz; işin bitince kapat. Agresif kademe oyunun mantığını bozabilir; önce Güvenli'yi dene."
      },
      {
-      "id": "translation",
-      "q": "Narra bir oyunu çevirebilir mi?",
-      "a": "Evet. Ayarlar > Metin ve Okuma'da Oyun içi çeviri'yi aç. Diyaloglar sen oynarken, bir sonraki satırdan başlayarak çevrilir ve oyunun dosyaları asla değişmez. İnternet bağlantısı gerekir ve çevrilen satırlar Google Çeviri'ye gönderilir. Adları olduğu gibi bırakmak ya da bir terimi hep aynı şekilde çevirmek için Çeviri Sözlüğü'nü kullan."
-     },
-     {
       "id": "screenshot",
       "q": "Oyunda nasıl ekran görüntüsü alırım?",
       "a": "Duraklatma ekranını aç ve Araçlar altında Ekran Görüntüsü Al'ı seç ya da ekranda sürekli bir düğme olması için Ayarlar > Ekran ve Kontroller'de Ekran Görüntüsü Düğmesini Göster'i aç. iPad'de klavyeyle ⇧⌘S'ye bas. Ekran görüntüleri Dosyalar uygulamasında Narra > Screenshots altına kaydedilir."
@@ -547,7 +537,7 @@
      {
       "id": "privacy",
       "q": "Narra oyunlarımı bir yere yükler mi?",
-      "a": "Hayır. Oyunların ve kapakların bu cihazda kalır; kayıtların yalnız iCloud ile Eşitle açıkken kendi iCloud'una kopyalanır. Narra'da hesap, reklam ya da analiz yoktur ve seni takip etmez. Oyun içi çeviriyi açarsan çevrilen satırlar Google Çeviri'ye gönderilir. Destek e-postaları yalnız göndermeyi seçtiğin bilgileri içerir. Gizlilik politikasının tamamını Ayarlar > Hakkında'da okuyabilirsin."
+      "a": "Hayır. Oyunların ve kapakların bu cihazda kalır; kayıtların yalnız iCloud ile Eşitle açıkken kendi iCloud'una kopyalanır. Narra'da hesap, reklam ya da analiz yoktur ve seni takip etmez. Destek e-postaları yalnız göndermeyi seçtiğin bilgileri içerir. Gizlilik politikasının tamamını Ayarlar > Hakkında'da okuyabilirsin."
      }
     ]
    },
@@ -786,11 +776,6 @@
       "a": "Muchos juegos de Ren'Py tienen una galería, una sala de CG o una sala de música que se va completando a medida que juegas. Para abrirlo todo sin volver a jugar, activa Desbloquear galería del juego en Ajustes > Trucos y herramientas y elige una intensidad: Seguro, Medio o Agresivo. No escribe nada en tus partidas, así que desactívalo cuando termines. Agresivo puede alterar la lógica del juego, así que prueba primero con Seguro."
      },
      {
-      "id": "translation",
-      "q": "¿Puede Narra traducir un juego?",
-      "a": "Sí. Activa Traducción en el juego en Ajustes > Texto y lectura. Los diálogos se traducen mientras juegas, a partir de la siguiente línea, y los archivos del juego nunca se modifican. Necesita conexión a internet, y las líneas que se traducen se envían a Google Traductor. Usa Diccionario de traducción para mantener los nombres tal cual o traducir siempre un término de la misma forma."
-     },
-     {
       "id": "screenshot",
       "q": "¿Cómo hago una captura de pantalla en un juego?",
       "a": "Abre la pantalla de pausa y elige Capturar pantalla en Herramientas, o activa Mostrar botón de captura en Ajustes > Pantalla y controles para tener un botón siempre en pantalla. Con un teclado en iPad, pulsa ⇧⌘S. Las capturas se guardan en la app Archivos, en Narra > Screenshots."
@@ -850,7 +835,7 @@
      {
       "id": "privacy",
       "q": "¿Narra sube mis juegos a algún sitio?",
-      "a": "No. Tus juegos y portadas se quedan en este dispositivo, y tus partidas solo se copian a tu propio iCloud cuando Sincronizar con iCloud está activado. Narra no tiene cuentas, anuncios ni analíticas, y no te rastrea. Si activas la traducción en el juego, las líneas que se traducen se envían a Google Traductor. Los correos de soporte solo incluyen lo que tú decidas enviar. Lee la política de privacidad completa en Ajustes > Acerca de."
+      "a": "No. Tus juegos y portadas se quedan en este dispositivo, y tus partidas solo se copian a tu propio iCloud cuando Sincronizar con iCloud está activado. Narra no tiene cuentas, anuncios ni analíticas, y no te rastrea. Los correos de soporte solo incluyen lo que tú decidas enviar. Lee la política de privacidad completa en Ajustes > Acerca de."
      }
     ]
    },
@@ -1089,11 +1074,6 @@
       "a": "De nombreux jeux Ren'Py ont une galerie, une salle des CG ou une salle de musique qui se remplit au fil du jeu. Pour tout ouvrir sans rejouer, activez Débloquer la galerie du jeu dans Réglages > Triches et outils et choisissez un niveau : Sûr, Moyen ou Agressif. Rien n'est écrit dans vos sauvegardes, alors désactivez-le une fois terminé. Agressif peut perturber la logique d'un jeu ; essayez d'abord Sûr."
      },
      {
-      "id": "translation",
-      "q": "Narra peut-il traduire un jeu ?",
-      "a": "Oui. Activez Traduction en jeu dans Réglages > Texte et lecture. Les dialogues sont traduits pendant que vous jouez, à partir de la ligne suivante, et les fichiers du jeu ne sont jamais modifiés. Une connexion Internet est nécessaire, et les lignes à traduire sont envoyées à Google Traduction. Utilisez Dictionnaire de traduction pour conserver les noms tels quels ou toujours traduire un terme de la même façon."
-     },
-     {
       "id": "screenshot",
       "q": "Comment faire une capture d'écran dans un jeu ?",
       "a": "Ouvrez l'écran de pause et choisissez Capture d'écran sous Outils, ou activez Afficher le bouton de capture dans Réglages > Affichage et commandes pour garder un bouton à l'écran. Avec un clavier sur iPad, appuyez sur ⇧⌘S. Les captures sont enregistrées dans l'app Fichiers, sous Narra > Screenshots."
@@ -1153,7 +1133,7 @@
      {
       "id": "privacy",
       "q": "Narra envoie-t-il mes jeux en ligne ?",
-      "a": "Non. Vos jeux et couvertures restent sur cet appareil, et vos sauvegardes ne sont copiées sur votre propre iCloud que lorsque Synchroniser avec iCloud est activé. Narra n'a ni compte, ni publicité, ni outil d'analyse, et ne vous piste pas. Si vous activez la traduction en jeu, les lignes à traduire sont envoyées à Google Traduction. Les e-mails d'assistance ne contiennent que ce que vous choisissez d'envoyer. Lisez la politique de confidentialité complète dans Réglages > À propos."
+      "a": "Non. Vos jeux et couvertures restent sur cet appareil, et vos sauvegardes ne sont copiées sur votre propre iCloud que lorsque Synchroniser avec iCloud est activé. Narra n'a ni compte, ni publicité, ni outil d'analyse, et ne vous piste pas. Les e-mails d'assistance ne contiennent que ce que vous choisissez d'envoyer. Lisez la politique de confidentialité complète dans Réglages > À propos."
      }
     ]
    },
@@ -1392,11 +1372,6 @@
       "a": "Viele Ren'Py-Spiele haben eine Galerie, einen CG-Raum oder einen Musikraum, die sich beim Spielen füllen. Um alles ohne erneutes Durchspielen zu öffnen, aktiviere „Spielgalerie freischalten“ unter „Einstellungen > Cheats & Werkzeuge“ und wähle eine Stufe: „Sicher“, „Mittel“ oder „Aggressiv“. In deine Spielstände wird dabei nichts geschrieben, schalte es also wieder aus, wenn du fertig bist. „Aggressiv“ kann die Logik eines Spiels stören, probiere daher zuerst „Sicher“."
      },
      {
-      "id": "translation",
-      "q": "Kann Narra ein Spiel übersetzen?",
-      "a": "Ja. Aktiviere „Übersetzung im Spiel“ unter „Einstellungen > Text & Lesen“. Dialoge werden beim Spielen ab der nächsten Zeile übersetzt, und die Dateien des Spiels werden nie verändert. Dafür ist eine Internetverbindung nötig, und die zu übersetzenden Zeilen werden an Google Übersetzer gesendet. Mit dem „Übersetzungswörterbuch“ kannst du Namen unverändert lassen oder einen Begriff immer gleich übersetzen."
-     },
-     {
       "id": "screenshot",
       "q": "Wie mache ich in einem Spiel ein Bildschirmfoto?",
       "a": "Öffne den Pausebildschirm und wähle unter „Werkzeuge“ „Screenshot aufnehmen“, oder aktiviere „Bildschirmfoto-Taste anzeigen“ unter „Einstellungen > Anzeige & Steuerung“, damit eine Taste auf dem Bildschirm bleibt. Mit einer Tastatur am iPad drückst du ⇧⌘S. Bildschirmfotos werden in der Dateien-App unter Narra > Screenshots gespeichert."
@@ -1456,7 +1431,7 @@
      {
       "id": "privacy",
       "q": "Lädt Narra meine Spiele hoch?",
-      "a": "Nein. Deine Spiele und Cover bleiben auf diesem Gerät, und deine Spielstände werden nur in dein eigenes iCloud kopiert, wenn „Mit iCloud synchronisieren“ aktiviert ist. Narra hat keine Konten, keine Werbung und keine Analysen und verfolgt dich nicht. Wenn du die Übersetzung im Spiel aktivierst, werden die zu übersetzenden Zeilen an Google Übersetzer gesendet. Support-E-Mails enthalten nur, was du selbst senden möchtest. Die vollständige Datenschutzrichtlinie findest du unter „Einstellungen > Über“."
+      "a": "Nein. Deine Spiele und Cover bleiben auf diesem Gerät, und deine Spielstände werden nur in dein eigenes iCloud kopiert, wenn „Mit iCloud synchronisieren“ aktiviert ist. Narra hat keine Konten, keine Werbung und keine Analysen und verfolgt dich nicht. Support-E-Mails enthalten nur, was du selbst senden möchtest. Die vollständige Datenschutzrichtlinie findest du unter „Einstellungen > Über“."
      }
     ]
    },
@@ -1695,11 +1670,6 @@
       "a": "Molti giochi Ren'Py hanno una galleria, una stanza delle CG o una stanza della musica che si riempie mentre giochi. Per aprire tutto senza rigiocare, attiva Sblocca galleria di gioco in Impostazioni > Trucchi e strumenti e scegli un livello: Sicuro, Medio o Aggressivo. Non scrive nei tuoi salvataggi, quindi disattivalo quando hai finito. Aggressivo può alterare la logica del gioco, quindi prova prima Sicuro."
      },
      {
-      "id": "translation",
-      "q": "Narra può tradurre un gioco?",
-      "a": "Sì. Attiva Traduzione nel gioco in Impostazioni > Testo e lettura. I dialoghi vengono tradotti mentre giochi, a partire dalla riga successiva, e i file del gioco non vengono mai modificati. Serve una connessione a Internet e le righe da tradurre vengono inviate a Google Traduttore. Usa Dizionario di traduzione per lasciare i nomi invariati o tradurre sempre un termine allo stesso modo."
-     },
-     {
       "id": "screenshot",
       "q": "Come faccio uno screenshot in un gioco?",
       "a": "Apri la schermata di pausa e scegli Cattura schermata in Strumenti, oppure attiva Mostra pulsante screenshot in Impostazioni > Schermo e controlli per tenere un pulsante sullo schermo. Con una tastiera su iPad, premi ⇧⌘S. Gli screenshot vengono salvati nell'app File, in Narra > Screenshots."
@@ -1759,7 +1729,7 @@
      {
       "id": "privacy",
       "q": "Narra carica i miei giochi online?",
-      "a": "No. Giochi e copertine restano su questo dispositivo e i salvataggi vengono copiati sul tuo iCloud solo quando Sincronizza con iCloud è attivo. Narra non ha account, pubblicità né strumenti di analisi e non ti traccia. Se attivi la traduzione nel gioco, le righe da tradurre vengono inviate a Google Traduttore. Le email al supporto contengono solo ciò che scegli di inviare. Leggi l'informativa sulla privacy completa in Impostazioni > Info."
+      "a": "No. Giochi e copertine restano su questo dispositivo e i salvataggi vengono copiati sul tuo iCloud solo quando Sincronizza con iCloud è attivo. Narra non ha account, pubblicità né strumenti di analisi e non ti traccia. Le email al supporto contengono solo ciò che scegli di inviare. Leggi l'informativa sulla privacy completa in Impostazioni > Info."
      }
     ]
    },
@@ -1998,11 +1968,6 @@
       "a": "Muitos jogos Ren'Py têm uma galeria, uma sala de CGs ou uma sala de música que vai sendo preenchida conforme você joga. Para abrir tudo sem jogar de novo, ative Desbloquear galeria do jogo em Ajustes > Trapaças e ferramentas e escolha uma intensidade: Seguro, Médio ou Agressivo. Isso não grava nada nos seus salvamentos, então desative quando terminar. Agressivo pode atrapalhar a lógica do jogo, por isso tente Seguro primeiro."
      },
      {
-      "id": "translation",
-      "q": "O Narra pode traduzir um jogo?",
-      "a": "Sim. Ative Tradução no jogo em Ajustes > Texto e leitura. Os diálogos são traduzidos enquanto você joga, a partir da próxima fala, e os arquivos do jogo nunca são alterados. É preciso conexão com a internet, e as falas traduzidas são enviadas ao Google Tradutor. Use o Dicionário de tradução para manter nomes como estão ou traduzir sempre um termo do mesmo jeito."
-     },
-     {
       "id": "screenshot",
       "q": "Como faço uma captura de tela em um jogo?",
       "a": "Abra a tela de pausa e escolha Capturar tela em Ferramentas, ou ative Mostrar botão de captura em Ajustes > Tela e controles para manter um botão na tela. Com um teclado no iPad, pressione ⇧⌘S. As capturas ficam salvas no app Arquivos, em Narra > Screenshots."
@@ -2062,7 +2027,7 @@
      {
       "id": "privacy",
       "q": "O Narra envia meus jogos para algum lugar?",
-      "a": "Não. Seus jogos e capas ficam neste dispositivo, e seus salvamentos só são copiados para o seu próprio iCloud quando Sincronizar com o iCloud está ativado. O Narra não tem contas, anúncios nem análises, e não rastreia você. Se você ativar a tradução no jogo, as falas traduzidas são enviadas ao Google Tradutor. Os e-mails de suporte só incluem o que você escolher enviar. Leia a política de privacidade completa em Ajustes > Sobre."
+      "a": "Não. Seus jogos e capas ficam neste dispositivo, e seus salvamentos só são copiados para o seu próprio iCloud quando Sincronizar com o iCloud está ativado. O Narra não tem contas, anúncios nem análises, e não rastreia você. Os e-mails de suporte só incluem o que você escolher enviar. Leia a política de privacidade completa em Ajustes > Sobre."
      }
     ]
    },
@@ -2301,11 +2266,6 @@
       "a": "Mnoho her Ren'Py má galerii, CG místnost nebo hudební místnost, které se plní během hraní. Pokud chceš odemknout vše bez opakovaného hraní, zapni Odemknout galerii ve hře v Nastavení > Cheaty a nástroje a vyber sílu: Bezpečné, Střední nebo Agresivní. Do uložených her nic nezapisuje, takže ho po skončení vypni. Agresivní může narušit logiku hry, proto nejdřív zkus Bezpečné."
      },
      {
-      "id": "translation",
-      "q": "Umí Narra přeložit hru?",
-      "a": "Ano. Zapni Překlad ve hře v Nastavení > Text a čtení. Dialogy se překládají během hraní, počínaje dalším řádkem, a soubory hry se nikdy nemění. Potřebuješ připojení k internetu a překládané řádky se odesílají do Překladače Google. Překladový slovník použij, když chceš ponechat jména beze změny nebo vždy překládat určitý výraz stejně."
-     },
-     {
       "id": "screenshot",
       "q": "Jak ve hře pořídit snímek obrazovky?",
       "a": "Otevři obrazovku pozastavení a v části Nástroje zvol Pořídit snímek obrazovky, nebo zapni Zobrazit tlačítko snímku obrazovky v Nastavení > Zobrazení a ovládání a tlačítko zůstane na obrazovce. S klávesnicí na iPadu stiskni ⇧⌘S. Snímky obrazovky se ukládají v aplikaci Soubory do Narra > Screenshots."
@@ -2365,7 +2325,7 @@
      {
       "id": "privacy",
       "q": "Nahrává Narra moje hry někam?",
-      "a": "Ne. Tvoje hry a obaly zůstávají v tomto zařízení a uložené hry se kopírují na tvůj vlastní iCloud, jen když je zapnuté Synchronizovat s iCloudem. Narra nemá účty, reklamy ani analytiku a nesleduje tě. Pokud zapneš překlad ve hře, překládané řádky se odesílají do Překladače Google. E-maily podpoře obsahují jen to, co se rozhodneš poslat. Celé zásady ochrany soukromí si přečteš v Nastavení > O aplikaci."
+      "a": "Ne. Tvoje hry a obaly zůstávají v tomto zařízení a uložené hry se kopírují na tvůj vlastní iCloud, jen když je zapnuté Synchronizovat s iCloudem. Narra nemá účty, reklamy ani analytiku a nesleduje tě. E-maily podpoře obsahují jen to, co se rozhodneš poslat. Celé zásady ochrany soukromí si přečteš v Nastavení > O aplikaci."
      }
     ]
    },
@@ -2604,11 +2564,6 @@
       "a": "بسیاری از بازی‌های Ren'Py گالری، اتاق CG یا اتاق موسیقی دارند که با بازی کردن پر می‌شود. برای باز کردن همه‌چیز بدون بازی دوباره، «باز کردن گالری درون بازی» را در «تنظیمات > تقلب‌ها و ابزارها» روشن کنید و یک شدت انتخاب کنید: «امن»، «متوسط» یا «تهاجمی». این گزینه در ذخیره‌هایتان چیزی نمی‌نویسد؛ پس وقتی کارتان تمام شد خاموشش کنید. حالت «تهاجمی» ممکن است منطق بازی را به هم بزند؛ پس اول «امن» را امتحان کنید."
      },
      {
-      "id": "translation",
-      "q": "آیا Narra می‌تواند یک بازی را ترجمه کند؟",
-      "a": "بله. «ترجمه درون بازی» را در «تنظیمات > متن و خواندن» روشن کنید. گفت‌وگوها هنگام بازی، از سطر بعدی، ترجمه می‌شوند و فایل‌های بازی هرگز تغییر نمی‌کنند. این قابلیت به اتصال اینترنت نیاز دارد و سطرهایی که ترجمه می‌شوند به Google ترجمه فرستاده می‌شوند. برای اینکه نام‌ها همان‌طور بمانند یا یک اصطلاح همیشه یکسان ترجمه شود، از «فرهنگ‌نامهٔ ترجمه» استفاده کنید."
-     },
-     {
       "id": "screenshot",
       "q": "چطور در بازی اسکرین‌شات بگیرم؟",
       "a": "صفحهٔ مکث را باز کنید و در «ابزارها» گزینهٔ «گرفتن اسکرین‌شات» را انتخاب کنید، یا برای اینکه دکمه‌ای همیشه روی صفحه باشد «نمایش دکمهٔ عکس صفحه» را در «تنظیمات > نمایش و کنترل‌ها» روشن کنید. با صفحه‌کلید در iPad کلیدهای ⇧⌘S را بزنید. اسکرین‌شات‌ها در برنامهٔ Files در Narra > Screenshots ذخیره می‌شوند."
@@ -2668,7 +2623,7 @@
      {
       "id": "privacy",
       "q": "آیا Narra بازی‌هایم را جایی بارگذاری می‌کند؟",
-      "a": "خیر. بازی‌ها و جلدهای شما روی همین دستگاه می‌مانند و ذخیره‌هایتان فقط وقتی «همگام‌سازی با iCloud» روشن باشد در iCloud خودتان کپی می‌شوند. Narra حساب کاربری، تبلیغات یا ابزار تحلیل ندارد و شما را ردیابی نمی‌کند. اگر ترجمهٔ درون بازی را روشن کنید، سطرهایی که ترجمه می‌شوند به Google ترجمه فرستاده می‌شوند. ایمیل‌های پشتیبانی فقط چیزی را دارند که خودتان بفرستید. متن کامل سیاست حفظ حریم خصوصی را در «تنظیمات > درباره» بخوانید."
+      "a": "خیر. بازی‌ها و جلدهای شما روی همین دستگاه می‌مانند و ذخیره‌هایتان فقط وقتی «همگام‌سازی با iCloud» روشن باشد در iCloud خودتان کپی می‌شوند. Narra حساب کاربری، تبلیغات یا ابزار تحلیل ندارد و شما را ردیابی نمی‌کند. ایمیل‌های پشتیبانی فقط چیزی را دارند که خودتان بفرستید. متن کامل سیاست حفظ حریم خصوصی را در «تنظیمات > درباره» بخوانید."
      }
     ]
    },
@@ -2907,11 +2862,6 @@
       "a": "Во многих играх на Ren'Py есть галерея, CG-комната или музыкальная комната, которые заполняются по ходу игры. Чтобы открыть всё без повторного прохождения, включите «Открыть галерею в игре» в разделе «Настройки» > «Читы и инструменты» и выберите уровень: «Безопасно», «Средне» или «Агрессивно». Функция ничего не записывает в сохранения, поэтому выключите её, когда закончите. Уровень «Агрессивно» может нарушить логику игры, так что сначала попробуйте «Безопасно»."
      },
      {
-      "id": "translation",
-      "q": "Может ли Narra переводить игру?",
-      "a": "Да. Включите «Перевод в игре» в разделе «Настройки» > «Текст и чтение». Диалоги переводятся во время игры, начиная со следующей реплики, а файлы игры никогда не изменяются. Нужно подключение к интернету, и переводимые реплики отправляются в Google Переводчик. Используйте «Словарь переводов», чтобы оставлять имена без изменений или всегда переводить термин одинаково."
-     },
-     {
       "id": "screenshot",
       "q": "Как сделать снимок экрана в игре?",
       "a": "Откройте экран паузы и выберите «Сделать снимок экрана» в разделе «Инструменты» или включите «Кнопка снимка экрана» в разделе «Настройки» > «Экран и управление», чтобы кнопка всегда была на экране. С клавиатурой на iPad нажмите ⇧⌘S. Снимки экрана сохраняются в приложении «Файлы» в Narra > Screenshots."
@@ -2971,7 +2921,7 @@
      {
       "id": "privacy",
       "q": "Загружает ли Narra мои игры в сеть?",
-      "a": "Нет. Игры и обложки остаются на этом устройстве, а сохранения копируются в ваш собственный iCloud, только если включена «Синхронизация с iCloud». В Narra нет аккаунтов, рекламы и аналитики, и она не следит за вами. Если включить перевод в игре, переводимые реплики отправляются в Google Переводчик. Письма в поддержку содержат только то, что вы сами решите отправить. Полную политику конфиденциальности можно прочитать в разделе «Настройки» > «О приложении»."
+      "a": "Нет. Игры и обложки остаются на этом устройстве, а сохранения копируются в ваш собственный iCloud, только если включена «Синхронизация с iCloud». В Narra нет аккаунтов, рекламы и аналитики, и она не следит за вами. Письма в поддержку содержат только то, что вы сами решите отправить. Полную политику конфиденциальности можно прочитать в разделе «Настройки» > «О приложении»."
      }
     ]
    },
@@ -3210,11 +3160,6 @@
       "a": "多くのRen'Pyゲームには、プレイを進めると埋まっていくギャラリー、CGルーム、音楽室があります。もう一度プレイせずにすべてを開くには、「設定」>「チートとツール」で「ゲーム内ギャラリーを解放」をオンにし、強さを「安全」「中」「強力」から選んでください。セーブデータには書き込まないので、終わったらオフにしてください。「強力」はゲームのロジックを乱すことがあるため、まず「安全」を試してください。"
      },
      {
-      "id": "translation",
-      "q": "Narraでゲームを翻訳できますか？",
-      "a": "はい。「設定」>「テキストと読書」で「ゲーム内翻訳」をオンにしてください。セリフはプレイ中、次の行から翻訳され、ゲームのファイルが変更されることはありません。インターネット接続が必要で、翻訳する行はGoogle 翻訳に送信されます。名前をそのまま残したり、用語を常に同じ訳にしたりするには「翻訳辞書」を使ってください。"
-     },
-     {
       "id": "screenshot",
       "q": "ゲーム中にスクリーンショットを撮るには？",
       "a": "一時停止画面を開いて「ツール」の「スクリーンショットを撮る」を選ぶか、「設定」>「表示と操作」で「スクリーンショットボタンを表示」をオンにすると、画面にボタンが常に表示されます。iPadでキーボードを使う場合は⇧⌘Sを押します。スクリーンショットは「ファイル」アプリの Narra > Screenshots に保存されます。"
@@ -3274,7 +3219,7 @@
      {
       "id": "privacy",
       "q": "Narraはゲームをアップロードしますか？",
-      "a": "いいえ。ゲームとカバーはこのデバイスに残り、セーブデータは「iCloudと同期」がオンのときだけ自分のiCloudにコピーされます。Narraにはアカウント、広告、分析機能がなく、トラッキングもしません。ゲーム内翻訳をオンにすると、翻訳する行はGoogle 翻訳に送信されます。サポートへのメールには、あなたが送ると決めた内容だけが含まれます。プライバシーポリシーの全文は「設定」>「情報」で読めます。"
+      "a": "いいえ。ゲームとカバーはこのデバイスに残り、セーブデータは「iCloudと同期」がオンのときだけ自分のiCloudにコピーされます。Narraにはアカウント、広告、分析機能がなく、トラッキングもしません。サポートへのメールには、あなたが送ると決めた内容だけが含まれます。プライバシーポリシーの全文は「設定」>「情報」で読めます。"
      }
     ]
    },
@@ -3513,11 +3458,6 @@
       "a": "많은 Ren'Py 게임에는 플레이하면서 채워지는 갤러리, CG 룸, 음악 감상실이 있습니다. 다시 플레이하지 않고 모두 열려면 설정 > 치트 및 도구에서 게임 내 갤러리 잠금 해제를 켜고 강도를 안전, 중간, 강력 중에서 고르세요. 저장 데이터에는 기록하지 않으므로 다 보고 나면 끄세요. 강력은 게임의 로직을 망가뜨릴 수 있으니 먼저 안전을 사용해 보세요."
      },
      {
-      "id": "translation",
-      "q": "Narra로 게임을 번역할 수 있나요?",
-      "a": "네. 설정 > 텍스트 및 읽기에서 게임 내 번역을 켜세요. 대사는 플레이하는 동안 다음 줄부터 번역되며, 게임 파일은 절대 바뀌지 않습니다. 인터넷 연결이 필요하며, 번역하는 줄은 Google 번역으로 전송됩니다. 이름을 그대로 두거나 용어를 항상 같은 방식으로 번역하려면 번역 사전을 사용하세요."
-     },
-     {
       "id": "screenshot",
       "q": "게임에서 스크린샷을 찍으려면 어떻게 하나요?",
       "a": "일시 정지 화면을 열고 도구에서 스크린샷 찍기를 선택하거나, 설정 > 화면 및 컨트롤에서 스크린샷 버튼 표시를 켜면 화면에 버튼이 항상 표시됩니다. iPad에서 키보드를 사용할 때는 ⇧⌘S를 누르세요. 스크린샷은 파일 앱의 Narra > Screenshots에 저장됩니다."
@@ -3577,7 +3517,7 @@
      {
       "id": "privacy",
       "q": "Narra가 내 게임을 업로드하나요?",
-      "a": "아니요. 게임과 표지는 이 기기에 남아 있으며, 저장 데이터는 iCloud와 동기화가 켜져 있을 때만 본인의 iCloud에 복사됩니다. Narra에는 계정, 광고, 분석 기능이 없으며 사용자를 추적하지 않습니다. 게임 내 번역을 켜면 번역하는 줄이 Google 번역으로 전송됩니다. 지원 이메일에는 직접 보내기로 한 내용만 담깁니다. 전체 개인정보 처리방침은 설정 > 정보에서 읽을 수 있습니다."
+      "a": "아니요. 게임과 표지는 이 기기에 남아 있으며, 저장 데이터는 iCloud와 동기화가 켜져 있을 때만 본인의 iCloud에 복사됩니다. Narra에는 계정, 광고, 분석 기능이 없으며 사용자를 추적하지 않습니다. 지원 이메일에는 직접 보내기로 한 내용만 담깁니다. 전체 개인정보 처리방침은 설정 > 정보에서 읽을 수 있습니다."
      }
     ]
    },
@@ -3816,11 +3756,6 @@
       "a": "许多 Ren'Py 游戏都有画廊、CG 鉴赏或音乐鉴赏，会随着游玩逐步解锁。如需不重玩就打开全部内容，请在“设置”>“作弊与工具”中打开“解锁游戏内画廊”，并选择强度：“安全”、“中等”或“激进”。它不会写入你的存档，因此用完后请关闭。“激进”可能会扰乱游戏逻辑，请先尝试“安全”。"
      },
      {
-      "id": "translation",
-      "q": "Narra 能翻译游戏吗？",
-      "a": "能。在“设置”>“文本与阅读”中打开“游戏内翻译”。对话会在你游玩时从下一行开始翻译，游戏文件永远不会被修改。此功能需要联网，正在翻译的文本行会发送到 Google 翻译。使用“翻译词典”可让名字保持原样，或让某个术语始终以相同方式翻译。"
-     },
-     {
       "id": "screenshot",
       "q": "如何在游戏中截图？",
       "a": "打开暂停界面，在“工具”下选择“截图”；或在“设置”>“显示与控制”中打开“显示截屏按钮”，在屏幕上保留一个按钮。在 iPad 上使用键盘时，按 ⇧⌘S。截图保存在“文件” App 的 Narra > Screenshots 中。"
@@ -3880,7 +3815,7 @@
      {
       "id": "privacy",
       "q": "Narra 会上传我的游戏吗？",
-      "a": "不会。你的游戏和封面都保留在此设备上，只有打开“与 iCloud 同步”时，存档才会复制到你自己的 iCloud。Narra 没有账户、广告或分析，也不会追踪你。如果你打开游戏内翻译，正在翻译的文本行会发送到 Google 翻译。支持邮件只包含你选择发送的内容。你可以在“设置”>“关于”中阅读完整的隐私政策。"
+      "a": "不会。你的游戏和封面都保留在此设备上，只有打开“与 iCloud 同步”时，存档才会复制到你自己的 iCloud。Narra 没有账户、广告或分析，也不会追踪你。支持邮件只包含你选择发送的内容。你可以在“设置”>“关于”中阅读完整的隐私政策。"
      }
     ]
    },
@@ -4119,11 +4054,6 @@
       "a": "許多 Ren'Py 遊戲都有藝廊、CG 鑑賞室或音樂鑑賞室，會隨著遊玩逐步解鎖。若要不重玩就打開全部內容，請在「設定」>「作弊與工具」中開啟「解鎖遊戲內藝廊」，並選擇強度：「安全」、「中等」或「積極」。它不會寫入你的存檔，因此用完後請關閉。「積極」可能會干擾遊戲邏輯，請先試試「安全」。"
      },
      {
-      "id": "translation",
-      "q": "Narra 能翻譯遊戲嗎？",
-      "a": "能。在「設定」>「文字與閱讀」中開啟「遊戲內翻譯」。對話會在你遊玩時從下一行開始翻譯，遊戲檔案永遠不會被修改。此功能需要網路連線，正在翻譯的文字行會傳送到 Google 翻譯。使用「翻譯辭典」可讓名字保持原樣，或讓某個詞語一律以相同方式翻譯。"
-     },
-     {
       "id": "screenshot",
       "q": "如何在遊戲中截圖？",
       "a": "打開暫停畫面，在「工具」下選擇「截圖」；或在「設定」>「顯示與控制」中開啟「顯示截圖按鈕」，在螢幕上保留一個按鈕。在 iPad 上使用鍵盤時，按下 ⇧⌘S。截圖會儲存在「檔案」App 的 Narra > Screenshots 中。"
@@ -4183,7 +4113,7 @@
      {
       "id": "privacy",
       "q": "Narra 會上傳我的遊戲嗎？",
-      "a": "不會。你的遊戲與封面都保留在此裝置上，只有開啟「與 iCloud 同步」時，存檔才會複製到你自己的 iCloud。Narra 沒有帳號、廣告或分析，也不會追蹤你。如果你開啟遊戲內翻譯，正在翻譯的文字行會傳送到 Google 翻譯。支援郵件只包含你選擇傳送的內容。你可以在「設定」>「關於」中閱讀完整的隱私政策。"
+      "a": "不會。你的遊戲與封面都保留在此裝置上，只有開啟「與 iCloud 同步」時，存檔才會複製到你自己的 iCloud。Narra 沒有帳號、廣告或分析，也不會追蹤你。支援郵件只包含你選擇傳送的內容。你可以在「設定」>「關於」中閱讀完整的隱私政策。"
      }
     ]
    },
@@ -4422,11 +4352,6 @@
       "a": "تحتوي ألعاب Ren'Py كثيرة على معرض أو غرفة CG أو غرفة موسيقى تمتلئ أثناء اللعب. لفتح كل شيء دون إعادة اللعب، فعّل «فتح معرض اللعبة» في الإعدادات > الغش والأدوات واختر مستوى: «آمن» أو «متوسط» أو «قوي». لا يكتب هذا الخيار في حفظاتك، لذا أوقفه عند الانتهاء. قد يُخلّ المستوى «قوي» بمنطق اللعبة، فجرّب «آمن» أولًا."
      },
      {
-      "id": "translation",
-      "q": "هل يستطيع Narra ترجمة لعبة؟",
-      "a": "نعم. فعّل «الترجمة داخل اللعبة» في الإعدادات > النص والقراءة. يُترجم الحوار أثناء لعبك بدءًا من السطر التالي، ولا تتغير ملفات اللعبة أبدًا. تحتاج الميزة إلى اتصال بالإنترنت، وتُرسل الأسطر التي تُترجم إلى ترجمة Google. استخدم «قاموس الترجمة» لإبقاء الأسماء كما هي أو لترجمة مصطلح ما بالطريقة نفسها دائمًا."
-     },
-     {
       "id": "screenshot",
       "q": "كيف ألتقط لقطة شاشة داخل اللعبة؟",
       "a": "افتح شاشة الإيقاف المؤقت واختر «التقاط لقطة شاشة» ضمن «الأدوات»، أو فعّل «إظهار زر لقطة الشاشة» في الإعدادات > العرض وعناصر التحكم لإبقاء زر على الشاشة. ومع لوحة مفاتيح على iPad، اضغط ⇧⌘S. تُحفظ لقطات الشاشة في تطبيق الملفات ضمن Narra > Screenshots."
@@ -4486,7 +4411,7 @@
      {
       "id": "privacy",
       "q": "هل يرفع Narra ألعابي إلى الإنترنت؟",
-      "a": "لا. تبقى ألعابك وأغلفتك على هذا الجهاز، ولا تُنسخ حفظاتك إلى iCloud الخاص بك إلا عند تفعيل «المزامنة مع iCloud». لا توجد في Narra حسابات أو إعلانات أو تحليلات، ولا يتتبعك. إذا فعّلت الترجمة داخل اللعبة، تُرسل الأسطر التي تُترجم إلى ترجمة Google. لا تتضمن رسائل الدعم إلا ما تختار إرساله. اقرأ سياسة الخصوصية كاملة في الإعدادات > حول."
+      "a": "لا. تبقى ألعابك وأغلفتك على هذا الجهاز، ولا تُنسخ حفظاتك إلى iCloud الخاص بك إلا عند تفعيل «المزامنة مع iCloud». لا توجد في Narra حسابات أو إعلانات أو تحليلات، ولا يتتبعك. لا تتضمن رسائل الدعم إلا ما تختار إرساله. اقرأ سياسة الخصوصية كاملة في الإعدادات > حول."
      }
     ]
    },
@@ -4725,11 +4650,6 @@
       "a": "Nhiều trò chơi Ren'Py có thư viện, phòng CG hoặc phòng nhạc được mở dần khi bạn chơi. Để mở tất cả mà không cần chơi lại, bật Mở khóa thư viện trong game trong Cài đặt > Gian lận & công cụ và chọn mức độ: An toàn, Trung bình hoặc Mạnh. Tính năng này không ghi vào bản lưu của bạn, nên hãy tắt khi xong. Mức Mạnh có thể làm rối logic của trò chơi, vì vậy hãy thử An toàn trước."
      },
      {
-      "id": "translation",
-      "q": "Narra có dịch được trò chơi không?",
-      "a": "Có. Bật Dịch trong trò chơi trong Cài đặt > Văn bản & đọc. Lời thoại được dịch khi bạn chơi, bắt đầu từ dòng tiếp theo, và tệp của trò chơi không bao giờ bị thay đổi. Tính năng này cần kết nối internet, và các dòng đang được dịch sẽ được gửi tới Google Dịch. Dùng Từ điển dịch để giữ nguyên tên hoặc luôn dịch một thuật ngữ theo cùng một cách."
-     },
-     {
       "id": "screenshot",
       "q": "Làm sao để chụp màn hình trong trò chơi?",
       "a": "Mở màn hình tạm dừng và chọn Chụp màn hình trong mục Công cụ, hoặc bật Hiện nút chụp màn hình trong Cài đặt > Hiển thị & điều khiển để giữ một nút trên màn hình. Khi dùng bàn phím trên iPad, nhấn ⇧⌘S. Ảnh chụp màn hình được lưu trong ứng dụng Tệp, tại Narra > Screenshots."
@@ -4789,7 +4709,7 @@
      {
       "id": "privacy",
       "q": "Narra có tải trò chơi của tôi lên đâu không?",
-      "a": "Không. Trò chơi và ảnh bìa của bạn vẫn ở trên thiết bị này, và bản lưu chỉ được sao chép vào iCloud của riêng bạn khi Đồng bộ với iCloud đang bật. Narra không có tài khoản, quảng cáo hay phân tích, và không theo dõi bạn. Nếu bạn bật dịch trong trò chơi, các dòng đang được dịch sẽ được gửi tới Google Dịch. Email hỗ trợ chỉ chứa những gì bạn chọn gửi. Đọc toàn bộ chính sách quyền riêng tư trong Cài đặt > Giới thiệu."
+      "a": "Không. Trò chơi và ảnh bìa của bạn vẫn ở trên thiết bị này, và bản lưu chỉ được sao chép vào iCloud của riêng bạn khi Đồng bộ với iCloud đang bật. Narra không có tài khoản, quảng cáo hay phân tích, và không theo dõi bạn. Email hỗ trợ chỉ chứa những gì bạn chọn gửi. Đọc toàn bộ chính sách quyền riêng tư trong Cài đặt > Giới thiệu."
      }
     ]
    },
@@ -5028,11 +4948,6 @@
       "a": "Multi ludi Ren'Py pinacothecam, conclave CG vel conclave musicae habent quod dum ludis impletur. Ut omnia sine iterato ludo aperias, Pinacothecam ludi resera accende in Optiones > Doli et instrumenta et gradum elige: Tutum, Medium vel Acre. Servata tua non scribit, itaque cum finieris exstingue. Acre rationem ludi turbare potest, ergo prius Tutum tempta."
      },
      {
-      "id": "translation",
-      "q": "Potestne Narra ludum convertere?",
-      "a": "Ita. Translatio in ludo accende in Optiones > Textus et lectio. Colloquia dum ludis convertuntur, a versu proximo incipiendo, et fasciculi ludi numquam mutantur. Conexio interretialis requiritur, et versus qui convertuntur ad Google Translate mittuntur. Dictionarium Translationis adhibe ut nomina intacta serves vel vocabulum quoddam semper eodem modo convertas."
-     },
-     {
       "id": "screenshot",
       "q": "Quomodo imaginem scrinii in ludo capio?",
       "a": "Tabulam intermissionis aperi et Imaginem capere sub Instrumenta elige, aut Bullam imaginis scrinii ostende accende in Optiones > Ostentatio et moderamina ut bulla in scrinio maneat. Cum clavili in iPad, preme ⇧⌘S. Imagines scrinii in applicatione Fasciculi sub Narra > Screenshots servantur."
@@ -5092,7 +5007,7 @@
      {
       "id": "privacy",
       "q": "Num Narra lusus meos in rete mittit?",
-      "a": "Minime. Ludi et tegumenta tua in hoc instrumento manent, et servata tua in iCloud tuum tantum exscribuntur cum Cum iCloud concordare accensum est. Narra rationes, praeconia vel analyses non habet neque te sequitur. Si translationem in ludo accendis, versus qui convertuntur ad Google Translate mittuntur. Epistulae ad subsidium ea tantum continent quae mittere eligis. Consilium privatum totum lege in Optiones > De applicatione."
+      "a": "Minime. Ludi et tegumenta tua in hoc instrumento manent, et servata tua in iCloud tuum tantum exscribuntur cum Cum iCloud concordare accensum est. Narra rationes, praeconia vel analyses non habet neque te sequitur. Epistulae ad subsidium ea tantum continent quae mittere eligis. Consilium privatum totum lege in Optiones > De applicatione."
      }
     ]
    },

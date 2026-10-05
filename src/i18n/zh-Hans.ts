@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "模组管理器", d: "以文件夹或 ZIP 文件的形式添加模组，排好顺序，随时开启或关闭。全局模组作用于所有 Ren'Py 游戏；出问题时，还可以不加载模组启动一次游戏。" },
         { t: "图库", d: "浏览游戏 .rpa 压缩包里的图片、音乐和视频。" },
-        { t: "游戏内翻译", d: "可选功能。边玩边翻译游戏文本。开启后，要翻译的文本会发送到 Google 翻译。" },
         { t: "作弊菜单（测试版）", d: "一个作弊菜单，外加几个顺手的小工具，比如回滚、FPS 计数器和画廊解锁。" },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra 是一款在 iPhone 和 iPad 上玩 Ren'Py 视觉小说的应用，由独立开发者 Emir Han Temur 制作（下文称“我”）。本政策说明你使用 Narra 应用和 playnarra.app 网站时，你的信息会如何处理。",
-      "简而言之：Narra 没有账户、没有广告、没有分析，我不会收集你的个人数据。",
+      "简而言之：Narra 不收集任何数据。没有账户、没有广告、没有分析，只有在使用 iCloud（你自己的存档）、App Store 购买以及你自己打开的链接时才会联网。",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "如果开启了 iCloud 同步（默认开启），Narra 会在你游玩时和游玩后把你的游戏存档拷贝到你自己的 iCloud 云盘，以便在你的设备之间同步。游戏本身不会上传。这些数据存放在你的 iCloud 账户中，由 Apple 控制，受 Apple 的隐私政策约束；我无法访问。",
           "你可以随时在 Narra 的设置中，于“存档与 iCloud”下关闭同步。关闭同步不会删除 iCloud 中已有的任何内容。",
         ],
-      },
-      {
-        h: "游戏内翻译（可选）",
-        p: [
-          "在你开启之前，翻译功能一直处于关闭状态。使用时，要翻译的游戏文本会发送到 Google 翻译，这些文本适用 Google 的隐私政策。Narra 不会在其中附加你的姓名、账户或任何标识符。",
-        ],
-        link: { text: "Google 隐私权政策", href: "https://policies.google.com/privacy?hl=zh-CN" },
       },
       {
         h: "错误报告和支持邮件",
@@ -237,10 +229,10 @@ export default {
       {
         h: "本网站",
         p: [
-          "playnarra.app 是托管在 GitHub Pages 上的静态网站。它不使用 Cookie、分析工具，也不使用第三方字体或脚本。如果你更改主题，你的选择会保存在浏览器的本地存储中，不会离开你的设备。",
-          "与任何网站托管服务一样，GitHub 可能会在服务器日志中处理 IP 地址等技术数据，以保障服务安全。",
+          "playnarra.app 是通过 Cloudflare 提供的静态网站。它不使用 Cookie、分析工具，也不使用第三方字体或脚本。如果你更改主题，你的选择会保存在浏览器的本地存储中，不会离开你的设备。",
+          "为了提供网站并防止滥用，Cloudflare 会依照其自身的隐私政策处理 IP 地址等技术连接数据。",
         ],
-        link: { text: "GitHub 隐私声明", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Cloudflare 隐私政策", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "儿童",
@@ -251,7 +243,7 @@ export default {
       {
         h: "你的选择",
         p: [
-          "由于我不持有你的数据，也就没有什么需要我交出或删除的。删除 Narra 会移除它在你设备上存储的所有内容。iCloud 中的存档可以在设备的 iCloud 设置中管理。翻译和 iCloud 同步可以随时关闭。",
+          "由于我不持有你的数据，也就没有什么需要我交出或删除的。删除 Narra 会移除它在你设备上存储的所有内容。iCloud 中的存档可以在设备的 iCloud 设置中管理。iCloud 同步可以随时关闭。",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "购买由 Apple 处理。除非在当前周期结束前至少 24 小时取消，支持者订阅将自动续期；你可以在 App Store 账户设置中管理或取消订阅。小费是一次性付款，不会解锁任何内容。",
         ],
-      },
-      {
-        h: "翻译",
-        p: ["游戏内翻译由 Google 翻译提供，未必总是准确。"],
       },
       {
         h: "变更",

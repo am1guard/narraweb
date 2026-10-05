@@ -55,7 +55,7 @@ src/assets/screens/<dil>/<ad>.png     o dile özel (ör. tr/, ja/, zh-Hans/); va
 | `proactive` | yatay 2736x1260 | Bölüm III (Narra'nın öneri balonu) |
 | `settings` | dikey 1260x2736 | Bölüm VII (diller, gizlilik) |
 
-PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Telefon çerçevesi görüntünün kendi oranını alır (iPhone Air 1260x2736 varsayılır, başka boyutlar da olur). Görüntüleri pazarlama klasöründen almak için: `node scripts/import-screens.mjs` (varsayılan kaynak `../marketing/screens/raw/iphone-air/<dil>/<ad>.png`; `en` ortak klasöre gider). Betik PNG'leri yüksek kaliteli WebP kaynağa çevirir, depo küçük kalır.
+PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Telefon çerçevesi görüntünün kendi oranını alır (iPhone Air 1260x2736 varsayılır, başka boyutlar da olur). Görüntüleri pazarlama klasöründen almak için: `node scripts/import-screens.mjs` (varsayılan kaynak `../marketing/screens/raw/iphone-air`; PNG'ler doğrudan bu klasördeyse İngilizce sayılıp ortak klasöre, `<dil>/<ad>.png` alt klasörleri varsa o dilin klasörüne gider, `en` ortak klasöre gider). Betik PNG'leri yüksek kaliteli WebP kaynağa çevirir, depo küçük kalır.
 
 `screensReady: false` yapılırsa bölümleri yine Narra'nın pozları ve çizimler anlatır (kayıt kartları, mod katmanları, oyun içi sahne çizimi). Açıkken eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür. Ekran görüntüleri açıkken:
 - Bölüm III'te çizim yerine gerçek öneri balonu (`proactive`, yoksa `in-game-narra`) ve arkasında duraklatma ekranı (`pause`) gösterilir; ikisi aynı şeyi anlattığı için hiçbir zaman birlikte görünmez.

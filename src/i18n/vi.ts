@@ -131,7 +131,6 @@ export default {
       items: [
         { t: "Trình quản lý bản mod", d: "Thêm bản mod dưới dạng thư mục hoặc tệp ZIP, sắp xếp thứ tự và bật hoặc tắt chúng. Bản mod chung áp dụng cho mọi trò chơi Ren'Py, và khi có gì trục trặc, bạn có thể khởi động trò chơi một lần không mod." },
         { t: "Thư viện ảnh", d: "Xem hình ảnh, nhạc và video được đóng gói trong các tệp lưu trữ .rpa của trò chơi." },
-        { t: "Dịch trong trò chơi", d: "Tùy chọn. Dịch văn bản của trò chơi trong khi chơi. Khi bật, văn bản cần dịch sẽ được gửi tới Google Dịch." },
         { t: "Menu gian lận (beta)", d: "Menu gian lận và vài công cụ tiện lợi như tua lại, bộ đếm FPS và mở khóa thư viện ảnh." },
       ],
     },
@@ -190,7 +189,7 @@ export default {
   privacy: {
     intro: [
       "Narra là ứng dụng để chơi visual novel Ren'Py trên iPhone và iPad, do Emir Han Temur, một nhà phát triển độc lập, làm ra (dưới đây gọi là “tôi”). Chính sách này giải thích điều gì xảy ra với thông tin của bạn khi bạn dùng ứng dụng Narra và trang web playnarra.app.",
-      "Tóm lại: Narra không có tài khoản, không có quảng cáo, không có phân tích, và tôi không thu thập dữ liệu cá nhân của bạn.",
+      "Tóm lại: Narra không thu thập bất kỳ dữ liệu nào. Không có tài khoản, quảng cáo hay phân tích, và Narra chỉ kết nối mạng cho iCloud (bản lưu của chính bạn), giao dịch mua trên App Store và các liên kết do bạn tự mở.",
     ],
     sections: [
       {
@@ -206,13 +205,6 @@ export default {
           "Nếu đồng bộ iCloud đang bật (mặc định là bật), Narra sao chép bản lưu trò chơi của bạn vào iCloud Drive của chính bạn, trong lúc bạn chơi và sau đó, để chúng có thể chuyển giữa các thiết bị. Bản thân trò chơi không được tải lên. Dữ liệu này nằm trong tài khoản iCloud của bạn, dưới sự kiểm soát của Apple và theo chính sách quyền riêng tư của Apple; tôi không có quyền truy cập vào dữ liệu đó.",
           "Bạn có thể tắt đồng bộ bất cứ lúc nào trong Cài đặt của Narra, ở mục Bản lưu & iCloud. Tắt đồng bộ không xóa bất cứ thứ gì đã có trên iCloud.",
         ],
-      },
-      {
-        h: "Dịch trong trò chơi (tùy chọn)",
-        p: [
-          "Tính năng dịch luôn tắt cho đến khi bạn bật. Khi bạn dùng, văn bản trò chơi cần dịch được gửi tới Google Dịch, và chính sách quyền riêng tư của Google áp dụng cho văn bản đó. Narra không gắn tên, tài khoản hay bất kỳ mã định danh nào của bạn vào văn bản.",
-        ],
-        link: { text: "Chính sách quyền riêng tư của Google", href: "https://policies.google.com/privacy?hl=vi" },
       },
       {
         h: "Báo cáo lỗi và email hỗ trợ",
@@ -237,10 +229,10 @@ export default {
       {
         h: "Trang web này",
         p: [
-          "playnarra.app là một trang web tĩnh được lưu trữ trên GitHub Pages. Trang web không dùng cookie, không phân tích và không dùng phông chữ hay tập lệnh của bên thứ ba. Nếu bạn đổi giao diện, lựa chọn của bạn được lưu trong bộ nhớ cục bộ của trình duyệt và không bao giờ rời khỏi thiết bị của bạn.",
-          "Như mọi dịch vụ lưu trữ web, GitHub có thể xử lý dữ liệu kỹ thuật như địa chỉ IP trong nhật ký máy chủ để giữ cho dịch vụ an toàn.",
+          "playnarra.app là một trang web tĩnh được phân phối qua Cloudflare. Trang web không dùng cookie, không phân tích và không dùng phông chữ hay tập lệnh của bên thứ ba. Nếu bạn đổi giao diện, lựa chọn của bạn được lưu trong bộ nhớ cục bộ của trình duyệt và không bao giờ rời khỏi thiết bị của bạn.",
+          "Để phân phối trang web và bảo vệ nó khỏi lạm dụng, Cloudflare xử lý dữ liệu kết nối kỹ thuật như địa chỉ IP theo chính sách quyền riêng tư của họ.",
         ],
-        link: { text: "Tuyên bố về quyền riêng tư của GitHub", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" },
+        link: { text: "Chính sách quyền riêng tư của Cloudflare", href: "https://www.cloudflare.com/privacypolicy/" },
       },
       {
         h: "Trẻ em",
@@ -251,7 +243,7 @@ export default {
       {
         h: "Lựa chọn của bạn",
         p: [
-          "Vì tôi không giữ dữ liệu của bạn nên tôi không có gì để giao lại hay xóa. Xóa Narra sẽ gỡ mọi thứ Narra đã lưu trên thiết bị của bạn. Bản lưu trên iCloud có thể được quản lý trong phần cài đặt iCloud của thiết bị. Tính năng dịch và đồng bộ iCloud có thể tắt bất cứ lúc nào.",
+          "Vì tôi không giữ dữ liệu của bạn nên tôi không có gì để giao lại hay xóa. Xóa Narra sẽ gỡ mọi thứ Narra đã lưu trên thiết bị của bạn. Bản lưu trên iCloud có thể được quản lý trong phần cài đặt iCloud của thiết bị. Đồng bộ iCloud có thể tắt bất cứ lúc nào.",
         ],
       },
       {
@@ -289,10 +281,6 @@ export default {
         p: [
           "Việc mua hàng do Apple xử lý. Gói đăng ký ủng hộ tự động gia hạn trừ khi được hủy ít nhất 24 giờ trước khi kỳ hiện tại kết thúc; bạn có thể quản lý hoặc hủy gói trong phần cài đặt tài khoản App Store. Tiền tip là khoản thanh toán một lần và không mở khóa gì cả.",
         ],
-      },
-      {
-        h: "Bản dịch",
-        p: ["Tính năng dịch trong trò chơi do Google Dịch cung cấp và không phải lúc nào cũng chính xác."],
       },
       {
         h: "Thay đổi",
