@@ -162,6 +162,9 @@ export default {
       "Bir aramadan ya da alarmdan sonra geri gelen ses",
     ],
   },
+  screens: {
+    sampleNote: "Örnek kütüphane. Oyun adları uydurmadır.",
+  },
   epilogue: {
     label: "Son söz",
     title: "İlk sayfadan son sayfaya ücretsiz",

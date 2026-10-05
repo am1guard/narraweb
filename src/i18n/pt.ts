@@ -162,6 +162,9 @@ export default {
       "Som que volta depois de uma ligação ou de um alarme",
     ],
   },
+  screens: {
+    sampleNote: "Biblioteca de exemplo. Os títulos dos jogos são fictícios.",
+  },
   epilogue: {
     label: "Epílogo",
     title: "Grátis, da primeira à última página",

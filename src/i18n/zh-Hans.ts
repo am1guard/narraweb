@@ -162,6 +162,9 @@ export default {
       "来电或闹钟结束后自动恢复的声音",
     ],
   },
+  screens: {
+    sampleNote: "示例游戏库。游戏名称均为虚构。",
+  },
   epilogue: {
     label: "尾声",
     title: "从第一页到最后一页，全部免费",

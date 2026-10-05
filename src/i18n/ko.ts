@@ -162,6 +162,9 @@ export default {
       "전화나 알람이 끝나면 다시 돌아오는 소리",
     ],
   },
+  screens: {
+    sampleNote: "예시 보관함입니다. 게임 이름은 가상입니다.",
+  },
   epilogue: {
     label: "에필로그",
     title: "첫 페이지부터 마지막 페이지까지 무료",

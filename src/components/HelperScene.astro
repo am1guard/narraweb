@@ -3,7 +3,14 @@
 // progress arc, offers a suggestion in a speech bubble, and the short bar sits in the corner.
 // The game itself is only hinted at (the site's own night backdrop and an empty text box):
 // no real game is shown. Everything a screen reader needs is in the caption and the list below.
+//
+// Once real screenshots are in (config.screensReady), the drawing steps aside: the actual
+// suggestion bubble (proactive, falling back to in-game-narra) is shown in a landscape phone
+// with the pause screen fanned out behind it. Drawing and screenshot would say the same thing,
+// so only one of them is ever on the page.
 import { Picture } from "astro:assets";
+import PhoneFrame from "./PhoneFrame.astro";
+import { firstScreen } from "../lib/screens";
 import backdrop from "../assets/brand/hero-backdrop.webp";
 import narra from "../assets/mascot/hud_peek.webp";
 import { app, type Dict } from "../i18n";
@@ -12,8 +19,11 @@ import type { Lang } from "../i18n/languages";
 interface Props {
   lang: Lang;
   dict: Dict;
+  showScreens?: boolean;
 }
-const { lang, dict } = Astro.props;
+const { lang, dict, showScreens = false } = Astro.props;
+const front = showScreens ? firstScreen(lang, ["proactive", "in-game-narra"]) : undefined;
+const back = front ? firstScreen(lang, ["pause"]) : undefined;
 const h = dict.chapters.helper;
 const s = app(lang).strings;
 const icons = {
@@ -31,7 +41,14 @@ const bar = [
 const bubbles = [s["engine.speech.choice"], s["engine.speech.mainMenuResume"], s["engine.speech.saveReminder"]];
 ---
 <div class="container helper-wrap">
-  <figure class="scene" data-seq>
+  <figure class:list={["scene", { real: front }]} data-seq>
+    {front && (
+      <div class="shots">
+        {back && <PhoneFrame image={back.image} alt={h.items[1].t} orientation="landscape" name="pause" class="back-shot" />}
+        <PhoneFrame image={front.image} alt={s["engine.speech.choice"]} orientation="landscape" name={front.name} class="front-shot" />
+      </div>
+    )}
+    {!front && (
     <div class="device" aria-hidden="true">
       <div class="screen">
         <Picture
@@ -79,6 +96,7 @@ const bubbles = [s["engine.speech.choice"], s["engine.speech.mainMenuResume"], s
         </div>
       </div>
     </div>
+    )}
     <figcaption class="legend">
       <span class="legend-title">{h.barLabel}</span>
       <ul role="list">
@@ -363,6 +381,51 @@ const bubbles = [s["engine.speech.choice"], s["engine.speech.mainMenuResume"], s
   }
   :global([dir="rtl"]) .bubble {
     transform-origin: 0% 22%;
+  }
+  /* Real screenshots: the suggestion in front, the pause screen fanned out behind. */
+  .shots {
+    position: relative;
+    padding-block-start: 9%;
+    padding-inline-end: 9%;
+  }
+  .shots :global(.front-shot) {
+    position: relative;
+    z-index: 1;
+    inline-size: 100%;
+  }
+  .shots :global(.back-shot) {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inline-size: 78%;
+    opacity: 0.85;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .scene.real:not(.is-in) :global(.front-shot),
+    :global(.js) .scene.real:not(.is-in) :global(.back-shot) {
+      opacity: 0;
+    }
+    .scene.real.is-in :global(.front-shot) {
+      animation: shot-in 700ms var(--ease-spring) 120ms both;
+    }
+    .scene.real.is-in :global(.back-shot) {
+      animation: back-in 800ms var(--ease-out) 520ms both;
+    }
+  }
+  @keyframes shot-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+    }
+  }
+  @keyframes back-in {
+    from {
+      opacity: 0;
+      transform: translate(-6%, 8%);
+    }
+    to {
+      opacity: 0.85;
+    }
   }
   .legend {
     display: flex;

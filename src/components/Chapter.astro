@@ -26,15 +26,20 @@ interface Props {
   mascot?: ImageMetadata;
   /** Screenshot names to try, in order (src/lib/screens.ts). */
   screens?: ScreenName[];
+  /** A second screenshot shown behind the first, fanned out (only when it exists). */
+  backScreen?: ScreenName;
+  /** Small note under the phone, e.g. that the games in a sample library are made up. */
+  screenNote?: string;
   screenAlt?: string;
   showScreens: boolean;
   /** No art column: the chapter brings its own full-width illustration in the default slot. */
   wide?: boolean;
 }
-const { lang, n, id, title, say, lead, items, mascot, screens, screenAlt = "", showScreens, wide = false } = Astro.props;
+const { lang, n, id, title, say, lead, items, mascot, screens, backScreen, screenNote, screenAlt = "", showScreens, wide = false } = Astro.props;
 const side = n % 2 === 1 ? "end" : "start";
 const shot = showScreens && screens ? firstScreen(lang, screens) : undefined;
 const useScreen = showScreens && screens !== undefined && screens.length > 0;
+const back = useScreen && backScreen ? firstScreen(lang, [backScreen]) : undefined;
 const customArt = Astro.slots.has("art");
 const art = !wide && (useScreen || customArt || mascot);
 ---
@@ -69,7 +74,18 @@ const art = !wide && (useScreen || customArt || mascot);
           <div class="art-inner" data-pop>
             <span class="numeral" aria-hidden="true">{chapterNumeral(lang, n)}</span>
             {useScreen ? (
-              <PhoneFrame image={shot?.image} alt={screenAlt} orientation={SCREENS[shot?.name ?? screens![0]]} name={shot?.name ?? screens![0]} />
+              <figure class:list={["shots", { pair: back }]}>
+                {back && (
+                  <PhoneFrame image={back.image} alt="" orientation={SCREENS[back.name]} name={back.name} class="back-phone" />
+                )}
+                <PhoneFrame image={shot?.image} alt={screenAlt} orientation={SCREENS[shot?.name ?? screens![0]]} name={shot?.name ?? screens![0]} class="front-phone" />
+                {mascot && (
+                  <div class="companion float" aria-hidden="true">
+                    <Picture src={mascot} alt="" widths={[160, 240, 320]} sizes="140px" formats={["avif"]} fallbackFormat="webp" quality={78} loading="lazy" decoding="async" />
+                  </div>
+                )}
+                {screenNote && <figcaption class="shot-note">{screenNote}</figcaption>}
+              </figure>
             ) : customArt ? (
               <slot name="art" />
             ) : (
@@ -206,6 +222,51 @@ const art = !wide && (useScreen || customArt || mascot);
     inline-size: 220px;
     aspect-ratio: 1;
     object-fit: contain;
+  }
+  /* Screenshots: the phone, an optional second phone fanned out behind it, and the
+     chapter's Narra pose sitting small at the phone's lower corner. */
+  .shots {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    margin: 0;
+  }
+  .shots :global(.front-phone) {
+    position: relative;
+    z-index: 1;
+  }
+  .shots.pair {
+    padding-inline-end: 18%;
+  }
+  .shots :global(.back-phone) {
+    position: absolute;
+    inset-block-start: 6%;
+    inset-inline-end: 0;
+    scale: 0.86;
+    rotate: 6deg;
+    opacity: 0.9;
+    transform-origin: bottom center;
+  }
+  :global([dir="rtl"]) .shots :global(.back-phone) {
+    rotate: -6deg;
+  }
+  .companion {
+    position: absolute;
+    z-index: 2;
+    inset-block-end: 4%;
+    inset-inline-start: -14%;
+    inline-size: clamp(96px, 6vw + 50px, 140px);
+    pointer-events: none;
+  }
+  .companion :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+  }
+  .shot-note {
+    margin-block-start: var(--s-3);
+    color: var(--c-text-2);
+    font-size: var(--fs-xs);
+    text-align: center;
   }
   .numeral {
     position: absolute;

@@ -18,7 +18,7 @@ export const config = {
    * A missing screenshot is drawn as a placeholder, so keep this false until they're all in.
    * false: chapters are told by Narra's poses only. NARRA_SCREENS_READY=1 forces true for a test build.
    */
-  screensReady: false,
+  screensReady: true,
   /** Effective date of the privacy policy and terms (YYYY-MM-DD). */
   lastUpdated: "2026-10-05",
 } as const;

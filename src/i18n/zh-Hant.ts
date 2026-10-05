@@ -162,6 +162,9 @@ export default {
       "來電或鬧鐘結束後自動恢復的聲音",
     ],
   },
+  screens: {
+    sampleNote: "範例遊戲庫。遊戲名稱皆為虛構。",
+  },
   epilogue: {
     label: "尾聲",
     title: "從第一頁到最後一頁，全部免費",

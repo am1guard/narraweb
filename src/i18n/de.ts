@@ -162,6 +162,9 @@ export default {
       "Ton, der nach einem Anruf oder Wecker zurückkommt",
     ],
   },
+  screens: {
+    sampleNote: "Beispielbibliothek. Die Spieltitel sind erfunden.",
+  },
   epilogue: {
     label: "Epilog",
     title: "Kostenlos, von der ersten bis zur letzten Seite",

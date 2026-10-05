@@ -162,6 +162,9 @@ export default {
       "Zvuk, který se vrátí po hovoru nebo budíku",
     ],
   },
+  screens: {
+    sampleNote: "Ukázková knihovna. Názvy her jsou smyšlené.",
+  },
   epilogue: {
     label: "Epilog",
     title: "Zdarma, od první stránky po poslední",

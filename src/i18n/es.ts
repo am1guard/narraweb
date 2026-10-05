@@ -162,6 +162,9 @@ export default {
       "Sonido que vuelve tras una llamada o una alarma",
     ],
   },
+  screens: {
+    sampleNote: "Biblioteca de ejemplo. Los títulos de los juegos son inventados.",
+  },
   epilogue: {
     label: "Epílogo",
     title: "Gratis, de la primera página a la última",

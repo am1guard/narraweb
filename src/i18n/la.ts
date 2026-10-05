@@ -162,6 +162,9 @@ export default {
       "Sonus post vocationem telephonicam vel excitatorium restitutus",
     ],
   },
+  screens: {
+    sampleNote: "Bibliotheca exempli gratia. Nomina ludorum ficta sunt.",
+  },
   epilogue: {
     label: "Epilogus",
     title: "Gratis, a prima pagina ad ultimam",

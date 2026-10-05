@@ -166,6 +166,9 @@ const en = {
       "Sound that comes back after a call or an alarm",
     ],
   },
+  screens: {
+    sampleNote: "Sample library. The game titles are made up.",
+  },
   epilogue: {
     label: "Epilogue",
     title: "Free, from the first page to the last",

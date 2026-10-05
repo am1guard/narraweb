@@ -20,6 +20,7 @@ import add from "../../assets/mascot/onboarding_add.webp";
 import keyPose from "../../assets/mascot/settings.webp";
 import gamepad from "../../assets/brand/narra-gamepad.webp";
 import gallery from "../../assets/mascot/gallery_welcome.webp";
+import cloud from "../../assets/brand/narra-cloud.webp";
 import book from "../../assets/mascot/welcome.webp";
 
 export const getStaticPaths = langPaths;
@@ -33,8 +34,8 @@ const chapters = [
   { id: "engine", data: c.engine, mascot: keyPose, screens: ["engine-picker", "hub"] },
   { id: "helper", data: c.helper, mascot: undefined, screens: ["in-game-narra"] },
   { id: "controls", data: c.controls, mascot: gamepad, screens: ["portrait-play", "pause"] },
-  { id: "saves", data: c.saves, mascot: undefined, screens: ["saves"] },
-  { id: "extras", data: c.extras, mascot: gallery, screens: ["mods", "gallery"] },
+  { id: "saves", data: c.saves, mascot: cloud, screens: ["saves"] },
+  { id: "extras", data: c.extras, mascot: gallery, screens: ["mods", "gallery"], back: "gallery" },
   { id: "world", data: c.world, mascot: book, screens: ["settings"] },
 ] satisfies { id: string; screens: ScreenName[]; [k: string]: unknown }[];
 
@@ -100,17 +101,18 @@ const jsonLd = {
         items={"items" in ch.data ? ch.data.items : []}
         mascot={ch.mascot}
         screens={ch.id === "helper" ? undefined : ch.screens}
+        backScreen={"back" in ch ? (ch.back as ScreenName) : undefined}
+        screenNote={ch.id === "arrive" || ch.id === "extras" ? dict.screens.sampleNote : undefined}
         screenAlt={ch.data.title}
         showScreens={screensReady}
         wide={ch.id === "helper"}
       >
         {ch.id === "arrive" && <FilesPath slot="aside" label={c.arrive.pathLabel} path={c.arrive.path} />}
         {ch.id === "engine" && <div class="container"><EngineTimeline dict={dict} /></div>}
-        {ch.id === "helper" && <HelperScene lang={lang} dict={dict} />}
+        {ch.id === "helper" && <HelperScene lang={lang} dict={dict} showScreens={screensReady} />}
         {ch.id === "controls" && <WidgetMock slot="aside" lang={lang} dict={dict} />}
-        {ch.id === "saves" && screensReady && <SaveCards slot="aside" lang={lang} dict={dict} />}
+        {/* Drawn save cards and mod layers only without screenshots: the real screens show the same. */}
         {ch.id === "saves" && !screensReady && <SaveCards slot="art" lang={lang} dict={dict} />}
-        {ch.id === "extras" && screensReady && <ModStack slot="aside" dict={dict} />}
         {ch.id === "extras" && !screensReady && <ModStack slot="art" dict={dict} />}
         {ch.id === "world" && <div slot="aside"><WorldExtras lang={lang} dict={dict} /></div>}
       </Chapter>

@@ -27,8 +27,8 @@ const ratio = image ? `${image.width} / ${image.height}` : orientation === "port
         <Picture
           src={image}
           alt={alt}
-          widths={orientation === "portrait" ? [320, 480, 720] : [640, 960, 1400]}
-          sizes={orientation === "portrait" ? "320px" : "(min-width: 900px) 640px, 92vw"}
+          widths={orientation === "portrait" ? [320, 480, 720, 960] : [640, 960, 1400]}
+          sizes={orientation === "portrait" ? "(min-width: 900px) 320px, 260px" : "(min-width: 900px) 736px, 92vw"}
           formats={["avif"]} fallbackFormat="webp"
           quality={80}
           loading={eager ? "eager" : "lazy"}
@@ -58,10 +58,11 @@ const ratio = image ? `${image.width} / ${image.height}` : orientation === "port
     border-radius: 48px;
     background: linear-gradient(145deg, #3a3346, #17121f 45%, #2b2436);
     box-shadow: var(--shadow-phone), inset 0 0 0 1.5px rgb(255 255 255 / 0.12);
-    inline-size: var(--phone-width);
+    /* Never taller than the view, so the sticky phone always fits on screen. */
+    inline-size: min(var(--phone-width), calc(74svh / 2.17));
   }
   .phone.landscape {
-    inline-size: min(100%, 44rem);
+    inline-size: min(100%, 46rem);
     border-radius: 40px;
   }
   .screen {

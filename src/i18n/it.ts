@@ -162,6 +162,9 @@ export default {
       "Audio che ritorna dopo una chiamata o una sveglia",
     ],
   },
+  screens: {
+    sampleNote: "Libreria di esempio. I titoli dei giochi sono inventati.",
+  },
   epilogue: {
     label: "Epilogo",
     title: "Gratis, dalla prima all'ultima pagina",

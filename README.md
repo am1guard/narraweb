@@ -34,7 +34,7 @@ Uygulama yayımlanınca `appStoreUrl` alanına `https://apps.apple.com/app/id<K�
 
 ## Ekran görüntüleri
 
-Şimdilik bölümleri Narra'nın pozları anlatıyor. Ekran görüntüleri şu yuvalara konur:
+Bölümler uygulamanın gerçek ekran görüntülerini telefon çerçevesinde gösterir (`screensReady: true`). Görüntüler şu yuvalara konur:
 
 ```
 src/assets/screens/common/<ad>.png    tüm diller için
@@ -46,16 +46,22 @@ src/assets/screens/<dil>/<ad>.png     o dile özel (ör. tr/, ja/, zh-Hans/); va
 | `library` | dikey 1260x2736 | Bölüm I (oyun ekleme ve kütüphane) |
 | `hub` | dikey 1260x2736 | Bölüm II'de `engine-picker` yoksa |
 | `engine-picker` | dikey 1260x2736 | Bölüm II (motor sürümleri) |
-| `in-game-narra` | yatay 2736x1260 | Bölüm III için ayrılmış; bu bölüm çizimle anlatılıyor |
+| `in-game-narra` | yatay 2736x1260 | Bölüm III, `proactive` yoksa |
 | `portrait-play` | dikey 1260x2736 | Bölüm IV (kontroller); yoksa `pause` |
-| `pause` | yatay 2736x1260 | Bölüm IV, `portrait-play` yoksa |
+| `pause` | yatay 2736x1260 | Bölüm III'te öneri balonunun arkasında; Bölüm IV'te `portrait-play` yoksa |
 | `saves` | dikey 1260x2736 | Bölüm V (kayıtlar) |
 | `mods` | dikey 1260x2736 | Bölüm VI (modlar, galeri) |
-| `gallery` | dikey 1260x2736 | Bölüm VI'da `mods` yoksa |
-| `proactive` | yatay 2736x1260 | yuva hazır, şimdilik kullanılmıyor |
+| `gallery` | dikey 1260x2736 | Bölüm VI, mod ekranının arkasında |
+| `proactive` | yatay 2736x1260 | Bölüm III (Narra'nın öneri balonu) |
 | `settings` | dikey 1260x2736 | Bölüm VII (diller, gizlilik) |
 
-PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Telefon çerçevesi görüntünün kendi oranını alır (iPhone Air 1260x2736 varsayılır, başka boyutlar da olur). Ekran görüntüleri açıkken kayıt kartları ve mod katmanları çizimleri sağ kolondan metnin içine geçer. Hepsi eklenince `src/config.ts` içinde `screensReady: true` yapın. Eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür; bu yüzden hepsi gelmeden açmayın. Denemek için: `NARRA_SCREENS_READY=1 npm run build`.
+PNG, JPEG ya da WebP olabilir; Astro derlemede AVIF/WebP ve uygun boyutlar üretir. Telefon çerçevesi görüntünün kendi oranını alır (iPhone Air 1260x2736 varsayılır, başka boyutlar da olur). Görüntüleri pazarlama klasöründen almak için: `node scripts/import-screens.mjs` (varsayılan kaynak `../marketing/screens/raw/iphone-air/<dil>/<ad>.png`; `en` ortak klasöre gider). Betik PNG'leri yüksek kaliteli WebP kaynağa çevirir, depo küçük kalır.
+
+`screensReady: false` yapılırsa bölümleri yine Narra'nın pozları ve çizimler anlatır (kayıt kartları, mod katmanları, oyun içi sahne çizimi). Açıkken eksik kalan görüntünün yerine uygulamanın zemini ve Narra ile çizilmiş bir yer tutucu görünür. Ekran görüntüleri açıkken:
+- Bölüm III'te çizim yerine gerçek öneri balonu (`proactive`, yoksa `in-game-narra`) ve arkasında duraklatma ekranı (`pause`) gösterilir; ikisi aynı şeyi anlattığı için hiçbir zaman birlikte görünmez.
+- Kayıt kartları ve mod katmanları çizimleri kalkar (gerçek ekranlar aynı şeyi gösteriyor); bölümün Narra pozu telefonun köşesinde küçük durur.
+- Bölüm VI'da mod ekranının arkasında galeri ekranı yelpaze gibi durur.
+- Kütüphane ve mod ekranlarındaki oyun adları uydurmadır; altlarında dile göre "Örnek kütüphane. Oyun adları uydurmadır." notu çıkar (`screens.sampleNote`).
 
 Telefon çerçevesi CSS ile çizilir; ekran görüntüsünün kendisinde çerçeve olmamalı (Simulator'daki "Save Screen" ya da cihaz ekran görüntüsü olduğu gibi).
 

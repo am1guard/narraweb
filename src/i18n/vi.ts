@@ -162,6 +162,9 @@ export default {
       "Âm thanh trở lại sau cuộc gọi hoặc báo thức",
     ],
   },
+  screens: {
+    sampleNote: "Thư viện minh họa. Tên trò chơi là hư cấu.",
+  },
   epilogue: {
     label: "Lời kết",
     title: "Miễn phí từ trang đầu đến trang cuối",
