@@ -7,7 +7,7 @@ export const config = {
    * App Store link, e.g. "https://apps.apple.com/app/id1234567890".
    * While empty, the download button shows "Coming soon to the App Store" and is not a link.
    */
-  appStoreUrl: "https://apps.apple.com/app/id6818847551",
+  appStoreUrl: "https://apps.apple.com/us/app/narra-renpy-visual-novels/id6818847551",
   /** Numeric App Store ID. While empty, the Smart App Banner meta tag is left out. */
   appStoreId: "6818847551",
   supportEmail: "support@playnarra.app",
