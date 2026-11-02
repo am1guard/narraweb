@@ -32,6 +32,8 @@ npm run preview    # dist/ klasörünü sunar
 
 Uygulama yayımlanınca `appStoreUrl` alanına `https://apps.apple.com/app/id<KİMLİK>` ve `appStoreId` alanına yalnız sayıyı yazın, sonra değişikliği gönderin. Giriş bölümündeki ve son bölümdeki düğmeler kendiliğinden "App Store'dan İndir" bağlantısına döner, JSON-LD'ye indirme adresi eklenir.
 
+Narra 2 Kasım 2026'da yayımlandı; değerler ayarlı (`https://apps.apple.com/app/id6818847551`, `6818847551`). Bölgesiz adres ziyaretçiyi kendi ülkesinin mağazasına yönlendirir.
+
 ## Ekran görüntüleri
 
 Bölümler uygulamanın gerçek ekran görüntülerini telefon çerçevesinde gösterir (`screensReady: true`). Görüntüler şu yuvalara konur:
